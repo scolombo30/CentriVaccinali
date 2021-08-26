@@ -8,6 +8,8 @@ package GUI;
  * and open the template in the editor.
  */
 
+import java.awt.*;
+
 /**
  *
  * @author Davide Franco
@@ -36,6 +38,10 @@ public class Home extends javax.swing.JFrame {
 
         //size fissa
         setResizable(false);
+        //set dove aprire la finestra
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        //imposto il centro dello schermo e tolgo la metà della grandezza della finestra(grandezza che scelgo io inizializzandola)
+        this.setLocation(dim.width/2-250, dim.height/2-175);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         home.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -127,7 +133,9 @@ public class Home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                Home a=new Home();
+                a.setVisible(true);
+                a.setSize(500,350);
             }
         });
     }
