@@ -1432,7 +1432,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void campo_ricercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_ricercaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_campo_ricercaActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
@@ -1472,7 +1472,6 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_signinMouseClicked
 
     private void mail_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mail_signupActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_mail_signupActionPerformed
 
     private void jLabel34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel34MouseClicked
@@ -1498,7 +1497,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_registra_vaccinato_btnMouseClicked
 
     private void comune_indirizzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comune_indirizzoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_comune_indirizzoActionPerformed
 
     private void cognome_vaccinato_registra_vaccinatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cognome_vaccinato_registra_vaccinatoActionPerformed
@@ -1530,10 +1529,7 @@ public class Home extends javax.swing.JFrame {
     //da spostare il main nella classe CentriVaccinali
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1550,19 +1546,19 @@ public class Home extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Home a=new Home();
-                //  a.setSize(1600,900);
+
                 a.setVisible(true);
             }
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    //GEN-BEGIN:variables
     private javax.swing.JPanel Cittadino_pnl_Login;
     private javax.swing.JPanel Cittadino_pnl_Signup;
     private javax.swing.JPanel Cittadino_pnl_noLogin;
@@ -1686,6 +1682,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> tipo_vaccino_registra_vaccinato;
     private javax.swing.JComboBox<String> tipologia_centro;
     private javax.swing.JPanel title_bar;
-    // End of variables declaration//GEN-END:variables
+
 }
 
