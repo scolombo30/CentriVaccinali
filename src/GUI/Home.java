@@ -22,7 +22,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         //scelgo l'immagine dell'icona che apparirà nella task bar
-        this.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\moseb\\Desktop\\immagini progetto\\icona.png"));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage("./res/icona.png"));
     }
 
 
@@ -174,7 +174,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\close.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("./res/close.png")); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -183,7 +183,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\minimize.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon("./res/minimize.png")); // NOI18N
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel12MouseClicked(evt);
@@ -221,7 +221,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\home.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("./res/home.png")); // NOI18N
         jLabel8.setToolTipText("");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -257,7 +257,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\user.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("./res/user.png")); // NOI18N
         jLabel2.setToolTipText("");
         jLabel2.setIconTextGap(0);
         jLabel2.setRequestFocusEnabled(false);
@@ -296,7 +296,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\dottore.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("./res/dottore.png")); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,10 +358,10 @@ public class Home extends javax.swing.JFrame {
 
         Home_pnl.setBackground(new java.awt.Color(33, 32, 36));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\immagine_homee.png")); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon("./res/immagine_homee.png")); // NOI18N
 
         jLabel14.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\benvenuti (1).png")); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon("./res/benvenuti (1).png")); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -502,7 +502,7 @@ public class Home extends javax.swing.JFrame {
         );
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\search.png")); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon("./res/search.png")); // NOI18N
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel18MouseClicked(evt);
@@ -610,7 +610,7 @@ public class Home extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel38.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\immagine_login_operatore.png")); // NOI18N
+        jLabel38.setIcon(new javax.swing.ImageIcon("./res/immagine_login_operatore.png")); // NOI18N
 
         javax.swing.GroupLayout Operatore_pnl_loginLayout = new javax.swing.GroupLayout(Operatore_pnl_login);
         Operatore_pnl_login.setLayout(Operatore_pnl_loginLayout);
@@ -684,14 +684,14 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel23)
         );
 
-        indietro_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\indietro.png")); // NOI18N
+        indietro_btn.setIcon(new javax.swing.ImageIcon("./res/indietro.png")); // NOI18N
         indietro_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 indietro_btnMouseClicked(evt);
             }
         });
 
-        jLabel36.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\immagine_login.png")); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon("./res/immagine_login.png")); // NOI18N
 
         javax.swing.GroupLayout Cittadino_pnl_LoginLayout = new javax.swing.GroupLayout(Cittadino_pnl_Login);
         Cittadino_pnl_Login.setLayout(Cittadino_pnl_LoginLayout);
@@ -748,7 +748,7 @@ public class Home extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Sign up");
 
-        jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\immagine_signup.png")); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon("./res/immagine_signup.png")); // NOI18N
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
@@ -804,7 +804,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        jLabel34.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\indietro.png")); // NOI18N
+        jLabel34.setIcon(new javax.swing.ImageIcon("./res/indietro.png")); // NOI18N
         jLabel34.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel34MouseClicked(evt);
@@ -1062,7 +1062,7 @@ public class Home extends javax.swing.JFrame {
                                 .addGap(9, 9, 9))
         );
 
-        jLabel66.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\immagine_registra_centro.png")); // NOI18N
+        jLabel66.setIcon(new javax.swing.ImageIcon("./res/immagine_registra_centro.png")); // NOI18N
 
         javax.swing.GroupLayout registra_centro_pnlLayout = new javax.swing.GroupLayout(registra_centro_pnl);
         registra_centro_pnl.setLayout(registra_centro_pnlLayout);
@@ -1235,7 +1235,7 @@ public class Home extends javax.swing.JFrame {
                                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
-        jLabel65.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\immagini progetto\\immagine_registra_vaccinato.png")); // NOI18N
+        jLabel65.setIcon(new javax.swing.ImageIcon("./res/immagine_registra_vaccinato.png")); // NOI18N
 
         javax.swing.GroupLayout registra_vaccinato_pnlLayout = new javax.swing.GroupLayout(registra_vaccinato_pnl);
         registra_vaccinato_pnl.setLayout(registra_vaccinato_pnlLayout);
@@ -1377,7 +1377,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_title_barMousePressed
 
     private void title_barMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title_barMouseReleased
-        // DA TOGLIERE
+        // non DA TOGLIERE
     }//GEN-LAST:event_title_barMouseReleased
 
     private void title_barMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_title_barMouseDragged
@@ -1527,9 +1527,7 @@ public class Home extends javax.swing.JFrame {
         panel.setBackground(new Color(64,43,100));
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    //da spostare il main nella classe CentriVaccinali
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
