@@ -2,21 +2,14 @@
 // Sebastian Colombo "742779" CO
 package GUI;
 
-/*
- * Davide Franco "741453" CO
- * Sebastian Colombo "742779" CO
- */
-
-
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
 public class Home extends javax.swing.JFrame {
-
+    //punti per coordinate per il listener  quando trascini la finestra dalla barra del titolo
     int x,y;
 
     public Home() {
