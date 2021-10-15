@@ -3,13 +3,12 @@ package cittadini;
 // EchoClient.java
 import java.net.*;
 import java.io.*;
-public class EchoClient {
+public class EchoClient2 {
     public static void main(String[] args) throws IOException {
- ;
-        Socket socket=null;
-        ObjectOutputStream out=null;
-        ObjectInputStream in=null;
 
+        Socket socket=null;
+        ObjectInputStream in=null;
+        ObjectOutputStream out=null;
         BufferedReader stdIn=null;
 
         try {
@@ -18,10 +17,12 @@ public class EchoClient {
             System.out.println("EchoClient: started");
             System.out.println("Client Socket: "+ socket);
             // creazione stream di input da socket
-
-            out = new ObjectOutputStream((socket.getOutputStream()));
             in = new ObjectInputStream(socket.getInputStream());
-
+            // creazione stream di output su socket
+            OutputStreamWriter osw = new OutputStreamWriter( socket.getOutputStream());
+            BufferedWriter bw = new BufferedWriter(osw);
+            out = new ObjectOutputStream(socket.getOutputStream());
+            // creazione stream di input da tastiera
             stdIn = new BufferedReader(new InputStreamReader(System.in));
             String userInput;
             // ciclo di lettura da tastiera, invio al server e stampa risposta
@@ -31,7 +32,6 @@ public class EchoClient {
                 if (userInput.equals("END")) break;
                 System.out.println("Echo: " + in.readObject());
             }
-
         }
         catch (UnknownHostException e) {
             System.err.println("Don’t know about host ");

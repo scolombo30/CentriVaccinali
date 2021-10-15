@@ -7,6 +7,8 @@ public class EchoServer {
         ServerSocket serverSocket = new ServerSocket(PORT);
         System.out.println("EchoServer: started ");
         System.out.println("Server Socket: " + serverSocket);
+        InetAddress inetAddress = InetAddress.getLocalHost();
+        System.out.println("Server opened at: "+inetAddress.getHostAddress());
         Socket clientSocket=null;
         BufferedReader in=null;
         PrintWriter out=null;
