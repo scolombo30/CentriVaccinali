@@ -933,6 +933,7 @@ public class Home extends javax.swing.JFrame {
         registra_centro_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registra_centro_btnMouseClicked(evt);
+
             }
         });
 
@@ -1064,6 +1065,13 @@ public class Home extends javax.swing.JFrame {
         tipologia_centro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------------", "Ospedaliero", "Aziendale", "Hub" }));
 
         Registra_centro_btn.setBackground(new java.awt.Color(64, 43, 100));
+       //listener aggiunto
+        Registra_centro_btn.addMouseListener(new java.awt.event.MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Registra_centro_btnMouseClicked(e);
+            }
+        });
 
         jLabel53.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel53.setForeground(new java.awt.Color(242, 242, 242));
@@ -1542,6 +1550,19 @@ public class Home extends javax.swing.JFrame {
         }
         codice_accesso_operatore.setText("");
     }//GEN-LAST:event_login_btn_operatoreMouseClicked
+
+    //metodo per registrare informazioni di un centro vaccinale
+    private void Registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+        Indirizzo indirizzo= new Indirizzo(qualificatore_indirizzo.getSelectedItem().toString(),nome_via_indirizzo.getText(),
+                numero_civico_indirizzo.getText(),comune_indirizzo.getText(),provincia_indirizzo.getText(),
+                cap_indirizzo.getText());
+        CentroVaccinale centro=new CentroVaccinale(nome_centro.getText(),indirizzo,tipologia_centro.getSelectedItem().toString());
+        System.err.println("CLICK");
+        try{out.writeObject(centro);}
+        catch (IOException e){};
+        //aprire finestra di dialogo che avvisa della corretta registrazione e svuotare i campi
+    }
 
     void setColor(JPanel panel){
         panel.setBackground(new Color(85,65,118));
