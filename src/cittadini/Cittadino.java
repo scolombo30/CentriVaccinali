@@ -4,7 +4,6 @@
 package cittadini;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Cittadino implements Serializable{
 
@@ -18,7 +17,7 @@ public class Cittadino implements Serializable{
     private int idVaccinazione;
     private String mail;
     private String username;
-    private String Paasword;
+    private String password;
 
     //costruttore
     /**
@@ -28,10 +27,10 @@ public class Cittadino implements Serializable{
      * @param idVaccinazione
      * @param mail
      * @param username
-     * @param paasword
+     * @param password
      */
     public Cittadino(String nome, String cognome, String codiceFiscale, int idVaccinazione, String mail,
-                     String username, String paasword) {
+                     String username, String password) {
         super();
         this.nome = nome;
         this.cognome = cognome;
@@ -39,7 +38,7 @@ public class Cittadino implements Serializable{
         this.idVaccinazione = idVaccinazione;
         this.mail = mail;
         this.username = username;
-        Paasword = paasword;
+        this.password = password;
     }
 
     //metodi
@@ -82,8 +81,8 @@ public class Cittadino implements Serializable{
     /**
      * @return the paasword
      */
-    public String getPaasword() {
-        return Paasword;
+    public String getPassword() {
+        return password;
     }
     /**
      * @param nome the nome to set
@@ -122,10 +121,10 @@ public class Cittadino implements Serializable{
         this.username = username;
     }
     /**
-     * @param paasword the paasword to set
+     * @param password the paasword to set
      */
-    public void setPaasword(String paasword) {
-        Paasword = paasword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     /**
@@ -137,7 +136,7 @@ public class Cittadino implements Serializable{
                 this.cognome.equals(altro.cognome)&&
                 this.codiceFiscale.equals(altro.codiceFiscale)&&
                 this.mail.equals(altro.mail)&&
-                this.Paasword.equals(altro.Paasword)&&
+                this.password.equals(altro.password)&&
                 this.username.equals(altro.username)&&
                 this.idVaccinazione==altro.idVaccinazione
         )return true;
@@ -149,7 +148,7 @@ public class Cittadino implements Serializable{
      */
     public String toString() {
         return this.nome+" "+this.cognome+", "+this.codiceFiscale+
-                "\nUsername: "+this.username+", Mail: "+this.mail+", Psw: "+this.Paasword+
+                "\nUsername: "+this.username+", Mail: "+this.mail+", Psw: "+this.password +
                 "\nID_Vaccinazione: "+this.idVaccinazione;
     }
 }
