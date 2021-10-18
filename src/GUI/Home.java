@@ -2,25 +2,56 @@
 // Sebastian Colombo "742779" CO
 package GUI;
 
+import centrivaccinali.CentroVaccinale;
+import centrivaccinali.Indirizzo;
+import cittadini.EchoServer;
+
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Home extends javax.swing.JFrame {
+
     //punti per coordinate per il listener  quando trascini la finestra dalla barra del titolo
     int x,y;
 
+    //variabili per lettura e scrittura su socket
+    public static final int PORTA = 1050;
+    Socket socket=null;
+    ObjectOutputStream out=null;
+    ObjectInputStream in=null;
+
     public Home() {
+
+        try {
+            // creazione socket
+            socket = new Socket("localhost", Home.PORTA);
+            //stampe di controllo
+            System.out.println("EchoClient: started");
+            System.out.println("Client Socket: "+ socket);
+            // creazione stream di input da socket
+
+            out = new ObjectOutputStream((socket.getOutputStream()));
+            in = new ObjectInputStream(socket.getInputStream());
+            }
+        catch (UnknownHostException e) {
+            System.err.println("Non conosco l'Host ");
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println("Impossibile collegarsi");
+            System.exit(1);
+        }
         initComponents();
         //scelgo l'immagine dell'icona che apparirà nella task bar
         this.setIconImage(Toolkit.getDefaultToolkit().getImage("./res/icona.png"));
     }
-
-
-
-
+    //metodo auto-generato che inizializza tutti i componenti della GUI
     private void initComponents() {
 
         title_bar = new javax.swing.JPanel();

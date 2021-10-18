@@ -1,6 +1,8 @@
 package cittadini;
 
 // EchoMultiServer.java
+import centrivaccinali.CentroVaccinale;
+
 import java.io.*;
 import java.net.*;
 class ServerThread extends Thread {
@@ -20,12 +22,14 @@ class ServerThread extends Thread {
     public void run() {
         try {
             while (true) {
-                String str =(String) in.readObject();
-                if (str.equals("END")) break;
-                System.out.println("ServerThread "+id+": echoing -> " + str);
-                out.writeObject(str);
+                CentroVaccinale str =(CentroVaccinale) in.readObject();
+                //if (str.equals("END")) break;
+               // System.out.println("ServerThread "+id+": echoing -> " + str);
+                System.out.println("Ho letto dal socket: \n");
+                System.out.println(str);
+               // out.writeObject(str);
             }
-            System.out.println("ServerThread "+id+": closing...");
+          //  System.out.println("ServerThread "+id+": closing...");
         } catch (IOException e) {} catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
