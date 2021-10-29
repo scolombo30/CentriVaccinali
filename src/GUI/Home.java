@@ -4,6 +4,7 @@ package GUI;
 
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.Indirizzo;
+import cittadini.Vaccinato;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -11,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -1592,6 +1594,10 @@ public class Home extends javax.swing.JFrame {
     //metodo per registrare informazioni del vaccinato presso il centro
     private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt){
         //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+        Date data=new Date();
+        Vaccinato vaccinatp_da_registrare=new Vaccinato(nome_vaccinato_registra_vaccinato.getText(),cognome_vaccinato_registra_vaccinato.getText(),
+                codice_fiscale_registra_vaccinato.getText(),nome_centro_registra_vaccinato.getText(),data,tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
+                Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
     }
 
     //metodo per fare login del cittadino
