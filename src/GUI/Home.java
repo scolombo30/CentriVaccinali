@@ -4,7 +4,6 @@ package GUI;
 
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.Indirizzo;
-import cittadini.EchoServer;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -22,7 +21,7 @@ public class Home extends javax.swing.JFrame {
     int x,y;
 
     //variabili per lettura e scrittura su socket
-    public static final int PORTA = 1050;
+    public static final int PORTA = 2812;
     Socket socket=null;
     ObjectOutputStream out=null;
     ObjectInputStream in=null;
@@ -1065,11 +1064,32 @@ public class Home extends javax.swing.JFrame {
         tipologia_centro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------------", "Ospedaliero", "Aziendale", "Hub" }));
 
         Registra_centro_btn.setBackground(new java.awt.Color(64, 43, 100));
-       //listener aggiunto
+       //listener aggiunto al btn registra centro nel panel degli operatori
         Registra_centro_btn.addMouseListener(new java.awt.event.MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e) {
                 Registra_centro_btnMouseClicked(e);
+            }
+        });
+        //listener aggiunto al btn registra vaccinato nel panel degli operatori
+        registra_vaccinato_registra_vaccinato_pnl.addMouseListener(new java.awt.event.MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent a) {
+                Registra_vaccinato_btnMouseClicked(a);
+            }
+        });
+        //listener aggiunto al btn registra cittadino nel panel dei cittadini
+        registrati_btn.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseClicked(MouseEvent p) {
+                Registra_cittadino_btnMouseClicked(p);
+            }
+        });
+
+        //listener aggiunto al btn login cittadino nel panel dei cittadini
+        login_btn_pnlLogin.addMouseListener(new java.awt.event.MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent i) {
+                Login_cittadino_btnMouseClicked(i);
             }
         });
 
@@ -1567,6 +1587,23 @@ public class Home extends javax.swing.JFrame {
         try{out.writeObject(centro);}
         catch (IOException e){};
         //aprire finestra di dialogo che avvisa della corretta registrazione e svuotare i campi
+    }
+
+    //metodo per registrare informazioni del vaccinato presso il centro
+    private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt){
+        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+    }
+
+    //metodo per fare login del cittadino
+    private void Login_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
+        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+
+    }
+
+    //metodo per registrare cittadino
+    private void Registra_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
+        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+
     }
 
     void setColor(JPanel panel){
