@@ -9,14 +9,14 @@ import java.util.Date;
 public class Vaccinato implements Serializable{
 
     //serialVersionUID per implementare serializable
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     //campi
     private String centroVaccinale;
     private String nome;
     private String cognome;
     private String codiceFiscale;
-    private Date dataSomministrazione;
+    private DataLab dataSomministrazione;
     private String vaccino;
     private int idVaccinazione;
 
@@ -31,7 +31,7 @@ public class Vaccinato implements Serializable{
      * @param idVaccinazione
      */
     public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale,
-                     Date dataSomministrazione, String vaccino, int idVaccinazione) {
+                     DataLab dataSomministrazione, String vaccino, int idVaccinazione) {
         super();
         this.centroVaccinale = centroVaccinale;
         this.nome = nome;
@@ -70,7 +70,7 @@ public class Vaccinato implements Serializable{
     /**
      * @return the dataSomministrazione
      */
-    public Date getDataSomministrazione() {
+    public DataLab getDataSomministrazione() {
         return dataSomministrazione;
     }
     /**
@@ -112,7 +112,7 @@ public class Vaccinato implements Serializable{
     /**
      * @param dataSomministrazione the dataSomministrazione to set
      */
-    public void setDataSomministrazione(Date dataSomministrazione) {
+    public void setDataSomministrazione(DataLab dataSomministrazione) {
         this.dataSomministrazione = dataSomministrazione;
     }
     /**

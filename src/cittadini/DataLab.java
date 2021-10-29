@@ -2,7 +2,9 @@
 //Sebastian Colombo "742779" CO
 package cittadini;
 
-public class DataLab {
+import java.io.Serializable;
+
+public class DataLab implements Serializable {
     private static final long serialVersionUID = 1L;
 
 private String giorno;

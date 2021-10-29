@@ -22,7 +22,7 @@ class ServerThread extends Thread {
     public void run() {
         try {
             while (true) {
-                CentroVaccinale str =(CentroVaccinale) in.readObject();
+                Cittadino str =(Cittadino) in.readObject();
                 //if (str.equals("END")) break;
                // System.out.println("ServerThread "+id+": echoing -> " + str);
                 System.out.println("Ho letto dal socket: \n");

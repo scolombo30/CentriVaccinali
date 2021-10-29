@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoMultiServer {
-    static final int PORT = 1050;
+    static final int PORT = 2812;
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(PORT);
         System.out.println("EchoMultiServer: started");

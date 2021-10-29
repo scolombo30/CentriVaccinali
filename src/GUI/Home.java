@@ -4,6 +4,8 @@ package GUI;
 
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.Indirizzo;
+import cittadini.Cittadino;
+import cittadini.DataLab;
 import cittadini.Vaccinato;
 
 import java.awt.Color;
@@ -1594,21 +1596,43 @@ public class Home extends javax.swing.JFrame {
     //metodo per registrare informazioni del vaccinato presso il centro
     private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt){
         //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-        Date data=new Date();
+        DataLab data=new DataLab(giorno_registra_vaccinato.getText(),mese_registra_vaccinato.getSelectedItem().toString(),anno_registra_vaccinato.getText());
         Vaccinato vaccinatp_da_registrare=new Vaccinato(nome_vaccinato_registra_vaccinato.getText(),cognome_vaccinato_registra_vaccinato.getText(),
                 codice_fiscale_registra_vaccinato.getText(),nome_centro_registra_vaccinato.getText(),data,tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
                 Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
+        System.err.println("CLICK");
+        try{
+            out.writeObject(vaccinatp_da_registrare);}
+        catch (IOException e){};
     }
 
     //metodo per fare login del cittadino
     private void Login_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
         //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-
+        String user=jTextField1.getText();
+        String password=jPasswordField1.getText();
     }
 
     //metodo per registrare cittadino
     private void Registra_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
         //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+        if(password_signup.equals(conferma_password_signup)){Cittadino cittadino=new Cittadino(nome_signup.getText(),cognome_signup.getText(),cod_fisc_signup.getText(),Integer.parseInt(IDVax_signup.getText()),
+                mail_signup.getText(),mail_signup.getText(),password_signup.getText());
+            //scrivo sul socket
+            System.err.println("CLICK");
+            try{
+                out.writeObject(cittadino);}
+            catch (IOException e){};
+        }
+        else {
+            //mostro panel di dialogo e cancello i campi delle password
+            password_signup.setText("");
+            conferma_password_signup.setText("");
+            JOptionPane.showMessageDialog(this,
+                    "Le password non corrispondono. Prego reinserisca.",
+                    "Errore password",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 
