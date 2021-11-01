@@ -15,6 +15,7 @@ import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Date;
+import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -1623,17 +1624,61 @@ public class Home extends javax.swing.JFrame {
     }
 
     //metodo per registrare informazioni del vaccinato presso il centro
-    private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt){
-        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-        DataLab data=new DataLab(giorno_registra_vaccinato.getText(),mese_registra_vaccinato.getSelectedItem().toString(),anno_registra_vaccinato.getText());
-        Vaccinato vaccinatp_da_registrare=new Vaccinato(nome_vaccinato_registra_vaccinato.getText(),cognome_vaccinato_registra_vaccinato.getText(),
-                codice_fiscale_registra_vaccinato.getText(),nome_centro_registra_vaccinato.getText(),data,tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
-                Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
-        System.err.println("CLICK");
-        try{
-            out.writeObject(vaccinatp_da_registrare);}
-        catch (IOException e){};
-    }
+    private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) throws  NumberFormatException{
+        String nome=nome_vaccinato_registra_vaccinato.getText();
+        String cognome=cognome_vaccinato_registra_vaccinato.getText();
+        String cod_fiscale=codice_fiscale_registra_vaccinato.getText();
+        String nome_centro=nome_centro_registra_vaccinato.getText();
+        String giorno=giorno_registra_vaccinato.getText();
+        String mese=mese_registra_vaccinato.getSelectedItem().toString();
+        String anno=anno_registra_vaccinato.getText();
+        String tipo_vaccino=tipologia_centro.getSelectedItem().toString();
+        String id_vacc=Id_vaccinazione_registra_vaccinato.getText();
+
+        if(nome.equals("")|cognome.equals("")|cod_fiscale.equals("")|nome_centro.equals("")|giorno.equals("")|mese.equals("")|anno.equals("")|tipo_vaccino.equals("")|id_vacc.equals("")) {
+
+            //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+            JOptionPane.showMessageDialog(this,
+                    "Compilare tutti i campi",
+                    "Campi vuoti",
+                    JOptionPane.WARNING_MESSAGE);
+
+
+
+
+
+            }else{
+                DataLab data=new DataLab(giorno_registra_vaccinato.getText(),mese_registra_vaccinato.getSelectedItem().toString(),anno_registra_vaccinato.getText());
+
+                Vaccinato vaccinatp_da_registrare=new Vaccinato(nome_vaccinato_registra_vaccinato.getText(),cognome_vaccinato_registra_vaccinato.getText(),
+                        codice_fiscale_registra_vaccinato.getText(),nome_centro_registra_vaccinato.getText(),data,tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
+                        Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
+                System.err.println("CLICK");
+                try{
+                    out.writeObject(vaccinatp_da_registrare);}
+                catch (IOException e){};
+                //apriro JOptionPane per avvisare del corretto inserimento
+                JOptionPane.showMessageDialog(this,
+                        "Informazioni inserite con successo!",
+                        "Successo",
+                        JOptionPane.INFORMATION_MESSAGE);
+                //svuoto i campi
+                nome_vaccinato_registra_vaccinato.setText("");
+                cognome_vaccinato_registra_vaccinato.setText("");
+                codice_fiscale_registra_vaccinato.setText("");
+                nome_centro_registra_vaccinato.setText("");
+                tipo_vaccino_registra_vaccinato.setSelectedIndex(0);
+                Id_vaccinazione_registra_vaccinato.setText("");
+                giorno_registra_vaccinato.setText("");
+                mese_registra_vaccinato.setSelectedIndex(0);
+                anno_registra_vaccinato.setText("");
+            }
+
+
+
+        }
+
+
 
     //metodo per fare login del cittadino
     private void Login_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
