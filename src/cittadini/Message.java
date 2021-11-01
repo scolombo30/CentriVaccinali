@@ -18,6 +18,12 @@ public class Message extends Component {
                 mess,
                 titolo,
                 JOptionPane.INFORMATION_MESSAGE);}
+
+    public void errorMessage(String mess,String titolo){
+        JOptionPane.showMessageDialog(this,
+                mess,
+                titolo,
+                JOptionPane.ERROR_MESSAGE);}
 }
 
 

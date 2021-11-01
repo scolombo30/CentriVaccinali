@@ -1693,8 +1693,11 @@ public class Home extends javax.swing.JFrame {
 
     //metodo per registrare cittadino
     private void Registra_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
-        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-        if(password_signup.equals(conferma_password_signup)){Cittadino cittadino=new Cittadino(nome_signup.getText(),cognome_signup.getText(),cod_fisc_signup.getText(),Integer.parseInt(IDVax_signup.getText()),
+       Message m=new Message();
+        String psw=password_signup.getText();
+        String psw_conferma=conferma_password_signup.getText();
+       //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+        if(psw.equals(psw_conferma)){Cittadino cittadino=new Cittadino(nome_signup.getText(),cognome_signup.getText(),cod_fisc_signup.getText(),Integer.parseInt(IDVax_signup.getText()),
                 mail_signup.getText(),mail_signup.getText(),password_signup.getText());
             //scrivo sul socket
             System.err.println("CLICK");
@@ -1704,12 +1707,10 @@ public class Home extends javax.swing.JFrame {
         }
         else {
             //mostro panel di dialogo e cancello i campi delle password
+          m.errorMessage("Le password non corrispondono. Prego reinserisca.","Errore password");
             password_signup.setText("");
             conferma_password_signup.setText("");
-            JOptionPane.showMessageDialog(this,
-                    "Le password non corrispondono. Prego reinserisca.",
-                    "Errore password",
-                    JOptionPane.ERROR_MESSAGE);
+
         }
 
     }

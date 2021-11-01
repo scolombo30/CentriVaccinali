@@ -32,9 +32,9 @@ public class Cittadino implements Serializable{
     public Cittadino(String nome, String cognome, String codiceFiscale, int idVaccinazione, String mail,
                      String username, String password) {
         super();
-        this.nome = nome;
-        this.cognome = cognome;
-        this.codiceFiscale = codiceFiscale;
+        this.nome = primaLetteraMaiuscola(nome);
+        this.cognome = primaLetteraMaiuscola(cognome);
+        this.codiceFiscale = codiceFiscale.toUpperCase();
         this.idVaccinazione = idVaccinazione;
         this.mail = mail;
         this.username = username;
@@ -150,5 +150,16 @@ public class Cittadino implements Serializable{
         return this.nome+" "+this.cognome+", "+this.codiceFiscale+
                 "\nUsername: "+this.username+", Mail: "+this.mail+", Psw: "+this.password +
                 "\nID_Vaccinazione: "+this.idVaccinazione;
+    }
+    private String primaLetteraMaiuscola(String str){
+        String risultato="";
+        //rendo la prima lettera maiuscola
+        String prima_lettera = str.substring(0, 1);
+        prima_lettera=prima_lettera.toUpperCase();
+        //prendo le altre lettere
+        String altre_lettere_nome = str.substring(1).toLowerCase();
+        //riunisco il tutto
+        risultato = prima_lettera + altre_lettere_nome;
+        return risultato;
     }
 }
