@@ -33,10 +33,10 @@ public class Vaccinato implements Serializable{
     public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale,
                      DataLab dataSomministrazione, String vaccino, int idVaccinazione) {
         super();
-        this.centroVaccinale = centroVaccinale;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.codiceFiscale = codiceFiscale;
+        this.centroVaccinale = primaLetteraMaiuscola(centroVaccinale);
+        this.nome = primaLetteraMaiuscola(nome);
+        this.cognome = primaLetteraMaiuscola(cognome);
+        this.codiceFiscale = codiceFiscale.toUpperCase();
         this.dataSomministrazione = dataSomministrazione;
         this.vaccino = vaccino;
         this.idVaccinazione = idVaccinazione;
