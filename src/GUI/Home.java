@@ -1580,17 +1580,46 @@ public class Home extends javax.swing.JFrame {
         codice_accesso_operatore.setText("");
     }//GEN-LAST:event_login_btn_operatoreMouseClicked
 
-    //metodo per registrare informazioni di un centro vaccinale
+    //metodo per registrare informazioni di un centro vaccinale- finire di controllare idoneità dati
     private void Registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-        Indirizzo indirizzo= new Indirizzo(qualificatore_indirizzo.getSelectedItem().toString(),nome_via_indirizzo.getText(),
-                numero_civico_indirizzo.getText(),comune_indirizzo.getText(),provincia_indirizzo.getText(),
-                cap_indirizzo.getText());
-        CentroVaccinale centro=new CentroVaccinale(nome_centro.getText(),indirizzo,tipologia_centro.getSelectedItem().toString());
-        System.err.println("CLICK");
-        try{out.writeObject(centro);}
-        catch (IOException e){};
-        //aprire finestra di dialogo che avvisa della corretta registrazione e svuotare i campi
+            String qualificatore=qualificatore_indirizzo.getSelectedItem().toString();
+            String nome_via=nome_via_indirizzo.getText();
+            String numeroCivico=numero_civico_indirizzo.getText();
+            String comune=comune_indirizzo.getText();
+            String provincia=provincia_indirizzo.getText();
+            String cap=cap_indirizzo.getText();
+            String nome_centroo=nome_centro.getText();
+            String tipo_centro=tipologia_centro.getSelectedItem().toString();
+        //controllo che i vari campi non siano vuoti
+        if(qualificatore.equals("")||nome_via.equals("")||numeroCivico.equals("")||comune.equals("")||provincia.equals("")||cap.equals("")||nome_centroo.equals("")||tipo_centro.equals(""))
+        {
+            //mostro JOptionPane con messaggio per avvisare che i campi non possono essere vuoti
+            JOptionPane.showMessageDialog(this,
+                    "Compilare tutti i campi",
+                    "Campi vuoti",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            Indirizzo indirizzo= new Indirizzo(qualificatore,nome_via,numeroCivico,comune,provincia,cap);
+            CentroVaccinale centro=new CentroVaccinale(nome_centroo,indirizzo,tipo_centro);
+            System.err.println("CLICK");
+            try{out.writeObject(centro);}
+            catch (IOException e){};
+        }
+            //apriro JOptionPane per avvisare del corretto inserimento
+             JOptionPane.showMessageDialog(this,
+                     "Informazioni inserite con successo!",
+                     "Successo",
+                     JOptionPane.INFORMATION_MESSAGE);
+            //svuoto i campi
+        qualificatore_indirizzo.setSelectedIndex(0);
+        nome_via_indirizzo.setText("");
+        numero_civico_indirizzo.setText("");
+        comune_indirizzo.setText("");
+        provincia_indirizzo.setText("");
+        cap_indirizzo.setText("");
+        nome_centro.setText("");
+        tipologia_centro.setSelectedIndex(0);
     }
 
     //metodo per registrare informazioni del vaccinato presso il centro
