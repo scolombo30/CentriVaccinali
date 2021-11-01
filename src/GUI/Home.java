@@ -1606,21 +1606,22 @@ public class Home extends javax.swing.JFrame {
             System.err.println("CLICK");
             try{out.writeObject(centro);}
             catch (IOException e){};
-        }
+
             //apriro JOptionPane per avvisare del corretto inserimento
-             JOptionPane.showMessageDialog(this,
-                     "Informazioni inserite con successo!",
-                     "Successo",
-                     JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Informazioni inserite con successo!",
+                    "Successo",
+                    JOptionPane.INFORMATION_MESSAGE);
             //svuoto i campi
-        qualificatore_indirizzo.setSelectedIndex(0);
-        nome_via_indirizzo.setText("");
-        numero_civico_indirizzo.setText("");
-        comune_indirizzo.setText("");
-        provincia_indirizzo.setText("");
-        cap_indirizzo.setText("");
-        nome_centro.setText("");
-        tipologia_centro.setSelectedIndex(0);
+            qualificatore_indirizzo.setSelectedIndex(0);
+            nome_via_indirizzo.setText("");
+            numero_civico_indirizzo.setText("");
+            comune_indirizzo.setText("");
+            provincia_indirizzo.setText("");
+            cap_indirizzo.setText("");
+            nome_centro.setText("");
+            tipologia_centro.setSelectedIndex(0);
+        }
     }
 
     //metodo per registrare informazioni del vaccinato presso il centro
