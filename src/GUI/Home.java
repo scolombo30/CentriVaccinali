@@ -7,6 +7,7 @@ import centrivaccinali.Indirizzo;
 import cittadini.Cittadino;
 import cittadini.DataLab;
 import cittadini.Vaccinato;
+import cittadini.Message;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -14,8 +15,6 @@ import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Date;
-import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -1583,6 +1582,7 @@ public class Home extends javax.swing.JFrame {
 
     //metodo per registrare informazioni di un centro vaccinale- finire di controllare idoneità dati
     private void Registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        Message m=new Message();
             String qualificatore=qualificatore_indirizzo.getSelectedItem().toString();
             String nome_via=nome_via_indirizzo.getText();
             String numeroCivico=numero_civico_indirizzo.getText();
@@ -1595,10 +1595,7 @@ public class Home extends javax.swing.JFrame {
         if(qualificatore.equals("")||nome_via.equals("")||numeroCivico.equals("")||comune.equals("")||provincia.equals("")||cap.equals("")||nome_centroo.equals("")||tipo_centro.equals(""))
         {
             //mostro JOptionPane con messaggio per avvisare che i campi non possono essere vuoti
-            JOptionPane.showMessageDialog(this,
-                    "Compilare tutti i campi",
-                    "Campi vuoti",
-                    JOptionPane.WARNING_MESSAGE);
+            m.warningMessage("Compilare tutti i campi","Campi vuoti");
         }
         else {
             Indirizzo indirizzo= new Indirizzo(qualificatore,nome_via,numeroCivico,comune,provincia,cap);
@@ -1608,10 +1605,7 @@ public class Home extends javax.swing.JFrame {
             catch (IOException e){};
 
             //apriro JOptionPane per avvisare del corretto inserimento
-            JOptionPane.showMessageDialog(this,
-                    "Informazioni inserite con successo!",
-                    "Successo",
-                    JOptionPane.INFORMATION_MESSAGE);
+            m.informationMessage("Informazioni inserite con successo!","Successo");
             //svuoto i campi
             qualificatore_indirizzo.setSelectedIndex(0);
             nome_via_indirizzo.setText("");
@@ -1626,6 +1620,7 @@ public class Home extends javax.swing.JFrame {
 
     //metodo per registrare informazioni del vaccinato presso il centro
     private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) throws  NumberFormatException{
+        Message m=new Message();
         String nome=nome_vaccinato_registra_vaccinato.getText();
         String cognome=cognome_vaccinato_registra_vaccinato.getText();
         String cod_fiscale=codice_fiscale_registra_vaccinato.getText();
@@ -1640,15 +1635,13 @@ public class Home extends javax.swing.JFrame {
                 giorno.equals("")|mese.equals("")|anno.equals("")|tipo_vaccino.equals("")|id_vacc.equals("")) {
 
             //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-            JOptionPane.showMessageDialog(this,
-                    "Compilare tutti i campi",
-                    "Campi vuoti",
-                    JOptionPane.WARNING_MESSAGE);
+            m.warningMessage("Compilare tutti i campi","Campi vuoti");
+
 
         }else{
             //controllo se id vaccinazione è valido
             if(giorno.matches("[0-9]+") && !((giorno.length())>2)){
-            if(anno.matches("[0-9]+") && !((anno.length())>4)){
+            if(anno.matches("[0-9]+") && anno.length()==4 ){
                 if(id_vacc.matches("[0-9]+")) {
                 DataLab data = new DataLab(giorno_registra_vaccinato.getText(), mese_registra_vaccinato.getSelectedItem().toString(), anno_registra_vaccinato.getText());
 
@@ -1658,14 +1651,10 @@ public class Home extends javax.swing.JFrame {
                 System.err.println("CLICK");
                 try {
                     out.writeObject(vaccinatp_da_registrare);
-                } catch (IOException e) {
-                }
-                ;
+                } catch (IOException e) {}
                 //apriro JOptionPane per avvisare del corretto inserimento
-                JOptionPane.showMessageDialog(this,
-                        "Informazioni inserite con successo!",
-                        "Successo",
-                        JOptionPane.INFORMATION_MESSAGE);
+                    m.informationMessage("Informazioni inserite con successo!","Successo");
+
                 //svuoto i campi
                 nome_vaccinato_registra_vaccinato.setText("");
                 cognome_vaccinato_registra_vaccinato.setText("");
@@ -1677,23 +1666,16 @@ public class Home extends javax.swing.JFrame {
                 mese_registra_vaccinato.setSelectedIndex(0);
                 anno_registra_vaccinato.setText("");
             }else{
-                JOptionPane.showMessageDialog(this,
-                        "Per favore inserire un Id vaccinazione valido",
-                        "Campi vuoti",
-                        JOptionPane.WARNING_MESSAGE);}
-
-                    }else{
-                    JOptionPane.showMessageDialog(this,
-                            "Per favore inserire un anno valido",
-                            "Campi vuoti",
-                            JOptionPane.WARNING_MESSAGE);}
+                    m.warningMessage("Per favore inserire un Id vaccinazione valido","Campi vuoti");
+                    Id_vaccinazione_registra_vaccinato.setText("");}
+            }else{
+                    m.warningMessage("Per favore inserire un anno valido","Anno non corretto");
+                    anno_registra_vaccinato.setText("");}
             }else {
-                JOptionPane.showMessageDialog(this,
-                        "Per favore inserire una data valida",
-                        "Campi vuoti",
-                        JOptionPane.WARNING_MESSAGE);}
+                    m.warningMessage("Per favore inserire un giorno valido","Data non corretta");
+                    giorno_registra_vaccinato.setText("");}
 
-            }
+        }
     }
 
 
