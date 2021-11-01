@@ -27,8 +27,8 @@ private String anno;
      */
     @Override
     public String toString() {
-        return "Data:" + giorno + '\'' + mese + '\'' + anno + '\'';
-    }
+        return "Data: " + giorno+ "/" +mese+ "/" + anno ;
+                }
 
     /**
      * @return the giorno

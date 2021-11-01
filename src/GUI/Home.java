@@ -1636,7 +1636,8 @@ public class Home extends javax.swing.JFrame {
         String tipo_vaccino=tipologia_centro.getSelectedItem().toString();
         String id_vacc=Id_vaccinazione_registra_vaccinato.getText();
 
-        if(nome.equals("")|cognome.equals("")|cod_fiscale.equals("")|nome_centro.equals("")|giorno.equals("")|mese.equals("")|anno.equals("")|tipo_vaccino.equals("")|id_vacc.equals("")) {
+        if(nome.equals("")| cognome.equals("")|cod_fiscale.equals("")|nome_centro.equals("")|
+                giorno.equals("")|mese.equals("")|anno.equals("")|tipo_vaccino.equals("")|id_vacc.equals("")) {
 
             //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
             JOptionPane.showMessageDialog(this,
@@ -1644,20 +1645,22 @@ public class Home extends javax.swing.JFrame {
                     "Campi vuoti",
                     JOptionPane.WARNING_MESSAGE);
 
+        }else{
+            //controllo se id vaccinazione è valido
+            if(giorno.matches("[0-9]+") && !((giorno.length())>2)){
+            if(anno.matches("[0-9]+") && !((anno.length())>4)){
+                if(id_vacc.matches("[0-9]+")) {
+                DataLab data = new DataLab(giorno_registra_vaccinato.getText(), mese_registra_vaccinato.getSelectedItem().toString(), anno_registra_vaccinato.getText());
 
-
-
-
-            }else{
-                DataLab data=new DataLab(giorno_registra_vaccinato.getText(),mese_registra_vaccinato.getSelectedItem().toString(),anno_registra_vaccinato.getText());
-
-                Vaccinato vaccinatp_da_registrare=new Vaccinato(nome_vaccinato_registra_vaccinato.getText(),cognome_vaccinato_registra_vaccinato.getText(),
-                        codice_fiscale_registra_vaccinato.getText(),nome_centro_registra_vaccinato.getText(),data,tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
+                Vaccinato vaccinatp_da_registrare = new Vaccinato(nome_vaccinato_registra_vaccinato.getText(), cognome_vaccinato_registra_vaccinato.getText(),
+                        codice_fiscale_registra_vaccinato.getText(), nome_centro_registra_vaccinato.getText(), data, tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
                         Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
                 System.err.println("CLICK");
-                try{
-                    out.writeObject(vaccinatp_da_registrare);}
-                catch (IOException e){};
+                try {
+                    out.writeObject(vaccinatp_da_registrare);
+                } catch (IOException e) {
+                }
+                ;
                 //apriro JOptionPane per avvisare del corretto inserimento
                 JOptionPane.showMessageDialog(this,
                         "Informazioni inserite con successo!",
@@ -1673,11 +1676,29 @@ public class Home extends javax.swing.JFrame {
                 giorno_registra_vaccinato.setText("");
                 mese_registra_vaccinato.setSelectedIndex(0);
                 anno_registra_vaccinato.setText("");
+            }else{
+                JOptionPane.showMessageDialog(this,
+                        "Per favore inserire un Id vaccinazione valido",
+                        "Campi vuoti",
+                        JOptionPane.WARNING_MESSAGE);}
+
+                    }else{
+                    JOptionPane.showMessageDialog(this,
+                            "Per favore inserire un anno valido",
+                            "Campi vuoti",
+                            JOptionPane.WARNING_MESSAGE);}
+            }else {
+                JOptionPane.showMessageDialog(this,
+                        "Per favore inserire una data valida",
+                        "Campi vuoti",
+                        JOptionPane.WARNING_MESSAGE);}
+
             }
+    }
 
 
 
-        }
+
 
 
 

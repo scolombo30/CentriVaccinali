@@ -149,8 +149,8 @@ public class Vaccinato implements Serializable{
      */
     public String toString() {
         return this.nome+" "+this.cognome+ ", "+this.codiceFiscale+
-                "\nVaccinato presso: "+this.centroVaccinale+" con "+this.vaccino+" il "+this.dataSomministrazione +
-                "\nID_vacinazione: "+this.idVaccinazione;
+                "\nVaccinato presso: "+this.centroVaccinale+" con "+this.vaccino+" in "+this.dataSomministrazione +
+                "\nID_vaccinazione: "+this.idVaccinazione;
     }
 
     /**
