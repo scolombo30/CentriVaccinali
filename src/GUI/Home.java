@@ -1631,58 +1631,64 @@ public class Home extends javax.swing.JFrame {
         String tipo_vaccino=tipologia_centro.getSelectedItem().toString();
         String id_vacc=Id_vaccinazione_registra_vaccinato.getText();
 
+        //controllo se i campi suono vuoti
         if(nome.equals("")| cognome.equals("")|cod_fiscale.equals("")|nome_centro.equals("")|
                 giorno.equals("")|mese.equals("")|anno.equals("")|tipo_vaccino.equals("")|id_vacc.equals("")) {
 
             //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
+            //errore campi vuoti
             m.warningMessage("Compilare tutti i campi","Campi vuoti");
 
 
         }else{
-            //controllo se id vaccinazione è valido
+            //controllo se il giorno è valido
             if(giorno.matches("[0-9]+") && !((giorno.length())>2)){
-            if(anno.matches("[0-9]+") && anno.length()==4 ){
-                if(id_vacc.matches("[0-9]+")) {
-                DataLab data = new DataLab(giorno_registra_vaccinato.getText(), mese_registra_vaccinato.getSelectedItem().toString(), anno_registra_vaccinato.getText());
-
-                Vaccinato vaccinatp_da_registrare = new Vaccinato(nome_vaccinato_registra_vaccinato.getText(), cognome_vaccinato_registra_vaccinato.getText(),
+                //controllo se anno è valido
+                if(anno.matches("[0-9]+") && anno.length()==4 ){
+                    //controllo se id vaccinazione è valido
+                    if(id_vacc.matches("[0-9]+")) {
+                        //istanzio oggetto data
+                        DataLab data = new DataLab(giorno_registra_vaccinato.getText(), mese_registra_vaccinato.getSelectedItem().toString(), anno_registra_vaccinato.getText());
+                        //istanzio oggetto vaccinato
+                        Vaccinato vaccinatp_da_registrare = new Vaccinato(nome_vaccinato_registra_vaccinato.getText(), cognome_vaccinato_registra_vaccinato.getText(),
                         codice_fiscale_registra_vaccinato.getText(), nome_centro_registra_vaccinato.getText(), data, tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
                         Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
-                System.err.println("CLICK");
-                try {
-                    out.writeObject(vaccinatp_da_registrare);
-                } catch (IOException e) {}
-                //apriro JOptionPane per avvisare del corretto inserimento
-                    m.informationMessage("Informazioni inserite con successo!","Successo");
 
-                //svuoto i campi
-                nome_vaccinato_registra_vaccinato.setText("");
-                cognome_vaccinato_registra_vaccinato.setText("");
-                codice_fiscale_registra_vaccinato.setText("");
-                nome_centro_registra_vaccinato.setText("");
-                tipo_vaccino_registra_vaccinato.setSelectedIndex(0);
-                Id_vaccinazione_registra_vaccinato.setText("");
-                giorno_registra_vaccinato.setText("");
-                mese_registra_vaccinato.setSelectedIndex(0);
-                anno_registra_vaccinato.setText("");
-            }else{
-                    m.warningMessage("Per favore inserire un Id vaccinazione valido","Campi vuoti");
-                    Id_vaccinazione_registra_vaccinato.setText("");}
-            }else{
-                    m.warningMessage("Per favore inserire un anno valido","Anno non corretto");
+                        System.err.println("CLICK");
+
+                        try {
+                            out.writeObject(vaccinatp_da_registrare);
+                        } catch (IOException e) {}
+
+                        //apriro JOptionPane per avvisare del corretto inserimento
+                        m.informationMessage("Informazioni inserite con successo!","Successo");
+
+                        //svuoto i campi
+                        nome_vaccinato_registra_vaccinato.setText("");
+                        cognome_vaccinato_registra_vaccinato.setText("");
+                        codice_fiscale_registra_vaccinato.setText("");
+                        nome_centro_registra_vaccinato.setText("");
+                        tipo_vaccino_registra_vaccinato.setSelectedIndex(0);
+                        Id_vaccinazione_registra_vaccinato.setText("");
+                        giorno_registra_vaccinato.setText("");
+                        mese_registra_vaccinato.setSelectedIndex(0);
+                        anno_registra_vaccinato.setText("");
+
+                    }else{
+                       //warnig id non valido
+                        m.warningMessage("Per favore inserire un Id vaccinazione valido","id non valido");
+                        Id_vaccinazione_registra_vaccinato.setText("");}
+                }else{
+                    //warnig anno non valido
+                    m.warningMessage("Per favore inserire un anno valido","Anno non valido");
                     anno_registra_vaccinato.setText("");}
             }else {
-                    m.warningMessage("Per favore inserire un giorno valido","Data non corretta");
-                    giorno_registra_vaccinato.setText("");}
+                //warning giorno non valido
+                m.warningMessage("Per favore inserire un giorno valido","Giorno non valido");
+                giorno_registra_vaccinato.setText("");}
 
         }
     }
-
-
-
-
-
-
 
     //metodo per fare login del cittadino
     private void Login_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
@@ -1694,24 +1700,64 @@ public class Home extends javax.swing.JFrame {
     //metodo per registrare cittadino
     private void Registra_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
        Message m=new Message();
-        String psw=password_signup.getText();
-        String psw_conferma=conferma_password_signup.getText();
+       String nome=nome_signup.getText();
+       String cognome=cognome_signup.getText();
+       String codice_fiscale=cod_fisc_signup.getText();
+       String id_vaccinazione=IDVax_signup.getText();
+       String mail=mail_signup.getText();
+       String psw=password_signup.getText();
+       String psw_conferma=conferma_password_signup.getText();
        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
-        if(psw.equals(psw_conferma)){Cittadino cittadino=new Cittadino(nome_signup.getText(),cognome_signup.getText(),cod_fisc_signup.getText(),Integer.parseInt(IDVax_signup.getText()),
-                mail_signup.getText(),mail_signup.getText(),password_signup.getText());
-            //scrivo sul socket
-            System.err.println("CLICK");
-            try{
-                out.writeObject(cittadino);}
-            catch (IOException e){};
-        }
-        else {
-            //mostro panel di dialogo e cancello i campi delle password
-          m.errorMessage("Le password non corrispondono. Prego reinserisca.","Errore password");
-            password_signup.setText("");
-            conferma_password_signup.setText("");
 
+        //controllo se i campi suono vuoti
+        if(nome.equals("")|cognome.equals("")|codice_fiscale.equals("")|id_vaccinazione.equals("")|mail.equals("")|psw.equals("")|psw_conferma.equals("")){
+            //errore campi vuoti
+            m.warningMessage("Compilare tutti i campi","Campi vuoti");
+
+        }else{
+            //controllo se il formato  dell'email è corretta
+            if(mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
+                //controllo se le password corrispondono
+                if(psw.equals(psw_conferma)) {
+                    //controllo se l'id vaccinazione è scritta correttamente
+                    if(id_vaccinazione.matches("[0-9]+")) {
+                        Cittadino cittadino = new Cittadino(nome_signup.getText(), cognome_signup.getText(), cod_fisc_signup.getText(), Integer.parseInt(IDVax_signup.getText()),
+                                mail_signup.getText(), mail_signup.getText(), password_signup.getText());
+                        //messagio di inserimento corretto
+                        m.informationMessage("Informazioni inserite con successo!", "Successo");
+                        //scrivo sul socket
+                        System.err.println("CLICK");
+
+                        try {
+                            out.writeObject(cittadino);
+                        } catch (IOException e) {
+                        }
+                        //reset dei campi se sono corretti
+                        nome_signup.setText("");
+                        cognome_signup.setText("");
+                        cod_fisc_signup.setText("");
+                        IDVax_signup.setText("");
+                        mail_signup.setText("");
+                        password_signup.setText("");
+                        conferma_password_signup.setText("");
+                    }else{
+                        //warning id vaccinazione non conforme
+                        m.warningMessage("id vaccinazione non conforme. Prego reinserisca."," Id non valido");
+                        IDVax_signup.setText("");
+                    }
+                } else {
+                //mostro panel di dialogo e cancello i campi delle password
+                 m.errorMessage("Le password non corrispondono. Prego reinserisca.","Errore password");
+                password_signup.setText("");
+                conferma_password_signup.setText("");        }
+
+            }else{
+               //warning email non in formato corretto
+                m.warningMessage("Formato email non conforme. Prego reinserisca.","Email non valida");
+                mail_signup.setText("");
+            }
         }
+
 
     }
 
