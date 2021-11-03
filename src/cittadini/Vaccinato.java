@@ -2,8 +2,9 @@
 //Sebastian Colombo "742779" CO
 package cittadini;
 
+import utils.DataLab;
+
 import java.io.Serializable;
-import java.util.Date;
 
 
 public class Vaccinato implements Serializable{

@@ -5,7 +5,7 @@ package GUI;
 import centrivaccinali.CentroVaccinale;
 import centrivaccinali.Indirizzo;
 import cittadini.Cittadino;
-import cittadini.DataLab;
+import utils.DataLab;
 import cittadini.Vaccinato;
 import utils.Message;
 
