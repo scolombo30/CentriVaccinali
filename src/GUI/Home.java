@@ -7,7 +7,7 @@ import centrivaccinali.Indirizzo;
 import cittadini.Cittadino;
 import cittadini.DataLab;
 import cittadini.Vaccinato;
-import cittadini.Message;
+import utils.Message;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -1575,14 +1575,14 @@ public class Home extends javax.swing.JFrame {
             container.revalidate();
         }
         else {
-            JOptionPane.showMessageDialog(this,"Codice Accesso invalido. Riprovi","Codice Errato",JOptionPane.ERROR_MESSAGE);
-        }
+            Message.errorMessage(this,"Codice Accesso invalido. Riprovi","Codice Errato");
+             }
         codice_accesso_operatore.setText("");
     }//GEN-LAST:event_login_btn_operatoreMouseClicked
 
     //metodo per registrare informazioni di un centro vaccinale- finire di controllare idoneità dati
     private void Registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        Message m=new Message();
+
             String qualificatore=qualificatore_indirizzo.getSelectedItem().toString();
             String nome_via=nome_via_indirizzo.getText();
             String numeroCivico=numero_civico_indirizzo.getText();
@@ -1595,7 +1595,7 @@ public class Home extends javax.swing.JFrame {
         if(qualificatore.equals("")||nome_via.equals("")||numeroCivico.equals("")||comune.equals("")||provincia.equals("")||cap.equals("")||nome_centroo.equals("")||tipo_centro.equals(""))
         {
             //mostro JOptionPane con messaggio per avvisare che i campi non possono essere vuoti
-            m.warningMessage("Compilare tutti i campi","Campi vuoti");
+            Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
         else {
             Indirizzo indirizzo= new Indirizzo(qualificatore,nome_via,numeroCivico,comune,provincia,cap);
@@ -1605,7 +1605,7 @@ public class Home extends javax.swing.JFrame {
             catch (IOException e){};
 
             //apro JOptionPane per avvisare del corretto inserimento
-            m.informationMessage("Informazioni inserite con successo!","Successo");
+            Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
             //svuoto i campi
             qualificatore_indirizzo.setSelectedIndex(0);
             nome_via_indirizzo.setText("");
@@ -1620,7 +1620,7 @@ public class Home extends javax.swing.JFrame {
 
     //metodo per registrare informazioni del vaccinato presso il centro
     private void Registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) throws  NumberFormatException{
-        Message m=new Message();
+
         String nome=nome_vaccinato_registra_vaccinato.getText();
         String cognome=cognome_vaccinato_registra_vaccinato.getText();
         String cod_fiscale=codice_fiscale_registra_vaccinato.getText();
@@ -1637,7 +1637,7 @@ public class Home extends javax.swing.JFrame {
 
             //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
             //errore campi vuoti
-            m.warningMessage("Compilare tutti i campi","Campi vuoti");
+            Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
 
 
         }else{
@@ -1661,7 +1661,7 @@ public class Home extends javax.swing.JFrame {
                         } catch (IOException e) {}
 
                         //apriro JOptionPane per avvisare del corretto inserimento
-                        m.informationMessage("Informazioni inserite con successo!","Successo");
+                        Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
 
                         //svuoto i campi
                         nome_vaccinato_registra_vaccinato.setText("");
@@ -1676,15 +1676,15 @@ public class Home extends javax.swing.JFrame {
 
                     }else{
                        //warnig id non valido
-                        m.warningMessage("Per favore inserire un Id vaccinazione valido","id non valido");
+                        Message.warningMessage(this,"Per favore inserire un Id vaccinazione valido","id non valido");
                         Id_vaccinazione_registra_vaccinato.setText("");}
                 }else{
                     //warnig anno non valido
-                    m.warningMessage("Per favore inserire un anno valido","Anno non valido");
+                    Message.warningMessage(this,"Per favore inserire un anno valido","Anno non valido");
                     anno_registra_vaccinato.setText("");}
             }else {
                 //warning giorno non valido
-                m.warningMessage("Per favore inserire un giorno valido","Giorno non valido");
+                Message.warningMessage(this,"Per favore inserire un giorno valido","Giorno non valido");
                 giorno_registra_vaccinato.setText("");}
 
         }
@@ -1695,14 +1695,14 @@ public class Home extends javax.swing.JFrame {
         //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
         String user=jTextField1.getText();
         String password=jPasswordField1.getText();
-        if(user.equals("")||password.equals("")){new Message().warningMessage("Compilare tutti i campi","Campi vuoti");}
+        if(user.equals("")||password.equals("")){Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");}
         else{//controllare se corrispondono con le credenziali lette dal DB
              }
     }
 
     //metodo per registrare cittadino
     private void Registra_cittadino_btnMouseClicked(java.awt.event.MouseEvent evt){
-       Message m=new Message();
+
        String nome=nome_signup.getText();
        String cognome=cognome_signup.getText();
        String codice_fiscale=cod_fisc_signup.getText();
@@ -1715,7 +1715,7 @@ public class Home extends javax.swing.JFrame {
         //controllo se i campi suono vuoti
         if(nome.equals("")|cognome.equals("")|codice_fiscale.equals("")|id_vaccinazione.equals("")|mail.equals("")|psw.equals("")|psw_conferma.equals("")){
             //errore campi vuoti
-            m.warningMessage("Compilare tutti i campi","Campi vuoti");
+            Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
 
         }else{
             //controllo se il formato  dell'email è corretta
@@ -1727,7 +1727,7 @@ public class Home extends javax.swing.JFrame {
                         Cittadino cittadino = new Cittadino(nome_signup.getText(), cognome_signup.getText(), cod_fisc_signup.getText(), Integer.parseInt(IDVax_signup.getText()),
                                 mail_signup.getText(), mail_signup.getText(), password_signup.getText());
                         //messagio di inserimento corretto
-                        m.informationMessage("Informazioni inserite con successo!", "Successo");
+                        Message.informationMessage(this,"Informazioni inserite con successo!", "Successo");
                         //scrivo sul socket
                         System.err.println("CLICK");
 
@@ -1745,18 +1745,18 @@ public class Home extends javax.swing.JFrame {
                         conferma_password_signup.setText("");
                     }else{
                         //warning id vaccinazione non conforme
-                        m.warningMessage("id vaccinazione non conforme. Prego reinserisca."," Id non valido");
+                        Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
                         IDVax_signup.setText("");
                     }
                 } else {
                 //mostro panel di dialogo e cancello i campi delle password
-                 m.errorMessage("Le password non corrispondono. Prego reinserisca.","Errore password");
+                    Message.errorMessage(this,"Le password non corrispondono. Prego reinserisca.","Errore password");
                 password_signup.setText("");
                 conferma_password_signup.setText("");        }
 
             }else{
                //warning email non in formato corretto
-                m.warningMessage("Formato email non conforme. Prego reinserisca.","Email non valida");
+                Message.warningMessage(this,"Formato email non conforme. Prego reinserisca.","Email non valida");
                 mail_signup.setText("");
             }
         }
@@ -1774,7 +1774,6 @@ public class Home extends javax.swing.JFrame {
     //da spostare il main nella classe CentriVaccinali
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

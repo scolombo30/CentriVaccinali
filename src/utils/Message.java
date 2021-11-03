@@ -1,28 +1,29 @@
 //Davide Franco "741453" CO
 //Sebastian Colombo "742779" CO
-package cittadini;
+package utils;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Message extends Component {
+public class Message {
 
     public Message() {
     }
-    public void warningMessage(String mess, String titolo){
-        JOptionPane.showMessageDialog(this,
+
+    public static void warningMessage(Component c,String mess, String titolo){
+        JOptionPane.showMessageDialog(c,
                 mess,
                 titolo,
                 JOptionPane.WARNING_MESSAGE);}
 
-    public void informationMessage(String mess,String titolo){
-        JOptionPane.showMessageDialog(this,
+    public static void informationMessage(Component c,String mess,String titolo){
+        JOptionPane.showMessageDialog(c,
                 mess,
                 titolo,
                 JOptionPane.INFORMATION_MESSAGE);}
 
-    public void errorMessage(String mess,String titolo){
-        JOptionPane.showMessageDialog(this,
+    public static void errorMessage(Component c,String mess,String titolo){
+        JOptionPane.showMessageDialog(c,
                 mess,
                 titolo,
                 JOptionPane.ERROR_MESSAGE);}
