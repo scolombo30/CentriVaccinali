@@ -1604,7 +1604,7 @@ public class Home extends javax.swing.JFrame {
             try{out.writeObject(centro);}
             catch (IOException e){};
 
-            //apriro JOptionPane per avvisare del corretto inserimento
+            //apro JOptionPane per avvisare del corretto inserimento
             m.informationMessage("Informazioni inserite con successo!","Successo");
             //svuoto i campi
             qualificatore_indirizzo.setSelectedIndex(0);
@@ -1695,6 +1695,9 @@ public class Home extends javax.swing.JFrame {
         //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
         String user=jTextField1.getText();
         String password=jPasswordField1.getText();
+        if(user.equals("")||password.equals("")){new Message().warningMessage("Compilare tutti i campi","Campi vuoti");}
+        else{//controllare se corrispondono con le credenziali lette dal DB
+             }
     }
 
     //metodo per registrare cittadino
