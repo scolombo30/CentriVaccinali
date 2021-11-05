@@ -1632,8 +1632,8 @@ public class Home extends javax.swing.JFrame {
         String id_vacc=Id_vaccinazione_registra_vaccinato.getText();
 
         //controllo se i campi suono vuoti
-        if(nome.equals("")| cognome.equals("")|cod_fiscale.equals("")|nome_centro.equals("")|
-                giorno.equals("")|mese.equals("")|anno.equals("")|tipo_vaccino.equals("")|id_vacc.equals("")) {
+        if(nome.equals("")||cognome.equals("")||cod_fiscale.equals("")||nome_centro.equals("")||
+                giorno.equals("")||mese.equals("")||anno.equals("")||tipo_vaccino.equals("")||id_vacc.equals("")) {
 
             //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
             //errore campi vuoti
@@ -1713,7 +1713,7 @@ public class Home extends javax.swing.JFrame {
        //controllare che i campi non siano vuoti, siano conformi e formattare il testo (es. sigla prov in maiuscolo, nome comune solo 1 lettera in maiuscolo)
 
         //controllo se i campi suono vuoti
-        if(nome.equals("")|cognome.equals("")|codice_fiscale.equals("")|id_vaccinazione.equals("")|mail.equals("")|psw.equals("")|psw_conferma.equals("")){
+        if(nome.equals("")||cognome.equals("")||codice_fiscale.equals("")||id_vaccinazione.equals("")||mail.equals("")||psw.equals("")||psw_conferma.equals("")){
             //errore campi vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
 
