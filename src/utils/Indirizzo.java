@@ -1,7 +1,7 @@
 //Davide Franco "741453" CO
 //Sebastian Colombo "742779" CO
 
-package centrivaccinali;
+package utils;
 
 import java.io.Serializable;
 

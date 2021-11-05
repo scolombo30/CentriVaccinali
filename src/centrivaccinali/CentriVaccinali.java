@@ -7,8 +7,7 @@ import GUI.Home;
 
 public class CentriVaccinali {
     public static void main(String[] args) {
-        //lancia la gui
-        //crea il socket per la connesione
+        new Home().setVisible(true);
     }
 }
 

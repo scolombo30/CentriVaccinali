@@ -2,6 +2,8 @@
 //Sebastian Colombo "742779" CO
 package centrivaccinali;
 
+import utils.Indirizzo;
+
 import java.io.Serializable;
 
 public class CentroVaccinale implements Serializable{
