@@ -1650,14 +1650,15 @@ public class Home extends javax.swing.JFrame {
                         //istanzio oggetto data
                         DataLab data = new DataLab(giorno_registra_vaccinato.getText(), mese_registra_vaccinato.getSelectedItem().toString(), anno_registra_vaccinato.getText());
                         //istanzio oggetto vaccinato
-                        Vaccinato vaccinatp_da_registrare = new Vaccinato(nome_vaccinato_registra_vaccinato.getText(), cognome_vaccinato_registra_vaccinato.getText(),
+                        Vaccinato vaccinato_da_registrare = new Vaccinato(nome_vaccinato_registra_vaccinato.getText(), cognome_vaccinato_registra_vaccinato.getText(),
                         codice_fiscale_registra_vaccinato.getText(), nome_centro_registra_vaccinato.getText(), data, tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
                         Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
 
                         System.err.println("CLICK");
 
                         try {
-                            out.writeObject(vaccinatp_da_registrare);
+                            out.writeObject("REGISTRA VACCINATO");
+                            out.writeObject(vaccinato_da_registrare);
                         } catch (IOException e) {}
 
                         //apriro JOptionPane per avvisare del corretto inserimento
