@@ -43,7 +43,10 @@ class ServerThread extends Thread {
                 String azione = (String) in.readObject();
                 if (azione.equals("REGISTRA VACCINATO")) {
                     Vaccinato vacc = (Vaccinato) in.readObject();
+                    System.out.println("Sto per registrare sul db: ");
+                    System.out.println(vacc.toString());
                     Registrazione.registraVaccinato(conn,vacc);
+                    System.out.println("Ho registrato il vaccinato");
                 } else if (azione.equals("REGISTRA CENTRO")) {
                     CentroVaccinale centro = (CentroVaccinale) in.readObject();
                     Registrazione.registraCentroVaccinale(conn,centro);

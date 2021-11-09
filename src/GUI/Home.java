@@ -1250,7 +1250,7 @@ public class Home extends javax.swing.JFrame {
         jLabel58.setForeground(new java.awt.Color(242, 242, 242));
         jLabel58.setText("Data somministrazione:");
 
-        mese_registra_vaccinato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre" }));
+        mese_registra_vaccinato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));

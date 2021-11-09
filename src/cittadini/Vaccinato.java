@@ -34,6 +34,7 @@ public class Vaccinato implements Serializable{
     public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale,
                      DataLab dataSomministrazione, String vaccino, int idVaccinazione) {
         super();
+        //controllare hce il nome sia senza spazi "_"
         this.centroVaccinale = primaLetteraMaiuscola(centroVaccinale);
         this.nome = primaLetteraMaiuscola(nome);
         this.cognome = primaLetteraMaiuscola(cognome);

@@ -18,7 +18,7 @@ public  class Registrazione {
         }
     //metodo registra vaccianto su db
     public static void registraVaccinato(Connection conn, Vaccinato vaccinato) {
-        //tab Vaccinati_NomeCentroVaccinale
+        //campi da inserire nella tabella
         String centroVaccinale= vaccinato.getCentroVaccinale();
         String nome=vaccinato.getNome();
         String cognome=vaccinato.getCognome();
@@ -28,8 +28,26 @@ public  class Registrazione {
         int id_vaccinazione=vaccinato.getIdVaccinazione();
 
         try {
+            //creo lo statement
             Statement st= conn.createStatement();
-            String query_creazione="CREATE TABLE IF NOT EXISTS Vaccinati_(";
+            //creo il nome della tabella dinamicamente in base al centro vaccinale
+            String nomeTabella="Vaccinati_"+centroVaccinale;
+            //Anno-mese-giorno. Creo la data
+            String data_query=data.getAnno()+"-"+data.getMese()+"-"+data.getGiorno();
+            //creo query di creazione tabella se non è già presente nel DB
+            String query_creazione="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+
+                                    "Nome VARCHAR(20),"+
+                                    "Cognome VARCHAR(20),"+
+                                    "Codice_fiscale VARCHAR(16),"+
+                                    "Data DATE,"+
+                                    "Tipologia_vaccino VARCHAR(10),"+
+                                    "Id_vax NUMERIC(16) PRIMARY KEY,"+
+                                    "Nome_centro VARCHAR(20))";
+            st.executeUpdate(query_creazione);
+            //creo query di inserimento dati nella tabella appena creata
+            String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
+                    +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"')";
+            st.executeUpdate(query_insert_vaccinato);
 
         } catch (SQLException e) {
             e.printStackTrace();

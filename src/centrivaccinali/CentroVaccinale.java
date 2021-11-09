@@ -24,6 +24,7 @@ public class CentroVaccinale implements Serializable{
      */
     public CentroVaccinale(String nome, Indirizzo indirizzo, String tipologia) {
         super();
+        //controllare hce il nome sia senza spazi "_"
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.tipologia = tipologia;
@@ -56,6 +57,8 @@ public class CentroVaccinale implements Serializable{
      * @param nome the nome to set
      */
     public void setNome(String nome) {
+
+        //controllare che il nome sia senza spazi solo "_"
         this.nome = nome;
     }
 
