@@ -38,6 +38,15 @@ public  class Registrazione {
     //metodo registra cittadino su db
     public static void registraCittadino(Connection conn, Cittadino cittadino ){
         //tab Cittadini_Registrati
+         String nome=cittadino.getNome();
+         String cognome= cittadino.getCognome();
+         String codiceFiscale=cittadino.getCodiceFiscale();
+         int idVaccinazione=cittadino.getIdVaccinazione();
+         String mail=cittadino.getMail();
+         String username=cittadino.getUsername();
+         String password=cittadino.getPassword();
+
+
         }
     //login sulla piattaforma
     public static void loginCittadino(Connection conn,String username,String password){}
