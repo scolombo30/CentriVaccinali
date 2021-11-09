@@ -6,6 +6,8 @@ import cittadini.EventoAvverso;
 import cittadini.Vaccinato;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public  class Registrazione {
 
@@ -24,7 +26,15 @@ public  class Registrazione {
         DataLab data=vaccinato.getDataSomministrazione();
         String tipo_vaccino=vaccinato.getVaccino();
         int id_vaccinazione=vaccinato.getIdVaccinazione();
+
+        try {
+            Statement st= conn.createStatement();
+            String query_creazione="CREATE TABLE IF NOT EXISTS Vaccinati_(";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
     //metodo registra cittadino su db
     public static void registraCittadino(Connection conn, Cittadino cittadino ){
         //tab Cittadini_Registrati
