@@ -17,6 +17,13 @@ public  class Registrazione {
     //metodo registra vaccianto su db
     public static void registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //tab Vaccinati_NomeCentroVaccinale
+        String centroVaccinale= vaccinato.getCentroVaccinale();
+        String nome=vaccinato.getNome();
+        String cognome=vaccinato.getCognome();
+        String cod_fisc=vaccinato.getCodiceFiscale();
+        DataLab data=vaccinato.getDataSomministrazione();
+        String tipo_vaccino=vaccinato.getVaccino();
+        int id_vaccinazione=vaccinato.getIdVaccinazione();
         }
     //metodo registra cittadino su db
     public static void registraCittadino(Connection conn, Cittadino cittadino ){

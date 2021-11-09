@@ -2,6 +2,7 @@ package cittadini;
 
 // EchoMultiServer.java
 import centrivaccinali.CentroVaccinale;
+import utils.Registrazione;
 
 import java.io.*;
 import java.net.*;
@@ -23,64 +24,65 @@ class ServerThread extends Thread {
         out = new ObjectOutputStream(s.getOutputStream());
         in = new ObjectInputStream(s.getInputStream());
         start();
-        System.out.println("ServerThread "+id+": started");
+        System.out.println("ServerThread " + id + ": started");
+
+    }
+
+    public void run() {
         //creo la connessione al DB
         try {
             //carico il driver jdbc
             Class.forName("org.postgresql.Driver");
-        //creo l'URL per la connessione
-        String url = "jdbc:postgresql://localhost/dbProva";
-        String user="postgres";
-        String password="qwerty";
-        Connection conn = DriverManager.getConnection(url, user,password);
-        } catch (ClassNotFoundException  e) {
-            e.printStackTrace();
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-    public void run() {
-        try {
+            //creo l'URL per la connessione
+            String url = "jdbc:postgresql://localhost/dbProva";
+            String user = "postgres";
+            String psw = "qwerty";
+            Connection conn = DriverManager.getConnection(url, user, psw);
             while (true) {
                 //leggo dal socket cosa devo fare
-                String azione=(String) in.readObject();
-                if(azione.equals("REGISTRA VACCINATO")){
-                    Vaccinato vacc=(Vaccinato) in.readObject();
-                }
-                else if(azione.equals("REGISTRA CENTRO")){
-                    CentroVaccinale centro=(CentroVaccinale) in.readObject();
-                  //   Registrazione.registraCentro(conn, centro);
-                }
-                else if(azione.equals("REGISTRA CITTADINO")){
-                    Cittadino cittadino=(Cittadino) in.readObject();
-                }
-                else if(azione.equals("REGISTRA EVENTO AVVERSO")){
-                    EventoAvverso evento=(EventoAvverso) in.readObject();
-                }
-                else if(azione.equals("LOGIN CITTADINO")){
-                    String username=(String) in.readObject();
-                    String password=(String) in.readObject();
+                String azione = (String) in.readObject();
+                if (azione.equals("REGISTRA VACCINATO")) {
+                    Vaccinato vacc = (Vaccinato) in.readObject();
+                    Registrazione.registraVaccinato(conn,vacc);
+                } else if (azione.equals("REGISTRA CENTRO")) {
+                    CentroVaccinale centro = (CentroVaccinale) in.readObject();
+                    Registrazione.registraCentroVaccinale(conn,centro);
+                } else if (azione.equals("REGISTRA CITTADINO")) {
+                    Cittadino cittadino = (Cittadino) in.readObject();
+                    Registrazione.registraCittadino(conn,cittadino);
+                } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
+                    EventoAvverso evento = (EventoAvverso) in.readObject();
+                    Registrazione.inserisciEventiAvversi(conn,evento);
+                } else if (azione.equals("LOGIN CITTADINO")) {
+                    String username = (String) in.readObject();
+                    String password = (String) in.readObject();
+                    Registrazione.loginCittadino(conn,username,password);
                     //cerco sul db il cittadino con queste credenziali
                     //se lo trovo lo riscrivo al client
                     //out.println(Cittadino)
-                }
-                else { //leggo il nome del centro
-                    String come_centro =(String) in.readObject();
+                } else if (azione.equals("CERCA CENTRO PER NOME")) { //leggo il nome del centro
+                    String nome_centro = (String) in.readObject();
                     //cerco sul db i centri con queste lettere
+                    Registrazione.cercaCentroVaccinaleNome(conn,nome_centro);
+                } else {
+                    //leggo comune e tipologia
+                    String comune = (String) in.readObject();
+                    String tipologia = (String) in.readObject();
+                    //cerco sul db i centri nel comune con quel tipo
+                    Registrazione.cercaCentroVaccinaleCoTip(conn,comune,tipologia);
                 }
-                Vaccinato str =(Vaccinato) in.readObject();
-                //if (str.equals("END")) break;
-               // System.out.println("ServerThread "+id+": echoing -> " + str);
-                System.out.println("Ho letto dal socket: \n");
-                System.out.println(str);
-               // out.writeObject(str);
+
             }
-          //  System.out.println("ServerThread "+id+": closing...");
-        } catch (IOException e) {} catch (ClassNotFoundException e) {
+            // System.out.println("ServerThread "+id+": closing...");
+        } catch (IOException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         try {
             socket.close();
-        } catch(IOException e) {}
+        } catch (IOException e) {
+        }
     }
-} // ServerThread
+}
+
+ // ServerThread
