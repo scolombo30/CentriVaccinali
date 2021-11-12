@@ -1733,6 +1733,7 @@ public class Home extends javax.swing.JFrame {
                         System.err.println("CLICK");
 
                         try {
+                            out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
                         } catch (IOException e) {
                         }

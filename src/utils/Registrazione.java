@@ -93,6 +93,7 @@ public  class Registrazione {
     }
     //metodo registra cittadino su db
     public static void registraCittadino(Connection conn, Cittadino cittadino ){
+        //controllare schema er e vedere se funziona
         //tab Cittadini_Registrati
          String nome=cittadino.getNome();
          String cognome= cittadino.getCognome();
@@ -101,7 +102,27 @@ public  class Registrazione {
          String mail=cittadino.getMail();
          String username=cittadino.getUsername();
          String password=cittadino.getPassword();
-        }
+         try{
+             //creo lo statement
+             Statement st= conn.createStatement();
+             //creo query di creazione tabella se non è già presente nel DB
+             String query_crea_cittadino="CREATE TABLE IF NOT EXISTS Cittadini_Registrati("+
+                     "Nome VARCHAR(20),"+
+                     "Cognome VARCHAR(20),"+
+                     "Codice_fiscale VARCHAR(16),"+
+                     "Id_vax NUMERIC(16) PRIMARY KEY,"+
+                     "mail VARCHAR(20),"+
+                     "username VARCHAR(20),"+
+                     "password VARCHAR(20))";
+             st.executeUpdate(query_crea_cittadino);
+             //creo query di inserimento dati in cittadino
+             String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+mail+"','"+idVaccinazione+"','"+username+"','"+password+"')";
+
+             st.executeUpdate(query_inserisci_cittadino);
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+    }
     //login sulla piattaforma
     public static void loginCittadino(Connection conn,String username,String password){}
     //metodo cerca centro vaccinale x nome
