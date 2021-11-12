@@ -15,6 +15,44 @@ public  class Registrazione {
     //metodo registra centro vaccinale sul db
     public static void registraCentroVaccinale(Connection conn, CentroVaccinale centro){
         //tab CentriVaccinali
+        //creo tabella CentriVaccinali e tabella indirizzi con foreign key la chiave primaria dei CentriVaccinali
+        String nome=centro.getNome();
+        String tipologia=centro.getTipologia();
+        String qualificatore=centro.getIndirizzo().getQualificatore();
+        String nomeVia=centro.getIndirizzo().getNome();
+        String numeroCivico=centro.getIndirizzo().getNumeroCivico();
+        String comune=centro.getIndirizzo().getComune();
+        String siglaProvincia=centro.getIndirizzo().getSiglaProvincia();
+        String cap=centro.getIndirizzo().getCAP();
+        try{
+            //creo lo statement
+            Statement st= conn.createStatement();
+            //creo query di creazione tabelle CentriVaccinali se nonn esiste già
+            String query_crea_centri="CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
+                                      "Nome_Centro VARCHAR(30) PRIMARY KEY,"+
+                                      "Tipologia VARCHAR(11))";
+            st.executeUpdate(query_crea_centri);
+            //creo query di creazione tabella Indirizzi se non esiste già
+            String query_crea_indirizzi="CREATE TABLE IF NOT EXISTS Indirizzi ("+
+                                        "Centro VARCHAR(30) REFERENCES CentriVaccinali(Nome_Centro),"+
+                                        "Qualificatore VARCHAR(7),"+
+                                        "Nome_via VARCHAR(15),"+
+                                        "Numero_civico VARCHAR(5),"+
+                                        "Comune VARCHAR(15),"+
+                                        "Provincia VARCHAR(2),"+
+                                        "Cap VARCHAR(5),"+
+                                        "PRIMARY KEY (Centro))";
+            st.executeUpdate(query_crea_indirizzi);
+            //creo query di inserimento dati in CentriVaccinali
+            String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"')";
+            st.executeUpdate(query_inserisci_centro);
+            //creo query di inserimento dati in Indirizzi
+            String query_inserisci_indirizzi="INSERT INTO Indirizzi VALUES ('"+nome+"','"+qualificatore+"','"+nomeVia+"','"
+                                            +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
+            st.executeUpdate(query_inserisci_indirizzi);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
         }
     //metodo registra vaccianto su db
     public static void registraVaccinato(Connection conn, Vaccinato vaccinato) {
@@ -63,8 +101,6 @@ public  class Registrazione {
          String mail=cittadino.getMail();
          String username=cittadino.getUsername();
          String password=cittadino.getPassword();
-
-
         }
     //login sulla piattaforma
     public static void loginCittadino(Connection conn,String username,String password){}

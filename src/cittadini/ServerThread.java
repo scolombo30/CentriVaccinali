@@ -42,21 +42,28 @@ class ServerThread extends Thread {
                 //leggo dal socket cosa devo fare
                 String azione = (String) in.readObject();
                 if (azione.equals("REGISTRA VACCINATO")) {
+
                     Vaccinato vacc = (Vaccinato) in.readObject();
-                    System.out.println("Sto per registrare sul db: ");
-                    System.out.println(vacc.toString());
                     Registrazione.registraVaccinato(conn,vacc);
-                    System.out.println("Ho registrato il vaccinato");
+
                 } else if (azione.equals("REGISTRA CENTRO")) {
+
                     CentroVaccinale centro = (CentroVaccinale) in.readObject();
                     Registrazione.registraCentroVaccinale(conn,centro);
+
+
                 } else if (azione.equals("REGISTRA CITTADINO")) {
+
                     Cittadino cittadino = (Cittadino) in.readObject();
                     Registrazione.registraCittadino(conn,cittadino);
+
                 } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
+
                     EventoAvverso evento = (EventoAvverso) in.readObject();
                     Registrazione.inserisciEventiAvversi(conn,evento);
+
                 } else if (azione.equals("LOGIN CITTADINO")) {
+
                     String username = (String) in.readObject();
                     String password = (String) in.readObject();
                     Registrazione.loginCittadino(conn,username,password);

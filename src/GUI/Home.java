@@ -1600,8 +1600,8 @@ public class Home extends javax.swing.JFrame {
         else {
             Indirizzo indirizzo= new Indirizzo(qualificatore,nome_via,numeroCivico,comune,provincia,cap);
             CentroVaccinale centro=new CentroVaccinale(nome_centroo,indirizzo,tipo_centro);
-            System.err.println("CLICK");
-            try{out.writeObject(centro);}
+            try{out.writeObject("REGISTRA CENTRO");
+                out.writeObject(centro);}
             catch (IOException e){};
 
             //apro JOptionPane per avvisare del corretto inserimento
