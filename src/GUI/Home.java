@@ -1792,7 +1792,7 @@ public class Home extends javax.swing.JFrame {
         panel.setBackground(new Color(64,43,100));
     }
 
-    //da spostare il main nella classe CentriVaccinali
+    //da spostare il main nella classe CentriVaccinali prima della cosegna
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         try {

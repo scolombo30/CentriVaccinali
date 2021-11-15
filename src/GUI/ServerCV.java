@@ -5,7 +5,7 @@
  */
 package GUI;
 
-import cittadini.EchoMultiServer;
+import cittadini.MultiServer;
 import utils.Message;
 
 import java.awt.Desktop;
@@ -15,14 +15,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author moseb
  */
-public class LanciaServer extends javax.swing.JFrame {
+public class ServerCV extends javax.swing.JFrame {
 
     private boolean passo1=false;
     //variabili per la connessione al db
@@ -31,7 +29,7 @@ public class LanciaServer extends javax.swing.JFrame {
     /**
      * Creates new form LanciaServer
      */
-    public LanciaServer() {
+    public ServerCV() {
         initComponents();
     }
 
@@ -243,7 +241,7 @@ public class LanciaServer extends javax.swing.JFrame {
         try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);
             Statement st= conn.createStatement();){
             //cambiare il nome del server
-            String sql= "CREATE DATABASE Ma_funzionaaaa";
+            String sql= "CREATE DATABASE piattaforma_cv_db";
             st.executeUpdate(sql);
             Message.informationMessage(this,"Database creato con successo","Database creato");
             }catch (SQLException e){
@@ -258,7 +256,7 @@ public class LanciaServer extends javax.swing.JFrame {
         if(passo1){this.dispose();
             Message.warningMessage(this,"Ricordati che una volta chiusasi questa finestra il server girerà in background. " +
                     "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
-            EchoMultiServer.main(new String[0]);
+            MultiServer.main(new String[0]);
         }
         else {
             Message.errorMessage(this, "Impossibile avviare il server java perchè non è stato fornito il percorso \n" +
@@ -284,20 +282,20 @@ public class LanciaServer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LanciaServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LanciaServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LanciaServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LanciaServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LanciaServer().setVisible(true);
+                new ServerCV().setVisible(true);
             }
         });
     }

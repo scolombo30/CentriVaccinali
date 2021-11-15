@@ -120,12 +120,12 @@ public  class Registrazione {
                      "Cognome VARCHAR(20),"+
                      "Codice_fiscale VARCHAR(16),"+
                      "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                     "mail VARCHAR(20),"+
+                     "mail VARCHAR(40),"+
                      "username VARCHAR(20),"+
                      "password VARCHAR(20))";
              st.executeUpdate(query_crea_cittadino);
              //creo query di inserimento dati in cittadino
-             String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+mail+"','"+idVaccinazione+"','"+username+"','"+password+"')";
+             String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+idVaccinazione+"','"+mail+"','"+username+"','"+password+"')";
 
              st.executeUpdate(query_inserisci_cittadino);
              //se non ci sono stati errori ritorno vero
