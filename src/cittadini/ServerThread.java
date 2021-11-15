@@ -36,7 +36,7 @@ class ServerThread extends Thread {
             //creo l'URL per la connessione
             String url = "jdbc:postgresql://localhost/piattaforma_cv_db";
             String user = "postgres";
-            String psw = "qwerty99";
+            String psw = "qwerty";
             Connection conn = DriverManager.getConnection(url, user, psw);
             while (true) {
                 //leggo dal socket cosa devo fare
