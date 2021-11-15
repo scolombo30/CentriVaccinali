@@ -6,6 +6,7 @@
 package GUI;
 
 import cittadini.EchoMultiServer;
+import utils.Message;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -106,7 +107,7 @@ public class LanciaServer extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("2- Se è la prima volta che avvii il programma crea il DataBase");
+        jLabel4.setText("2- (Solo per il primo avvio) Crea il DataBase");
 
         crea_db_btn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         crea_db_btn.setText("Crea Database");
@@ -118,10 +119,10 @@ public class LanciaServer extends javax.swing.JFrame {
 
         jLabel5.setText("Username");
 
-        jLabel6.setText("Paasword");
+        jLabel6.setText("Password");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("3- Una volta fatto ciò siete pronti per fare partire effettivamenti il server");
+        jLabel7.setText("3-Una volta fatto ciò siete pronti per fare partire effettivamente il server");
 
         avvia_server_btn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         avvia_server_btn.setText("Avvia il server");
@@ -220,6 +221,7 @@ public class LanciaServer extends javax.swing.JFrame {
         if(!path.isBlank()) try {
             Desktop.getDesktop().open(new File(path));
             passo1=true;
+            Message.informationMessage(this,"Attendere che pgAdmin si avvii e clicchi sul server per collegarlo","Avvio pgAdmin");
         } catch (Exception ex) {
             this.dispose();
         }
@@ -235,23 +237,27 @@ public class LanciaServer extends javax.swing.JFrame {
 
         try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);
             Statement st= conn.createStatement();){
+            //cambiare il nome del server
             String sql= "CREATE DATABASE Ma_funzionaaaa";
             st.executeUpdate(sql);
-            System.out.println("db creato");
-
-        }catch (SQLException e){
-            //avviso dell'errore in generale
-            System.out.println(e.getMessage());
+            Message.informationMessage(this,"Database creato con successo","Database creato");
+            }catch (SQLException e){
+            Message.errorMessage(this, "Errore nella creazione del database. Possibili cause:\n" +
+                                    "1-Credenziali errate\n" +
+                                    "2-Database già esistente", "Errore");
 
         }
     }
 
     private void avvia_server_btnMouseClicked(java.awt.event.MouseEvent evt) throws IOException, InterruptedException {
         if(passo1){this.dispose();
+            Message.warningMessage(this,"Ricordati che una volta chiusasi questa finestra il server girerà in background. " +
+                    "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
             EchoMultiServer.main(new String[0]);
         }
         else {
-            //messaggio di errore perchè prima deve inserire percorso pgAdmin e avviare il server
+            Message.errorMessage(this, "Impossibile avviare il server java perchè non è stato fornito il percorso \n" +
+                    "al file pgAdmin4.exe e di conseguenza non è stato collegato il server di Postgres", "Impossibile avviare server java");
         }
 
     }
