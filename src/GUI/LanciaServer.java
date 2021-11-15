@@ -225,9 +225,10 @@ public class LanciaServer extends javax.swing.JFrame {
             Message.informationMessage(this, "Attendere che pgAdmin si avvii e clicchi sul server per collegarlo", "Avvio pgAdmin");
 
         } catch (Exception ex) {
-            this.dispose();
+            Message.warningMessage(this, "Path non trovata, per favore inserisca un path valido ", "Errore avvio pgAdmin");
+            pgAdmin_path.setText("");
         }}else{
-            Message.warningMessage(this, "Il campo è vuoto inserisca un path valido", "Errore avvio pgAdmin");
+            Message.warningMessage(this, "Il campo path è vuoto, per favore inserisca un path valido  ", "Errore avvio pgAdmin");
         }
     }
 
