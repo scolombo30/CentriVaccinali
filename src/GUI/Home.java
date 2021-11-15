@@ -1741,10 +1741,7 @@ public class Home extends javax.swing.JFrame {
                     if(id_vaccinazione.matches("[0-9]+")) {
                         Cittadino cittadino = new Cittadino(nome_signup.getText(), cognome_signup.getText(), cod_fisc_signup.getText(), Integer.parseInt(IDVax_signup.getText()),
                                 mail_signup.getText(), mail_signup.getText(), password_signup.getText());
-                        //messagio di inserimento corretto
-                        Message.informationMessage(this,"Informazioni inserite con successo!", "Successo");
-                        //scrivo sul socket
-                        System.err.println("CLICK");
+
 
                         try {
                             out.writeObject("REGISTRA CITTADINO");

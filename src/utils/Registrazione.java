@@ -61,7 +61,8 @@ public  class Registrazione {
     //metodo registra vaccianto su db
     public static boolean registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //campi da inserire nella tabella
-        String centroVaccinale= vaccinato.getCentroVaccinale();
+            //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
+            String centroVaccinale= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
         String nome=vaccinato.getNome();
         String cognome=vaccinato.getCognome();
         String cod_fisc=vaccinato.getCodiceFiscale();
@@ -95,7 +96,7 @@ public  class Registrazione {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            //se ci sono stati errori ritono falso
+            //se ci sono stati errori ritorno falso
             return false;
         }
     }
