@@ -1601,11 +1601,17 @@ public class Home extends javax.swing.JFrame {
             Indirizzo indirizzo= new Indirizzo(qualificatore,nome_via,numeroCivico,comune,provincia,cap);
             CentroVaccinale centro=new CentroVaccinale(nome_centroo,indirizzo,tipo_centro);
             try{out.writeObject("REGISTRA CENTRO");
-                out.writeObject(centro);}
-            catch (IOException e){};
+                out.writeObject(centro);
+                if((boolean) in.readObject()){
+                    //apro JOptionPane per avvisare del corretto inserimento
+                    Message.informationMessage(this,"Informazioni inserite con successo!","Successo");}
+                else {
+                    //apro JOptionPane per avvisare che c'è stato un errore
+                    Message.errorMessage(this,"C'è stato un errore nella registrazione dei dati", "Errore");
+                };
+            }
+            catch (IOException | ClassNotFoundException e){};
 
-            //apro JOptionPane per avvisare del corretto inserimento
-            Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
             //svuoto i campi
             qualificatore_indirizzo.setSelectedIndex(0);
             nome_via_indirizzo.setText("");
@@ -1654,12 +1660,20 @@ public class Home extends javax.swing.JFrame {
                         codice_fiscale_registra_vaccinato.getText(), nome_centro_registra_vaccinato.getText(), data, tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
                         Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
 
-                        System.err.println("CLICK");
+
 
                         try {
                             out.writeObject("REGISTRA VACCINATO");
                             out.writeObject(vaccinato_da_registrare);
-                        } catch (IOException e) {}
+                            if ((boolean)in.readObject()) {
+                                //apro JOptionPane per avvisare del corretto inserimento
+                                Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
+                            }
+                            else {
+                                //apro JOptionPane per avvisare che c'è stato un errore
+                                Message.errorMessage(this,"C'è stato un errore nella registrazione dei dati", "Errore");
+                            }
+                        } catch (IOException | ClassNotFoundException e) {}
 
                         //apriro JOptionPane per avvisare del corretto inserimento
                         Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
@@ -1735,7 +1749,15 @@ public class Home extends javax.swing.JFrame {
                         try {
                             out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
-                        } catch (IOException e) {
+                            if ((boolean)in.readObject()) {
+                                //apro JOptionPane per avvisare del corretto inserimento
+                                Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
+                            }
+                            else {
+                                //apro JOptionPane per avvisare che c'è stato un errore
+                                Message.errorMessage(this,"C'è stato un errore nella registrazione dei dati", "Errore");
+                            }
+                        } catch (IOException | ClassNotFoundException e) {
                         }
                         //reset dei campi se sono corretti
                         nome_signup.setText("");

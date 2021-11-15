@@ -43,19 +43,23 @@ class ServerThread extends Thread {
                 String azione = (String) in.readObject();
                 if (azione.equals("REGISTRA VACCINATO")) {
 
+                    boolean successo=false;
                     Vaccinato vacc = (Vaccinato) in.readObject();
-                    Registrazione.registraVaccinato(conn,vacc);
+                    successo=Registrazione.registraVaccinato(conn,vacc);
+                    out.writeObject(successo);
 
                 } else if (azione.equals("REGISTRA CENTRO")) {
 
+                    boolean successo=false;
                     CentroVaccinale centro = (CentroVaccinale) in.readObject();
-                    Registrazione.registraCentroVaccinale(conn,centro);
-
+                    successo= Registrazione.registraCentroVaccinale(conn,centro);
+                    out.writeObject(successo);
 
                 } else if (azione.equals("REGISTRA CITTADINO")) {
-
+                    boolean successo=false;
                     Cittadino cittadino = (Cittadino) in.readObject();
-                    Registrazione.registraCittadino(conn,cittadino);
+                    successo=Registrazione.registraCittadino(conn,cittadino);
+                    out.writeObject(successo);
 
                 } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
 

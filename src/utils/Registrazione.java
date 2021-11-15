@@ -13,7 +13,7 @@ public  class Registrazione {
 
     public Registrazione() {}
     //metodo registra centro vaccinale sul db
-    public static void registraCentroVaccinale(Connection conn, CentroVaccinale centro){
+    public static boolean registraCentroVaccinale(Connection conn, CentroVaccinale centro){
         //tab CentriVaccinali
         //creo tabella CentriVaccinali e tabella indirizzi con foreign key la chiave primaria dei CentriVaccinali
         String nome=centro.getNome();
@@ -50,8 +50,12 @@ public  class Registrazione {
             String query_inserisci_indirizzi="INSERT INTO Indirizzi VALUES ('"+nome+"','"+qualificatore+"','"+nomeVia+"','"
                                             +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
             st.executeUpdate(query_inserisci_indirizzi);
-        }catch(SQLException e){
+            //se non ci sono stati errori ritorno vero
+            return true;
+        }catch(Exception e){
             e.printStackTrace();
+            //se ci sono stati errori ritono falso
+            return false;
         }
         }
     //metodo registra vaccianto su db
@@ -86,10 +90,12 @@ public  class Registrazione {
             String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
                     +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"')";
             st.executeUpdate(query_insert_vaccinato);
+            //se non ci sono stati errori ritorno vero
             return true;
 
         } catch (SQLException e) {
             e.printStackTrace();
+            //se ci sono stati errori ritono falso
             return false;
         }
     }
@@ -121,9 +127,11 @@ public  class Registrazione {
              String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+mail+"','"+idVaccinazione+"','"+username+"','"+password+"')";
 
              st.executeUpdate(query_inserisci_cittadino);
+             //se non ci sono stati errori ritorno vero
              return true;
          } catch (SQLException e) {
              e.printStackTrace();
+             //se ci sono stati errori ritono falso
              return false;
          }
     }
