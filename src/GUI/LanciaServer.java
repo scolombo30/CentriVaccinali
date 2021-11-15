@@ -218,12 +218,16 @@ public class LanciaServer extends javax.swing.JFrame {
 
     private void avvia_pgAdmin_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String path=pgAdmin_path.getText();
-        if(!path.isBlank()) try {
+
+        if(!path.isBlank()){ try {
             Desktop.getDesktop().open(new File(path));
-            passo1=true;
-            Message.informationMessage(this,"Attendere che pgAdmin si avvii e clicchi sul server per collegarlo","Avvio pgAdmin");
+            passo1 = true;
+            Message.informationMessage(this, "Attendere che pgAdmin si avvii e clicchi sul server per collegarlo", "Avvio pgAdmin");
+
         } catch (Exception ex) {
             this.dispose();
+        }}else{
+            Message.warningMessage(this, "Il campo è vuoto inserisca un path valido", "Errore avvio pgAdmin");
         }
     }
 
