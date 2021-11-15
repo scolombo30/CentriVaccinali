@@ -55,7 +55,7 @@ public  class Registrazione {
         }
         }
     //metodo registra vaccianto su db
-    public static void registraVaccinato(Connection conn, Vaccinato vaccinato) {
+    public static boolean registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //campi da inserire nella tabella
         String centroVaccinale= vaccinato.getCentroVaccinale();
         String nome=vaccinato.getNome();
@@ -86,13 +86,15 @@ public  class Registrazione {
             String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
                     +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"')";
             st.executeUpdate(query_insert_vaccinato);
+            return true;
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
     //metodo registra cittadino su db
-    public static void registraCittadino(Connection conn, Cittadino cittadino ){
+    public static boolean registraCittadino(Connection conn, Cittadino cittadino ){
         //controllare schema er e vedere se funziona
         //tab Cittadini_Registrati
          String nome=cittadino.getNome();
@@ -119,8 +121,10 @@ public  class Registrazione {
              String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+mail+"','"+idVaccinazione+"','"+username+"','"+password+"')";
 
              st.executeUpdate(query_inserisci_cittadino);
+             return true;
          } catch (SQLException e) {
              e.printStackTrace();
+             return false;
          }
     }
     //login sulla piattaforma
