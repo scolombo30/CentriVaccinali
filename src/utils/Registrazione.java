@@ -102,8 +102,7 @@ public  class Registrazione {
     }
     //metodo registra cittadino su db
     public static boolean registraCittadino(Connection conn, Cittadino cittadino ){
-        //controllare schema er e vedere se funziona
-        //tab Cittadini_Registrati
+         //tab Cittadini_Registrati
          String nome=cittadino.getNome();
          String cognome= cittadino.getCognome();
          String codiceFiscale=cittadino.getCodiceFiscale();
@@ -143,7 +142,29 @@ public  class Registrazione {
     //metodo cerca centro vaccinale x comune, tipologia
     public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){}
     //metodo inserisci evento avverso
-    public static void inserisciEventiAvversi(Connection conn, EventoAvverso evento){}
+    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento){
+    String tipologia=evento.getTipologia();
+    String note=evento.getNote();
+    short gravità= evento.getGravità();
+    try{
+        //creo lo statement
+        Statement st= conn.createStatement();
+        //creo query di creazione tabella se non è già presente nel DB
+        String query_crea_evento="CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
+                "Tipologia VARCHAR(30)," +
+                "Severità NUMERIC(1)," +
+                "Note VARCHAR(256))";
+        st.executeUpdate(query_crea_evento);
+        //creo query di inserimento dati in eventi_avversi
+        String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"')";
+        st.executeUpdate(query_inserisci_evento);
+        //se non ci sono errori ritorno vero
+        return true;
+    }catch(SQLException e){
+        //se ci sono state eccezioni ritorno falso
+        return false;
+    }
+    }
     //metodo visualizza info
     public static void visualizzaInfoCentroVaccinale(Connection conn){}
 
