@@ -34,7 +34,7 @@ class ServerThread extends Thread {
             //carico il driver jdbc
             Class.forName("org.postgresql.Driver");
             //creo l'URL per la connessione
-            String url = "jdbc:postgresql://localhost/dbProva";
+            String url = "jdbc:postgresql://localhost/piattaforma_cv_db";
             String user = "postgres";
             String psw = "qwerty";
             Connection conn = DriverManager.getConnection(url, user, psw);
