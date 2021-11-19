@@ -15,9 +15,8 @@ public class Cittadino implements Serializable{
     private String cognome;
     private String codiceFiscale;
     private int idVaccinazione;
-    private String mail;
-    private String username;
-    private String password;
+    private User user;
+
 
     //costruttore
     /**
@@ -25,23 +24,25 @@ public class Cittadino implements Serializable{
      * @param cognome
      * @param codiceFiscale
      * @param idVaccinazione
-     * @param mail
-     * @param username
-     * @param password
+     * @param user
      */
-    public Cittadino(String nome, String cognome, String codiceFiscale, int idVaccinazione, String mail,
-                     String username, String password) {
+    public Cittadino(String nome, String cognome, String codiceFiscale, int idVaccinazione, User user) {
         super();
         this.nome = primaLetteraMaiuscola(nome);
         this.cognome = primaLetteraMaiuscola(cognome);
         this.codiceFiscale = codiceFiscale.toUpperCase();
         this.idVaccinazione = idVaccinazione;
-        this.mail = mail;
-        this.username = username;
-        this.password = password;
+        this.user=user;
     }
 
-    //metodi
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+//metodi
     /**
      * @return the nome
      */
@@ -66,25 +67,8 @@ public class Cittadino implements Serializable{
     public int getIdVaccinazione() {
         return idVaccinazione;
     }
-    /**
-     * @return the mail
-     */
-    public String getMail() {
-        return mail;
-    }
-    /**
-     * @return the username
-     */
-    public String getUsername() {
-        return username;
-    }
-    /**
-     * @return the paasword
-     */
-    public String getPassword() {
-        return password;
-    }
-    /**
+
+     /**
      * @param nome the nome to set
      */
     public void setNome(String nome) {
@@ -108,24 +92,6 @@ public class Cittadino implements Serializable{
     public void setIdVaccinazione(int idVaccinazione) {
         this.idVaccinazione = idVaccinazione;
     }
-    /**
-     * @param mail the mail to set
-     */
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    /**
-     * @param password the paasword to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     /**
      * @param obj cittadino da confrontare
@@ -135,9 +101,7 @@ public class Cittadino implements Serializable{
         if(this.nome.equals(altro.nome)&&
                 this.cognome.equals(altro.cognome)&&
                 this.codiceFiscale.equals(altro.codiceFiscale)&&
-                this.mail.equals(altro.mail)&&
-                this.password.equals(altro.password)&&
-                this.username.equals(altro.username)&&
+                this.user.equals(altro.getUser())&&
                 this.idVaccinazione==altro.idVaccinazione
         )return true;
         else return false;
@@ -146,11 +110,13 @@ public class Cittadino implements Serializable{
     /**
      * @return Una stringa con tutte le informazioni del cittadino
      */
-    public String toString() {
+   /* public String toString() {
         return this.nome+" "+this.cognome+", "+this.codiceFiscale+
                 "\nUsername: "+this.username+", Mail: "+this.mail+", Psw: "+this.password +
                 "\nID_Vaccinazione: "+this.idVaccinazione;
     }
+
+    */
     private String primaLetteraMaiuscola(String str){
         String risultato="";
         //rendo la prima lettera maiuscola

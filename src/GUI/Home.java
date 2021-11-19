@@ -3,6 +3,7 @@
 package GUI;
 
 import centrivaccinali.CentroVaccinale;
+import cittadini.User;
 import utils.Indirizzo;
 import cittadini.Cittadino;
 import utils.DataLab;
@@ -1657,7 +1658,7 @@ public class Home extends javax.swing.JFrame {
                         DataLab data = new DataLab(giorno_registra_vaccinato.getText(), mese_registra_vaccinato.getSelectedItem().toString(), anno_registra_vaccinato.getText());
                         //istanzio oggetto vaccinato
                         Vaccinato vaccinato_da_registrare = new Vaccinato(nome_vaccinato_registra_vaccinato.getText(), cognome_vaccinato_registra_vaccinato.getText(),
-                        codice_fiscale_registra_vaccinato.getText(), nome_centro_registra_vaccinato.getText(), data, tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
+                        codice_fiscale_registra_vaccinato.getText(), nome_centro_registra_vaccinato.getText(),"comune centro", data, tipo_vaccino_registra_vaccinato.getSelectedItem().toString(),
                         Integer.parseInt(Id_vaccinazione_registra_vaccinato.getText()));
 
 
@@ -1740,7 +1741,7 @@ public class Home extends javax.swing.JFrame {
                     //controllo se l'id vaccinazione è scritta correttamente
                     if(id_vaccinazione.matches("[0-9]+")) {
                         Cittadino cittadino = new Cittadino(nome_signup.getText(), cognome_signup.getText(), cod_fisc_signup.getText(), Integer.parseInt(IDVax_signup.getText()),
-                                mail_signup.getText(), mail_signup.getText(), password_signup.getText());
+                               new User(mail_signup.getText(),password_signup.getText()));
 
 
                         try {

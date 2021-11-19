@@ -1530,8 +1530,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 if(psw.equals(psw_conferma)) {
                     //controllo se l'id vaccinazione è scritta correttamente
                     if(id_vaccinazione.matches("[0-9]+")) {
-                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione),
-                                mail, psw ,psw_conferma);
+                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione), new User(mail,psw));
                         //messagio di inserimento corretto
                         Message.informationMessage(this,"Informazioni inserite con successo!", "Successo");
                         //scrivo sul socket
@@ -1615,10 +1614,10 @@ public class HomeV2 extends javax.swing.JFrame {
                         //istanzio oggetto data
                         DataLab data = new DataLab(giorno, mese, anno);
                         //istanzio oggetto vaccinato
-                        Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, data,
+                        Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro,"comune centro", data,
                                 tipo_vaccino,Integer.parseInt(id_vacc));
                         try {
-                            //scrivo sul socket
+                                                        //scrivo sul socket
                             out.writeObject(vaccinatp_da_registrare);
                         } catch (IOException e) {}
                         //apro JOptionPane per avvisare del corretto inserimento

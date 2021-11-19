@@ -12,12 +12,14 @@ public class EventoAvverso implements Serializable {
     private String tipologia;
     private short gravità;
     private String note;
+    private User user;
 
     //costruttore
-    public EventoAvverso (String tipologia, short gravità,String note){
+    public EventoAvverso (String tipologia, short gravità,String note, User user){
         this.tipologia = tipologia;
         this.gravità = gravità;
         this.note = note;
+        this.user = user;
     }
 
     //metodi

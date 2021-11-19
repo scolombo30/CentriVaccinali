@@ -14,6 +14,7 @@ public class Vaccinato implements Serializable{
 
     //campi
     private String centroVaccinale;
+    private String comuneCentro;
     private String nome;
     private String cognome;
     private String codiceFiscale;
@@ -23,19 +24,20 @@ public class Vaccinato implements Serializable{
 
     //costruttore
     /**
-     * @param centroVaccinale
      * @param nome
      * @param cognome
      * @param codiceFiscale
+     * @param centroVaccinale
+     * @param comuneCentro
      * @param dataSomministrazione
      * @param vaccino
      * @param idVaccinazione
      */
-    public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale,
+    public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale, String comuneCentro,
                      DataLab dataSomministrazione, String vaccino, int idVaccinazione) {
-        super();
         //controllare hce il nome sia senza spazi "_"
         this.centroVaccinale = primaLetteraMaiuscola(centroVaccinale);
+        this.comuneCentro=primaLetteraMaiuscola(comuneCentro);
         this.nome = primaLetteraMaiuscola(nome);
         this.cognome = primaLetteraMaiuscola(cognome);
         this.codiceFiscale = codiceFiscale.toUpperCase();
