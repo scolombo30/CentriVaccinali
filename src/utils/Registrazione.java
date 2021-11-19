@@ -74,7 +74,7 @@ public  class Registrazione {
             //Anno-mese-giorno. Creo la data
             String data_query=data.getAnno()+"-"+data.getMese()+"-"+data.getGiorno();
             //creo query di creazione tabella se non è già presente nel DB
-            String query_crea_vaccinato=SqlString.CreaTabellaVaccinato(nomeTabella,centroVaccinale);
+            String query_crea_vaccinato=SqlString.CreaTabellaVaccinato(nomeTabella);
             //update per la tabella
             st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
