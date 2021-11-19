@@ -41,6 +41,7 @@ class ServerThread extends Thread {
             while (true) {
                 //leggo dal socket cosa devo fare
                 String azione = (String) in.readObject();
+                String c=azione;
                 if (azione.equals("REGISTRA VACCINATO")) {
 
                     boolean successo=false;
@@ -64,7 +65,7 @@ class ServerThread extends Thread {
                 } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
 
                     EventoAvverso evento = (EventoAvverso) in.readObject();
-                    Registrazione.inserisciEventiAvversi(conn,evento);
+                    Registrazione.inserisciEventiAvversi(conn,evento,c);
 
                 } else if (azione.equals("LOGIN CITTADINO")) {
 

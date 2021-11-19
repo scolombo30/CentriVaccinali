@@ -24,24 +24,19 @@ public  class Registrazione {
         String comune=centro.getIndirizzo().getComune();
         String siglaProvincia=centro.getIndirizzo().getSiglaProvincia();
         String cap=centro.getIndirizzo().getCAP();
+
         try{
             //creo lo statement
             Statement st= conn.createStatement();
             //creo query di creazione tabelle CentriVaccinali se nonn esiste già
-            String query_crea_centri="CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
+            String query_crea_centri=SqlString.CreaTabellaCentro();
+           /* String query_crea_centri="CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
                                       "Nome_Centro VARCHAR(30) PRIMARY KEY,"+
-                                      "Tipologia VARCHAR(11))";
+                                      "Tipologia VARCHAR(11))";*/
             st.executeUpdate(query_crea_centri);
             //creo query di creazione tabella Indirizzi se non esiste già
-            String query_crea_indirizzi="CREATE TABLE IF NOT EXISTS Indirizzi ("+
-                                        "Centro VARCHAR(30) REFERENCES CentriVaccinali(Nome_Centro),"+
-                                        "Qualificatore VARCHAR(7),"+
-                                        "Nome_via VARCHAR(15),"+
-                                        "Numero_civico VARCHAR(5),"+
-                                        "Comune VARCHAR(15),"+
-                                        "Provincia VARCHAR(2),"+
-                                        "Cap VARCHAR(5),"+
-                                        "PRIMARY KEY (Centro))";
+            String query_crea_indirizzi=SqlString.CreaTabellaIndirizzzo();
+            //update per la tabella
             st.executeUpdate(query_crea_indirizzi);
             //creo query di inserimento dati in CentriVaccinali
             String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"')";
@@ -62,7 +57,7 @@ public  class Registrazione {
     public static boolean registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //campi da inserire nella tabella
             //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
-            String centroVaccinale= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
+        String centroVaccinale= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
         String nome=vaccinato.getNome();
         String cognome=vaccinato.getCognome();
         String cod_fisc=vaccinato.getCodiceFiscale();
@@ -78,15 +73,9 @@ public  class Registrazione {
             //Anno-mese-giorno. Creo la data
             String data_query=data.getAnno()+"-"+data.getMese()+"-"+data.getGiorno();
             //creo query di creazione tabella se non è già presente nel DB
-            String query_creazione="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+
-                                    "Nome VARCHAR(20),"+
-                                    "Cognome VARCHAR(20),"+
-                                    "Codice_fiscale VARCHAR(16),"+
-                                    "Data DATE,"+
-                                    "Tipologia_vaccino VARCHAR(10),"+
-                                    "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                                    "Nome_centro VARCHAR(20))";
-            st.executeUpdate(query_creazione);
+            String query_crea_vaccinato=SqlString.CreaTabellaVaccinato(nomeTabella,centroVaccinale);
+            //update per la tabella
+            st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
             String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
                     +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"')";
@@ -101,7 +90,7 @@ public  class Registrazione {
         }
     }
     //metodo registra cittadino su db
-    public static boolean registraCittadino(Connection conn, Cittadino cittadino ){
+    public static boolean registraCittadino(Connection conn, Cittadino cittadino){
          //tab Cittadini_Registrati
          String nome=cittadino.getNome();
          String cognome= cittadino.getCognome();
@@ -114,14 +103,8 @@ public  class Registrazione {
              //creo lo statement
              Statement st= conn.createStatement();
              //creo query di creazione tabella se non è già presente nel DB
-             String query_crea_cittadino="CREATE TABLE IF NOT EXISTS Cittadini_Registrati("+
-                     "Nome VARCHAR(20),"+
-                     "Cognome VARCHAR(20),"+
-                     "Codice_fiscale VARCHAR(16),"+
-                     "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                     "mail VARCHAR(40),"+
-                     "username VARCHAR(20),"+
-                     "password VARCHAR(20))";
+             String query_crea_cittadino=SqlString.CreaTabellaVaccinato();
+             //update per la tabella
              st.executeUpdate(query_crea_cittadino);
              //creo query di inserimento dati in cittadino
              String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+idVaccinazione+"','"+mail+"','"+username+"','"+password+"')";
@@ -142,7 +125,7 @@ public  class Registrazione {
     //metodo cerca centro vaccinale x comune, tipologia
     public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){}
     //metodo inserisci evento avverso
-    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento){
+    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento, String c){
     String tipologia=evento.getTipologia();
     String note=evento.getNote();
     short gravità= evento.getGravità();
@@ -150,10 +133,8 @@ public  class Registrazione {
         //creo lo statement
         Statement st= conn.createStatement();
         //creo query di creazione tabella se non è già presente nel DB
-        String query_crea_evento="CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
-                "Tipologia VARCHAR(30)," +
-                "Severità NUMERIC(1)," +
-                "Note VARCHAR(256))";
+        String query_crea_evento=SqlString.CreaTabellaEvento();
+        //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
         String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"')";
