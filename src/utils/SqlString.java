@@ -4,16 +4,15 @@ import centrivaccinali.CentroVaccinale;
 
 public class SqlString {
 
-    //String query
-
+    //String query CreaTabellaCentro
     static String CreaTabellaCentro(){
        String query = "CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
                 "Nome_Centro VARCHAR(30) PRIMARY KEY,"+
                 "Tipologia VARCHAR(11))";
-
-        return query;
+       return query;
 
     }
+    //String query CreaTabellaIndirizzzo
     static String CreaTabellaIndirizzzo(){
         String query = "CREATE TABLE IF NOT EXISTS Indirizzi ("+
                 "Centro VARCHAR(30) REFERENCES CentriVaccinali(Nome_Centro),"+
@@ -24,12 +23,10 @@ public class SqlString {
                 "Provincia VARCHAR(2),"+
                 "Cap VARCHAR(5),"+
                 "PRIMARY KEY (Centro))";
-
         return query;
     }
-
-
-    public static String CreaTabellaVaccinato(String centroVaccinale, String nomeTabella) {
+    //String query CreaTabellaVaccinato
+    public static String CreaTabellaVaccinato(String nomeTabella) {
         String query="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
@@ -37,30 +34,40 @@ public class SqlString {
                 "Data DATE,"+
                 "Tipologia_vaccino VARCHAR(10),"+
                 "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                "Nome_centro VARCHAR(20))";
-
-
+                "Nome_centro VARCHAR(20),"+
+                "Comune VARCHAR(20),"+
+                "foreign key(Nome_centro,Comune) references CentriVaccianli(Nome_Centro,Comune))";
         return query;
     }
-
-    public static String CreaTabellaVaccinato() {
+    //String query CreaTabellaCittadino
+    public static String CreaTabellaCittadino() {
         String query="CREATE TABLE IF NOT EXISTS Cittadini_Registrati("+
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
                 "Codice_fiscale VARCHAR(16),"+
-                "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                "mail VARCHAR(40),"+
-                "username VARCHAR(20),"+
-                "password VARCHAR(20))";;
+                "Username VARCHAR(20),"+
+                "Password VARCHAR(20),"+
+                "foreign key (Username,Password) references User(Username,Password),"+
+                "Id_vax NUMERIC(16) PRIMARY KEY))";
         return query;
     }
-
+    //String query CreaTabellaUser
+    public static String CreaTabellaUser() {
+        String query="CREATE TABLE IF NOT EXISTS User("+
+                "Username VARCHAR(20),"+
+                "Password VARCHAR(20),"+
+                "PRIMARY KEY(Username,Password))";
+        return query;
+    }
+    //String query CreaTabellaEvento
     public static String CreaTabellaEvento() {
         String query="CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
-                "Note VARCHAR(256))";;
-
-        return query;
+                "Note VARCHAR(256))"+
+                "Username VARCHAR(20),"+
+                "Password VARCHAR(20),"+
+                "foreign key (Username,Password) references User(Username,Password))";
+                return query;
     }
 }
