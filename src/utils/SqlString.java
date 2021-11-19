@@ -10,8 +10,7 @@ public class SqlString {
        String query = "CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
                 "Nome_Centro VARCHAR(30) PRIMARY KEY,"+
                 "Tipologia VARCHAR(11))";
-
-        return query;
+       return query;
 
     }
     static String CreaTabellaIndirizzzo(){
@@ -24,7 +23,6 @@ public class SqlString {
                 "Provincia VARCHAR(2),"+
                 "Cap VARCHAR(5),"+
                 "PRIMARY KEY (Centro))";
-
         return query;
     }
 
@@ -38,29 +36,29 @@ public class SqlString {
                 "Tipologia_vaccino VARCHAR(10),"+
                 "Id_vax NUMERIC(16) PRIMARY KEY,"+
                 "Nome_centro VARCHAR(20))";
-
-
         return query;
     }
 
-    public static String CreaTabellaVaccinato() {
+    public static String CreaTabellaCittadino() {
         String query="CREATE TABLE IF NOT EXISTS Cittadini_Registrati("+
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
                 "Codice_fiscale VARCHAR(16),"+
-                "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                "mail VARCHAR(40),"+
-                "username VARCHAR(20),"+
-                "password VARCHAR(20))";;
+                "Id_vax NUMERIC(16) PRIMARY KEY)";
         return query;
     }
-
+    public static String CreaTabellaUser() {
+        String query="CREATE TABLE IF NOT EXISTS User("+
+                "Username VARCHAR(20),"+
+                "Password VARCHAR(20),"+
+                "PRIMARY KEY(Username,Password))";
+        return query;
+    }
     public static String CreaTabellaEvento() {
         String query="CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
                 "Note VARCHAR(256))";;
-
-        return query;
+                return query;
     }
 }
