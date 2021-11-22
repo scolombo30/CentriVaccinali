@@ -37,12 +37,13 @@ public  class Registrazione {
             //update per la tabella
             st.executeUpdate(query_crea_indirizzi); */
             //creo query di inserimento dati in CentriVaccinali
-            String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"')";
+            String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+nome+"','"+qualificatore+"','"+nomeVia+"','"
+                    +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
             st.executeUpdate(query_inserisci_centro);
             //creo query di inserimento dati in Indirizzi
-            String query_inserisci_indirizzi="INSERT INTO Indirizzi VALUES ('"+nome+"','"+qualificatore+"','"+nomeVia+"','"
+           /*  String query_inserisci_indirizzi="INSERT INTO Indirizzi VALUES ('"+nome+"','"+qualificatore+"','"+nomeVia+"','"
                                             +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
-            st.executeUpdate(query_inserisci_indirizzi);
+            st.executeUpdate(query_inserisci_indirizzi);*/
             //se non ci sono stati errori ritorno vero
             return true;
         }catch(Exception e){
@@ -56,6 +57,7 @@ public  class Registrazione {
         //campi da inserire nella tabella
             //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
         String centroVaccinale= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
+        String comune_centro=vaccinato.getComuneCentro();
         String nome=vaccinato.getNome();
         String cognome=vaccinato.getCognome();
         String cod_fisc=vaccinato.getCodiceFiscale();
@@ -76,7 +78,7 @@ public  class Registrazione {
             st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
             String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
-                    +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"')";
+                    +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"','"+comune_centro+"')";
             st.executeUpdate(query_insert_vaccinato);
             //se non ci sono stati errori ritorno vero
             return true;
@@ -88,28 +90,33 @@ public  class Registrazione {
         }
     }
     //metodo registra cittadino su db
-    public static boolean registraCittadino(Connection conn, Cittadino cittadino, User user1){
+    public static boolean registraCittadino(Connection conn, Cittadino cittadino){
          //tab Cittadini_Registrati
          String nome=cittadino.getNome();
          String cognome= cittadino.getCognome();
          String codiceFiscale=cittadino.getCodiceFiscale();
          int idVaccinazione=cittadino.getIdVaccinazione();
          //String mail=user1.getMail();
-         String username=user1.getUsername();
-         String password=user1.getPassword();
+         String username=cittadino.getUser().getUsername();
+         String password=cittadino.getUser().getPassword();
          try{
              //creo lo statement
              Statement st= conn.createStatement();
-             //creo query di creazione tabella se non è già presente nel DB
-             String query_crea_cittadino=SqlString.CreaTabellaCittadino();
+             //creo query di creazione tabella users se non è già presente nel DB
              String query_crea_user=SqlString.CreaTabellaUser();
              //update per la tabella
-             st.executeUpdate(query_crea_cittadino);
              st.executeUpdate(query_crea_user);
+             //inserisco dati in users
+             String query_inserisci_user="INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
+             st.executeUpdate(query_inserisci_user);
+             //creo query di creazione tabella cittadini se non è già presente nel DB
+             String query_crea_cittadino=SqlString.CreaTabellaCittadino();
+             st.executeUpdate(query_crea_cittadino);
              //creo query di inserimento dati in cittadino
-             String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+nome+"', '"+cognome+"', '"+codiceFiscale+"', '"+idVaccinazione+"','"+username+"','"+password+"')";
-
+             String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
              st.executeUpdate(query_inserisci_cittadino);
+
+
              //se non ci sono stati errori ritorno vero
              return true;
          } catch (SQLException e) {
@@ -125,10 +132,12 @@ public  class Registrazione {
     //metodo cerca centro vaccinale x comune, tipologia
     public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){}
     //metodo inserisci evento avverso
-    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento, String c){
+    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento, User utente){
     String tipologia=evento.getTipologia();
     String note=evento.getNote();
     short gravità= evento.getGravità();
+    String username= utente.getUsername();
+    String password= utente.getPassword();
     try{
         //creo lo statement
         Statement st= conn.createStatement();
@@ -137,7 +146,7 @@ public  class Registrazione {
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
-        String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"')";
+        String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"', '"+password+"')";
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;

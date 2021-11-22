@@ -30,6 +30,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private int click_cittadino=0;
     //variabile per vedere se il cittadino è loggato
     private boolean logged=false;
+    private User utente=null;
     //variabili per lettura e scrittura su socket
     private static final int PORTA = 2812;
     private Socket socket=null;
@@ -41,7 +42,7 @@ public class HomeV2 extends javax.swing.JFrame {
         //creo il socket e i canali I/O
         try {
             // creazione socket
-            socket = new Socket("localhost", Home.PORTA);
+            socket = new Socket("localhost", HomeV2.PORTA);
             //stampe di controllo
             System.out.println("EchoClient: started");
             System.out.println("Client Socket: "+ socket);
@@ -845,7 +846,7 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel56.setText("Note (opzionali max.256)");
 
         registra_evento_severita.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_evento_severita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------------------", "Leggero fastidio", "Intermedio", "Forte dolore", "Dolore insopportabile" }));
+        registra_evento_severita.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------", "1", "2", "3", "4", "5" }));
 
         jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
@@ -1211,12 +1212,10 @@ public class HomeV2 extends javax.swing.JFrame {
         contenitore_pnl.add(registra_centro_pnl, "card5");
 
         registra_vaccinato_pnl.setBackground(new java.awt.Color(33, 32, 36));
-        registra_vaccinato_pnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Registra Vaccinato");
-        registra_vaccinato_pnl.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 59, -1, 61));
 
         passa_a_registra_centro_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\bottone_registra_centro.png")); // NOI18N
         passa_a_registra_centro_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1224,65 +1223,52 @@ public class HomeV2 extends javax.swing.JFrame {
                 passa_a_registra_centro_btnMouseClicked(evt);
             }
         });
-        registra_vaccinato_pnl.add(passa_a_registra_centro_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(941, 57, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Passa a:");
-        registra_vaccinato_pnl.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 75, 85, 29));
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
         jLabel41.setText("Nome");
-        registra_vaccinato_pnl.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("Cognome");
-        registra_vaccinato_pnl.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
         jLabel45.setText("Codice fiscale");
-        registra_vaccinato_pnl.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setText("Comune centro vaccinale");
-        registra_vaccinato_pnl.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, -1, -1));
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
         jLabel47.setText("Data somministrazione");
-        registra_vaccinato_pnl.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, -1, -1));
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel48.setForeground(new java.awt.Color(255, 255, 255));
         jLabel48.setText("Giorno");
-        registra_vaccinato_pnl.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, -1));
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("Mese");
-        registra_vaccinato_pnl.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("Anno");
-        registra_vaccinato_pnl.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, -1, -1));
 
         jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
         jLabel51.setText("Tipo vaccino");
-        registra_vaccinato_pnl.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
 
         jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
         jLabel52.setText("ID Vaccinazione");
-        registra_vaccinato_pnl.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, -1, -1));
 
         jLabel53.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\centrivaccinali\\src\\main\\java\\res\\immagine_registra_vaccinato.png")); // NOI18N
-        registra_vaccinato_pnl.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, 430, 510));
 
         registra_vaccinato_registra_vaccinato_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\bottone_registra_vaccinato.png")); // NOI18N
         registra_vaccinato_registra_vaccinato_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1290,45 +1276,33 @@ public class HomeV2 extends javax.swing.JFrame {
                 registra_vaccinato_registra_vaccinato_btnMouseClicked(evt);
             }
         });
-        registra_vaccinato_pnl.add(registra_vaccinato_registra_vaccinato_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 700, -1, -1));
 
         registra_vaccinato_anno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_anno, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, 110, 40));
 
         registra_vaccinato_nome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 290, 40));
 
         registra_vaccinato_cognome.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_cognome, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 290, 40));
 
         registra_vaccinato_codice_fiscale.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_codice_fiscale, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 390, 40));
 
         registra_vaccinato_idvax.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_idvax, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 580, 390, 40));
 
         registra_vaccinato_comune_centro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_comune_centro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 330, 40));
 
         registra_vaccinato_mese.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registra_vaccinato_mese.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        registra_vaccinato_pnl.add(registra_vaccinato_mese, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 160, 40));
 
         registra_vaccinato_tipologia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registra_vaccinato_tipologia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------", "Pfizer", "Moderna", "J&J" }));
-        registra_vaccinato_pnl.add(registra_vaccinato_tipologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 580, 140, 40));
 
         registra_vaccinato_giorno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registra_vaccinato_giorno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        registra_vaccinato_pnl.add(registra_vaccinato_giorno, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 100, 40));
 
         registra_vaccinato_centro_vaccinale.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_pnl.add(registra_vaccinato_centro_vaccinale, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 390, 40));
 
         jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Nome centro vaccinale");
-        registra_vaccinato_pnl.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, -1, -1));
 
         contenitore_pnl.add(registra_vaccinato_pnl, "card6");
 
@@ -1479,7 +1453,7 @@ public class HomeV2 extends javax.swing.JFrame {
         }
         else{
             //se l'utente non è loggato mostro finestra d'avviso
-            Message.informationMessage(this, "Per registrare un evento avverso bisogna essere registrati e aver effettuato il lgoin", "Login necessario");
+            Message.informationMessage(this, "Per registrare un evento avverso bisogna essere registrati e aver effettuato il login", "Login necessario");
         }
     }
 
@@ -1532,6 +1506,7 @@ public class HomeV2 extends javax.swing.JFrame {
         //se corrette lo loggo e cambio il bottone registra evento
         registra_evento_avverso_btn.setIcon(new ImageIcon("C:\\Users\\moseb\\Desktop\\bottone_evento_avverso_abilitato.png"));
         logged=true;
+        utente=new User(username,password);
     }
 
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
@@ -1553,14 +1528,14 @@ public class HomeV2 extends javax.swing.JFrame {
                 if(psw.equals(psw_conferma)) {
                     //controllo se l'id vaccinazione è scritta correttamente
                     if(id_vaccinazione.matches("[0-9]+")) {
-                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione),
-                                mail, psw ,psw_conferma);
+                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione), new User(mail,psw));
                         //messagio di inserimento corretto
                         Message.informationMessage(this,"Informazioni inserite con successo!", "Successo");
                         //scrivo sul socket
                         try {
+                            out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
-                        } catch (IOException e) {
+                            } catch (IOException e) {
                         }
                         //reset dei campi se sono corretti
                         pulisci_campi();
@@ -1603,6 +1578,7 @@ public class HomeV2 extends javax.swing.JFrame {
             CentroVaccinale centro=new CentroVaccinale(nome_centroo,indirizzo,tipo_centro);
             try{
                 //scrivo sul socket
+                out.writeObject("REGISTRA CENTRO");
                 out.writeObject(centro);
             }catch (IOException e){};
             //apro JOptionPane per avvisare del corretto inserimento
@@ -1616,8 +1592,8 @@ public class HomeV2 extends javax.swing.JFrame {
         String nome=registra_vaccinato_nome.getText();
         String cognome=registra_vaccinato_cognome.getText();
         String cod_fiscale=registra_vaccinato_codice_fiscale.getText();
-        String nome_centro=registra_vaccinato_comune_centro.getText();
-        String comune_centro=registra_vaccinato_centro_vaccinale.getText();
+        String comune_centro=registra_vaccinato_comune_centro.getText();
+        String nome_centro=registra_vaccinato_centro_vaccinale.getText();
         String giorno=registra_vaccinato_giorno.getSelectedItem().toString();
         String mese=registra_vaccinato_mese.getSelectedItem().toString();
         String anno=registra_vaccinato_anno.getText();
@@ -1639,10 +1615,11 @@ public class HomeV2 extends javax.swing.JFrame {
                         //istanzio oggetto data
                         DataLab data = new DataLab(giorno, mese, anno);
                         //istanzio oggetto vaccinato
-                        Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, data,
+                        Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data,
                                 tipo_vaccino,Integer.parseInt(id_vacc));
                         try {
                             //scrivo sul socket
+                            out.writeObject("REGISTRA VACCINATO");
                             out.writeObject(vaccinatp_da_registrare);
                         } catch (IOException e) {}
                         //apro JOptionPane per avvisare del corretto inserimento
@@ -1669,7 +1646,16 @@ public class HomeV2 extends javax.swing.JFrame {
         String tipo=(String)registra_evento_tipologia.getSelectedItem();
         String severità= (String)registra_evento_severita.getSelectedItem();
         String note= registra_evento_note.getText();
-        if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");       }
+
+        if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
+        else {
+            try {
+                EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente);
+                //scrivo sul socket
+                out.writeObject("REGISTRA EVENTO AVVERSO");
+                out.writeObject(evento);
+            } catch (IOException e) {}
+        }
     }
     //metodi utilizzati per cambiare il colore dei pulsanti sulla barra laterale
     private void setColor(JPanel panel){

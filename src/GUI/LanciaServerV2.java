@@ -34,6 +34,8 @@ public class LanciaServerV2 extends javax.swing.JFrame {
      * Creates new form LanciaServerV2
      */
     public LanciaServerV2() {
+
+        //carico il driver jdbc
         initComponents();
     }
 
@@ -356,6 +358,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         String USER=username.getText();
         String PASSWORD=new String(password.getPassword());
         String [] user_psw=new String []{USER,PASSWORD};
+
         if(primo_avvio){
             //creo DB
             try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);

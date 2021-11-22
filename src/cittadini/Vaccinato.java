@@ -46,7 +46,7 @@ public class Vaccinato implements Serializable{
         this.idVaccinazione = idVaccinazione;
     }
 
-    //metodi
+
     /**
      * @return the centroVaccinale
      */
@@ -90,8 +90,22 @@ public class Vaccinato implements Serializable{
         return idVaccinazione;
     }
     /**
+     * @return the Comnue
+     */
+    public String getComuneCentro() {
+        return comuneCentro;
+    }
+    /**
+     * @param comuneCentro the centroVaccinale to set
+     */
+    public void setComuneCentro(String comuneCentro) {
+        this.comuneCentro = comuneCentro;
+    }
+//met
+    /**
      * @param centroVaccinale the centroVaccinale to set
      */
+
     public void setCentroVaccinale(String centroVaccinale) {
         this.centroVaccinale = centroVaccinale;
     }

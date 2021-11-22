@@ -16,7 +16,7 @@ public class MultiServer {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Connection accepted: "+ clientSocket);
                 try {
-                    new ServerThread(clientSocket);
+                    new ServerThread(clientSocket,args);
                 } catch(IOException e) {
                     clientSocket.close();
                 }

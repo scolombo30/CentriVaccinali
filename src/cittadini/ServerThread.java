@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+
 class ServerThread extends Thread {
     //dichiarazione variabili
     private static int counter = 0;
@@ -17,12 +19,16 @@ class ServerThread extends Thread {
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
+    private String username;
+    private String password;
 
-    public ServerThread(Socket s) throws IOException {
+    public ServerThread(Socket s, String arg [] ) throws IOException {
         //inizializzo varibili per la connessione
         socket = s;
         out = new ObjectOutputStream(s.getOutputStream());
         in = new ObjectInputStream(s.getInputStream());
+        username=arg[0];
+        password=arg[1];
         start();
         System.out.println("ServerThread " + id + ": started");
 
@@ -34,9 +40,9 @@ class ServerThread extends Thread {
             //carico il driver jdbc
             Class.forName("org.postgresql.Driver");
             //creo l'URL per la connessione
-            String url = "jdbc:postgresql://localhost/piattaforma_cv_db";
-            String user = "postgres";
-            String psw = "qwerty";
+            String url = "jdbc:postgresql://localhost/piattaformacv";
+            String user = username ;
+            String psw = password ;
             Connection conn = DriverManager.getConnection(url, user, psw);
             while (true) {
                 //leggo dal socket cosa devo fare
@@ -59,14 +65,14 @@ class ServerThread extends Thread {
                 } else if (azione.equals("REGISTRA CITTADINO")) {
                     boolean successo=false;
                     Cittadino cittadino = (Cittadino) in.readObject();
-                    User user1=(User) in.readObject();
-                    successo=Registrazione.registraCittadino(conn,cittadino,user1);
+                    Registrazione.registraCittadino(conn,cittadino);
                     out.writeObject(successo);
 
                 } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
 
                     EventoAvverso evento = (EventoAvverso) in.readObject();
-                    Registrazione.inserisciEventiAvversi(conn,evento,c);
+                    User utente=(User) in.readObject();
+                    Registrazione.inserisciEventiAvversi(conn,evento,utente);
 
                 } else if (azione.equals("LOGIN CITTADINO")) {
 

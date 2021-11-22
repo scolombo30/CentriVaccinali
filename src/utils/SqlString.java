@@ -56,13 +56,13 @@ public class SqlString {
                 "Username VARCHAR(20),"+
                 "Password VARCHAR(20),"+
                 "PRIMARY KEY(Id_vax),"+
-                "foreign key (Username,Password) references User(Username,Password))";
+                "foreign key (Username,Password) references Users (Username,Password))";
 
         return query;
     }
     //String query CreaTabellaUser
     public static String CreaTabellaUser() {
-        String query="CREATE TABLE IF NOT EXISTS User("+
+        String query="CREATE TABLE IF NOT EXISTS Users("+
                 "Username VARCHAR(20),"+
                 "Password VARCHAR(20),"+
                 "PRIMARY KEY(Username,Password))";
