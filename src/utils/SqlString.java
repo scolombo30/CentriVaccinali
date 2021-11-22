@@ -8,11 +8,17 @@ public class SqlString {
     static String CreaTabellaCentro(){
        String query = "CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
                 "Nome_Centro VARCHAR(30) PRIMARY KEY,"+
-                "Tipologia VARCHAR(11))";
+                "Tipologia VARCHAR(11)," +
+                "Qualificatore VARCHAR(7),"+
+                "Nome_via VARCHAR(15),"+
+                "Numero_civico VARCHAR(5),"+
+                "Comune VARCHAR(15) PRIMARY KEY,"+
+                "Provincia VARCHAR(2)"+
+                "Cap VARCHAR(5))";
        return query;
 
     }
-    //String query CreaTabellaIndirizzzo
+   /*//String query CreaTabellaIndirizzzo
     static String CreaTabellaIndirizzzo(){
         String query = "CREATE TABLE IF NOT EXISTS Indirizzi ("+
                 "Centro VARCHAR(30) REFERENCES CentriVaccinali(Nome_Centro),"+
@@ -24,7 +30,7 @@ public class SqlString {
                 "Cap VARCHAR(5),"+
                 "PRIMARY KEY (Centro))";
         return query;
-    }
+    }*/
     //String query CreaTabellaVaccinato
     public static String CreaTabellaVaccinato(String nomeTabella) {
         String query="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+

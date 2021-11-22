@@ -32,10 +32,10 @@ public  class Registrazione {
             String query_crea_centri=SqlString.CreaTabellaCentro();
             //update per la tabella
             st.executeUpdate(query_crea_centri);
-            //creo query di creazione tabella Indirizzi se non esiste già
+           /* //creo query di creazione tabella Indirizzi se non esiste già
             String query_crea_indirizzi=SqlString.CreaTabellaIndirizzzo();
             //update per la tabella
-            st.executeUpdate(query_crea_indirizzi);
+            st.executeUpdate(query_crea_indirizzi); */
             //creo query di inserimento dati in CentriVaccinali
             String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"')";
             st.executeUpdate(query_inserisci_centro);
