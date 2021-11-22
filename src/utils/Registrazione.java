@@ -5,7 +5,6 @@ import cittadini.Cittadino;
 import cittadini.EventoAvverso;
 import cittadini.User;
 import cittadini.Vaccinato;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,9 +30,7 @@ public  class Registrazione {
             Statement st= conn.createStatement();
             //creo query di creazione tabelle CentriVaccinali se nonn esiste già
             String query_crea_centri=SqlString.CreaTabellaCentro();
-           /* String query_crea_centri="CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
-                                      "Nome_Centro VARCHAR(30) PRIMARY KEY,"+
-                                      "Tipologia VARCHAR(11))";*/
+            //update per la tabella
             st.executeUpdate(query_crea_centri);
             //creo query di creazione tabella Indirizzi se non esiste già
             String query_crea_indirizzi=SqlString.CreaTabellaIndirizzzo();
