@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="postgresql-42.2.18">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://E:/postgres/driver/postgresql-42.2.18.jar!/" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>
