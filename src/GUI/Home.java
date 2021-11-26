@@ -1,7 +1,6 @@
 //Davide Franco "741453" CO
 // Sebastian Colombo "742779" CO
 package GUI;
-
 import centrivaccinali.CentroVaccinale;
 import cittadini.User;
 import utils.Indirizzo;
@@ -9,7 +8,6 @@ import cittadini.Cittadino;
 import utils.DataLab;
 import cittadini.Vaccinato;
 import utils.Message;
-
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;

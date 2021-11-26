@@ -1,15 +1,13 @@
 //Davide Franco "741453" CO
 //Sebastian Colombo "742779" CO
 package utils;
-
 import java.io.Serializable;
 
 public class DataLab implements Serializable {
     private static final long serialVersionUID = 1L;
-
-private String giorno;
-private String mese;
-private String anno;
+    private String giorno;
+    private String mese;
+    private String anno;
 
 //costruttore
     /**

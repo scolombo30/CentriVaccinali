@@ -1,5 +1,6 @@
+//Davide Franco "741453" CO
+// Sebastian Colombo "742779" CO
 package cittadini;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

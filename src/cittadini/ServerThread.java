@@ -1,16 +1,13 @@
+//Davide Franco "741453" CO
+// Sebastian Colombo "742779" CO
 package cittadini;
-
-// EchoMultiServer.java
 import centrivaccinali.CentroVaccinale;
 import utils.Registrazione;
-
 import java.io.*;
 import java.net.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
 
 class ServerThread extends Thread {
     //dichiarazione variabili

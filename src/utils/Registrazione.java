@@ -1,5 +1,6 @@
+//Davide Franco "741453" CO
+// Sebastian Colombo "742779" CO
 package utils;
-
 import centrivaccinali.CentroVaccinale;
 import cittadini.Cittadino;
 import cittadini.EventoAvverso;
@@ -32,18 +33,10 @@ public  class Registrazione {
             String query_crea_centri=SqlString.CreaTabellaCentro();
             //update per la tabella
             st.executeUpdate(query_crea_centri);
-           /* //creo query di creazione tabella Indirizzi se non esiste già
-            String query_crea_indirizzi=SqlString.CreaTabellaIndirizzzo();
-            //update per la tabella
-            st.executeUpdate(query_crea_indirizzi); */
             //creo query di inserimento dati in CentriVaccinali
             String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+nome+"','"+qualificatore+"','"+nomeVia+"','"
                     +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
             st.executeUpdate(query_inserisci_centro);
-            //creo query di inserimento dati in Indirizzi
-           /*  String query_inserisci_indirizzi="INSERT INTO Indirizzi VALUES ('"+nome+"','"+qualificatore+"','"+nomeVia+"','"
-                                            +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
-            st.executeUpdate(query_inserisci_indirizzi);*/
             //se non ci sono stati errori ritorno vero
             return true;
         }catch(Exception e){

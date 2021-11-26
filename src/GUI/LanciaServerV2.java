@@ -82,7 +82,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
             }
         });
 
-        chiudi_finestra_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\Desktop\\conferma.png")); // NOI18N
+        chiudi_finestra_btn.setIcon(new javax.swing.ImageIcon("./res/close.png")); // NOI18N
         chiudi_finestra_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 chiudi_finestra_btnMouseClicked(evt);
@@ -118,7 +118,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         jButton1.setText("Cerca file");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                buttonCercaExe(evt);
             }
         });
 
@@ -132,7 +132,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         jLabel3.setText("Aiuto");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                aiutoPath(evt);
             }
         });
 
@@ -239,7 +239,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         jButton2.setText("Accedi");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                buttonAvviaServer(evt);
             }
         });
 
@@ -323,7 +323,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         this.dispose();
     }
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {
+    private void buttonCercaExe(java.awt.event.MouseEvent evt) {
         //lancio fileChooser per far selezionare pgAdmin.exe
         JFileChooser filechooser = new JFileChooser();
         FileFilter filter = new FileNameExtensionFilter("EXE File","exe");
@@ -337,7 +337,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         }catch (Exception e){}
     }
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {
+    private void aiutoPath(java.awt.event.MouseEvent evt) {
         Message.informationMessage(this, "pgAdmi4.exe di solito si trova sotto:"
                 + "\n C\\Programs_files\\PostgreSQL\\versione\\pgAdmin4\\bin\\pgAdmin4.exe", "Aiuto");
     }
@@ -360,7 +360,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         }
     }
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {
+    private void buttonAvviaServer(java.awt.event.MouseEvent evt) {
         String USER=username.getText();
         String PASSWORD=new String(password.getPassword());
         String [] user_psw=new String []{USER,PASSWORD};

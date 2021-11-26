@@ -1,7 +1,6 @@
 //Davide Franco "741453" CO
 //Sebastian Colombo "742779" CO
 package utils;
-
 import javax.swing.*;
 import java.awt.*;
 
