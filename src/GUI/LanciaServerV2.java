@@ -1,23 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Davide Franco "741453" CO
+//Sebastian Colombo "742779" CO
 package GUI;
 
 
-import cittadini.MultiServer;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JFileChooser;
+
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import cittadini.MultiServer;
 import utils.Message;
 
 /**
@@ -34,8 +32,6 @@ public class LanciaServerV2 extends javax.swing.JFrame {
      * Creates new form LanciaServerV2
      */
     public LanciaServerV2() {
-
-        //carico il driver jdbc
         initComponents();
     }
 
@@ -61,6 +57,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         login_db_btn = new javax.swing.JButton();
         check_primo_avvio = new javax.swing.JCheckBox();
+        aiuto_btn = new javax.swing.JLabel();
         login_db_pnl = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
@@ -131,7 +128,6 @@ public class LanciaServerV2 extends javax.swing.JFrame {
 
         path.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Aiuto");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,6 +161,15 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         check_primo_avvio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         check_primo_avvio.setForeground(new java.awt.Color(255, 255, 255));
         check_primo_avvio.setText("Primo avvio");
+        check_primo_avvio.setToolTipText("Spuntando la casella verrà creato il database");
+
+        aiuto_btn.setForeground(new java.awt.Color(255, 255, 255));
+        aiuto_btn.setText("Aiuto");
+        aiuto_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aiuto_btnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout avvia_pgAdmin_pnlLayout = new javax.swing.GroupLayout(avvia_pgAdmin_pnl);
         avvia_pgAdmin_pnl.setLayout(avvia_pgAdmin_pnlLayout);
@@ -178,24 +183,25 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                                         .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
                                                 .addGap(44, 44, 44)
                                                 .addGroup(avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
-                                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                        .addComponent(jButton1)
-                                                                        .addGap(75, 75, 75)
-                                                                        .addComponent(jLabel3))
-                                                                .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
-                                                                        .addComponent(jLabel2)
-                                                                        .addGap(18, 18, 18)
-                                                                        .addComponent(path)))
+                                                        .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
+                                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jButton1)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(jLabel3))
+                                                        .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
+                                                                .addComponent(jLabel2)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(path, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addComponent(jLabel4)))
                                         .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
                                                 .addGap(291, 291, 291)
                                                 .addComponent(login_db_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(check_primo_avvio)))
-                                .addContainerGap())
+                                                .addComponent(check_primo_avvio)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(aiuto_btn)))
+                                .addContainerGap(44, Short.MAX_VALUE))
         );
         avvia_pgAdmin_pnlLayout.setVerticalGroup(
                 avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +222,8 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                                 .addGap(50, 50, 50)
                                 .addGroup(avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(login_db_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(check_primo_avvio))
+                                        .addComponent(check_primo_avvio)
+                                        .addComponent(aiuto_btn))
                                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -289,9 +296,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(title_bar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(contenitore, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(contenitore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,7 +338,8 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     }
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {
-        Message.informationMessage(this, "pgAdmi4.exe di solito si trova sotto:\n C\\Programs_files\\PostgreSQL\\versione\\pgAdmin4\\bin\\pgAdmin4.exe", "Aiuto");
+        Message.informationMessage(this, "pgAdmi4.exe di solito si trova sotto:"
+                + "\n C\\Programs_files\\PostgreSQL\\versione\\pgAdmin4\\bin\\pgAdmin4.exe", "Aiuto");
     }
 
     private void avvia_pg_btnMouseClicked(java.awt.event.MouseEvent evt) {
@@ -358,7 +364,6 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         String USER=username.getText();
         String PASSWORD=new String(password.getPassword());
         String [] user_psw=new String []{USER,PASSWORD};
-
         if(primo_avvio){
             //creo DB
             try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);
@@ -378,6 +383,10 @@ public class LanciaServerV2 extends javax.swing.JFrame {
             //avvio multiserver e gli passo le credenziali come parametro del main
             MultiServer.main(user_psw);
         } catch (IOException ex) {}
+    }
+
+    private void aiuto_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        Message.informationMessage(this, "Spuntando questa casella verrà creato il \ndatabade. Se è già stato creato non spuntare la casella", "Avviso");
     }
 
     /**
@@ -416,6 +425,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
+    private javax.swing.JLabel aiuto_btn;
     private javax.swing.JPanel avvia_pgAdmin_pnl;
     private javax.swing.JButton avvia_pg_btn;
     private javax.swing.JCheckBox check_primo_avvio;
