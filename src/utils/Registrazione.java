@@ -49,8 +49,9 @@ public  class Registrazione {
     public static boolean registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //campi da inserire nella tabella
             //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
-        String centroVaccinale= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
+        String centroVacci= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
         String comune_centro=vaccinato.getComuneCentro();
+        String nomecentro=vaccinato.getCentroVaccinale();
         String nome=vaccinato.getNome();
         String cognome=vaccinato.getCognome();
         String cod_fisc=vaccinato.getCodiceFiscale();
@@ -62,7 +63,7 @@ public  class Registrazione {
             //creo lo statement
             Statement st= conn.createStatement();
             //creo il nome della tabella dinamicamente in base al centro vaccinale
-            String nomeTabella="Vaccinati_"+centroVaccinale;
+            String nomeTabella="Vaccinati_"+centroVacci;
             //Anno-mese-giorno. Creo la data
             String data_query=data.getAnno()+"-"+data.getMese()+"-"+data.getGiorno();
             //creo query di creazione tabella se non è già presente nel DB
@@ -71,7 +72,7 @@ public  class Registrazione {
             st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
             String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
-                    +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+centroVaccinale+"','"+comune_centro+"')";
+                    +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";
             st.executeUpdate(query_insert_vaccinato);
             //se non ci sono stati errori ritorno vero
             return true;

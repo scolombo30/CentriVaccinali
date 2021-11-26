@@ -30,7 +30,7 @@ public class SqlString {
                 "Id_vax NUMERIC(16) PRIMARY KEY,"+
                 "Nome_centro VARCHAR(20),"+
                 "Comune VARCHAR(20),"+
-                "foreign key(Nome_centro,Comune) references CentriVaccinali(Nome_Centro,Comune))";
+                "foreign key(Nome_Centro,Comune) references CentriVaccinali(Nome_Centro,Comune))";
         return query;
     }
     //String query CreaTabellaCittadino
@@ -63,7 +63,7 @@ public class SqlString {
                 "Note VARCHAR(256))"+
                 "Username VARCHAR(20),"+
                 "Password VARCHAR(20),"+
-                "foreign key (Username,Password) references User(Username,Password))";
+                "foreign key (Username,Password) references Users(Username,Password))";
                 return query;
     }
 }
