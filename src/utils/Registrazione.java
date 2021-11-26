@@ -34,7 +34,7 @@ public  class Registrazione {
             //update per la tabella
             st.executeUpdate(query_crea_centri);
             //creo query di inserimento dati in CentriVaccinali
-            String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+nome+"','"+qualificatore+"','"+nomeVia+"','"
+            String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
                     +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
             st.executeUpdate(query_inserisci_centro);
             //se non ci sono stati errori ritorno vero
