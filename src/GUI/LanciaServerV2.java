@@ -1,27 +1,18 @@
 //Davide Franco "741453" CO
 //Sebastian Colombo "742779" CO
 package GUI;
-
-
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-
 import javax.swing.JFileChooser;
-
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import cittadini.MultiServer;
 import utils.Message;
 
-/**
- *
- * @author moseb
- */
 public class LanciaServerV2 extends javax.swing.JFrame {
 
     private int x,y;
