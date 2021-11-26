@@ -10,10 +10,6 @@ import java.net.*;
 import javax.swing.*;
 import utils.*;
 
-/**
- *
- * @author moseb
- */
 public class HomeV2 extends javax.swing.JFrame {
     //variabili per trascinare la finestra
     private int MouseX,MouseY;
