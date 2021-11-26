@@ -1296,6 +1296,8 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Nome centro vaccinale");
 
+        //inserire
+
         contenitore_pnl.add(registra_vaccinato_pnl, "card6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
