@@ -19,7 +19,7 @@ public class SqlString {
        return query;
 
     }
-
+    //String query CreaTabellaVaccinato
     public static String CreaTabellaVaccinato(String nomeTabella) {
         String query="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+
                 "Nome VARCHAR(20),"+
