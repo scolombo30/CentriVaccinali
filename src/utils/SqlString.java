@@ -57,13 +57,13 @@ public class SqlString {
     }
     //String query CreaTabellaEvento
     public static String CreaTabellaEvento() {
-        String query="CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
+        String query = "CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
-                "Note VARCHAR(256))"+
-                "Username VARCHAR(20),"+
-                "Password VARCHAR(20),"+
+                "Note VARCHAR(256))" +
+                "Username VARCHAR(20)," +
+                "Password VARCHAR(20)," +
                 "foreign key (Username,Password) references Users(Username,Password))";
-                return query;
+        return query;
     }
 }

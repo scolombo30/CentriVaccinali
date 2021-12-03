@@ -587,7 +587,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Username");
+        jLabel21.setText("Username (Mail)");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
@@ -1614,16 +1614,31 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void cittadino_login_accedi_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String username=cittadino_login_username.getText();
-        String password=new String(cittadino_login_password.getPassword());
-        //scrivo le credenziali sul socket e controllo se ci sono nel db
+        try {
+            String username = cittadino_login_username.getText();
+            String password = new String(cittadino_login_password.getPassword());
+            //scrivo le credenziali sul socket e controllo se ci sono nel db
+            out.writeObject("LOGIN CITTADINO");
+            out.writeObject(new User(username,password));
+            //pulisco i campi
+            pulisci_campi();
+            //se corrette lo loggo e cambio il bottone registra evento
+            utente = (User) in.readObject();
+            if(!(utente == null)){
+                registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_abilitato.png"));
+                logged = true;
+                Message.informationMessage(this,"Login effettuato","Loggato");
+                //cambio layout
+                contenitore_pnl.removeAll();
+                contenitore_pnl.add(cittadino_pnl);
+                contenitore_pnl.repaint();
+                contenitore_pnl.revalidate();
+            }
+            else {
+                Message.errorMessage(this, "Le credenziali inserite non sono corrette. Riprovare","Errore credenziali");
+            }
 
-        //pulisco i campi
-        pulisci_campi();
-        //se corrette lo loggo e cambio il bottone registra evento
-        registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_abilitato.png"));
-        logged=true;
-        utente=new User(username,password);
+        }catch (Exception e) {}
     }
 
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {

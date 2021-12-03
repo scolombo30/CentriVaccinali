@@ -26,6 +26,8 @@ class ServerThread extends Thread {
         in = new ObjectInputStream(s.getInputStream());
         username=arg[0];
         password=arg[1];
+        //username="postgres";
+        //password="qwerty";
         start();
         System.out.println("ServerThread " + id + ": started");
 
@@ -72,13 +74,11 @@ class ServerThread extends Thread {
                     Registrazione.inserisciEventiAvversi(conn,evento,utente);
 
                 } else if (azione.equals("LOGIN CITTADINO")) {
-
-                    String username = (String) in.readObject();
-                    String password = (String) in.readObject();
-                    Registrazione.loginCittadino(conn,username,password);
-                    //cerco sul db il cittadino con queste credenziali
+                    User utente = (User) in.readObject();
+                    //cerco sul db lo user con queste credenziali
+                    User user_return=Registrazione.loginCittadino(conn,utente);
                     //se lo trovo lo riscrivo al client
-                    //out.println(Cittadino)
+                    out.writeObject(user_return);
                 } else if (azione.equals("CERCA CENTRO PER NOME")) { //leggo il nome del centro
                     String nome_centro = (String) in.readObject();
                     //cerco sul db i centri con queste lettere

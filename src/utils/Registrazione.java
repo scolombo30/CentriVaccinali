@@ -7,6 +7,7 @@ import cittadini.EventoAvverso;
 import cittadini.User;
 import cittadini.Vaccinato;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -120,7 +121,29 @@ public  class Registrazione {
          }
     }
     //login sulla piattaforma
-    public static void loginCittadino(Connection conn,String username,String password){}
+    public static User loginCittadino(Connection conn,User utente){
+        String user= utente.getUsername();
+        String psw= utente.getPassword();
+        User user_return=null;
+        try{
+            //creo lo statement
+            Statement st= conn.createStatement();
+            //creo query di select cittadino con queste credenziali
+            String query_ricerca= "SELECT * FROM Users WHERE Username='"+user+"' AND Password='"+psw+"';";
+            //update per la tabella
+            ResultSet rs = st.executeQuery(query_ricerca);
+            while(rs.next()){
+                String user_result = rs.getString("Username");
+                String psw_result = rs.getString("Password");
+                user_return=new User(user_result,psw_result);
+            }
+            return user_return;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return user_return;
+        }
+
+    }
     //metodo cerca centro vaccinale x nome
     public static void cercaCentroVaccinaleNome(Connection conn,String nome){}
     //metodo cerca centro vaccinale x comune, tipologia
