@@ -31,7 +31,7 @@ public class Indirizzo implements Serializable{
                      String cAP) {
 
         this.qualificatore = qualificatore;
-        this.nome = this.primaLetteraMaiuscola(nome);
+        this.nome = nome.toUpperCase();
                 //controllo se ci sono lettere nel numero civico e le rendo maiuscole nel caso
                 int i=0; char c; String numero="";
                 while(true){
@@ -43,7 +43,7 @@ public class Indirizzo implements Serializable{
                         }catch (IndexOutOfBoundsException e){break;}
         }
         this.numeroCivico = numero;
-        this.comune = this.primaLetteraMaiuscola(comune);
+        this.comune = comune.toLowerCase();
         this.siglaProvincia = siglaProvincia.toUpperCase();
         CAP = cAP;
     }
@@ -145,10 +145,10 @@ public class Indirizzo implements Serializable{
                 this.comune+ "("+this.siglaProvincia+"), "+
                 this.CAP;
     }
+    /*
+        /**
+         * @return Una stringa con la prima lettera in maiuscolo e le altre in minuscolo
 
-    /**
-     * @return Una stringa con la prima lettera in maiuscolo e le altre in minuscolo
-     */
     private String primaLetteraMaiuscola(String str){
         String risultato="";
         //rendo la prima lettera maiuscola
@@ -158,7 +158,7 @@ public class Indirizzo implements Serializable{
         String altre_lettere_nome = str.substring(1).toLowerCase();
         //riunisco il tutto
         risultato = prima_lettera + altre_lettere_nome;
-        return risultato;
+        return risultato;}*/
     }
 
-}
+

@@ -4,6 +4,7 @@
 package cittadini;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class Cittadino implements Serializable{
 
@@ -28,8 +29,8 @@ public class Cittadino implements Serializable{
      */
     public Cittadino(String nome, String cognome, String codiceFiscale, long idVaccinazione, User user) {
         super();
-        this.nome = primaLetteraMaiuscola(nome);
-        this.cognome = primaLetteraMaiuscola(cognome);
+        this.nome = nome.toLowerCase();
+        this.cognome = cognome.toLowerCase();
         this.codiceFiscale = codiceFiscale.toUpperCase();
         this.idVaccinazione = idVaccinazione;
         this.user=user;
@@ -117,15 +118,5 @@ public class Cittadino implements Serializable{
     }
 
     */
-    private String primaLetteraMaiuscola(String str){
-        String risultato="";
-        //rendo la prima lettera maiuscola
-        String prima_lettera = str.substring(0, 1);
-        prima_lettera=prima_lettera.toUpperCase();
-        //prendo le altre lettere
-        String altre_lettere_nome = str.substring(1).toLowerCase();
-        //riunisco il tutto
-        risultato = prima_lettera + altre_lettere_nome;
-        return risultato;
-    }
+
 }

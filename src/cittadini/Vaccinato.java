@@ -33,13 +33,13 @@ public class Vaccinato implements Serializable{
     public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale, String comuneCentro,
                      DataLab dataSomministrazione, String vaccino, long idVaccinazione) {
         //controllare hce il nome sia senza spazi "_"
-        this.centroVaccinale = primaLetteraMaiuscola(centroVaccinale);
-        this.comuneCentro=primaLetteraMaiuscola(comuneCentro);
-        this.nome = primaLetteraMaiuscola(nome);
-        this.cognome = primaLetteraMaiuscola(cognome);
+        this.centroVaccinale = centroVaccinale.toUpperCase();
+        this.comuneCentro=comuneCentro.toLowerCase();
+        this.nome = nome.toLowerCase();
+        this.cognome = cognome.toLowerCase();
         this.codiceFiscale = codiceFiscale.toUpperCase();
         this.dataSomministrazione = dataSomministrazione;
-        this.vaccino = vaccino;
+        this.vaccino = vaccino.toLowerCase();
         this.idVaccinazione = idVaccinazione;
     }
 
@@ -168,19 +168,7 @@ public class Vaccinato implements Serializable{
                 "\nID_vaccinazione: "+this.idVaccinazione;
     }
 
-    /**
-     * @return Una stringa con la prima lettera in maiuscolo e le altre in minuscolo
-     */
-    private String primaLetteraMaiuscola(String str){
-        String risultato="";
-        //rendo la prima lettera maiuscola
-        String prima_lettera = str.substring(0, 1);
-        prima_lettera=prima_lettera.toUpperCase();
-        //prendo le altre lettere
-        String altre_lettere_nome = str.substring(1).toLowerCase();
-        //riunisco il tutto
-        risultato = prima_lettera + altre_lettere_nome;
-        return risultato;
-    }
+
+
 }
 

@@ -13,7 +13,7 @@ public class User implements Serializable {
     private String password;
 
     public User(String username, String password) {
-        this.username = username;
+        this.username = username.toLowerCase();
         this.password = password;
     }
 
