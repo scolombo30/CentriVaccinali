@@ -17,7 +17,7 @@ public class Vaccinato implements Serializable{
     private String codiceFiscale;
     private DataLab dataSomministrazione;
     private String vaccino;
-    private int idVaccinazione;
+    private long idVaccinazione;
 
     //costruttore
     /**
@@ -31,7 +31,7 @@ public class Vaccinato implements Serializable{
      * @param idVaccinazione
      */
     public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale, String comuneCentro,
-                     DataLab dataSomministrazione, String vaccino, int idVaccinazione) {
+                     DataLab dataSomministrazione, String vaccino, long idVaccinazione) {
         //controllare hce il nome sia senza spazi "_"
         this.centroVaccinale = primaLetteraMaiuscola(centroVaccinale);
         this.comuneCentro=primaLetteraMaiuscola(comuneCentro);
@@ -83,7 +83,7 @@ public class Vaccinato implements Serializable{
     /**
      * @return the idVaccinazione
      */
-    public int getIdVaccinazione() {
+    public long getIdVaccinazione() {
         return idVaccinazione;
     }
     /**
@@ -139,7 +139,7 @@ public class Vaccinato implements Serializable{
     /**
      * @param idVaccinazione the idVaccinazione to set
      */
-    public void setIdVaccinazione(int idVaccinazione) {
+    public void setIdVaccinazione(long idVaccinazione) {
         this.idVaccinazione = idVaccinazione;
     }
 

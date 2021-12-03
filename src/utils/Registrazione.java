@@ -58,7 +58,7 @@ public  class Registrazione {
         String cod_fisc=vaccinato.getCodiceFiscale();
         DataLab data=vaccinato.getDataSomministrazione();
         String tipo_vaccino=vaccinato.getVaccino();
-        int id_vaccinazione=vaccinato.getIdVaccinazione();
+        long id_vaccinazione=vaccinato.getIdVaccinazione();
 
         try {
             //creo lo statement
@@ -72,8 +72,8 @@ public  class Registrazione {
             //update per la tabella
             st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
-            String query_insert_vaccinato="INSERT INTO "+nomeTabella+ " VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', '"
-                    +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";
+            String query_insert_vaccinato="INSERT INTO "+nomeTabella+" VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', " +
+                    "'" +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";
             st.executeUpdate(query_insert_vaccinato);
             //se non ci sono stati errori ritorno vero
             return true;
@@ -90,7 +90,7 @@ public  class Registrazione {
          String nome=cittadino.getNome();
          String cognome= cittadino.getCognome();
          String codiceFiscale=cittadino.getCodiceFiscale();
-         int idVaccinazione=cittadino.getIdVaccinazione();
+         long idVaccinazione=cittadino.getIdVaccinazione();
          //String mail=user1.getMail();
          String username=cittadino.getUser().getUsername();
          String password=cittadino.getUser().getPassword();

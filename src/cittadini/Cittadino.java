@@ -14,7 +14,7 @@ public class Cittadino implements Serializable{
     private String nome;
     private String cognome;
     private String codiceFiscale;
-    private int idVaccinazione;
+    private long idVaccinazione;
     private User user;
 
 
@@ -26,7 +26,7 @@ public class Cittadino implements Serializable{
      * @param idVaccinazione
      * @param user
      */
-    public Cittadino(String nome, String cognome, String codiceFiscale, int idVaccinazione, User user) {
+    public Cittadino(String nome, String cognome, String codiceFiscale, long idVaccinazione, User user) {
         super();
         this.nome = primaLetteraMaiuscola(nome);
         this.cognome = primaLetteraMaiuscola(cognome);
@@ -64,7 +64,7 @@ public class Cittadino implements Serializable{
     /**
      * @return the idVaccinazione
      */
-    public int getIdVaccinazione() {
+    public long getIdVaccinazione() {
         return idVaccinazione;
     }
 
@@ -89,7 +89,7 @@ public class Cittadino implements Serializable{
     /**
      * @param idVaccinazione the idVaccinazione to set
      */
-    public void setIdVaccinazione(int idVaccinazione) {
+    public void setIdVaccinazione(long idVaccinazione) {
         this.idVaccinazione = idVaccinazione;
     }
 
