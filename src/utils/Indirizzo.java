@@ -31,7 +31,7 @@ public class Indirizzo implements Serializable{
                      String cAP) {
 
         this.qualificatore = qualificatore;
-        this.nome = nome.toUpperCase();
+        this.nome = nome.toLowerCase();
                 //controllo se ci sono lettere nel numero civico e le rendo maiuscole nel caso
                 int i=0; char c; String numero="";
                 while(true){

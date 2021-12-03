@@ -33,7 +33,7 @@ public class Vaccinato implements Serializable{
     public Vaccinato(String nome, String cognome, String codiceFiscale,String centroVaccinale, String comuneCentro,
                      DataLab dataSomministrazione, String vaccino, long idVaccinazione) {
         //controllare hce il nome sia senza spazi "_"
-        this.centroVaccinale = centroVaccinale.toUpperCase();
+        this.centroVaccinale = centroVaccinale.toLowerCase();
         this.comuneCentro=comuneCentro.toLowerCase();
         this.nome = nome.toLowerCase();
         this.cognome = cognome.toLowerCase();
