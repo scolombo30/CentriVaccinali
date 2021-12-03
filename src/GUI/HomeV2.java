@@ -78,6 +78,15 @@ public class HomeV2 extends javax.swing.JFrame {
         barra_laterale_operatore_btn = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        user_status_pnl = new javax.swing.JPanel();
+        user_not_logged_pnl = new javax.swing.JPanel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        user_logged_pnl = new javax.swing.JPanel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        disconnetti_btn = new javax.swing.JLabel();
         contenitore_pnl = new javax.swing.JPanel();
         home_pnl = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -279,7 +288,7 @@ public class HomeV2 extends javax.swing.JFrame {
         barra_laterale_home_btnLayout.setVerticalGroup(
                 barra_laterale_home_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         barra_laterale_cittadino_btn.setBackground(new java.awt.Color(153, 0, 102));
@@ -304,12 +313,15 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7)
-                                .addContainerGap())
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         barra_laterale_cittadino_btnLayout.setVerticalGroup(
                 barra_laterale_cittadino_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barra_laterale_cittadino_btnLayout.createSequentialGroup()
+                                .addGroup(barra_laterale_cittadino_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE))
+                                .addContainerGap())
         );
 
         barra_laterale_operatore_btn.setBackground(new java.awt.Color(153, 0, 102));
@@ -333,13 +345,96 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         barra_laterale_operatore_btnLayout.setVerticalGroup(
                 barra_laterale_operatore_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(barra_laterale_operatore_btnLayout.createSequentialGroup()
+                                .addGroup(barra_laterale_operatore_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(8, Short.MAX_VALUE))
         );
+
+        user_status_pnl.setLayout(new java.awt.CardLayout());
+
+        user_not_logged_pnl.setBackground(new java.awt.Color(160, 52, 114));
+
+        jLabel59.setIcon(new javax.swing.ImageIcon("./res/cerchio_rosso.png")); // NOI18N
+
+        jLabel60.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel60.setText("Non connesso");
+
+        javax.swing.GroupLayout user_not_logged_pnlLayout = new javax.swing.GroupLayout(user_not_logged_pnl);
+        user_not_logged_pnl.setLayout(user_not_logged_pnlLayout);
+        user_not_logged_pnlLayout.setHorizontalGroup(
+                user_not_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(user_not_logged_pnlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel59)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel60)
+                                .addContainerGap(149, Short.MAX_VALUE))
+        );
+        user_not_logged_pnlLayout.setVerticalGroup(
+                user_not_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, user_not_logged_pnlLayout.createSequentialGroup()
+                                .addContainerGap(8, Short.MAX_VALUE)
+                                .addGroup(user_not_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel60)
+                                        .addComponent(jLabel59))
+                                .addContainerGap())
+        );
+
+        user_status_pnl.add(user_not_logged_pnl, "card2");
+
+        user_logged_pnl.setBackground(new java.awt.Color(160, 52, 114));
+
+        jLabel63.setIcon(new javax.swing.ImageIcon("./res/cerchio_verde.png")); // NOI18N
+
+        jLabel61.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel61.setText("Connesso");
+
+        disconnetti_btn.setIcon(new javax.swing.ImageIcon("./res/log_out (1).png")); // NOI18N
+        disconnetti_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                disconnetti_btnMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout user_logged_pnlLayout = new javax.swing.GroupLayout(user_logged_pnl);
+        user_logged_pnl.setLayout(user_logged_pnlLayout);
+        user_logged_pnlLayout.setHorizontalGroup(
+                user_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(user_logged_pnlLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel63)
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel61)
+                                .addGap(137, 137, 137)
+                                .addComponent(jLabel62)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(disconnetti_btn)
+                                .addContainerGap())
+        );
+        user_logged_pnlLayout.setVerticalGroup(
+                user_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(user_logged_pnlLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(user_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(disconnetti_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel63)
+                                        .addComponent(jLabel61)
+                                        .addComponent(jLabel62))
+                                .addContainerGap())
+        );
+
+        user_status_pnl.add(user_logged_pnl, "card3");
+
+
 
         javax.swing.GroupLayout barra_laterale_PnlLayout = new javax.swing.GroupLayout(barra_laterale_Pnl);
         barra_laterale_Pnl.setLayout(barra_laterale_PnlLayout);
@@ -349,24 +444,33 @@ public class HomeV2 extends javax.swing.JFrame {
                         .addComponent(barra_laterale_home_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
                                 .addComponent(barra_laterale_operatore_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 0, 0))
                         .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
+                                .addGroup(barra_laterale_PnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(user_status_pnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(piattaformaCV)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                        .addComponent(barra_laterale_operatore_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         barra_laterale_PnlLayout.setVerticalGroup(
                 barra_laterale_PnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addComponent(piattaformaCV)
-                                .addGap(220, 220, 220)
+                                .addGap(254, 254, 254)
                                 .addComponent(barra_laterale_home_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(barra_laterale_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(barra_laterale_operatore_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, Short.MAX_VALUE)
+                                .addComponent(user_status_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
         );
 
         contenitore_pnl.setBackground(new java.awt.Color(33, 32, 36));
@@ -596,6 +700,12 @@ public class HomeV2 extends javax.swing.JFrame {
         cittadino_login_username.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
         cittadino_login_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+
+        cittadino_login_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cittadino_login_passwordKeyPressed(evt);
+            }
+        });
 
         cittadino_login_mostra_password_btn.setIcon(new javax.swing.ImageIcon("./res/non_mostrare_password.png")); // NOI18N
         cittadino_login_mostra_password_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1614,31 +1724,7 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void cittadino_login_accedi_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        try {
-            String username = cittadino_login_username.getText();
-            String password = new String(cittadino_login_password.getPassword());
-            //scrivo le credenziali sul socket e controllo se ci sono nel db
-            out.writeObject("LOGIN CITTADINO");
-            out.writeObject(new User(username,password));
-            //pulisco i campi
-            pulisci_campi();
-            //se corrette lo loggo e cambio il bottone registra evento
-            utente = (User) in.readObject();
-            if(!(utente == null)){
-                registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_abilitato.png"));
-                logged = true;
-                Message.informationMessage(this,"Login effettuato","Loggato");
-                //cambio layout
-                contenitore_pnl.removeAll();
-                contenitore_pnl.add(cittadino_pnl);
-                contenitore_pnl.repaint();
-                contenitore_pnl.revalidate();
-            }
-            else {
-                Message.errorMessage(this, "Le credenziali inserite non sono corrette. Riprovare","Errore credenziali");
-            }
-
-        }catch (Exception e) {}
+        login_cittadino();
     }
 
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
@@ -1789,6 +1875,26 @@ public class HomeV2 extends javax.swing.JFrame {
             } catch (IOException e) {}
         }
     }
+    private void disconnetti_btnMouseClicked(java.awt.event.MouseEvent evt) {
+
+        if(Message.confirmMessage(this,"Disconnettersi?","Disconnesione")==0){
+            logged=false;
+            utente=null;
+            //cambio layout del contenitore user_status
+            user_status_pnl.removeAll();
+            user_status_pnl.add(user_not_logged_pnl);
+            user_status_pnl.repaint();
+            user_status_pnl.revalidate();
+            //cambio icona bottone registra evento avverso
+            registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_disabilitato.png"));
+        }
+
+    }
+    private void cittadino_login_passwordKeyPressed(java.awt.event.KeyEvent evt) {
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            login_cittadino();
+        }
+    }
     //metodi utilizzati per cambiare il colore dei pulsanti sulla barra laterale
     private void setColor(JPanel panel){
         panel.setBackground(tasto_premuto);
@@ -1872,6 +1978,39 @@ public class HomeV2 extends javax.swing.JFrame {
             pulisci_campi();
         }}
 
+    private void login_cittadino(){
+        try {
+            String username = cittadino_login_username.getText();
+            String password = new String(cittadino_login_password.getPassword());
+            //scrivo le credenziali sul socket e controllo se ci sono nel db
+            out.writeObject("LOGIN CITTADINO");
+            out.writeObject(new User(username,password));
+            //se corrette lo loggo e cambio il bottone registra evento
+            utente = (User) in.readObject();
+            if(!(utente == null)){
+                registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_abilitato.png"));
+                logged = true;
+                Message.informationMessage(this,"Login effettuato","Loggato");
+                //cambio layout e torno al panel cittadino_pnl
+                contenitore_pnl.removeAll();
+                contenitore_pnl.add(cittadino_pnl);
+                contenitore_pnl.repaint();
+                contenitore_pnl.revalidate();
+                //cambio layout del contenitore user_status
+                user_status_pnl.removeAll();
+                user_status_pnl.add(user_logged_pnl);
+                user_status_pnl.repaint();
+                user_status_pnl.revalidate();
+                //pulisco i campi
+                pulisci_campi();
+            }
+            else {
+                Message.errorMessage(this, "Le credenziali inserite non sono corrette. Riprovare","Errore credenziali");
+            }
+
+        }catch (Exception e) {}
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1929,6 +2068,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel conferma_btn;
     private javax.swing.JPanel contenitore_pnl;
     private javax.swing.JScrollPane contenitore_text_area;
+    private javax.swing.JLabel disconnetti_btn;
     private javax.swing.JPanel home_pnl;
     private javax.swing.JLabel indietro_btn;
     private javax.swing.JLabel indietro_btn1;
@@ -1986,7 +2126,12 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2037,5 +2182,8 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> registra_vaccinato_tipologia;
     private javax.swing.JTable tabella_risultati;
     private javax.swing.JPanel title_bar;
+    private javax.swing.JPanel user_logged_pnl;
+    private javax.swing.JPanel user_not_logged_pnl;
+    private javax.swing.JPanel user_status_pnl;
     // End of variables declaration
 }

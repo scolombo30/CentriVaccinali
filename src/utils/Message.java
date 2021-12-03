@@ -26,6 +26,20 @@ public class Message {
                 mess,
                 titolo,
                 JOptionPane.ERROR_MESSAGE);}
+
+    public static int confirmMessage(Component c,String mess,String titolo){
+        Object[] options = {"Si", "No"};
+        //return Si=0,No=1
+        return JOptionPane.showOptionDialog(
+                c,
+                mess,
+                titolo,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+    }
 }
 
 
