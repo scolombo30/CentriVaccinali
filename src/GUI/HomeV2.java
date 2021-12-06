@@ -1730,23 +1730,30 @@ public class HomeV2 extends javax.swing.JFrame {
                 psw.isBlank()||psw_conferma.isBlank()||id_vaccinazione.isBlank()))
         { Message.errorMessage(this, "Per procedere alla registrazione assicurarsi che tutti i campi siano compilati", "Campi vuoti");}
         else{
+            //controllo conformità codice fiscale
+            if(codice_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && codice_fiscale.length()==16){
             //controllo se il formato  dell'email è corretta
-            if(mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
+            if(mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
                 //controllo se le password corrispondono
                 if(psw.equals(psw_conferma)) {
                     //controllo se l'id vaccinazione è scritta correttamente
-                    if(id_vaccinazione.matches("[0-9]+")) {
-                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione), new User(mail,psw));
+                    if(id_vaccinazione.matches("[0-9]+") && id_vaccinazione.length()==16) {
+                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione), new User(mail, psw));
                         //messagio di inserimento corretto
-                        Message.informationMessage(this,"Informazioni inserite con successo!", "Successo");
+                        Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
                         //scrivo sul socket
                         try {
                             out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
-                            } catch (IOException e) {
+                        } catch (IOException e) {
                         }
                         //reset dei campi se sono corretti
                         pulisci_campi();
+                    }else{
+                        Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
+                        registra_cittadino_codice_fiscale.setText("");
+
+                    }
                     }else{
                         //warning id vaccinazione non conforme
                         Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
@@ -1782,13 +1789,31 @@ public class HomeV2 extends javax.swing.JFrame {
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
         else {
-            Indirizzo indirizzo = new Indirizzo(qualificatore,nome_via,numeroCivico,comune,provincia,cap);
-            CentroVaccinale centro=new CentroVaccinale(nome_centroo,indirizzo,tipo_centro);
-            try{
-                //scrivo sul socket
-                out.writeObject("REGISTRA CENTRO");
-                out.writeObject(centro);
-            }catch (IOException e){};
+            if(comune.matches("[A-Z]")) {
+                if (provincia.matches("[A-Z]") && provincia.length() == 2) {
+                    if (cap.matches("[A-Z]") && cap.length() == 5) {
+                        Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
+                        CentroVaccinale centro = new CentroVaccinale(nome_centroo, indirizzo, tipo_centro);
+                        try {
+                            //scrivo sul socket
+                            out.writeObject("REGISTRA CENTRO");
+                            out.writeObject(centro);
+                        } catch (IOException e) {
+                        }
+                        ;
+                    } else {
+                        Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
+                        registra_centro_comune.setText("");
+                    }
+                } else {
+                    Message.warningMessage(this, "Perfavore inserire una provincia valida. Prego reinserisca", "Provincia non corretta");
+                    registra_centro_provincia.setText("");
+                }
+            }else{
+                Message.warningMessage(this, "Perfavore inserire un cap valido. Prego reinserisca", "Cap non corretto");
+                registra_centro_cap.setText("");
+            }
+
             //apro JOptionPane per avvisare del corretto inserimento
             Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
             //svuoto i campi
