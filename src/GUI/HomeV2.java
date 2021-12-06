@@ -1789,11 +1789,11 @@ public class HomeV2 extends javax.swing.JFrame {
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
         else {
-            if(nome_centroo.length()>35) {
+            if(nome_centroo.length()<35) {
                 if (tipo_centro.matches("[a-zA-Z]+")) {
                     if (qualificatore.matches("[a-zA-Z]+")) {
-                        if (nome_via.length() > 35) {
-                            if (comune.matches("[a-zA-Z]+") && comune.length()>35) {
+                        if (nome_via.length() < 35) {
+                            if (comune.matches("[a-zA-Z]+") && comune.length() < 35) {
                                 if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
                                     if (cap.matches("[0-9]+") && cap.length() == 5) {
                                         Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
