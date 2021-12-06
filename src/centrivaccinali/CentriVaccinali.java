@@ -3,11 +3,11 @@
 
 package centrivaccinali;
 
-import GUI.Home;
+import GUI.HomeV2;
 
 public class CentriVaccinali {
     public static void main(String[] args) {
-        new Home().setVisible(true);
+       HomeV2.main(null);
     }
 }
 

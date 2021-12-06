@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.net.*;
+import java.util.Locale;
 import javax.swing.*;
 import utils.*;
 
@@ -51,8 +52,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         //inizializzo tutti i componenti della GUI
         initComponents();
-        //sovrascrivo l'icona di default
-        //this.setIconImage(Toolkit.getDefaultToolkit().getImage("./res/icona.png"));
+
     }
 
     /**
@@ -1720,7 +1720,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String nome=registra_cittadino_nome.getText();
         String cognome=registra_cittadino_cognome.getText();
-        String codice_fiscale=registra_cittadino_codice_fiscale.getText();
+        String codice_fiscale=registra_cittadino_codice_fiscale.getText().toUpperCase();
         String mail=registra_cittadino_mail.getText();
         String psw=registra_cittadino_password.getText();
         String psw_conferma=registra_cittadino_conferma_password.getText();
@@ -1789,11 +1789,11 @@ public class HomeV2 extends javax.swing.JFrame {
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
         else {
-            if(nome_centroo.length()<35) {
+            if(nome_centroo.length() <= 35) {
                 if (tipo_centro.matches("[a-zA-Z]+")) {
                     if (qualificatore.matches("[a-zA-Z]+")) {
-                        if (nome_via.length() < 35) {
-                            if (comune.matches("[a-zA-Z]+") && comune.length() < 35) {
+                        if (nome_via.length() <= 35) {
+                            if (comune.matches("[a-zA-Z]+") && comune.length() <= 35) {
                                 if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
                                     if (cap.matches("[0-9]+") && cap.length() == 5) {
                                         Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
@@ -1845,7 +1845,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private void registra_vaccinato_registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String nome=registra_vaccinato_nome.getText();
         String cognome=registra_vaccinato_cognome.getText();
-        String cod_fiscale=registra_vaccinato_codice_fiscale.getText();
+        String cod_fiscale=registra_vaccinato_codice_fiscale.getText().toUpperCase();
         String comune_centro=registra_vaccinato_comune_centro.getText();
         String nome_centro=registra_vaccinato_centro_vaccinale.getText();
         String giorno=registra_vaccinato_giorno.getSelectedItem().toString();
@@ -1863,7 +1863,7 @@ public class HomeV2 extends javax.swing.JFrame {
            //comtrollo codice fiscale
             if(cod_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && cod_fiscale.length()==16){
                 //controllo comune
-                if(comune_centro.matches("[A-Z]")) {
+                if(comune_centro.matches("[a-zA-Z]+")&&comune_centro.length()<=35) {
                     //controllo se il giorno è valido
                     if(giorno.matches("[0-9]+") && !((giorno.length())>2) && Integer.parseInt(giorno)<32 && Integer.parseInt(giorno)>0) {
                         //controllo se anno è valido
@@ -1919,15 +1919,30 @@ public class HomeV2 extends javax.swing.JFrame {
         String severità= (String)registra_evento_severita.getSelectedItem();
         String note= registra_evento_note.getText();
 
-        if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
-        else {
-            try {
-                EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente);
-                //scrivo sul socket
-                out.writeObject("REGISTRA EVENTO AVVERSO");
-                out.writeObject(evento);
-            } catch (IOException e) {}
+        if(tipo.isBlank()||severità.isBlank()||note.isBlank()){
+            //errore campi vuoti
+            Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
+        }else {
+            if(tipo.matches("[a-zA-Z]+")){
+                    if(severità.matches("[a-zA-Z]+")){
+                        if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
+                        else {
+                            try {
+                                EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente);
+                                //scrivo sul socket
+                                out.writeObject("REGISTRA EVENTO AVVERSO");
+                                out.writeObject(evento);
+                            } catch (IOException e) {}
+                        }
+                    }else {
+                        Message.warningMessage(this, "Perfavore selezionare la severità", "Severità non corretta");
+                    }
+            }else {
+                Message.warningMessage(this, "Perfavore selezionare una tipologia", "Tipologia non corretta");
+            }
+
         }
+
     }
 
     private void disconnetti_btnMouseClicked(java.awt.event.MouseEvent evt) {
