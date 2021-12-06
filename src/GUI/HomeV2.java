@@ -1789,11 +1789,11 @@ public class HomeV2 extends javax.swing.JFrame {
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
         else {
-            if(tipo_centro.matches("[a-zA-Z]")){
-            if(qualificatore.matches("[a-zA-Z]")) {
-                if (comune.matches("[a-zA-Z]")) {
-                    if (provincia.matches("[a-zA-Z]") && provincia.length() == 2) {
-                        if (cap.matches("[a-zA-Z]") && cap.length() == 5) {
+            if(tipo_centro.matches("[a-zA-Z]+")){
+            if(qualificatore.matches("[a-zA-Z]+")) {
+                if (comune.matches("[a-zA-Z]+")) {
+                    if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
+                        if (cap.matches("[a-zA-Z]+") && cap.length() == 5) {
                             Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
                             CentroVaccinale centro = new CentroVaccinale(nome_centroo, indirizzo, tipo_centro);
                             try {
