@@ -7,12 +7,12 @@ public class SqlString {
     //String query CreaTabellaCentro
     static String CreaTabellaCentro(){
        String query = "CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
-                "Nome_Centro VARCHAR(30),"+
+                "Nome_Centro VARCHAR(35),"+
                 "Tipologia VARCHAR(11)," +
                 "Qualificatore VARCHAR(7),"+
-                "Nome_via VARCHAR(15),"+
+                "Nome_via VARCHAR(35),"+
                 "Numero_civico VARCHAR(5),"+
-                "Comune VARCHAR(15),"+
+                "Comune VARCHAR(35),"+
                 "Provincia VARCHAR(2),"+
                 "Cap VARCHAR(5),"+
                 "PRIMARY KEY(Nome_Centro,Comune))";

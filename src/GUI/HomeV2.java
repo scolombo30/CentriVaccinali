@@ -1789,45 +1789,55 @@ public class HomeV2 extends javax.swing.JFrame {
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
         else {
-            if(tipo_centro.matches("[a-zA-Z]+")){
-            if(qualificatore.matches("[a-zA-Z]+")) {
-                if (comune.matches("[a-zA-Z]+")) {
-                    if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
-                        if (cap.matches("[0-9]+") && cap.length() == 5) {
-                            Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
-                            CentroVaccinale centro = new CentroVaccinale(nome_centroo, indirizzo, tipo_centro);
-                            try {
-                                //scrivo sul socket
-                                out.writeObject("REGISTRA CENTRO");
-                                out.writeObject(centro);
-                            } catch (IOException e) {
+            if(nome_centroo.length()>35) {
+                if (tipo_centro.matches("[a-zA-Z]+")) {
+                    if (qualificatore.matches("[a-zA-Z]+")) {
+                        if (nome_via.length() > 35) {
+                            if (comune.matches("[a-zA-Z]+") && comune.length()>35) {
+                                if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
+                                    if (cap.matches("[0-9]+") && cap.length() == 5) {
+                                        Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
+                                        CentroVaccinale centro = new CentroVaccinale(nome_centroo, indirizzo, tipo_centro);
+                                        try {
+                                            //scrivo sul socket
+                                            out.writeObject("REGISTRA CENTRO");
+                                            out.writeObject(centro);
+                                            //apro JOptionPane per avvisare del corretto inserimento
+                                            Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                            //svuoto i campi
+                                            pulisci_campi();
+                                        } catch (IOException e) {
+                                        }
+                                    } else {
+                                        Message.warningMessage(this, "Perfavore inserisca un cap valido. Prego reinserisca", "Cap non corretto");
+                                        registra_centro_comune.setText("");
+                                    }
+
+                                } else {
+                                    Message.warningMessage(this, "Perfavore inserire una provincia valida. Prego reinserisca", "Provincia non corretta");
+                                    registra_centro_comune.setText("");
+                                }
+                            } else {
+                                Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
+                                registra_centro_provincia.setText("");
                             }
                         } else {
-                            Message.warningMessage(this, "Perfavore inserisca un cap valido. Prego reinserisca", "Cap non corretto");
-                            registra_centro_comune.setText("");
+                            Message.warningMessage(this, "Perfavore selezionare un qualificatore valido. Prego reinserisca", "Qualificatore non corretto");
                         }
-
-                    } else {
-                        Message.warningMessage(this, "Perfavore inserire una provincia valida. Prego reinserisca", "Provincia non corretta");
-                        registra_centro_comune.setText("");
+                    }else{
+                        Message.warningMessage(this, "Via troppo lunga. Prego reinserisca", "Via troppo lunga");
+                        registra_centro_nome_via.setText("");
                     }
                 } else {
-                    Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
-                    registra_centro_provincia.setText("");
+                    Message.warningMessage(this, "Perfavore selezionare una tipologia valida. Prego reinserisca", "Tipologia non corretto");
+                    registra_centro_cap.setText("");
                 }
             }else{
-                Message.warningMessage(this, "Perfavore selezionare un qualificatore valido. Prego reinserisca", "Qualificatore non corretto");
-
-            }
-            }else{
-                Message.warningMessage(this, "Perfavore selezionare una tipologia valida. Prego reinserisca", "Tipologia non corretto");
-                registra_centro_cap.setText("");
+                Message.warningMessage(this, "Nome centro troppo lungo. Prego reinserisca", "Nome centro troppo lungo");
+                registra_centro_nome.setText("");
             }
 
-            //apro JOptionPane per avvisare del corretto inserimento
-            Message.informationMessage(this,"Informazioni inserite con successo!","Successo");
-            //svuoto i campi
-            pulisci_campi();
+
         }
     }
 
