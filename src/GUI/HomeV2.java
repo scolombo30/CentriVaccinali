@@ -1826,11 +1826,11 @@ public class HomeV2 extends javax.swing.JFrame {
                             registra_centro_nome_via.setText("");
                         }
                         } else {
-                            Message.warningMessage(this, "Perfavore selezionare un qualificatore valido. Prego reinserisca", "Qualificatore non corretto");
+                            Message.warningMessage(this, "Perfavore selezionare un qualificatore valido.", "Qualificatore non corretto");
                         }
 
                 } else {
-                    Message.warningMessage(this, "Perfavore selezionare una tipologia valida. Prego reinserisca", "Tipologia non corretto");
+                    Message.warningMessage(this, "Perfavore selezionare una tipologia valida.", "Tipologia non corretto");
 
                 }
             }else{
