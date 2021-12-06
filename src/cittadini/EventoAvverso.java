@@ -21,7 +21,14 @@ public class EventoAvverso implements Serializable {
         this.user = user;
     }
 
-    //metodi
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+//metodi
 
     public String getTipologia() {
         return tipologia;

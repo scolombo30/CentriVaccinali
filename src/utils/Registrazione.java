@@ -149,12 +149,12 @@ public  class Registrazione {
     //metodo cerca centro vaccinale x comune, tipologia
     public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){}
     //metodo inserisci evento avverso
-    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento, User utente){
+    public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento){
     String tipologia=evento.getTipologia();
     String note=evento.getNote();
     short gravità= evento.getGravità();
-    String username= utente.getUsername();
-    String password= utente.getPassword();
+    String username= evento.getUser().getUsername();
+    String password= evento.getUser().getPassword();
     try{
         //creo lo statement
         Statement st= conn.createStatement();
@@ -168,7 +168,7 @@ public  class Registrazione {
         //se non ci sono errori ritorno vero
         return true;
     }catch(SQLException e){
-        //se ci sono state eccezioni ritorno falso
+        e.printStackTrace();
         return false;
     }
     }

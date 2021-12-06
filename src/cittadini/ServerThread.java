@@ -64,14 +64,14 @@ class ServerThread extends Thread {
                 } else if (azione.equals("REGISTRA CITTADINO")) {
                     boolean successo=false;
                     Cittadino cittadino = (Cittadino) in.readObject();
-                    Registrazione.registraCittadino(conn,cittadino);
+                    successo=Registrazione.registraCittadino(conn,cittadino);
                     out.writeObject(successo);
 
                 } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
-
+                    boolean successo=false;
                     EventoAvverso evento = (EventoAvverso) in.readObject();
-                    User utente=(User) in.readObject();
-                    Registrazione.inserisciEventiAvversi(conn,evento,utente);
+                    successo=Registrazione.inserisciEventiAvversi(conn,evento);
+                    out.writeObject(successo);
 
                 } else if (azione.equals("LOGIN CITTADINO")) {
                     User utente = (User) in.readObject();

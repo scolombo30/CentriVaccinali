@@ -1919,20 +1919,27 @@ public class HomeV2 extends javax.swing.JFrame {
         String severità= (String)registra_evento_severita.getSelectedItem();
         String note= registra_evento_note.getText();
 
-        if(tipo.isBlank()||severità.isBlank()||note.isBlank()){
+        if(tipo.isBlank()||severità.isBlank()){
             //errore campi vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }else {
-            if(tipo.matches("[a-zA-Z]+")){
-                    if(severità.matches("[a-zA-Z]+")){
+            if(!(tipo.equals("------------------------------"))){
+                    if(severità.matches("[1-5]")){
                         if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
                         else {
                             try {
                                 EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente);
                                 //scrivo sul socket
+                                System.out.println("CLICK");
                                 out.writeObject("REGISTRA EVENTO AVVERSO");
+                                System.out.println("CLICK");
                                 out.writeObject(evento);
-                            } catch (IOException e) {}
+                                System.out.println("CLICK");
+                                if((boolean)in.readObject()){
+                                    Message.informationMessage(this,"Evento inserito con successo","Conferma");
+                                }
+                                else {Message.errorMessage(this,"Cìè stato un errore", "Errore");}
+                            } catch (IOException | ClassNotFoundException e) {}
                         }
                     }else {
                         Message.warningMessage(this, "Perfavore selezionare la severità", "Severità non corretta");
@@ -2056,11 +2063,12 @@ public class HomeV2 extends javax.swing.JFrame {
             //scrivo le credenziali sul socket e controllo se ci sono nel db
             out.writeObject("LOGIN CITTADINO");
             out.writeObject(new User(username,password));
-            //se corrette lo loggo e cambio il bottone registra evento
-            utente = (User) in.readObject();
-            if(!(utente == null)){
+            //se corrette lo leggo e cambio il bottone registra evento
+            User utente_returned = (User) in.readObject();
+            if(!(utente_returned == null)){
                 registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_abilitato.png"));
                 logged = true;
+                utente=new User(utente_returned.getUsername(),utente_returned.getPassword());
                 Message.informationMessage(this,"Login effettuato","Loggato");
                 //cambio layout e torno al panel cittadino_pnl
                 contenitore_pnl.removeAll();
