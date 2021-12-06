@@ -1793,7 +1793,7 @@ public class HomeV2 extends javax.swing.JFrame {
             if(qualificatore.matches("[a-zA-Z]+")) {
                 if (comune.matches("[a-zA-Z]+")) {
                     if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
-                        if (cap.matches("[a-zA-Z]+") && cap.length() == 5) {
+                        if (cap.matches("[0-9]+") && cap.length() == 5) {
                             Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
                             CentroVaccinale centro = new CentroVaccinale(nome_centroo, indirizzo, tipo_centro);
                             try {
