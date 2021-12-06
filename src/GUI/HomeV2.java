@@ -85,7 +85,6 @@ public class HomeV2 extends javax.swing.JFrame {
         user_logged_pnl = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
         disconnetti_btn = new javax.swing.JLabel();
         contenitore_pnl = new javax.swing.JPanel();
         home_pnl = new javax.swing.JPanel();
@@ -345,7 +344,7 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(1, 1, 1)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         barra_laterale_operatore_btnLayout.setVerticalGroup(
@@ -376,12 +375,12 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addComponent(jLabel59)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel60)
-                                .addContainerGap(149, Short.MAX_VALUE))
+                                .addContainerGap(103, Short.MAX_VALUE))
         );
         user_not_logged_pnlLayout.setVerticalGroup(
                 user_not_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, user_not_logged_pnlLayout.createSequentialGroup()
-                                .addContainerGap(8, Short.MAX_VALUE)
+                                .addContainerGap(11, Short.MAX_VALUE)
                                 .addGroup(user_not_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel60)
                                         .addComponent(jLabel59))
@@ -398,7 +397,7 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Connesso");
 
-        disconnetti_btn.setIcon(new javax.swing.ImageIcon("./res/log_out (1).png")); // NOI18N
+        disconnetti_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\log_out (1).png")); // NOI18N
         disconnetti_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 disconnetti_btnMouseClicked(evt);
@@ -414,11 +413,9 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addComponent(jLabel63)
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel61)
-                                .addGap(137, 137, 137)
-                                .addComponent(jLabel62)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(disconnetti_btn)
-                                .addContainerGap())
+                                .addGap(48, 48, 48)
+                                .addComponent(disconnetti_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(55, Short.MAX_VALUE))
         );
         user_logged_pnlLayout.setVerticalGroup(
                 user_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,14 +424,12 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addGroup(user_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(disconnetti_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel63)
-                                        .addComponent(jLabel61)
-                                        .addComponent(jLabel62))
-                                .addContainerGap())
+                                        .addComponent(jLabel61))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(disconnetti_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
         );
 
         user_status_pnl.add(user_logged_pnl, "card3");
-
-
 
         javax.swing.GroupLayout barra_laterale_PnlLayout = new javax.swing.GroupLayout(barra_laterale_Pnl);
         barra_laterale_Pnl.setLayout(barra_laterale_PnlLayout);
@@ -443,19 +438,14 @@ public class HomeV2 extends javax.swing.JFrame {
                         .addComponent(barra_laterale_cittadino_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(barra_laterale_home_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
-                                .addComponent(barra_laterale_operatore_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0))
-                        .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
-                                .addGroup(barra_laterale_PnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(user_status_pnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(piattaformaCV)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
+                                .addGap(0, 41, Short.MAX_VALUE))
                         .addComponent(barra_laterale_operatore_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(barra_laterale_PnlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(user_status_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         barra_laterale_PnlLayout.setVerticalGroup(
                 barra_laterale_PnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,7 +458,7 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addComponent(barra_laterale_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(barra_laterale_operatore_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 343, Short.MAX_VALUE)
+                                .addGap(330, 330, 330)
                                 .addComponent(user_status_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
@@ -1875,6 +1865,7 @@ public class HomeV2 extends javax.swing.JFrame {
             } catch (IOException e) {}
         }
     }
+
     private void disconnetti_btnMouseClicked(java.awt.event.MouseEvent evt) {
 
         if(Message.confirmMessage(this,"Disconnettersi?","Disconnesione")==0){
@@ -1887,6 +1878,7 @@ public class HomeV2 extends javax.swing.JFrame {
             user_status_pnl.revalidate();
             //cambio icona bottone registra evento avverso
             registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_disabilitato.png"));
+
         }
 
     }
