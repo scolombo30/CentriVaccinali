@@ -1738,7 +1738,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 if(psw.equals(psw_conferma)) {
                     //controllo se l'id vaccinazione è scritta correttamente
                     if(id_vaccinazione.matches("[0-9]+") && id_vaccinazione.length()==16) {
-                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Integer.parseInt(id_vaccinazione), new User(mail, psw));
+                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Long.parseLong(id_vaccinazione), new User(mail, psw));
                         //messagio di inserimento corretto
                         Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
                         //scrivo sul socket
@@ -1868,14 +1868,12 @@ public class HomeV2 extends javax.swing.JFrame {
                     if(giorno.matches("[0-9]+") && !((giorno.length())>2) && Integer.parseInt(giorno)<32 && Integer.parseInt(giorno)>0) {
                         //controllo se anno è valido
                         if (anno.matches("[0-9]+") && anno.length() == 4) {
-                            //controllo se id vaccinazione è valido
-                            if (id_vacc.matches("[0-9]+")) {
                                 //controllo id vax
                                 if(id_vacc.matches("[0-9]+") && id_vacc.length()==16) {
                                     //istanzio oggetto data
                                     DataLab data = new DataLab(giorno, mese, anno);
                                     //istanzio oggetto vaccinato
-                                    Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Integer.parseInt(id_vacc));
+                                    Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
                                     try {
                                         //scrivo sul socket
                                         out.writeObject("REGISTRA VACCINATO");
@@ -1887,29 +1885,30 @@ public class HomeV2 extends javax.swing.JFrame {
                         pulisci_campi();
 
                                 } else {
-                                    Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
-                                    registra_vaccinato_codice_fiscale.setText("");
+                                    //warnig id non valido
+                                    Message.warningMessage(this,"Per favore inserire un Id vaccinazione valido","id non valido");
+                                    registra_vaccinato_idvax.setText("");
                                 }
-                            } else {
-                                Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
-                                registra_vaccinato_comune_centro.setText("");
-                            }
                         }else{
-                            Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
-                            registra_vaccinato_idvax.setText("");
-                        }
+                            //warnig anno non valido
+                            Message.warningMessage(this,"Per favore inserire un anno valido","Anno non valido");
+                            registra_vaccinato_anno.setText("");
+                          }
                     }else{
-                        //warnig id non valido
-                        Message.warningMessage(this,"Per favore inserire un Id vaccinazione valido","id non valido");
-                        registra_vaccinato_idvax.setText("");}
+                        //warning giorno non valido
+                        Message.warningMessage(this,"Per favore inserire un giorno valido","Giorno non valido");
+                        registra_vaccinato_giorno.setSelectedIndex(0);
+                       }
                 }else{
-                    //warnig anno non valido
-                    Message.warningMessage(this,"Per favore inserire un anno valido","Anno non valido");
-                    registra_vaccinato_anno.setText("");}
+                    //warning comune non valido
+                    Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
+                    registra_vaccinato_comune_centro.setText("");
+                }
             }else {
-                //warning giorno non valido
-                Message.warningMessage(this,"Per favore inserire un giorno valido","Giorno non valido");
-                registra_vaccinato_giorno.setSelectedIndex(0);}
+                //warning codice fiscale non valido
+            Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
+            registra_vaccinato_codice_fiscale.setText("");
+            }
         }
         pulisci_campi();
     }
@@ -1924,7 +1923,7 @@ public class HomeV2 extends javax.swing.JFrame {
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }else {
             if(!(tipo.equals("------------------------------"))){
-                    if(severità.matches("[1-5]")){
+                    if(severità.matches("[1-5]+")){
                         if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
                         else {
                             try {
@@ -1996,6 +1995,7 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_vaccinato_nome.setText("");
         registra_vaccinato_cognome.setText("");
         registra_vaccinato_codice_fiscale.setText("");
+        registra_vaccinato_centro_vaccinale.setText("");
         registra_vaccinato_comune_centro.setText("");
         registra_vaccinato_giorno.setSelectedIndex(0);
         registra_vaccinato_mese.setSelectedIndex(0);
