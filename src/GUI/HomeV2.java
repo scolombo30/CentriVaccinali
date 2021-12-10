@@ -1745,15 +1745,26 @@ public class HomeV2 extends javax.swing.JFrame {
                         try {
                             out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
-                        } catch (IOException e) {
+                            if((boolean)in.readObject()){
+                                //apro JOptionPane per avvisare del corretto inserimento
+                                Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                //cambio panel
+                                contenitore_pnl.removeAll();
+                                contenitore_pnl.add(cittadino_login);
+                                contenitore_pnl.repaint();
+                                contenitore_pnl.revalidate();
+                                //reset dei campi se sono corretti
+                                pulisci_campi();
+                            }
+                            else {
+                                Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                            }
+                        } catch (IOException| ClassNotFoundException e) {
                         }
-                        //reset dei campi se sono corretti
-                        pulisci_campi();
                     }else{
                         //warning id vaccinazione non conforme
                         Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
                         registra_cittadino_idvax.setText("");
-
                     }
                     }else{
                     //mostro panel di dialogo e cancello i campi delle password
@@ -1761,14 +1772,12 @@ public class HomeV2 extends javax.swing.JFrame {
                     registra_cittadino_password.setText("");
                     registra_cittadino_conferma_password.setText("");
                 }
-
             } else {
                 //warning email non in formato corretto
                 Message.warningMessage(this,"Formato email non conforme. Prego reinserisca.","Email non valida");
                 registra_cittadino_mail.setText("");
             }
             }else{
-
                     //warnig cod fisc
                 Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
                 registra_cittadino_codice_fiscale.setText("");
@@ -1940,8 +1949,15 @@ public class HomeV2 extends javax.swing.JFrame {
                                 System.out.println("CLICK");
                                 if((boolean)in.readObject()){
                                     Message.informationMessage(this,"Evento inserito con successo","Conferma");
+                                    //cambio panel
+                                    contenitore_pnl.removeAll();
+                                    contenitore_pnl.add(cittadino_pnl);
+                                    contenitore_pnl.repaint();
+                                    contenitore_pnl.revalidate();
+                                    //pulisco i campi
+                                    pulisci_campi();
                                 }
-                                else {Message.errorMessage(this,"Cìè stato un errore", "Errore");}
+                                else {Message.errorMessage(this,"C'è stato un errore", "Errore");}
                             } catch (IOException | ClassNotFoundException e) {}
                         }
                     }else {
@@ -1967,7 +1983,6 @@ public class HomeV2 extends javax.swing.JFrame {
             user_status_pnl.revalidate();
             //cambio icona bottone registra evento avverso
             registra_evento_avverso_btn.setIcon(new ImageIcon("./res/bottone_evento_avverso_disabilitato.png"));
-
         }
 
     }
@@ -2029,7 +2044,9 @@ public class HomeV2 extends javax.swing.JFrame {
         area_visualizzazione_info.setText("");
     }
     private void pulisci_campi_cittadino_evento_avverso(){
-        //manca la gui nel panel
+        registra_evento_tipologia.setSelectedIndex(0);
+        registra_evento_severita.setSelectedIndex(0);
+        registra_evento_note.setText("");
     }
     private void pulisci_campi(){
         pulisci_campi_registra_centro();
