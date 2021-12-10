@@ -1769,7 +1769,7 @@ public class HomeV2 extends javax.swing.JFrame {
             }
             }else{
 
-
+                    //warnig cod fisc
                 Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
                 registra_cittadino_codice_fiscale.setText("");
             }
