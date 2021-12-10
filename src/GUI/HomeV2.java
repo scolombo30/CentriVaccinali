@@ -1739,29 +1739,20 @@ public class HomeV2 extends javax.swing.JFrame {
                     //controllo se l'id vaccinazione è scritta correttamente
                     if(id_vaccinazione.matches("[0-9]+") && id_vaccinazione.length()==16) {
                         Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Long.parseLong(id_vaccinazione), new User(mail, psw));
+                        //messagio di inserimento corretto
+                        Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
                         //scrivo sul socket
                         try {
                             out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
-                            if((boolean)in.readObject()){
-                                //apro JOptionPane per avvisare del corretto inserimento
-                                Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                                //reset dei campi se sono corretti
-                                pulisci_campi();
-                                //cambio panel e metto quello del login
-                                contenitore_pnl.removeAll();
-                                contenitore_pnl.add(cittadino_login);
-                                contenitore_pnl.repaint();
-                                contenitore_pnl.revalidate();
-                            }else{
-                                Message.errorMessage(this,"C'è stato un errore riprovare","Errore");
-                            }
-                        } catch (IOException | ClassNotFoundException e) {
+                        } catch (IOException e) {
                         }
-
+                        //reset dei campi se sono corretti
+                        pulisci_campi();
                     }else{
                         Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
                         registra_cittadino_codice_fiscale.setText("");
+
                     }
                     }else{
                         //warning id vaccinazione non conforme
@@ -1946,7 +1937,7 @@ public class HomeV2 extends javax.swing.JFrame {
                                 if((boolean)in.readObject()){
                                     Message.informationMessage(this,"Evento inserito con successo","Conferma");
                                 }
-                                else {Message.errorMessage(this,"C'è stato un errore", "Errore");}
+                                else {Message.errorMessage(this,"Cìè stato un errore", "Errore");}
                             } catch (IOException | ClassNotFoundException e) {}
                         }
                     }else {
