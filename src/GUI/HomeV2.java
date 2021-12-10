@@ -1718,8 +1718,8 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=registra_cittadino_nome.getText();
-        String cognome=registra_cittadino_cognome.getText();
+        String nome=controlla_apostrofo(registra_cittadino_nome.getText());
+        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText());
         String codice_fiscale=registra_cittadino_codice_fiscale.getText().toUpperCase();
         String mail=registra_cittadino_mail.getText();
         String psw=registra_cittadino_password.getText();
@@ -1739,10 +1739,8 @@ public class HomeV2 extends javax.swing.JFrame {
                     //controllo se l'id vaccinazione è scritta correttamente
                     if(id_vaccinazione.matches("[0-9]+") && id_vaccinazione.length()==16) {
                         Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Long.parseLong(id_vaccinazione), new User(mail, psw));
-                        //messagio di inserimento corretto
-                        Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                        //scrivo sul socket
                         try {
+                            //scrivo sul socket
                             out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
                             if((boolean)in.readObject()){
@@ -1784,11 +1782,11 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_centro_registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome_centroo=registra_centro_nome.getText();
+        String nome_centroo=controlla_apostrofo(registra_centro_nome.getText());
         String tipo_centro=registra_centro_tipologia.getSelectedItem().toString();
         String qualificatore=registra_centro_qualificatore.getSelectedItem().toString();
-        String nome_via=registra_centro_nome_via.getText();
-        String comune=registra_centro_comune.getText();
+        String nome_via=controlla_apostrofo(registra_centro_nome_via.getText());
+        String comune=controlla_apostrofo(registra_centro_comune.getText());
         String numeroCivico=registra_centro_numero_civico.getText();
         String provincia=registra_centro_provincia.getText();
         String cap=registra_centro_cap.getText();
@@ -1813,11 +1811,16 @@ public class HomeV2 extends javax.swing.JFrame {
                                             //scrivo sul socket
                                             out.writeObject("REGISTRA CENTRO");
                                             out.writeObject(centro);
-                                            //apro JOptionPane per avvisare del corretto inserimento
-                                            Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                                            //svuoto i campi
-                                            pulisci_campi();
-                                        } catch (IOException e) {
+                                            if((boolean) in.readObject()){
+                                                //apro JOptionPane per avvisare del corretto inserimento
+                                                Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                                //svuoto i campi
+                                                pulisci_campi();
+                                            } else {
+                                                Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                                            }
+
+                                        } catch (IOException | ClassNotFoundException e) {
                                         }
                                     } else {
                                         Message.warningMessage(this, "Perfavore inserisca un cap valido. Prego reinserisca", "Cap non corretto");
@@ -1854,11 +1857,11 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_vaccinato_registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=registra_vaccinato_nome.getText();
-        String cognome=registra_vaccinato_cognome.getText();
+        String nome=controlla_apostrofo(registra_vaccinato_nome.getText());
+        String cognome=controlla_apostrofo(registra_vaccinato_cognome.getText());
         String cod_fiscale=registra_vaccinato_codice_fiscale.getText().toUpperCase();
-        String comune_centro=registra_vaccinato_comune_centro.getText();
-        String nome_centro=registra_vaccinato_centro_vaccinale.getText();
+        String comune_centro=controlla_apostrofo(registra_vaccinato_comune_centro.getText());
+        String nome_centro=controlla_apostrofo(registra_vaccinato_centro_vaccinale.getText());
         String giorno=registra_vaccinato_giorno.getSelectedItem().toString();
         String mese=registra_vaccinato_mese.getSelectedItem().toString();
         String anno=registra_vaccinato_anno.getText();
@@ -1889,7 +1892,15 @@ public class HomeV2 extends javax.swing.JFrame {
                                         //scrivo sul socket
                                         out.writeObject("REGISTRA VACCINATO");
                                         out.writeObject(vaccinatp_da_registrare);
-                                    } catch (IOException e) {}
+                                        if((boolean)in.readObject()){
+                                            //apro JOptionPane per avvisare del corretto inserimento
+                                            Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                            //svuoto i campi
+                                            pulisci_campi();
+                                        } else {
+                                            Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                                        }
+                                    } catch (IOException | ClassNotFoundException e) {}
                         //apro JOptionPane per avvisare del corretto inserimento
                         Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
                         //svuoto i campi
@@ -1927,7 +1938,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private void registra_evento_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String tipo=(String)registra_evento_tipologia.getSelectedItem();
         String severità= (String)registra_evento_severita.getSelectedItem();
-        String note= registra_evento_note.getText();
+        String note= controlla_apostrofo(registra_evento_note.getText());
 
         if(tipo.isBlank()||severità.isBlank()){
             //errore campi vuoti
@@ -1984,6 +1995,7 @@ public class HomeV2 extends javax.swing.JFrame {
         }
 
     }
+
     private void cittadino_login_passwordKeyPressed(java.awt.event.KeyEvent evt) {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             login_cittadino();
@@ -2107,6 +2119,10 @@ public class HomeV2 extends javax.swing.JFrame {
             }
 
         }catch (Exception e) {}
+    }
+
+    private String controlla_apostrofo(String str){
+        return str.replace("'","''");
     }
 
     /**

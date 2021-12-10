@@ -145,9 +145,13 @@ public  class Registrazione {
 
     }
     //metodo cerca centro vaccinale x nome
-    public static void cercaCentroVaccinaleNome(Connection conn,String nome){}
+    public static void cercaCentroVaccinaleNome(Connection conn,String nome){
+
+    }
     //metodo cerca centro vaccinale x comune, tipologia
-    public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){}
+    public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){
+
+    }
     //metodo inserisci evento avverso
     public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento){
     String tipologia=evento.getTipologia();
