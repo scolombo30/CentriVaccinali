@@ -1755,20 +1755,18 @@ public class HomeV2 extends javax.swing.JFrame {
                                 contenitore_pnl.revalidate();
                                 //reset dei campi se sono corretti
                                 pulisci_campi();
-                            }
-                            else {
+                            }else {
                                 Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
                             }
-                        } catch (IOException| ClassNotFoundException e) {
-                        }
+                        } catch (IOException| ClassNotFoundException e) {}
                     }else{
                         //warning id vaccinazione non conforme
                         Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
                         registra_cittadino_idvax.setText("");
                     }
-                    }else{
+                }else {
                     //mostro panel di dialogo e cancello i campi delle password
-                    Message.errorMessage(this,"Le password non corrispondono. Prego reinserisca.","Errore password");
+                    Message.errorMessage(this, "Le password non corrispondono. Prego reinserisca.", "Errore password");
                     registra_cittadino_password.setText("");
                     registra_cittadino_conferma_password.setText("");
                 }
