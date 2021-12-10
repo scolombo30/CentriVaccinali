@@ -40,8 +40,8 @@ public class SqlString {
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
                 "Codice_fiscale VARCHAR(16),"+
-                "Username VARCHAR(20),"+
-                "Password VARCHAR(20),"+
+                "Username VARCHAR(35),"+
+                "Password VARCHAR(35),"+
                 "PRIMARY KEY(Id_vax),"+
                 "foreign key (Username,Password) references Users (Username,Password))";
 
@@ -50,8 +50,8 @@ public class SqlString {
     //String query CreaTabellaUser
     public static String CreaTabellaUser() {
         String query="CREATE TABLE IF NOT EXISTS Users("+
-                "Username VARCHAR(20),"+
-                "Password VARCHAR(20),"+
+                "Username VARCHAR(35),"+
+                "Password VARCHAR(35),"+
                 "PRIMARY KEY(Username,Password))";
         return query;
     }
@@ -61,8 +61,8 @@ public class SqlString {
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
                 "Note VARCHAR(256)," +
-                "Username VARCHAR(20)," +
-                "Password VARCHAR(20)," +
+                "Username VARCHAR(35)," +
+                "Password VARCHAR(35)," +
                 "foreign key (Username,Password) references Users(Username,Password))";
         return query;
     }
