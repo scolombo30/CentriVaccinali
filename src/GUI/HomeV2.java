@@ -1750,24 +1750,28 @@ public class HomeV2 extends javax.swing.JFrame {
                         //reset dei campi se sono corretti
                         pulisci_campi();
                     }else{
-                        Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
-                        registra_cittadino_codice_fiscale.setText("");
-
-                    }
-                    }else{
                         //warning id vaccinazione non conforme
                         Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
                         registra_cittadino_idvax.setText("");
+
                     }
-                } else {
+                    }else{
                     //mostro panel di dialogo e cancello i campi delle password
                     Message.errorMessage(this,"Le password non corrispondono. Prego reinserisca.","Errore password");
                     registra_cittadino_password.setText("");
-                    registra_cittadino_conferma_password.setText("");        }
-            }else{
+                    registra_cittadino_conferma_password.setText("");
+                }
+
+            } else {
                 //warning email non in formato corretto
                 Message.warningMessage(this,"Formato email non conforme. Prego reinserisca.","Email non valida");
                 registra_cittadino_mail.setText("");
+            }
+            }else{
+
+
+                Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
+                registra_cittadino_codice_fiscale.setText("");
             }
         }
     }
