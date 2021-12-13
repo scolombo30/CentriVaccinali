@@ -74,8 +74,6 @@ public  class Registrazione {
             st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
             String query_insert_vaccinato=SqlString.insertVaccinato(nomeTabella,nome,cognome,cod_fisc,tipo_vaccino,id_vaccinazione,comune_centro,nomecentro,data_query);
-                    /*"INSERT INTO "+nomeTabella+" VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', " +
-                    "'" +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";*/
             st.executeUpdate(query_insert_vaccinato);
             //se non ci sono stati errori ritorno vero
             return 0;
@@ -106,14 +104,12 @@ public  class Registrazione {
              st.executeUpdate(query_crea_user);
              //inserisco dati in users
              String query_inserisci_user=SqlString.insertUsers(username,password);
-                    // "INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
              st.executeUpdate(query_inserisci_user);
              //creo query di creazione tabella cittadini se non è già presente nel DB
              String query_crea_cittadino=SqlString.creaTabellaCittadino();
              st.executeUpdate(query_crea_cittadino);
              //creo query di inserimento dati in cittadino
              String query_inserisci_cittadino =SqlString.insertCittadino(idVaccinazione,nome,cognome,codiceFiscale,username,password);
-                     //"INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
              st.executeUpdate(query_inserisci_cittadino);
 
 
@@ -136,7 +132,7 @@ public  class Registrazione {
             //creo lo statement
             Statement st= conn.createStatement();
             //creo query di select cittadino con queste credenziali
-            String query_ricerca= "SELECT * FROM Users WHERE Username='"+user+"' AND Password='"+psw+"';";
+            String query_ricerca=SqlString.selectLogin(user,psw);
             //update per la tabella
             ResultSet rs = st.executeQuery(query_ricerca);
             while(rs.next()){
@@ -175,7 +171,6 @@ public  class Registrazione {
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
         String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username);
-                //"INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;

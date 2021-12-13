@@ -65,11 +65,7 @@ public class SqlString {
         return query;
     }
     //metodo insert centro
-    public static String insertCentro(String nome,String tipologia,String qualificatore, String nomeVia,
-                                      String numeroCivico,
-                                      String comune,
-                                      String siglaProvincia,
-                                      String cap){
+    public static String insertCentro(String nome,String tipologia,String qualificatore, String nomeVia, String numeroCivico, String comune, String siglaProvincia, String cap){
         String query= "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
                 +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
         return query;
@@ -91,9 +87,14 @@ public class SqlString {
         String query="INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
         return query;
     }
-
+    //metodo insert evento
     public static String insertEvento(String tipologia, short gravità, String note, String username) {
         String query="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
+        return query;
+    }
+    //metodo select login
+    public static String selectLogin(String user,String psw) {
+        String query="SELECT * FROM Users WHERE Username='"+user+"' AND Password='"+psw+"';";
         return query;
     }
 }
