@@ -1741,74 +1741,8 @@ public class HomeV2 extends javax.swing.JFrame {
         login_cittadino();
     }
 
-    private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=controlla_apostrofo(registra_cittadino_nome.getText());
-        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText());
-        String codice_fiscale=registra_cittadino_codice_fiscale.getText().toUpperCase();
-        String mail=registra_cittadino_mail.getText();
-        String psw=registra_cittadino_password.getText();
-        String psw_conferma=registra_cittadino_conferma_password.getText();
-        String id_vaccinazione=registra_cittadino_idvax.getText();
-        //controllo se i campi sono vuoti
-        if((nome.isBlank()||cognome.isBlank()||codice_fiscale.isBlank()||mail.isBlank()||
-                psw.isBlank()||psw_conferma.isBlank()||id_vaccinazione.isBlank()))
-        { Message.errorMessage(this, "Per procedere alla registrazione assicurarsi che tutti i campi siano compilati", "Campi vuoti");}
-        else{
-            //controllo conformità codice fiscale
-            if(codice_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && codice_fiscale.length()==16){
-            //controllo se il formato  dell'email è corretta
-            if(mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
-                //controllo se le password corrispondono
-                if(psw.equals(psw_conferma)) {
-                    //controllo se l'id vaccinazione è scritta correttamente
-                    if(id_vaccinazione.matches("[0-9]+") && id_vaccinazione.length()==16) {
-                        Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Long.parseLong(id_vaccinazione), new User(mail, psw));
-                        try {
-                            //scrivo sul socket
-                            out.writeObject("REGISTRA CITTADINO");
-                            out.writeObject(cittadino);
-                            int risultato=(int)in.readObject();
-                            if(risultato==0){
-                                //apro JOptionPane per avvisare del corretto inserimento
-                                Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                                //cambio panel
-                                contenitore_pnl.removeAll();
-                                contenitore_pnl.add(cittadino_login);
-                                contenitore_pnl.repaint();
-                                contenitore_pnl.revalidate();
-                                //reset dei campi se sono corretti
-                                pulisci_campi();
-                            }else {
-                                if(risultato==1){Message.errorMessage(this, "L'email è già presente nel sistema","Errore"); registra_cittadino_mail.setText("");
-                                    }
-                                else if(risultato==2){Message.errorMessage(this, "Il codice fiscale è già presente nel sistema","Errore"); registra_cittadino_codice_fiscale.setText("");
-                                     }
-                                else Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
-                            }
-                        } catch (IOException| ClassNotFoundException e) {}
-                    }else{
-                        //warning id vaccinazione non conforme
-                        Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
-                        registra_cittadino_idvax.setText("");
-                    }
-                }else {
-                    //mostro panel di dialogo e cancello i campi delle password
-                    Message.errorMessage(this, "Le password non corrispondono. Prego reinserisca.", "Errore password");
-                    registra_cittadino_password.setText("");
-                    registra_cittadino_conferma_password.setText("");
-                }
-            } else {
-                //warning email non in formato corretto
-                Message.warningMessage(this,"Formato email non conforme. Prego reinserisca.","Email non valida");
-                registra_cittadino_mail.setText("");
-            }
-            }else{
-                    //warnig cod fisc
-                Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
-                registra_cittadino_codice_fiscale.setText("");
-            }
-        }
-    }
+
+
 
     private void registra_centro_registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String nome_centroo=controlla_apostrofo(registra_centro_nome.getText());
@@ -1968,6 +1902,74 @@ public class HomeV2 extends javax.swing.JFrame {
                 //warning codice fiscale non valido
                 Message.warningMessage(this, "Codice fiscale non conforme. Prego reinserisca.", " Codice fiscale non corretto");
                 registra_vaccinato_codice_fiscale.setText("");
+            }
+        }
+    }
+    private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        String nome=controlla_apostrofo(registra_cittadino_nome.getText());
+        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText());
+        String codice_fiscale=registra_cittadino_codice_fiscale.getText().toUpperCase();
+        String mail=registra_cittadino_mail.getText();
+        String psw=registra_cittadino_password.getText();
+        String psw_conferma=registra_cittadino_conferma_password.getText();
+        String id_vaccinazione=registra_cittadino_idvax.getText();
+        //controllo se i campi sono vuoti
+        if((nome.isBlank()||cognome.isBlank()||codice_fiscale.isBlank()||mail.isBlank()||
+                psw.isBlank()||psw_conferma.isBlank()||id_vaccinazione.isBlank()))
+        { Message.errorMessage(this, "Per procedere alla registrazione assicurarsi che tutti i campi siano compilati", "Campi vuoti");}
+        else{
+            //controllo conformità codice fiscale
+            if(codice_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && codice_fiscale.length()==16){
+                //controllo se il formato  dell'email è corretta
+                if(mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")){
+                    //controllo se le password corrispondono
+                    if(psw.equals(psw_conferma)) {
+                        //controllo se l'id vaccinazione è scritta correttamente
+                        if(id_vaccinazione.matches("[0-9]+") && id_vaccinazione.length()==16) {
+                            Cittadino cittadino = new Cittadino(nome, cognome, codice_fiscale, Long.parseLong(id_vaccinazione), new User(mail, psw));
+                            try {
+                                //scrivo sul socket
+                                out.writeObject("REGISTRA CITTADINO");
+                                out.writeObject(cittadino);
+                                int risultato=(int)in.readObject();
+                                if(risultato==0){
+                                    //apro JOptionPane per avvisare del corretto inserimento
+                                    Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                    //cambio panel
+                                    contenitore_pnl.removeAll();
+                                    contenitore_pnl.add(cittadino_login);
+                                    contenitore_pnl.repaint();
+                                    contenitore_pnl.revalidate();
+                                    //reset dei campi se sono corretti
+                                    pulisci_campi();
+                                }else {
+                                    if(risultato==1){Message.errorMessage(this, "L'email è già presente nel sistema","Errore"); registra_cittadino_mail.setText("");
+                                    }
+                                    else if(risultato==2){Message.errorMessage(this, "Il codice fiscale è già presente nel sistema","Errore"); registra_cittadino_codice_fiscale.setText("");
+                                    }
+                                    else Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                                }
+                            } catch (IOException| ClassNotFoundException e) {}
+                        }else{
+                            //warning id vaccinazione non conforme
+                            Message.warningMessage(this,"id vaccinazione non conforme. Prego reinserisca."," Id non valido");
+                            registra_cittadino_idvax.setText("");
+                        }
+                    }else {
+                        //mostro panel di dialogo e cancello i campi delle password
+                        Message.errorMessage(this, "Le password non corrispondono. Prego reinserisca.", "Errore password");
+                        registra_cittadino_password.setText("");
+                        registra_cittadino_conferma_password.setText("");
+                    }
+                } else {
+                    //warning email non in formato corretto
+                    Message.warningMessage(this,"Formato email non conforme. Prego reinserisca.","Email non valida");
+                    registra_cittadino_mail.setText("");
+                }
+            }else{
+                //warnig cod fisc
+                Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
+                registra_cittadino_codice_fiscale.setText("");
             }
         }
     }

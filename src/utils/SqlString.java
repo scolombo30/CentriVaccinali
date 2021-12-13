@@ -5,7 +5,7 @@ package utils;
 public class SqlString {
 
     //String query CreaTabellaCentro
-    static String CreaTabellaCentro(){
+    static String creaTabellaCentro(){
        String query = "CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
                 "Nome_Centro VARCHAR(35),"+
                 "Tipologia VARCHAR(11)," +
@@ -20,7 +20,7 @@ public class SqlString {
 
     }
     //String query CreaTabellaVaccinato
-    public static String CreaTabellaVaccinato(String nomeTabella) {
+    public static String creaTabellaVaccinato(String nomeTabella) {
         String query="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
@@ -34,7 +34,7 @@ public class SqlString {
         return query;
     }
     //String query CreaTabellaCittadino
-    public static String CreaTabellaCittadino() {
+    public static String creaTabellaCittadino() {
         String query="CREATE TABLE IF NOT EXISTS Cittadini_Registrati("+
                 "Id_vax NUMERIC(16) UNIQUE,"+
                 "Nome VARCHAR(20),"+
@@ -48,7 +48,7 @@ public class SqlString {
         return query;
     }
     //String query CreaTabellaUser
-    public static String CreaTabellaUser() {
+    public static String creaTabellaUser() {
         String query="CREATE TABLE IF NOT EXISTS Users("+
                 "Username VARCHAR(35) UNIQUE,"+
                 "Password VARCHAR(35),"+
@@ -56,12 +56,28 @@ public class SqlString {
         return query;
     }
     //String query CreaTabellaEvento
-    public static String CreaTabellaEvento() {
+    public static String creaTabellaEvento() {
         String query = "CREATE TABLE IF NOT EXISTS Eventi_avversi (" +
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
                 "Note VARCHAR(256)," +
                 "Username VARCHAR(35))";
+        return query;
+    }
+    public static String insertCentro(String nome,String tipologia,String qualificatore, String nomeVia,
+                                      String numeroCivico,
+                                      String comune,
+                                      String siglaProvincia,
+                                      String cap){
+        String query= "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
+                +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
+        return query;
+    }
+
+
+    public static String insertVaccinato(String nomeTabella, String nome, String cognome, String cod_fisc, String tipo_vaccino, long id_vaccinazione, String comune_centro, String nomecentro,  String data_query) {
+        String query= "INSERT INTO "+nomeTabella+" VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', " +
+                "'" +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";
         return query;
     }
 }

@@ -31,12 +31,13 @@ public  class Registrazione {
             //creo lo statement
             Statement st= conn.createStatement();
             //creo query di creazione tabelle CentriVaccinali se nonn esiste già
-            String query_crea_centri=SqlString.CreaTabellaCentro();
+            String query_crea_centri=SqlString.creaTabellaCentro();
             //update per la tabella
             st.executeUpdate(query_crea_centri);
             //creo query di inserimento dati in CentriVaccinali
-            String query_inserisci_centro = "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
-                    +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";
+            String query_inserisci_centro = SqlString.insertCentro(nome, tipologia, qualificatore, nomeVia, numeroCivico, comune, siglaProvincia, cap);
+                    /*"INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
+                    +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";*/
             st.executeUpdate(query_inserisci_centro);
             //se non ci sono stati errori ritorno vero
             return true;
@@ -68,12 +69,13 @@ public  class Registrazione {
             //Anno-mese-giorno. Creo la data
             String data_query=data.getAnno()+"-"+data.getMese()+"-"+data.getGiorno();
             //creo query di creazione tabella se non è già presente nel DB
-            String query_crea_vaccinato=SqlString.CreaTabellaVaccinato(nomeTabella);
+            String query_crea_vaccinato=SqlString.creaTabellaVaccinato(nomeTabella);
             //update per la tabella
             st.executeUpdate(query_crea_vaccinato);
             //creo query di inserimento dati nella tabella appena creata
-            String query_insert_vaccinato="INSERT INTO "+nomeTabella+" VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', " +
-                    "'" +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";
+            String query_insert_vaccinato=SqlString.insertVaccinato(nomeTabella,nome,cognome,cod_fisc,tipo_vaccino,id_vaccinazione,comune_centro,nomecentro,data_query);
+                    /*"INSERT INTO "+nomeTabella+" VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', " +
+                    "'" +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";*/
             st.executeUpdate(query_insert_vaccinato);
             //se non ci sono stati errori ritorno vero
             return 0;
@@ -99,14 +101,14 @@ public  class Registrazione {
              //creo lo statement
              Statement st= conn.createStatement();
              //creo query di creazione tabella users se non è già presente nel DB
-             String query_crea_user=SqlString.CreaTabellaUser();
+             String query_crea_user=SqlString.creaTabellaUser();
              //update per la tabella
              st.executeUpdate(query_crea_user);
              //inserisco dati in users
              String query_inserisci_user="INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
              st.executeUpdate(query_inserisci_user);
              //creo query di creazione tabella cittadini se non è già presente nel DB
-             String query_crea_cittadino=SqlString.CreaTabellaCittadino();
+             String query_crea_cittadino=SqlString.creaTabellaCittadino();
              st.executeUpdate(query_crea_cittadino);
              //creo query di inserimento dati in cittadino
              String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
@@ -166,7 +168,7 @@ public  class Registrazione {
         //creo lo statement
         Statement st= conn.createStatement();
         //creo query di creazione tabella se non è già presente nel DB
-        String query_crea_evento=SqlString.CreaTabellaEvento();
+        String query_crea_evento=SqlString.creaTabellaEvento();
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
