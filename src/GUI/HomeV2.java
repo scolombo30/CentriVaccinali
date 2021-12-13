@@ -400,7 +400,7 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Connesso");
 
-        disconnetti_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\log_out (1).png")); // NOI18N
+        disconnetti_btn.setIcon(new javax.swing.ImageIcon("./res/log_out (1).png")); // NOI18N
         disconnetti_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 disconnetti_btnMouseClicked(evt);
