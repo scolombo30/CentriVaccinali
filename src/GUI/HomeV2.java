@@ -1743,7 +1743,8 @@ public class HomeV2 extends javax.swing.JFrame {
                             //scrivo sul socket
                             out.writeObject("REGISTRA CITTADINO");
                             out.writeObject(cittadino);
-                            if((boolean)in.readObject()){
+                            int risultato=(int)in.readObject();
+                            if(risultato==0){
                                 //apro JOptionPane per avvisare del corretto inserimento
                                 Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
                                 //cambio panel
@@ -1754,7 +1755,11 @@ public class HomeV2 extends javax.swing.JFrame {
                                 //reset dei campi se sono corretti
                                 pulisci_campi();
                             }else {
-                                Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                                if(risultato==1){Message.errorMessage(this, "L'email è già presente nel sistema","Errore"); registra_cittadino_mail.setText("");
+                                    }
+                                else if(risultato==2){Message.errorMessage(this, "Il codice fiscale è già presente nel sistema","Errore"); registra_cittadino_codice_fiscale.setText("");
+                                     }
+                                else Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
                             }
                         } catch (IOException| ClassNotFoundException e) {}
                     }else{
@@ -1887,11 +1892,11 @@ public class HomeV2 extends javax.swing.JFrame {
                                     //istanzio oggetto data
                                     DataLab data = new DataLab(giorno, mese, anno);
                                     //istanzio oggetto vaccinato
-                                    Vaccinato vaccinatp_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
+                                    Vaccinato vaccinato_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
                                     try {
                                         //scrivo sul socket
                                         out.writeObject("REGISTRA VACCINATO");
-                                        out.writeObject(vaccinatp_da_registrare);
+                                        out.writeObject(vaccinato_da_registrare);
                                         if((boolean)in.readObject()){
                                             //apro JOptionPane per avvisare del corretto inserimento
                                             Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
@@ -1901,10 +1906,6 @@ public class HomeV2 extends javax.swing.JFrame {
                                             Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
                                         }
                                     } catch (IOException | ClassNotFoundException e) {}
-                        //apro JOptionPane per avvisare del corretto inserimento
-                        Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                        //svuoto i campi
-                        pulisci_campi();
 
                                 } else {
                                     //warnig id non valido

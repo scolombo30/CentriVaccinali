@@ -50,7 +50,7 @@ public  class Registrazione {
     public static boolean registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //campi da inserire nella tabella
             //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
-        String centroVacci= vaccinato.getCentroVaccinale().replaceAll("\\s","_");
+        String centroVacci= (vaccinato.getCentroVaccinale().replaceAll("\\s","_")).replaceAll("''","_");
         String comune_centro=vaccinato.getComuneCentro();
         String nomecentro=vaccinato.getCentroVaccinale();
         String nome=vaccinato.getNome();
@@ -85,7 +85,7 @@ public  class Registrazione {
         }
     }
     //metodo registra cittadino su db
-    public static boolean registraCittadino(Connection conn, Cittadino cittadino){
+    public static int registraCittadino(Connection conn, Cittadino cittadino){
          //tab Cittadini_Registrati
          String nome=cittadino.getNome();
          String cognome= cittadino.getCognome();
@@ -113,11 +113,12 @@ public  class Registrazione {
 
 
              //se non ci sono stati errori ritorno vero
-             return true;
+             return 0;
          } catch (SQLException e) {
-             e.printStackTrace();
-             //se ci sono stati errori ritono falso
-             return false;
+             String errore=e.getMessage();
+             if(errore.contains("Key (username)")){return 1;}
+             else if(errore.contains("Key (codice_fiscale)")){return 2;}
+             else return 3;
          }
     }
     //login sulla piattaforma

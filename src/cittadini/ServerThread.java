@@ -62,10 +62,10 @@ class ServerThread extends Thread {
                     out.writeObject(successo);
 
                 } else if (azione.equals("REGISTRA CITTADINO")) {
-                    boolean successo=false;
+                    int risultato;
                     Cittadino cittadino = (Cittadino) in.readObject();
-                    successo=Registrazione.registraCittadino(conn,cittadino);
-                    out.writeObject(successo);
+                    risultato=Registrazione.registraCittadino(conn,cittadino);
+                    out.writeObject(risultato);
 
                 } else if (azione.equals("REGISTRA EVENTO AVVERSO")) {
                     boolean successo=false;

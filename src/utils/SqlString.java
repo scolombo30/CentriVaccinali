@@ -24,7 +24,7 @@ public class SqlString {
         String query="CREATE TABLE IF NOT EXISTS "+nomeTabella+"("+
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
-                "Codice_fiscale VARCHAR(16),"+
+                "Codice_fiscale VARCHAR(16) UNIQUE,"+
                 "Data DATE,"+
                 "Tipologia_vaccino VARCHAR(10),"+
                 "Id_vax NUMERIC(16) PRIMARY KEY,"+
@@ -36,10 +36,10 @@ public class SqlString {
     //String query CreaTabellaCittadino
     public static String CreaTabellaCittadino() {
         String query="CREATE TABLE IF NOT EXISTS Cittadini_Registrati("+
-                "Id_vax NUMERIC(16),"+
+                "Id_vax NUMERIC(16) UNIQUE,"+
                 "Nome VARCHAR(20),"+
                 "Cognome VARCHAR(20),"+
-                "Codice_fiscale VARCHAR(16),"+
+                "Codice_fiscale VARCHAR(16) UNIQUE,"+
                 "Username VARCHAR(35) UNIQUE,"+
                 "Password VARCHAR(35),"+
                 "PRIMARY KEY(Id_vax),"+
