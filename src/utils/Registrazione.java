@@ -105,13 +105,15 @@ public  class Registrazione {
              //update per la tabella
              st.executeUpdate(query_crea_user);
              //inserisco dati in users
-             String query_inserisci_user="INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
+             String query_inserisci_user=SqlString.insertUsers(username,password);
+                    // "INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
              st.executeUpdate(query_inserisci_user);
              //creo query di creazione tabella cittadini se non è già presente nel DB
              String query_crea_cittadino=SqlString.creaTabellaCittadino();
              st.executeUpdate(query_crea_cittadino);
              //creo query di inserimento dati in cittadino
-             String query_inserisci_cittadino = "INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
+             String query_inserisci_cittadino =SqlString.insertCittadino(idVaccinazione,nome,cognome,codiceFiscale,username,password);
+                     //"INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
              st.executeUpdate(query_inserisci_cittadino);
 
 
@@ -172,7 +174,8 @@ public  class Registrazione {
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
-        String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
+        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username);
+                //"INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;

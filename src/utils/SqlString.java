@@ -64,6 +64,7 @@ public class SqlString {
                 "Username VARCHAR(35))";
         return query;
     }
+    //metodo insert centro
     public static String insertCentro(String nome,String tipologia,String qualificatore, String nomeVia,
                                       String numeroCivico,
                                       String comune,
@@ -74,10 +75,25 @@ public class SqlString {
         return query;
     }
 
-
+    //metodo insert vaccinato
     public static String insertVaccinato(String nomeTabella, String nome, String cognome, String cod_fisc, String tipo_vaccino, long id_vaccinazione, String comune_centro, String nomecentro,  String data_query) {
         String query= "INSERT INTO "+nomeTabella+" VALUES ('"+nome+"', '"+cognome+"', '"+cod_fisc+"', " +
                 "'" +data_query+"', '"+tipo_vaccino+"', '"+id_vaccinazione+"', '"+nomecentro+"','"+comune_centro+"')";
+        return query;
+    }
+    //metodo insert users
+    public static String insertUsers(String username, String password) {
+        String query="INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
+        return query;
+    }
+    //metodo insert citadino
+    public static String insertCittadino(long idVaccinazione, String nome, String cognome, String codiceFiscale,String username,String password) {
+        String query="INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
+        return query;
+    }
+
+    public static String insertEvento(String tipologia, short gravità, String note, String username) {
+        String query="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
         return query;
     }
 }
