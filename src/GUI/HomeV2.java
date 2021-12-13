@@ -1878,73 +1878,74 @@ public class HomeV2 extends javax.swing.JFrame {
                 giorno.isBlank()||mese.isBlank()||anno.isBlank()||tipo_vaccino.isBlank()||id_vacc.isBlank()) {
             //errore campi vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
-        }else{
-           //comtrollo codice fiscale
-            if(cod_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && cod_fiscale.length()==16){
+        }else {
+            //comtrollo codice fiscale
+            if (cod_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && cod_fiscale.length() == 16) {
                 //controllo comune
-                if(comune_centro.matches("[a-zA-Z]+")&&comune_centro.length()<=35) {
+                if (comune_centro.matches("[a-zA-Z]+") && comune_centro.length() <= 35) {
                     //controllo se il giorno è valido
-                    if(giorno.matches("[0-9]+") && !((giorno.length())>2) && Integer.parseInt(giorno)<32 && Integer.parseInt(giorno)>0) {
+                    if (giorno.matches("[0-9]+") && !((giorno.length()) > 2) && Integer.parseInt(giorno) < 32 && Integer.parseInt(giorno) > 0) {
                         //controllo se anno è valido
                         if (anno.matches("[0-9]+") && anno.length() == 4) {
-                                //controllo id vax
-                                if(id_vacc.matches("[0-9]+") && id_vacc.length()==16) {
-                                    //istanzio oggetto data
-                                    DataLab data = new DataLab(giorno, mese, anno);
-                                    //istanzio oggetto vaccinato
-                                    Vaccinato vaccinato_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
-                                    try {
-                                        //scrivo sul socket
-                                        out.writeObject("REGISTRA VACCINATO");
-                                        out.writeObject(vaccinato_da_registrare);
-                                        int risultato=(int)in.readObject();
-                                        if(risultato==0){
-                                            //apro JOptionPane per avvisare del corretto inserimento
-                                            Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                                            //cambio panel
-                                            contenitore_pnl.removeAll();
-                                            contenitore_pnl.add(cittadino_login);
-                                            contenitore_pnl.repaint();
-                                            contenitore_pnl.revalidate();
-                                            //reset dei campi se sono corretti
-                                            pulisci_campi();
-                                        }else {
-                                            //errore se id vax è già presente
-                                            if(risultato==1){Message.errorMessage(this, "l'id vax è già presente nel sistema","Errore"); registra_vaccinato_idvax.setText("");
-                                            }
-                                            //errore se il codice fiscale è già presente
-                                            else if(risultato==2){Message.errorMessage(this, "Il codice fiscale è già presente nel sistema","Errore"); registra_vaccinato_codice_fiscale.setText("");}
-                                            //errore generico
-                                            else Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                            //controllo id vax
+                            if (id_vacc.matches("[0-9]+") && id_vacc.length() == 16) {
+                                //istanzio oggetto data
+                                DataLab data = new DataLab(giorno, mese, anno);
+                                //istanzio oggetto vaccinato
+                                Vaccinato vaccinato_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
+                                try {
+                                    //scrivo sul socket
+                                    out.writeObject("REGISTRA VACCINATO");
+                                    out.writeObject(vaccinato_da_registrare);
+                                    int risultato = (int) in.readObject();
+                                    if (risultato == 0) {
+                                        //apro JOptionPane per avvisare del corretto inserimento
+                                        Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                        //reset dei campi se sono corretti
+                                        pulisci_campi();
+                                    } else {
+                                        //errore se id vax è già presente
+                                        if (risultato == 1) {
+                                            Message.errorMessage(this, "l'id vax è già presente nel sistema", "Errore");
+                                            registra_vaccinato_idvax.setText("");
                                         }
-                                    } catch (IOException| ClassNotFoundException e) {}
-                                } else {
-                                    //warnig id non valido
-                                    Message.warningMessage(this,"Per favore inserire un Id vaccinazione valido","id non valido");
-                                    registra_vaccinato_idvax.setText("");
+                                        //errore se il codice fiscale è già presente
+                                        else if (risultato == 2) {
+                                            Message.errorMessage(this, "Il codice fiscale è già presente nel sistema", "Errore");
+                                            registra_vaccinato_codice_fiscale.setText("");
+                                        }
+                                        //errore generico
+                                        else
+                                            Message.errorMessage(this, "C'è stato un errore nell'inserimento", "Errore");
+                                    }
+                                } catch (IOException | ClassNotFoundException e) {
                                 }
-                        }else{
+                            } else {
+                                //warnig id non valido
+                                Message.warningMessage(this, "Per favore inserire un Id vaccinazione valido", "id non valido");
+                                registra_vaccinato_idvax.setText("");
+                            }
+                        } else {
                             //warnig anno non valido
-                            Message.warningMessage(this,"Per favore inserire un anno valido","Anno non valido");
+                            Message.warningMessage(this, "Per favore inserire un anno valido", "Anno non valido");
                             registra_vaccinato_anno.setText("");
-                          }
-                    }else{
+                        }
+                    } else {
                         //warning giorno non valido
-                        Message.warningMessage(this,"Per favore inserire un giorno valido","Giorno non valido");
+                        Message.warningMessage(this, "Per favore inserire un giorno valido", "Giorno non valido");
                         registra_vaccinato_giorno.setSelectedIndex(0);
-                       }
-                }else{
+                    }
+                } else {
                     //warning comune non valido
                     Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
                     registra_vaccinato_comune_centro.setText("");
                 }
-            }else {
+            } else {
                 //warning codice fiscale non valido
-            Message.warningMessage(this,"Codice fiscale non conforme. Prego reinserisca."," Codice fiscale non corretto");
-            registra_vaccinato_codice_fiscale.setText("");
+                Message.warningMessage(this, "Codice fiscale non conforme. Prego reinserisca.", " Codice fiscale non corretto");
+                registra_vaccinato_codice_fiscale.setText("");
             }
         }
-        pulisci_campi();
     }
 
     private void registra_evento_btnMouseClicked(java.awt.event.MouseEvent evt) {
@@ -1963,11 +1964,8 @@ public class HomeV2 extends javax.swing.JFrame {
                             try {
                                 EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente);
                                 //scrivo sul socket
-                                System.out.println("CLICK");
                                 out.writeObject("REGISTRA EVENTO AVVERSO");
-                                System.out.println("CLICK");
                                 out.writeObject(evento);
-                                System.out.println("CLICK");
                                 if((boolean)in.readObject()){
                                     Message.informationMessage(this,"Evento inserito con successo","Conferma");
                                     //cambio panel

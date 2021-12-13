@@ -119,7 +119,8 @@ public  class Registrazione {
              String errore=e.getMessage();
              if(errore.contains("Key (username)")){return 1;}
              else if(errore.contains("Key (codice_fiscale)")){return 2;}
-             else return 3;
+             else if(errore.contains("Key (id_vax)")){return 3;}
+             else return 4;
          }
     }
     //login sulla piattaforma
@@ -160,7 +161,7 @@ public  class Registrazione {
     String note=evento.getNote();
     short gravità= evento.getGravità();
     String username= evento.getUser().getUsername();
-    String password= evento.getUser().getPassword();
+
     try{
         //creo lo statement
         Statement st= conn.createStatement();
@@ -169,7 +170,7 @@ public  class Registrazione {
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
-        String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"', '"+password+"')";
+        String query_inserisci_evento ="INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;

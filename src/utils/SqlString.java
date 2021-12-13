@@ -61,9 +61,7 @@ public class SqlString {
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
                 "Note VARCHAR(256)," +
-                "Username VARCHAR(35) UNIQUE," +
-                "Password VARCHAR(35)," +
-                "foreign key (Username,Password) references Users(Username,Password))";
+                "Username VARCHAR(35))";
         return query;
     }
 }
