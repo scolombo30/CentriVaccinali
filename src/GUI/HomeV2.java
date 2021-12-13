@@ -1897,16 +1897,27 @@ public class HomeV2 extends javax.swing.JFrame {
                                         //scrivo sul socket
                                         out.writeObject("REGISTRA VACCINATO");
                                         out.writeObject(vaccinato_da_registrare);
-                                        if((boolean)in.readObject()){
+                                        int risultato=(int)in.readObject();
+                                        if(risultato==0){
                                             //apro JOptionPane per avvisare del corretto inserimento
                                             Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                                            //svuoto i campi
+                                            //cambio panel
+                                            contenitore_pnl.removeAll();
+                                            contenitore_pnl.add(cittadino_login);
+                                            contenitore_pnl.repaint();
+                                            contenitore_pnl.revalidate();
+                                            //reset dei campi se sono corretti
                                             pulisci_campi();
-                                        } else {
-                                            Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
+                                        }else {
+                                            //errore se id vax è già presente
+                                            if(risultato==1){Message.errorMessage(this, "l'id vax è già presente nel sistema","Errore"); registra_vaccinato_idvax.setText("");
+                                            }
+                                            //errore se il codice fiscale è già presente
+                                            else if(risultato==2){Message.errorMessage(this, "Il codice fiscale è già presente nel sistema","Errore"); registra_vaccinato_codice_fiscale.setText("");}
+                                            //errore generico
+                                            else Message.errorMessage(this, "C'è stato un errore nell'inserimento","Errore");
                                         }
-                                    } catch (IOException | ClassNotFoundException e) {}
-
+                                    } catch (IOException| ClassNotFoundException e) {}
                                 } else {
                                     //warnig id non valido
                                     Message.warningMessage(this,"Per favore inserire un Id vaccinazione valido","id non valido");
