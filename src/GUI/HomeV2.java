@@ -64,6 +64,7 @@ public class HomeV2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        btn_gruop_ricerca_centro = new javax.swing.ButtonGroup();
         title_bar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -105,6 +106,8 @@ public class HomeV2 extends javax.swing.JFrame {
         conferma_btn = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         area_visualizzazione_info = new javax.swing.JTextArea();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         cittadino_login = new javax.swing.JPanel();
         indietro_btn1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -547,7 +550,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Cerca nome centro");
+        jLabel19.setText("Cerca centro");
 
         tabella_risultati.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -600,24 +603,21 @@ public class HomeV2 extends javax.swing.JFrame {
         area_visualizzazione_info.setEnabled(false);
         jScrollPane2.setViewportView(area_visualizzazione_info);
 
+        btn_gruop_ricerca_centro.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Per nome");
+
+        btn_gruop_ricerca_centro.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setText("Per comune");
+
         javax.swing.GroupLayout cittadino_pnlLayout = new javax.swing.GroupLayout(cittadino_pnl);
         cittadino_pnl.setLayout(cittadino_pnlLayout);
         cittadino_pnlLayout.setHorizontalGroup(
                 cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel19)
-                                        .addComponent(barra_ricerca, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addComponent(cerca_btn)
-                                .addGap(323, 323, 323)
-                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addComponent(login_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(registra_cittadino_btn))
-                                        .addComponent(registra_evento_avverso_btn)))
                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -631,6 +631,26 @@ public class HomeV2 extends javax.swing.JFrame {
                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
                                 .addGap(130, 130, 130)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addComponent(jRadioButton1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jRadioButton2))
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel19)
+                                                        .addComponent(barra_ricerca, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(20, 20, 20)
+                                                .addComponent(cerca_btn)
+                                                .addGap(323, 323, 323)
+                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                                .addComponent(login_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(registra_cittadino_btn))
+                                                        .addComponent(registra_evento_avverso_btn)))))
         );
         cittadino_pnlLayout.setVerticalGroup(
                 cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -651,7 +671,11 @@ public class HomeV2 extends javax.swing.JFrame {
                                                         .addComponent(registra_cittadino_btn))
                                                 .addGap(18, 18, 18)
                                                 .addComponent(registra_evento_avverso_btn)))
-                                .addGap(72, 72, 72)
+                                .addGap(10, 10, 10)
+                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jRadioButton1)
+                                        .addComponent(jRadioButton2))
+                                .addGap(46, 46, 46)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(61, 61, 61)
                                 .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2178,6 +2202,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JPanel barra_laterale_home_btn;
     private javax.swing.JPanel barra_laterale_operatore_btn;
     private javax.swing.JTextField barra_ricerca;
+    private javax.swing.ButtonGroup btn_gruop_ricerca_centro;
     private javax.swing.JPasswordField campo_codice_operatore;
     private javax.swing.JLabel cerca_btn;
     private javax.swing.JPanel cittadino_evento_avverso_pnl;
@@ -2259,6 +2284,8 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel login_cittadino_btn;
