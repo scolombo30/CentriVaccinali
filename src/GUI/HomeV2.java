@@ -96,7 +96,6 @@ public class HomeV2 extends javax.swing.JFrame {
         login_cittadino_btn = new javax.swing.JLabel();
         registra_cittadino_btn = new javax.swing.JLabel();
         registra_evento_avverso_btn = new javax.swing.JLabel();
-        barra_ricerca = new javax.swing.JTextField();
         cerca_btn = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -106,8 +105,14 @@ public class HomeV2 extends javax.swing.JFrame {
         conferma_btn = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         area_visualizzazione_info = new javax.swing.JTextArea();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        ricerca_per_nome_btn = new javax.swing.JRadioButton();
+        ricerca_per_comune_btn = new javax.swing.JRadioButton();
+        contenitore_ricerca_centro_pnl = new javax.swing.JPanel();
+        cerca_centro_nome_pnl = new javax.swing.JPanel();
+        barra_ricerca_nome = new javax.swing.JTextField();
+        cerca_centro_comune_pnl = new javax.swing.JPanel();
+        barra_ricerca_comune = new javax.swing.JTextField();
+        ricerca_comune_tipologia = new javax.swing.JComboBox<>();
         cittadino_login = new javax.swing.JPanel();
         indietro_btn1 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -539,16 +544,14 @@ public class HomeV2 extends javax.swing.JFrame {
             }
         });
 
-        barra_ricerca.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        barra_ricerca.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                barra_ricercaKeyPressed(evt);
+        cerca_btn.setIcon(new javax.swing.ImageIcon("./res/search.png")); // NOI18N
+        cerca_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerca_btnMouseClicked(evt);
             }
         });
 
-        cerca_btn.setIcon(new javax.swing.ImageIcon("./res/search.png")); // NOI18N
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Cerca centro");
 
@@ -603,21 +606,112 @@ public class HomeV2 extends javax.swing.JFrame {
         area_visualizzazione_info.setEnabled(false);
         jScrollPane2.setViewportView(area_visualizzazione_info);
 
-        btn_gruop_ricerca_centro.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Per nome");
+        btn_gruop_ricerca_centro.add(ricerca_per_nome_btn);
+        ricerca_per_nome_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ricerca_per_nome_btn.setForeground(new java.awt.Color(255, 255, 255));
+        ricerca_per_nome_btn.setSelected(true);
+        ricerca_per_nome_btn.setText("Per nome");
+        ricerca_per_nome_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ricerca_per_nome_btnMouseClicked(evt);
+            }
+        });
 
-        btn_gruop_ricerca_centro.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Per comune");
+        btn_gruop_ricerca_centro.add(ricerca_per_comune_btn);
+        ricerca_per_comune_btn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ricerca_per_comune_btn.setForeground(new java.awt.Color(255, 255, 255));
+        ricerca_per_comune_btn.setText("Per comune");
+        ricerca_per_comune_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ricerca_per_comune_btnMouseClicked(evt);
+            }
+        });
+
+        contenitore_ricerca_centro_pnl.setLayout(new java.awt.CardLayout());
+
+        cerca_centro_nome_pnl.setBackground(new java.awt.Color(33, 32, 36));
+
+        barra_ricerca_nome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+
+        javax.swing.GroupLayout cerca_centro_nome_pnlLayout = new javax.swing.GroupLayout(cerca_centro_nome_pnl);
+        cerca_centro_nome_pnl.setLayout(cerca_centro_nome_pnlLayout);
+        cerca_centro_nome_pnlLayout.setHorizontalGroup(
+                cerca_centro_nome_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cerca_centro_nome_pnlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(barra_ricerca_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+        cerca_centro_nome_pnlLayout.setVerticalGroup(
+                cerca_centro_nome_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cerca_centro_nome_pnlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(barra_ricerca_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        contenitore_ricerca_centro_pnl.add(cerca_centro_nome_pnl, "card2");
+
+        cerca_centro_comune_pnl.setBackground(new java.awt.Color(33, 32, 36));
+
+        barra_ricerca_comune.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+
+        ricerca_comune_tipologia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        ricerca_comune_tipologia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---------------", "HUB", "AZIENDALE", "OSPEDALIERO" }));
+
+        javax.swing.GroupLayout cerca_centro_comune_pnlLayout = new javax.swing.GroupLayout(cerca_centro_comune_pnl);
+        cerca_centro_comune_pnl.setLayout(cerca_centro_comune_pnlLayout);
+        cerca_centro_comune_pnlLayout.setHorizontalGroup(
+                cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerca_centro_comune_pnlLayout.createSequentialGroup()
+                                .addContainerGap(514, Short.MAX_VALUE)
+                                .addComponent(ricerca_comune_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                        .addGroup(cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(cerca_centro_comune_pnlLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(barra_ricerca_comune, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(164, Short.MAX_VALUE)))
+        );
+        cerca_centro_comune_pnlLayout.setVerticalGroup(
+                cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cerca_centro_comune_pnlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(ricerca_comune_tipologia, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                                .addContainerGap())
+                        .addGroup(cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(cerca_centro_comune_pnlLayout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(barra_ricerca_comune, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        contenitore_ricerca_centro_pnl.add(cerca_centro_comune_pnl, "card3");
 
         javax.swing.GroupLayout cittadino_pnlLayout = new javax.swing.GroupLayout(cittadino_pnl);
         cittadino_pnl.setLayout(cittadino_pnlLayout);
         cittadino_pnlLayout.setHorizontalGroup(
                 cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(jLabel19)
+                                .addGap(349, 349, 349)
+                                .addComponent(login_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addGap(458, 458, 458)
+                                                .addComponent(registra_evento_avverso_btn))
+                                        .addComponent(contenitore_ricerca_centro_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addComponent(cerca_btn))
+                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                .addGap(120, 120, 120)
+                                .addComponent(ricerca_per_nome_btn)
+                                .addGap(18, 18, 18)
+                                .addComponent(ricerca_per_comune_btn))
                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -631,51 +725,28 @@ public class HomeV2 extends javax.swing.JFrame {
                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
                                 .addGap(130, 130, 130)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addComponent(jRadioButton1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jRadioButton2))
-                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel19)
-                                                        .addComponent(barra_ricerca, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(20, 20, 20)
-                                                .addComponent(cerca_btn)
-                                                .addGap(323, 323, 323)
-                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                                .addComponent(login_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(registra_cittadino_btn))
-                                                        .addComponent(registra_evento_avverso_btn)))))
         );
         cittadino_pnlLayout.setVerticalGroup(
                 cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
+                                .addGap(25, 25, 25)
+                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel19)
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addGap(20, 20, 20)
+                                                .addComponent(login_cittadino_btn)))
                                 .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGap(30, 30, 30)
-                                                .addComponent(jLabel19)
-                                                .addGap(0, 0, 0)
-                                                .addComponent(barra_ricerca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(13, 13, 13)
+                                                .addComponent(registra_evento_avverso_btn))
+                                        .addComponent(contenitore_ricerca_centro_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGap(50, 50, 50)
-                                                .addComponent(cerca_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(login_cittadino_btn)
-                                                        .addComponent(registra_cittadino_btn))
-                                                .addGap(18, 18, 18)
-                                                .addComponent(registra_evento_avverso_btn)))
-                                .addGap(10, 10, 10)
-                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButton1)
-                                        .addComponent(jRadioButton2))
-                                .addGap(46, 46, 46)
+                                                .addGap(10, 10, 10)
+                                                .addComponent(cerca_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ricerca_per_nome_btn)
+                                        .addComponent(ricerca_per_comune_btn))
+                                .addGap(91, 91, 91)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(61, 61, 61)
                                 .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1718,14 +1789,6 @@ public class HomeV2 extends javax.swing.JFrame {
         pulisci_campi();
     }
 
-    private void barra_ricercaKeyPressed(java.awt.event.KeyEvent evt) {
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            String nome=barra_ricerca.getText();
-            //scrivi nome centro su socket e cerca il nome sul db
-
-            //leggi risultati ricerca e mostrali nella tabella
-        }
-    }
 
     private void cittadino_login_mostra_password_btnMouseClicked(java.awt.event.MouseEvent evt) {
         if(click_cittadino==0){cittadino_login_mostra_password_btn.setIcon(new ImageIcon("./res/mostrare_password.png"));
@@ -2039,6 +2102,44 @@ public class HomeV2 extends javax.swing.JFrame {
             login_cittadino();
         }
     }
+    private void cerca_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        try {
+            //prendo il testo dell'area di text e controllo quale jradiobutton
+            boolean ricerca_nome = ricerca_per_nome_btn.isSelected();
+            if (ricerca_nome) {
+                //ricerchiamo il centro per il nome mandandolo sul socket
+                String nome_centro = barra_ricerca_nome.getText();
+                System.out.println(nome_centro);
+                out.writeObject("CERCA CENTRO PER NOME");
+                out.writeObject(nome_centro);
+                //leggiamo i risultati e updatiamo la tabella
+            } else {
+                //ricerchiamo i centri in base al comune mandandolo sul socket
+                String comune = barra_ricerca_comune.getText();
+                String tipologia = (String) ricerca_comune_tipologia.getSelectedItem();
+                System.out.println(comune+" "+ tipologia);
+                out.writeObject("CERCA CENTRO PER COMUNE");
+                out.writeObject(comune);
+                out.writeObject(tipologia);
+                //leggiamo i risultati e updatiamo la tabella
+            }
+        }catch (Exception e){}
+    }
+    private void ricerca_per_nome_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        contenitore_ricerca_centro_pnl.removeAll();
+        contenitore_ricerca_centro_pnl.add(cerca_centro_nome_pnl);
+        contenitore_ricerca_centro_pnl.repaint();
+        contenitore_ricerca_centro_pnl.revalidate();
+        pulisci_campi();
+    }
+
+    private void ricerca_per_comune_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        contenitore_ricerca_centro_pnl.removeAll();
+        contenitore_ricerca_centro_pnl.add(cerca_centro_comune_pnl);
+        contenitore_ricerca_centro_pnl.repaint();
+        contenitore_ricerca_centro_pnl.revalidate();
+        pulisci_campi();
+    }
     //metodi utilizzati per cambiare il colore dei pulsanti sulla barra laterale
     private void setColor(JPanel panel){
         panel.setBackground(tasto_premuto);
@@ -2087,7 +2188,9 @@ public class HomeV2 extends javax.swing.JFrame {
         cittadino_login_password.setText("");
     }
     private void pulisci_campi_cittadino_pnl(){
-        barra_ricerca.setText("");
+        barra_ricerca_nome.setText("");
+        barra_ricerca_comune.setText("");
+        ricerca_comune_tipologia.setSelectedIndex(0);
         numero_centro_da_visualizzare.setText("");
         area_visualizzazione_info.setText("");
     }
@@ -2205,10 +2308,13 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JPanel barra_laterale_cittadino_btn;
     private javax.swing.JPanel barra_laterale_home_btn;
     private javax.swing.JPanel barra_laterale_operatore_btn;
-    private javax.swing.JTextField barra_ricerca;
+    private javax.swing.JTextField barra_ricerca_comune;
+    private javax.swing.JTextField barra_ricerca_nome;
     private javax.swing.ButtonGroup btn_gruop_ricerca_centro;
     private javax.swing.JPasswordField campo_codice_operatore;
     private javax.swing.JLabel cerca_btn;
+    private javax.swing.JPanel cerca_centro_comune_pnl;
+    private javax.swing.JPanel cerca_centro_nome_pnl;
     private javax.swing.JPanel cittadino_evento_avverso_pnl;
     private javax.swing.JPanel cittadino_login;
     private javax.swing.JLabel cittadino_login_accedi_btn;
@@ -2220,6 +2326,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel cittadino_registrati_registrati_btn;
     private javax.swing.JLabel conferma_btn;
     private javax.swing.JPanel contenitore_pnl;
+    private javax.swing.JPanel contenitore_ricerca_centro_pnl;
     private javax.swing.JScrollPane contenitore_text_area;
     private javax.swing.JLabel disconnetti_btn;
     private javax.swing.JPanel home_pnl;
@@ -2288,8 +2395,8 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton ricerca_per_comune_btn;
+    private javax.swing.JRadioButton ricerca_per_nome_btn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel login_cittadino_btn;
@@ -2331,6 +2438,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> registra_vaccinato_giorno;
     private javax.swing.JTextField registra_vaccinato_idvax;
     private javax.swing.JComboBox<String> registra_vaccinato_mese;
+    private javax.swing.JComboBox<String> ricerca_comune_tipologia;
     private javax.swing.JTextField registra_vaccinato_nome;
     private javax.swing.JPanel registra_vaccinato_pnl;
     private javax.swing.JLabel registra_vaccinato_registra_vaccinato_btn;

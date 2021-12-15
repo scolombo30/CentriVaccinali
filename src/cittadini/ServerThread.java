@@ -83,7 +83,7 @@ class ServerThread extends Thread {
                     String nome_centro = (String) in.readObject();
                     //cerco sul db i centri con queste lettere
                     Registrazione.cercaCentroVaccinaleNome(conn,nome_centro);
-                } else {
+                } else if(azione.equals("CERCA CENTRO PER COMUNE")){
                     //leggo comune e tipologia
                     String comune = (String) in.readObject();
                     String tipologia = (String) in.readObject();
