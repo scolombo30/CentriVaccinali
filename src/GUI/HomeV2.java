@@ -813,11 +813,11 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Nome");
+        jLabel26.setText("Nome(max 20)");
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Cognome");
+        jLabel27.setText("Cognome(max 20)");
 
         registra_cittadino_conferma_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
@@ -825,15 +825,15 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Codice fiscale");
+        jLabel24.setText("Codice fiscale(max 16)");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Mail");
+        jLabel28.setText("Mail(max 35)");
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Password");
+        jLabel29.setText("Password(max 35)");
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
@@ -841,7 +841,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("ID Vaccinazione");
+        jLabel31.setText("ID Vaccinazione(max 16)");
 
         registra_cittadino_nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
@@ -1153,7 +1153,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Nome centro");
+        jLabel32.setText("Nome centro(max 35)");
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
@@ -1161,27 +1161,27 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Indirizzo centro:");
+        jLabel35.setText("Indirizzo centro");
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Nome via");
+        jLabel36.setText("Nome via(max 35)");
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("N° civ.");
+        jLabel37.setText("N° civ.(max 5)");
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Comune");
+        jLabel38.setText("Comune(max 35)");
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("prov");
+        jLabel39.setText("prov(max 2)");
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setText("CAP");
+        jLabel40.setText("CAP(max 5)");
 
         registra_centro_registra_centro_btn.setIcon(new javax.swing.ImageIcon("./res/bottone_registra_centro.png")); // NOI18N
         registra_centro_registra_centro_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1346,19 +1346,19 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("Nome");
+        jLabel41.setText("Nome(max 20)");
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel44.setText("Cognome");
+        jLabel44.setText("Cognome(max 20)");
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setText("Codice fiscale");
+        jLabel45.setText("Codice fiscale(max 16)");
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel46.setText("Comune centro vaccinale");
+        jLabel46.setText("Comune centro vaccinale(max 35)");
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -1382,7 +1382,11 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel52.setText("ID Vaccinazione");
+        jLabel52.setText("ID Vaccinazione(max 16)");
+
+        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel54.setText("Nome centro vaccinale(max 35)");
 
         jLabel53.setIcon(new javax.swing.ImageIcon("./res/immagine_registra_vaccinato.png")); // NOI18N
 
@@ -1416,9 +1420,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         registra_vaccinato_centro_vaccinale.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setText("Nome centro vaccinale");
+
 
         //inserire
         javax.swing.GroupLayout registra_vaccinato_pnlLayout = new javax.swing.GroupLayout(registra_vaccinato_pnl);
