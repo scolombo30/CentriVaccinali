@@ -152,6 +152,7 @@ public class HomeV2 extends javax.swing.JFrame {
         contenitore_text_area = new javax.swing.JScrollPane();
         registra_evento_note = new javax.swing.JTextArea();
         registra_evento_btn = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
         login_operatore_pnl = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         campo_codice_operatore = new javax.swing.JPasswordField();
@@ -181,6 +182,7 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_centro_numero_civico = new javax.swing.JTextField();
         registra_centro_comune = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
         registra_vaccinato_pnl = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         passa_a_registra_centro_btn = new javax.swing.JLabel();
@@ -551,7 +553,7 @@ public class HomeV2 extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 21)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Cerca centro");
 
@@ -640,7 +642,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 cerca_centro_nome_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cerca_centro_nome_pnlLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(barra_ricerca_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                                .addComponent(barra_ricerca_nome, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
                                 .addContainerGap())
         );
         cerca_centro_nome_pnlLayout.setVerticalGroup(
@@ -665,14 +667,14 @@ public class HomeV2 extends javax.swing.JFrame {
         cerca_centro_comune_pnlLayout.setHorizontalGroup(
                 cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cerca_centro_comune_pnlLayout.createSequentialGroup()
-                                .addContainerGap(514, Short.MAX_VALUE)
-                                .addComponent(ricerca_comune_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(599, Short.MAX_VALUE)
+                                .addComponent(ricerca_comune_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                         .addGroup(cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(cerca_centro_comune_pnlLayout.createSequentialGroup()
                                         .addContainerGap()
-                                        .addComponent(barra_ricerca_comune, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(164, Short.MAX_VALUE)))
+                                        .addComponent(barra_ricerca_comune, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(175, Short.MAX_VALUE)))
         );
         cerca_centro_comune_pnlLayout.setVerticalGroup(
                 cerca_centro_comune_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -693,60 +695,70 @@ public class HomeV2 extends javax.swing.JFrame {
         cittadino_pnl.setLayout(cittadino_pnlLayout);
         cittadino_pnlLayout.setHorizontalGroup(
                 cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(jLabel19)
-                                .addGap(349, 349, 349)
-                                .addComponent(login_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(120, 120, 120)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cittadino_pnlLayout.createSequentialGroup()
                                 .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGap(458, 458, 458)
-                                                .addComponent(registra_evento_avverso_btn))
-                                        .addComponent(contenitore_ricerca_centro_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(10, 10, 10)
-                                .addComponent(cerca_btn))
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addComponent(ricerca_per_nome_btn)
-                                .addGap(18, 18, 18)
-                                .addComponent(ricerca_per_comune_btn))
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addComponent(jLabel4)
-                                .addGap(15, 15, 15)
-                                .addComponent(numero_centro_da_visualizzare, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(conferma_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(120, 120, 120)
+                                                .addComponent(jLabel4)
+                                                .addGap(15, 15, 15)
+                                                .addComponent(numero_centro_da_visualizzare, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(conferma_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addGap(130, 130, 130)
+                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addGap(50, 50, 50)
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addGap(120, 120, 120)
+                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                                .addGap(6, 6, 6)
+                                                                .addComponent(ricerca_per_nome_btn)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(ricerca_per_comune_btn))
+                                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                                .addComponent(contenitore_ricerca_centro_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(cerca_btn))
+                                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                                .addGap(9, 9, 9)
+                                                                .addComponent(jLabel19)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
+                                                .addComponent(login_cittadino_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(registra_cittadino_btn))
+                                        .addComponent(registra_evento_avverso_btn))
+                                .addGap(31, 31, 31))
         );
         cittadino_pnlLayout.setVerticalGroup(
                 cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel19)
-                                        .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(login_cittadino_btn)))
                                 .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGap(13, 13, 13)
-                                                .addComponent(registra_evento_avverso_btn))
-                                        .addComponent(contenitore_ricerca_centro_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(54, 54, 54)
+                                                .addComponent(jLabel19)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(contenitore_ricerca_centro_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cittadino_pnlLayout.createSequentialGroup()
+                                                                .addGap(10, 10, 10)
+                                                                .addComponent(cerca_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(ricerca_per_nome_btn)
+                                                        .addComponent(ricerca_per_comune_btn)))
                                         .addGroup(cittadino_pnlLayout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(cerca_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(ricerca_per_nome_btn)
-                                        .addComponent(ricerca_per_comune_btn))
-                                .addGap(91, 91, 91)
+                                                .addGap(34, 34, 34)
+                                                .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(login_cittadino_btn)
+                                                        .addComponent(registra_cittadino_btn))
+                                                .addGap(33, 33, 33)
+                                                .addComponent(registra_evento_avverso_btn)))
+                                .addGap(106, 106, 106)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(61, 61, 61)
                                 .addGroup(cittadino_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -884,11 +896,11 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Nome(max 20)");
+        jLabel26.setText("Nome (max.20)");
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Cognome(max 20)");
+        jLabel27.setText("Cognome (max.20)");
 
         registra_cittadino_conferma_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
@@ -896,15 +908,15 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Codice fiscale(max 16)");
+        jLabel24.setText("Codice fiscale (16)");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Mail(max 35)");
+        jLabel28.setText("Mail (max.35)");
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Password(max 35)");
+        jLabel29.setText("Password (max.35)");
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
@@ -912,7 +924,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("ID Vaccinazione(max 16)");
+        jLabel31.setText("ID Vaccinazione (16)");
 
         registra_cittadino_nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
@@ -938,41 +950,43 @@ public class HomeV2 extends javax.swing.JFrame {
         cittadino_registra_pnlLayout.setHorizontalGroup(
                 cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(indietro_btn)
-                                .addGap(65, 65, 65)
-                                .addComponent(jLabel25))
-                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel26)
-                                .addGap(299, 299, 299)
-                                .addComponent(jLabel27))
-                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                .addComponent(registra_cittadino_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(20, 20, 20)
-                                                .addComponent(registra_cittadino_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel24)
-                                        .addComponent(registra_cittadino_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel28)
-                                        .addComponent(registra_cittadino_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(35, 35, 35)
+                                                .addComponent(indietro_btn)
+                                                .addGap(65, 65, 65)
+                                                .addComponent(jLabel25))
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                .addComponent(jLabel29)
-                                                .addGap(270, 270, 270)
-                                                .addComponent(jLabel30))
-                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                .addComponent(registra_cittadino_password, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(20, 20, 20)
-                                                .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel31)
-                                        .addComponent(registra_cittadino_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                .addGap(150, 150, 150)
-                                                .addComponent(cittadino_registrati_registrati_btn)))
-                                .addGap(170, 170, 170)
-                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(60, 60, 60)
+                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel24)
+                                                        .addComponent(registra_cittadino_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel28)
+                                                        .addComponent(registra_cittadino_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel31)
+                                                        .addComponent(registra_cittadino_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                                                .addGap(150, 150, 150)
+                                                                .addComponent(cittadino_registrati_registrati_btn))
+                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(registra_cittadino_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel26))
+                                                                .addGap(20, 20, 20)
+                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel27)
+                                                                        .addComponent(registra_cittadino_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(registra_cittadino_password, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel29))
+                                                                .addGap(20, 20, 20)
+                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel30)
+                                                                        .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addGap(170, 170, 170)
+                                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(44, 44, 44))
         );
         cittadino_registra_pnlLayout.setVerticalGroup(
                 cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -983,35 +997,35 @@ public class HomeV2 extends javax.swing.JFrame {
                                                 .addGap(15, 15, 15)
                                                 .addComponent(indietro_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jLabel25))
-                                .addGap(106, 106, 106)
-                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(115, 115, 115)
+                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel26)
                                         .addComponent(jLabel27))
-                                .addGap(15, 15, 15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
                                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(registra_cittadino_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(registra_cittadino_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(30, 30, 30)
+                                                .addGap(39, 39, 39)
                                                 .addComponent(jLabel24)
-                                                .addGap(15, 15, 15)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(registra_cittadino_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(10, 10, 10)
+                                                .addGap(19, 19, 19)
                                                 .addComponent(jLabel28)
-                                                .addGap(15, 15, 15)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(registra_cittadino_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(20, 20, 20)
-                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(29, 29, 29)
+                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel29)
                                                         .addComponent(jLabel30))
-                                                .addGap(15, 15, 15)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(registra_cittadino_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(30, 30, 30)
+                                                .addGap(39, 39, 39)
                                                 .addComponent(jLabel31)
-                                                .addGap(15, 15, 15)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(registra_cittadino_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(30, 30, 30)
                                                 .addComponent(cittadino_registrati_registrati_btn))
@@ -1073,59 +1087,48 @@ public class HomeV2 extends javax.swing.JFrame {
                                                                 .addGap(9, 9, 9)
                                                                 .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                         .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                                                                .addGap(12, 12, 12)
-                                                                                .addComponent(jLabel56))
-                                                                        .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                                        .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel56)
+                                                                        .addComponent(jLabel58)
+                                                                        .addComponent(jLabel57))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
+                                                                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
                                                 .addGap(89, 89, 89)
                                                 .addComponent(registra_evento_btn)))
-                                .addContainerGap(744, Short.MAX_VALUE))
-                        .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                        .addGap(80, 80, 80)
-                                        .addComponent(jLabel57)
-                                        .addContainerGap(1194, Short.MAX_VALUE)))
+                                .addGap(77, 77, 77))
                         .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
                                         .addGap(80, 80, 80)
                                         .addComponent(registra_evento_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap(998, Short.MAX_VALUE)))
-                        .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                        .addGap(89, 89, 89)
-                                        .addComponent(jLabel58)
-                                        .addContainerGap(1196, Short.MAX_VALUE)))
         );
         cittadino_evento_avverso_pnlLayout.setVerticalGroup(
                 cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addComponent(jLabel55)
-                                .addGap(228, 228, 228)
-                                .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel56)
-                                .addGap(36, 36, 36)
-                                .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72)
-                                .addComponent(registra_evento_btn)
-                                .addContainerGap(57, Short.MAX_VALUE))
-                        .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                        .addGap(208, 208, 208)
-                                        .addComponent(jLabel57)
-                                        .addContainerGap(627, Short.MAX_VALUE)))
+                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
+                                                .addComponent(jLabel55)
+                                                .addGap(92, 92, 92)
+                                                .addComponent(jLabel57)
+                                                .addGap(80, 80, 80)
+                                                .addComponent(jLabel58)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(57, 57, 57)
+                                                .addComponent(jLabel56)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(72, 72, 72)
+                                                .addComponent(registra_evento_btn)))
+                                .addContainerGap(112, Short.MAX_VALUE))
                         .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
                                         .addGap(251, 251, 251)
                                         .addComponent(registra_evento_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap(569, Short.MAX_VALUE)))
-                        .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                        .addGap(325, 325, 325)
-                                        .addComponent(jLabel58)
-                                        .addContainerGap(510, Short.MAX_VALUE)))
         );
 
         contenitore_pnl.add(cittadino_evento_avverso_pnl, "card9");
@@ -1224,7 +1227,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Nome centro(max 35)");
+        jLabel32.setText("Nome centro (max.35)");
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
@@ -1232,27 +1235,27 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Indirizzo centro");
+        jLabel35.setText("Indirizzo centro:");
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Nome via(max 35)");
+        jLabel36.setText("Nome via (max.35)");
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("N° civ.(max 5)");
+        jLabel37.setText("N° civ.");
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Comune(max 35)");
+        jLabel38.setText("Comune (max.35)");
 
         jLabel39.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("prov(max 2)");
+        jLabel39.setText("prov");
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setText("CAP(max 5)");
+        jLabel40.setText("CAP");
 
         registra_centro_registra_centro_btn.setIcon(new javax.swing.ImageIcon("./res/bottone_registra_centro.png")); // NOI18N
         registra_centro_registra_centro_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1285,61 +1288,74 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Sigla");
 
+        jLabel64.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel64.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel64.setText("(max.5)");
+
         javax.swing.GroupLayout registra_centro_pnlLayout = new javax.swing.GroupLayout(registra_centro_pnl);
         registra_centro_pnl.setLayout(registra_centro_pnlLayout);
         registra_centro_pnlLayout.setHorizontalGroup(
                 registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel14)
-                                .addGap(183, 183, 183)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(passa_a_registra_vaccinato_btn))
-                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jLabel32)
-                                .addGap(269, 269, 269)
-                                .addComponent(jLabel34))
-                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(registra_centro_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(registra_centro_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jLabel35))
-                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(200, 200, 200)
-                                .addComponent(jLabel36)
-                                .addGap(159, 159, 159)
-                                .addComponent(jLabel37)
-                                .addGap(45, 45, 45)
-                                .addComponent(jLabel38)
-                                .addGap(80, 80, 80)
                                 .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel43)
-                                        .addComponent(jLabel39))
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel40))
-                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(registra_centro_qualificatore, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(registra_centro_nome_via, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(registra_centro_numero_civico, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(registra_centro_comune, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(registra_centro_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(registra_centro_cap, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                .addGap(200, 200, 200)
-                                .addComponent(registra_centro_registra_centro_btn)
-                                .addGap(197, 197, 197)
-                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                .addGap(54, 54, 54)
+                                                .addComponent(jLabel14)
+                                                .addGap(183, 183, 183)
+                                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(6, 6, 6)
+                                                .addComponent(passa_a_registra_vaccinato_btn))
+                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                .addGap(70, 70, 70)
+                                                .addComponent(jLabel35))
+                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                .addGap(200, 200, 200)
+                                                .addComponent(registra_centro_registra_centro_btn)
+                                                .addGap(197, 197, 197)
+                                                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                .addGap(70, 70, 70)
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(registra_centro_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel32))
+                                                .addGap(30, 30, 30)
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel34)
+                                                        .addComponent(registra_centro_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                                .addGap(70, 70, 70)
+                                                                .addComponent(registra_centro_qualificatore, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(20, 20, 20)
+                                                                .addComponent(registra_centro_nome_via, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                                .addGap(200, 200, 200)
+                                                                .addComponent(jLabel36)))
+                                                .addGap(10, 10, 10)
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                                .addComponent(registra_centro_numero_civico, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(10, 10, 10)
+                                                                .addComponent(registra_centro_comune, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(10, 10, 10)
+                                                                .addComponent(registra_centro_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel37)
+                                                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
+                                                                                .addComponent(jLabel64)
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(jLabel38)))
+                                                                .addGap(18, 18, 18)
+                                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel39)
+                                                                        .addComponent(jLabel43))))
+                                                .addGap(10, 10, 10)
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel40)
+                                                        .addComponent(registra_centro_cap, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(378, 378, 378))
         );
         registra_centro_pnlLayout.setVerticalGroup(
                 registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1353,35 +1369,35 @@ public class HomeV2 extends javax.swing.JFrame {
                                                 .addGap(19, 19, 19)
                                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(passa_a_registra_vaccinato_btn))
-                                .addGap(106, 106, 106)
-                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(115, 115, 115)
+                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel32)
                                         .addComponent(jLabel34))
-                                .addGap(15, 15, 15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(registra_centro_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(registra_centro_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel35)
-                                .addGap(33, 33, 33)
                                 .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jLabel36))
+                                                .addGap(79, 79, 79)
+                                                .addComponent(jLabel37)
+                                                .addGap(0, 0, 0)
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel36)
+                                                        .addComponent(jLabel64)))
                                         .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(jLabel37))
+                                                .addGap(30, 30, 30)
+                                                .addComponent(jLabel35)
+                                                .addGap(22, 22, 22)
+                                                .addComponent(jLabel43)
+                                                .addGap(0, 0, 0)
+                                                .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel39)
+                                                        .addComponent(jLabel38)))
                                         .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(jLabel38))
-                                        .addComponent(jLabel43)
-                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(jLabel39))
-                                        .addGroup(registra_centro_pnlLayout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
+                                                .addGap(109, 109, 109)
                                                 .addComponent(jLabel40)))
-                                .addGap(5, 5, 5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(registra_centro_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(registra_centro_qualificatore, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(registra_centro_nome_via, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1417,19 +1433,19 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("Nome(max 20)");
+        jLabel41.setText("Nome (max.20)");
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel44.setText("Cognome(max 20)");
+        jLabel44.setText("Cognome (max.20)");
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setText("Codice fiscale(max 16)");
+        jLabel45.setText("Codice fiscale (16)");
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel46.setText("Comune centro vaccinale(max 35)");
+        jLabel46.setText("Comune centro vaccinale (max.35)");
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(255, 255, 255));
@@ -1453,11 +1469,11 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel52.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel52.setText("ID Vaccinazione(max 16)");
+        jLabel52.setText("ID Vaccinazione (16)");
 
         jLabel54.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setText("Nome centro vaccinale(max 35)");
+        jLabel54.setText("Nome centro vaccinale (max.35)");
 
         jLabel53.setIcon(new javax.swing.ImageIcon("./res/immagine_registra_vaccinato.png")); // NOI18N
 
@@ -1492,71 +1508,72 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_vaccinato_centro_vaccinale.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
 
-
-        //inserire
         javax.swing.GroupLayout registra_vaccinato_pnlLayout = new javax.swing.GroupLayout(registra_vaccinato_pnl);
         registra_vaccinato_pnl.setLayout(registra_vaccinato_pnlLayout);
         registra_vaccinato_pnlLayout.setHorizontalGroup(
                 registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel16)
-                                .addGap(376, 376, 376)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(passa_a_registra_centro_btn))
-                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(jLabel41)
-                                .addGap(259, 259, 259)
-                                .addComponent(jLabel44)
-                                .addGap(229, 229, 229)
-                                .addComponent(jLabel45))
-                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(registra_vaccinato_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(registra_vaccinato_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(registra_vaccinato_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                .addGap(90, 90, 90)
-                                .addComponent(jLabel54)
-                                .addGap(215, 215, 215)
-                                .addComponent(jLabel46))
-                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                .addGap(90, 90, 90)
                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                                .addComponent(registra_vaccinato_centro_vaccinale, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(54, 54, 54)
+                                                .addComponent(jLabel16)
+                                                .addGap(376, 376, 376)
+                                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(6, 6, 6)
+                                                .addComponent(passa_a_registra_centro_btn))
+                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                .addGap(90, 90, 90)
+                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel47)
+                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                .addComponent(jLabel51)
+                                                                .addGap(52, 52, 52)
+                                                                .addComponent(jLabel52))
+                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                .addComponent(registra_vaccinato_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(20, 20, 20)
+                                                                .addComponent(registra_vaccinato_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                .addGap(40, 40, 40)
+                                                                .addComponent(registra_vaccinato_registra_vaccinato_btn))
+                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(registra_vaccinato_centro_vaccinale, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel54))
+                                                                .addGap(20, 20, 20)
+                                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel46)
+                                                                        .addComponent(registra_vaccinato_comune_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(registra_vaccinato_giorno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel48))
+                                                                .addGap(30, 30, 30)
+                                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                                .addComponent(jLabel49)
+                                                                                .addGap(135, 135, 135)
+                                                                                .addComponent(jLabel50))
+                                                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                                                .addComponent(registra_vaccinato_mese, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(20, 20, 20)
+                                                                                .addComponent(registra_vaccinato_anno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                .addGap(50, 50, 50)
+                                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
+                                                .addGap(90, 90, 90)
+                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(registra_vaccinato_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel41))
                                                 .addGap(20, 20, 20)
-                                                .addComponent(registra_vaccinato_comune_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel47)
-                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                                .addComponent(jLabel48)
-                                                .addGap(82, 82, 82)
-                                                .addComponent(jLabel49)
-                                                .addGap(125, 125, 125)
-                                                .addComponent(jLabel50))
-                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                                .addComponent(registra_vaccinato_giorno, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(30, 30, 30)
-                                                .addComponent(registra_vaccinato_mese, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(registra_vaccinato_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel44))
                                                 .addGap(20, 20, 20)
-                                                .addComponent(registra_vaccinato_anno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                                .addComponent(jLabel51)
-                                                .addGap(52, 52, 52)
-                                                .addComponent(jLabel52))
-                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                                .addComponent(registra_vaccinato_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(20, 20, 20)
-                                                .addComponent(registra_vaccinato_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
-                                                .addGap(40, 40, 40)
-                                                .addComponent(registra_vaccinato_registra_vaccinato_btn)))
-                                .addGap(50, 50, 50)
-                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel45)
+                                                        .addComponent(registra_vaccinato_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(44, 44, 44))
         );
         registra_vaccinato_pnlLayout.setVerticalGroup(
                 registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1570,21 +1587,21 @@ public class HomeV2 extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(passa_a_registra_centro_btn))
-                                .addGap(70, 70, 70)
-                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(79, 79, 79)
+                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel41)
                                         .addComponent(jLabel44)
                                         .addComponent(jLabel45))
-                                .addGap(15, 15, 15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(registra_vaccinato_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(registra_vaccinato_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(registra_vaccinato_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(29, 29, 29)
+                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel54)
                                         .addComponent(jLabel46))
-                                .addGap(15, 15, 15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
                                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1592,12 +1609,12 @@ public class HomeV2 extends javax.swing.JFrame {
                                                         .addComponent(registra_vaccinato_comune_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(30, 30, 30)
                                                 .addComponent(jLabel47)
-                                                .addGap(13, 13, 13)
-                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(22, 22, 22)
+                                                .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                         .addComponent(jLabel48)
                                                         .addComponent(jLabel49)
                                                         .addComponent(jLabel50))
-                                                .addGap(15, 15, 15)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(registra_vaccinato_giorno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(registra_vaccinato_mese, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1616,7 +1633,6 @@ public class HomeV2 extends javax.swing.JFrame {
                                                 .addGap(10, 10, 10)
                                                 .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-
 
         contenitore_pnl.add(registra_vaccinato_pnl, "card6");
 
@@ -2109,19 +2125,25 @@ public class HomeV2 extends javax.swing.JFrame {
             if (ricerca_nome) {
                 //ricerchiamo il centro per il nome mandandolo sul socket
                 String nome_centro = barra_ricerca_nome.getText();
+                if(!(nome_centro.isBlank())){
                 System.out.println(nome_centro);
                 out.writeObject("CERCA CENTRO PER NOME");
                 out.writeObject(nome_centro);
-                //leggiamo i risultati e updatiamo la tabella
+                //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(puntatore)
+                }else {Message.errorMessage(this,"Compilare il campo di ricerca","Campo vuoto");}
             } else {
                 //ricerchiamo i centri in base al comune mandandolo sul socket
                 String comune = barra_ricerca_comune.getText();
                 String tipologia = (String) ricerca_comune_tipologia.getSelectedItem();
-                System.out.println(comune+" "+ tipologia);
-                out.writeObject("CERCA CENTRO PER COMUNE");
-                out.writeObject(comune);
-                out.writeObject(tipologia);
-                //leggiamo i risultati e updatiamo la tabella
+                if(!(comune.isBlank())){
+                    if(!(tipologia.equals("---------------"))){
+                        System.out.println(comune+" "+ tipologia);
+                        out.writeObject("CERCA CENTRO PER COMUNE");
+                        out.writeObject(comune);
+                        out.writeObject(tipologia);
+                        //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(puntatore)
+                    }else{Message.errorMessage(this,"Selezionare la tipologia di centro che\nsi desidera cercare","tipologia non valida");}
+                }else {Message.errorMessage(this,"Compilare il campo di ricerca","Campo vuoto");}
             }
         }catch (Exception e){}
     }
@@ -2392,6 +2414,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
