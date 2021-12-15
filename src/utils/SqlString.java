@@ -28,8 +28,8 @@ public class SqlString {
                 "Data DATE,"+
                 "Tipologia_vaccino VARCHAR(10),"+
                 "Id_vax NUMERIC(16) PRIMARY KEY,"+
-                "Nome_centro VARCHAR(20),"+
-                "Comune VARCHAR(20),"+
+                "Nome_centro VARCHAR(35),"+
+                "Comune VARCHAR(35),"+
                 "foreign key(Nome_Centro,Comune) references CentriVaccinali(Nome_Centro,Comune))";
         return query;
     }
