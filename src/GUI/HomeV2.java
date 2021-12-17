@@ -2301,11 +2301,20 @@ public class HomeV2 extends javax.swing.JFrame {
 
         if ( ( ( anno % 4 == 0 ) && ( anno % 100 != 0 ) ) || ( anno % 400 == 0 ) ) {
             //anno bisestile
+        if(mese==02 && giorno<=29 ){
+            return true;
+            }
+            return false;
         }
         else {
             //anno non bisestile
+            if(mese==02 && giorno<=28){
+                return true;
+            }
+                return false;
         }
-        return true;
+
+
     }
 
     /**
