@@ -1930,9 +1930,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 if (comune_centro.matches("[a-zA-Z]+") && comune_centro.length() <= 35) {
                     //controllo se la data è valida
                     if (isDateValid(new DataLab(giorno,mese,anno))) {
-                        //controllo se anno è valido
-                        if (anno.matches("[0-9]+") && anno.length() == 4) {
-                            //controllo id vax
+                        //controllo id vax
                             if (id_vacc.matches("[0-9]+") && id_vacc.length() == 16) {
                                 //istanzio oggetto data
                                 DataLab data = new DataLab(giorno, mese, anno);
@@ -1970,11 +1968,6 @@ public class HomeV2 extends javax.swing.JFrame {
                                 Message.warningMessage(this, "Per favore inserire un Id vaccinazione valido", "id non valido");
                                 registra_vaccinato_idvax.setText("");
                             }
-                        } else {
-                            //warnig anno non valido
-                            Message.warningMessage(this, "Per favore inserire un anno valido", "Anno non valido");
-                            registra_vaccinato_anno.setSelectedIndex(0);
-                        }
                     } else {
                         //warning giorno non valido
                         Message.warningMessage(this, "Per favore inserire una data valida", "Data non valido");
