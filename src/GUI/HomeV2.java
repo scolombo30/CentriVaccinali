@@ -1970,7 +1970,7 @@ public class HomeV2 extends javax.swing.JFrame {
                             }
                     } else {
                         //warning giorno non valido
-                        Message.warningMessage(this, "Per favore inserire una data valida", "Data non valido");
+                        Message.warningMessage(this, "Per favore inserire una data valida,controllare se il giorno è valido o se l'anno e bisestile oppure no ", "Data non valida");
                         registra_vaccinato_giorno.setSelectedIndex(0);
                         registra_vaccinato_anno.setSelectedIndex(0);
                         registra_vaccinato_mese.setSelectedIndex(0);
