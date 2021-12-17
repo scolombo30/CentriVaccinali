@@ -199,7 +199,6 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         registra_vaccinato_registra_vaccinato_btn = new javax.swing.JLabel();
-        registra_vaccinato_anno = new javax.swing.JTextField();
         registra_vaccinato_nome = new javax.swing.JTextField();
         registra_vaccinato_cognome = new javax.swing.JTextField();
         registra_vaccinato_codice_fiscale = new javax.swing.JTextField();
@@ -210,6 +209,7 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_vaccinato_giorno = new javax.swing.JComboBox<>();
         registra_vaccinato_centro_vaccinale = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
+        registra_vaccinato_anno = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(33, 32, 36));
@@ -1475,6 +1475,9 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel54.setForeground(new java.awt.Color(255, 255, 255));
         jLabel54.setText("Nome centro vaccinale (max.35)");
 
+        registra_vaccinato_anno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registra_vaccinato_anno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+
         jLabel53.setIcon(new javax.swing.ImageIcon("./res/immagine_registra_vaccinato.png")); // NOI18N
 
         registra_vaccinato_registra_vaccinato_btn.setIcon(new javax.swing.ImageIcon("./res/bottone_registra_vaccinato.png")); // NOI18N
@@ -1496,14 +1499,18 @@ public class HomeV2 extends javax.swing.JFrame {
 
         registra_vaccinato_comune_centro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
+        registra_vaccinato_giorno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registra_vaccinato_giorno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+
         registra_vaccinato_mese.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registra_vaccinato_mese.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         registra_vaccinato_tipologia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registra_vaccinato_tipologia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------", "Pfizer", "Moderna", "J&J" }));
 
-        registra_vaccinato_giorno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registra_vaccinato_giorno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        registra_vaccinato_anno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registra_vaccinato_anno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-------", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
 
         registra_vaccinato_centro_vaccinale.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -1556,8 +1563,8 @@ public class HomeV2 extends javax.swing.JFrame {
                                                                                 .addComponent(jLabel50))
                                                                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
                                                                                 .addComponent(registra_vaccinato_mese, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(20, 20, 20)
-                                                                                .addComponent(registra_vaccinato_anno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                                                .addGap(18, 18, 18)
+                                                                                .addComponent(registra_vaccinato_anno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                                 .addGap(50, 50, 50)
                                                 .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
@@ -1617,8 +1624,9 @@ public class HomeV2 extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(registra_vaccinato_giorno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(registra_vaccinato_mese, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(registra_vaccinato_anno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(registra_vaccinato_mese, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(registra_vaccinato_anno, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                 .addGap(30, 30, 30)
                                                 .addGroup(registra_vaccinato_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel51)
@@ -1628,10 +1636,12 @@ public class HomeV2 extends javax.swing.JFrame {
                                                         .addComponent(registra_vaccinato_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(registra_vaccinato_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(80, 80, 80)
-                                                .addComponent(registra_vaccinato_registra_vaccinato_btn))
+                                                .addComponent(registra_vaccinato_registra_vaccinato_btn)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
                                                 .addGap(10, 10, 10)
-                                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(10, Short.MAX_VALUE))))
         );
 
         contenitore_pnl.add(registra_vaccinato_pnl, "card6");
@@ -1805,7 +1815,6 @@ public class HomeV2 extends javax.swing.JFrame {
         pulisci_campi();
     }
 
-
     private void cittadino_login_mostra_password_btnMouseClicked(java.awt.event.MouseEvent evt) {
         if(click_cittadino==0){cittadino_login_mostra_password_btn.setIcon(new ImageIcon("./res/mostrare_password.png"));
             cittadino_login_password.setEchoChar((char) 0);
@@ -1821,9 +1830,6 @@ public class HomeV2 extends javax.swing.JFrame {
     private void cittadino_login_accedi_btnMouseClicked(java.awt.event.MouseEvent evt) {
         login_cittadino();
     }
-
-
-
 
     private void registra_centro_registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String nome_centroo=controlla_apostrofo(registra_centro_nome.getText());
@@ -1908,7 +1914,7 @@ public class HomeV2 extends javax.swing.JFrame {
         String nome_centro=controlla_apostrofo(registra_vaccinato_centro_vaccinale.getText());
         String giorno=registra_vaccinato_giorno.getSelectedItem().toString();
         String mese=registra_vaccinato_mese.getSelectedItem().toString();
-        String anno=registra_vaccinato_anno.getText();
+        String anno=registra_vaccinato_anno.getSelectedItem().toString();
         String tipo_vaccino=registra_vaccinato_tipologia.getSelectedItem().toString();
         String id_vacc=registra_vaccinato_idvax.getText();
 
@@ -1967,7 +1973,7 @@ public class HomeV2 extends javax.swing.JFrame {
                         } else {
                             //warnig anno non valido
                             Message.warningMessage(this, "Per favore inserire un anno valido", "Anno non valido");
-                            registra_vaccinato_anno.setText("");
+                            registra_vaccinato_anno.setSelectedIndex(0);
                         }
                     } else {
                         //warning giorno non valido
@@ -2189,7 +2195,7 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_vaccinato_comune_centro.setText("");
         registra_vaccinato_giorno.setSelectedIndex(0);
         registra_vaccinato_mese.setSelectedIndex(0);
-        registra_vaccinato_anno.setText("");
+        registra_vaccinato_anno.setSelectedIndex(0);
         registra_vaccinato_tipologia.setSelectedIndex(0);
         registra_vaccinato_idvax.setText("");
     }
@@ -2453,7 +2459,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JTextArea registra_evento_note;
     private javax.swing.JComboBox<String> registra_evento_severita;
     private javax.swing.JComboBox<String> registra_evento_tipologia;
-    private javax.swing.JTextField registra_vaccinato_anno;
+    private javax.swing.JComboBox<String> registra_vaccinato_anno;
     private javax.swing.JTextField registra_vaccinato_centro_vaccinale;
     private javax.swing.JTextField registra_vaccinato_codice_fiscale;
     private javax.swing.JTextField registra_vaccinato_cognome;
