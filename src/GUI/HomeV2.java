@@ -1928,8 +1928,8 @@ public class HomeV2 extends javax.swing.JFrame {
             if (cod_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && cod_fiscale.length() == 16) {
                 //controllo comune
                 if (comune_centro.matches("[a-zA-Z]+") && comune_centro.length() <= 35) {
-                    //controllo se il giorno è valido
-                    if (giorno.matches("[0-9]+") && !((giorno.length()) > 2) && Integer.parseInt(giorno) < 32 && Integer.parseInt(giorno) > 0) {
+                    //controllo se la data è valida
+                    if (isDateValid(new DataLab(giorno,mese,anno))) {
                         //controllo se anno è valido
                         if (anno.matches("[0-9]+") && anno.length() == 4) {
                             //controllo id vax
@@ -1977,8 +1977,10 @@ public class HomeV2 extends javax.swing.JFrame {
                         }
                     } else {
                         //warning giorno non valido
-                        Message.warningMessage(this, "Per favore inserire un giorno valido", "Giorno non valido");
+                        Message.warningMessage(this, "Per favore inserire una data valida", "Data non valido");
                         registra_vaccinato_giorno.setSelectedIndex(0);
+                        registra_vaccinato_anno.setSelectedIndex(0);
+                        registra_vaccinato_mese.setSelectedIndex(0);
                     }
                 } else {
                     //warning comune non valido
@@ -2298,23 +2300,19 @@ public class HomeV2 extends javax.swing.JFrame {
         int anno = Integer.parseInt(data.getAnno());
         int giorno = Integer.parseInt(data.getGiorno());
         int mese = Integer.parseInt(data.getMese());
+        boolean bisestile = ( ( ( anno % 4 == 0 ) && ( anno % 100 != 0 ) ) || ( anno % 400 == 0 ) ) ? true : false;
 
-        if ( ( ( anno % 4 == 0 ) && ( anno % 100 != 0 ) ) || ( anno % 400 == 0 ) ) {
-            //anno bisestile
-        if(mese==02 && giorno<=29 ){
+        if((mese==4||mese==6||mese==9||mese==11) && giorno <=30){
             return true;
-            }
+        }else if(bisestile && mese==2 && giorno<=29){
+            return true;
+        }else if (!bisestile && mese==2 && giorno <=28){
+            return true;
+        }else if ((mese==1 || mese==3 || mese==5 || mese==7 || mese==8 || mese==10 || mese==12) && giorno<=31){
+            return true;
+        }else{
             return false;
         }
-        else {
-            //anno non bisestile
-            if(mese==02 && giorno<=28){
-                return true;
-            }
-                return false;
-        }
-
-
     }
 
     /**
