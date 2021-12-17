@@ -2294,6 +2294,20 @@ public class HomeV2 extends javax.swing.JFrame {
         return str.replace("'","''");
     }
 
+    private boolean isDateValid(DataLab data){
+        int anno = Integer.parseInt(data.getAnno());
+        int giorno = Integer.parseInt(data.getGiorno());
+        int mese = Integer.parseInt(data.getMese());
+
+        if ( ( ( anno % 4 == 0 ) && ( anno % 100 != 0 ) ) || ( anno % 400 == 0 ) ) {
+            //anno bisestile
+        }
+        else {
+            //anno non bisestile
+        }
+        return true;
+    }
+
     /**
      * @param args the command line arguments
      */
