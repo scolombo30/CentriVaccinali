@@ -12,13 +12,17 @@ public class EventoAvverso implements Serializable {
     private short gravità;
     private String note;
     private User user;
+    private String centro;
+    private String comune;
 
     //costruttore
-    public EventoAvverso (String tipologia, short gravità,String note, User user){
+    public EventoAvverso (String tipologia, short gravità,String note, User user, String centro, String comune){
         this.tipologia = tipologia;
         this.gravità = gravità;
         this.note = note;
         this.user = user;
+        this.centro=centro;
+        this.comune = comune;
     }
 
     public User getUser() {

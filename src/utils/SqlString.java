@@ -61,6 +61,8 @@ public class SqlString {
                 "Tipologia VARCHAR(30)," +
                 "Severità NUMERIC(1)," +
                 "Note VARCHAR(256)," +
+                "Centro VARCHAR(35),"+
+                "Comune_centro VARCHAR(35)"+
                 "Username VARCHAR(35))";
 
     }
@@ -88,8 +90,8 @@ public class SqlString {
 
     }
     //metodo insert evento
-    public static String insertEvento(String tipologia, short gravità, String note, String username) {
-        return "INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"')";
+    public static String insertEvento(String tipologia, short gravità, String note, String username, String centro, String comune_centro) {
+        return "INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"','"+centro+"','"+comune_centro+"')";
 
     }
     //metodo select login
@@ -98,11 +100,11 @@ public class SqlString {
 
     }
     public static String selectCentroNome(String nome){
-        return "SELECT * FROM CentriVaccinali WHERE Nome_Centro='"+nome+"';";
+        return "SELECT * FROM CentriVaccinali WHERE Nome_Centro like '%"+nome+"%';";
 
     }
     public static String selectCentroComuneTipolgia(String comune,String tipologia){
-        return "SELECT * FROM CentriVaccinali WHERE Comune='"+comune+"' AND Tipologia='"+tipologia+"';";
+        return "SELECT * FROM CentriVaccinali WHERE Comune like '%"+comune+"%' AND Tipologia='"+tipologia+"';";
 
     }
 

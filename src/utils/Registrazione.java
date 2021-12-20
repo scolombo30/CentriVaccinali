@@ -157,7 +157,7 @@ public  class Registrazione {
             String query_nome_centro=SqlString.selectCentroNome(nome);
             //update per la tabella
             ResultSet rs = st.executeQuery(query_nome_centro);
-            LinkedList<CentroVaccinale> listaCentri=null;
+            LinkedList<CentroVaccinale> listaCentri=new LinkedList<CentroVaccinale>();
             CentroVaccinale centrotmp;Indirizzo indirizzotmp;
             String nome_centro;String qualificatore; String nome_via; String numciv;String comune; String siglaProvincia; String cap; String tipologia;
             while(rs.next()){
@@ -189,7 +189,7 @@ public  class Registrazione {
             String query_nome_centro=SqlString.selectCentroComuneTipolgia(com,tip);
             //update per la tabella
             ResultSet rs = st.executeQuery(query_nome_centro);
-            LinkedList<CentroVaccinale> listaCentri=null;
+            LinkedList<CentroVaccinale> listaCentri=new LinkedList<CentroVaccinale>();
             CentroVaccinale centrotmp;Indirizzo indirizzotmp;
             String nome_centro;String qualificatore; String nome_via; String numciv;String comune; String siglaProvincia; String cap; String tipologia;
             while(rs.next()){
@@ -229,7 +229,7 @@ public  class Registrazione {
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
-        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username);
+        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username,"nome centro","comune centro");
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;
