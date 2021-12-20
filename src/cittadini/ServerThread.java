@@ -8,6 +8,7 @@ import java.net.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 class ServerThread extends Thread {
     //dichiarazione variabili
@@ -79,16 +80,23 @@ class ServerThread extends Thread {
                     User user_return=Registrazione.loginCittadino(conn,utente);
                     //se lo trovo lo riscrivo al client
                     out.writeObject(user_return);
-                } else if (azione.equals("CERCA CENTRO PER NOME")) { //leggo il nome del centro
+
+                } else if (azione.equals("CERCA CENTRO PER NOME")) {
+                    //leggo il nome del centro
                     String nome_centro = (String) in.readObject();
                     //cerco sul db i centri con queste lettere
-                    Registrazione.cercaCentroVaccinaleNome(conn,nome_centro);
+                    LinkedList<CentroVaccinale> lista = Registrazione.cercaCentroVaccinaleNome(conn,nome_centro);
+                    //scrivo sul socket la lista dei centri che ha trovato
+                    out.writeObject(lista);
+
                 } else if(azione.equals("CERCA CENTRO PER COMUNE")){
                     //leggo comune e tipologia
                     String comune = (String) in.readObject();
                     String tipologia = (String) in.readObject();
                     //cerco sul db i centri nel comune con quel tipo
-                    Registrazione.cercaCentroVaccinaleCoTip(conn,comune,tipologia);
+                    LinkedList<CentroVaccinale> lista = Registrazione.cercaCentroVaccinaleCoTip(conn,comune,tipologia);
+                    //scrivo sul socket la lista dei centri che ha trovato
+                    out.writeObject(lista);
                 }
 
             }

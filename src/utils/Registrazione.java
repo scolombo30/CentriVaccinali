@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 public  class Registrazione {
 
@@ -148,11 +149,69 @@ public  class Registrazione {
 
     }
     //metodo cerca centro vaccinale x nome
-    public static void cercaCentroVaccinaleNome(Connection conn,String nome){
-
+    public static LinkedList<CentroVaccinale> cercaCentroVaccinaleNome(Connection conn,String nome){
+        try {
+            //creo lo statement
+            Statement st = conn.createStatement();
+            //creo query di select cittadino con queste credenziali
+            String query_nome_centro=SqlString.selectCentroNome(nome);
+            //update per la tabella
+            ResultSet rs = st.executeQuery(query_nome_centro);
+            LinkedList<CentroVaccinale> listaCentri=null;
+            CentroVaccinale centrotmp;Indirizzo indirizzotmp;
+            String nome_centro;String qualificatore; String nome_via; String numciv;String comune; String siglaProvincia; String cap; String tipologia;
+            while(rs.next()){
+                //ottengo tutti i campi dal resulSet
+                nome_centro=rs.getString("Nome_Centro");
+                qualificatore=rs.getString("Qualificatore");
+                nome_via=rs.getString("Nome_via");
+                numciv=rs.getString("Numero_civico");
+                comune=rs.getString("Comune");
+                siglaProvincia=rs.getString("Provincia");
+                cap=rs.getString("Cap");
+                tipologia=rs.getString("Tipologia");
+                //creo l'indirizzo e il centro che andrò ad aggiugere alla linkedList<>
+                indirizzotmp=new Indirizzo(qualificatore,nome_via,numciv,comune,siglaProvincia,cap);
+                centrotmp=new CentroVaccinale(nome_centro,indirizzotmp,tipologia);
+                listaCentri.add(centrotmp);
+                }
+                return listaCentri;
+        }catch(SQLException e) {
+            return null;
+        }
     }
     //metodo cerca centro vaccinale x comune, tipologia
-    public static  void cercaCentroVaccinaleCoTip(Connection conn,String comune, String tipologia){
+    public static  LinkedList<CentroVaccinale> cercaCentroVaccinaleCoTip(Connection conn,String com, String tip){
+        try {
+            //creo lo statement
+            Statement st = conn.createStatement();
+            //creo query di select cittadino con queste credenziali
+            String query_nome_centro=SqlString.selectCentroComuneTipolgia(com,tip);
+            //update per la tabella
+            ResultSet rs = st.executeQuery(query_nome_centro);
+            LinkedList<CentroVaccinale> listaCentri=null;
+            CentroVaccinale centrotmp;Indirizzo indirizzotmp;
+            String nome_centro;String qualificatore; String nome_via; String numciv;String comune; String siglaProvincia; String cap; String tipologia;
+            while(rs.next()){
+                //ottengo tutti i campi dal resulSet
+                nome_centro=rs.getString("Nome_Centro");
+                qualificatore=rs.getString("Qualificatore");
+                nome_via=rs.getString("Nome_via");
+                numciv=rs.getString("Numero_civico");
+                comune=rs.getString("Comune");
+                siglaProvincia=rs.getString("Provincia");
+                cap=rs.getString("Cap");
+                tipologia=rs.getString("Tipologia");
+                //creo l'indirizzo e il centro che andrò ad aggiugere alla linkedList<>
+                indirizzotmp=new Indirizzo(qualificatore,nome_via,numciv,comune,siglaProvincia,cap);
+                centrotmp=new CentroVaccinale(nome_centro,indirizzotmp,tipologia);
+                listaCentri.add(centrotmp);
+            }
+            return listaCentri;
+
+        }catch(SQLException e) {
+            return null;
+        }
 
     }
     //metodo inserisci evento avverso

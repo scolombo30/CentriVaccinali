@@ -7,8 +7,11 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.net.*;
+import java.util.LinkedList;
 import java.util.Locale;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import utils.*;
 
 public class HomeV2 extends javax.swing.JFrame {
@@ -2130,7 +2133,9 @@ public class HomeV2 extends javax.swing.JFrame {
                 System.out.println(nome_centro);
                 out.writeObject("CERCA CENTRO PER NOME");
                 out.writeObject(nome_centro);
-                //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(puntatore)
+                //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(linkedList<CentroVaccinale>)
+                    updateTable((LinkedList<CentroVaccinale>) in.readObject());
+
                 }else {Message.errorMessage(this,"Compilare il campo di ricerca","Campo vuoto");}
             } else {
                 //ricerchiamo i centri in base al comune mandandolo sul socket
@@ -2142,11 +2147,26 @@ public class HomeV2 extends javax.swing.JFrame {
                         out.writeObject("CERCA CENTRO PER COMUNE");
                         out.writeObject(comune);
                         out.writeObject(tipologia);
-                        //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(puntatore)
+                        //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(linkedList<CentroVaccinale>)
+                        updateTable((LinkedList<CentroVaccinale>) in.readObject());
+
                     }else{Message.errorMessage(this,"Selezionare la tipologia di centro che\nsi desidera cercare","tipologia non valida");}
                 }else {Message.errorMessage(this,"Compilare il campo di ricerca","Campo vuoto");}
             }
         }catch (Exception e){}
+    }
+
+    private void updateTable(LinkedList<CentroVaccinale> lista){
+        if(lista==null){
+            Message.warningMessage(this,"Non sono stati trovati centri", "Nessun centro");
+        }
+        else{
+            CentroVaccinale [] listaCentri= (CentroVaccinale []) lista.toArray();
+            DefaultTableModel tabella= (DefaultTableModel) tabella_risultati.getModel();
+            for(int i=0; i<listaCentri.length; i++){
+                tabella.addRow(new Object[]{i,listaCentri[i].getNome(),listaCentri[i].getIndirizzo().getComune()});
+            }
+        }
     }
     private void ricerca_per_nome_btnMouseClicked(java.awt.event.MouseEvent evt) {
         contenitore_ricerca_centro_pnl.removeAll();
