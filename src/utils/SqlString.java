@@ -97,4 +97,12 @@ public class SqlString {
         String query="SELECT * FROM Users WHERE Username='"+user+"' AND Password='"+psw+"';";
         return query;
     }
+    public static String selectCentroNome(String nome){
+        String query="";
+        return query;
+    }
+    public static String selectCentroComuneTipolgia(String comune,String tipologia){
+        String query="";
+        return query;
+    }
 }
