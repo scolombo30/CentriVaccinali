@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.Locale;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import utils.*;
@@ -566,6 +567,9 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Cerca centro");
 
+        tabella_risultati.setBackground(new java.awt.Color(255, 255, 255));
+        tabella_risultati.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        tabella_risultati.setForeground(new java.awt.Color(0, 0, 0));
         tabella_risultati.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
@@ -578,7 +582,7 @@ public class HomeV2 extends javax.swing.JFrame {
                     java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                    true, false, false
+                    false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -589,6 +593,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabella_risultati.setRowHeight(28);
         tabella_risultati.setShowHorizontalLines(true);
         tabella_risultati.setShowVerticalLines(true);
         tabella_risultati.getTableHeader().setReorderingAllowed(false);
@@ -607,11 +612,11 @@ public class HomeV2 extends javax.swing.JFrame {
 
         area_visualizzazione_info.setBackground(new java.awt.Color(33, 32, 36));
         area_visualizzazione_info.setColumns(20);
-        area_visualizzazione_info.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        area_visualizzazione_info.setForeground(new java.awt.Color(33, 32, 36));
+        area_visualizzazione_info.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        area_visualizzazione_info.setForeground(new java.awt.Color(255, 255, 255));
         area_visualizzazione_info.setRows(5);
-        area_visualizzazione_info.setBorder(null);
-        area_visualizzazione_info.setEnabled(false);
+        area_visualizzazione_info.setEditable(false);
+        area_visualizzazione_info.setEnabled(true);
         jScrollPane2.setViewportView(area_visualizzazione_info);
 
         btn_gruop_ricerca_centro.add(ricerca_per_nome_btn);

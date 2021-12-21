@@ -33,6 +33,9 @@ class ServerThread extends Thread {
         System.out.println("ServerThread " + id + ": started");
 
     }
+    private String controlla_apostrofo(String str){
+        return str.replace("'","''");
+    }
 
     public void run() {
         //creo la connessione al DB
@@ -101,7 +104,7 @@ class ServerThread extends Thread {
                     //leggo il nome del centro di cui dovrò vedere gli eventi avversi
                     CentroVaccinale centro=(CentroVaccinale)in.readObject();
                     //cerco sul db i vari eventi avversi accaduti nel centro
-                    String [][] info=Registrazione.infoEventiAvversi(conn,centro.getNome(),centro.getIndirizzo().getComune());
+                    String [][] info=Registrazione.infoEventiAvversi(conn,controlla_apostrofo(centro.getNome()),controlla_apostrofo(centro.getIndirizzo().getComune()));
                     //scrivo sul socket le info dei vari eventi e gravità
                     out.writeObject(info);
                 }

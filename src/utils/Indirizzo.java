@@ -142,7 +142,7 @@ public class Indirizzo implements Serializable{
         return this.qualificatore+ " "+
                 this.nome+" "+
                 this.numeroCivico +", "+
-                this.comune+ "("+this.siglaProvincia+"), "+
+                this.comune+ " ("+this.siglaProvincia+"), "+
                 this.CAP;
     }
     /*
