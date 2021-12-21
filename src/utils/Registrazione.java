@@ -264,7 +264,7 @@ public  class Registrazione {
                 while(rs.next()){
                     //ottengo tutti i campi dal resulSet
                     info[i][1]=rs.getString("occorrenze");
-                    //controllare se media ==null
+                    //controllo se media == null
                     info[i][2]=rs.getString("media");
                     if(info[i][2]==null) {
                         info[i][2] = "0";
