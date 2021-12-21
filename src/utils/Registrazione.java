@@ -266,6 +266,11 @@ public  class Registrazione {
                     info[i][1]=rs.getString("occorrenze");
                     //controllare se media ==null
                     info[i][2]=rs.getString("media");
+                    if(info[i][2]==null) {
+                        info[i][2] = "0";
+                    }
+
+
                 }
             }
         return info;

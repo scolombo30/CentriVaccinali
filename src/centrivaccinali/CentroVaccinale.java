@@ -81,7 +81,7 @@ public class CentroVaccinale implements Serializable{
      * @return Una stringa con tutte le informazioni del centro vaccinale
      */
     public String toString() {
-        return "CentroVaccinale: " + nome + ", [" + indirizzo + "], tipologia: " + tipologia;
+        return "CentroVaccinale: " + nome + ", " + indirizzo + ", tipologia: " + tipologia;
     }
 
     /**

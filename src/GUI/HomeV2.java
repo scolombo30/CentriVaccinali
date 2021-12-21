@@ -2219,12 +2219,12 @@ public class HomeV2 extends javax.swing.JFrame {
 
         area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
                                           "Eventi avversi registrati:\n" +
-                                          "-"+info[0][0]+", "+info[0][1]+" segnalazioni, "+info[0][2]+" severità media\n" +
-                                          "-Febbre, n segnalazioni, m severità media\n" +
-                                          "-Dolori muscolari e articolari, n segnalazioni, m severità media\n" +
-                                          "-Linfoadenopatia, n segnalazioni, m severità media\n" +
-                                          "-Tachicardia, n segnalazioni, m severità media\n" +
-                                          "-Crisi ipertensiva, n segnalazioni, m severità media\n"
+                                    "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +info[0][2]+ "\n" +
+                                    "-"+info[1][0]+", "+info[1][1]+" segnalazioni, severità media: " +info[1][2]+ "\n" +
+                                    "-"+info[2][0]+", "+info[2][1]+" segnalazioni, severità media: " +info[2][2]+ "\n" +
+                                    "-"+info[3][0]+", "+info[3][1]+" segnalazioni, severità media: " +info[3][2]+ "\n" +
+                                    "-"+info[4][0]+", "+info[4][1]+" segnalazioni, severità media: " +info[4][2]+ "\n" +
+                                    "-"+info[5][0]+", "+info[5][1]+" segnalazioni, severità media: " +info[5][2]+ "\n"
         );
         }catch(Exception e){
 
