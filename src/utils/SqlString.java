@@ -84,7 +84,7 @@ public class SqlString {
         return "INSERT INTO Users VALUES ('"+username+"', '"+password+"')";
 
     }
-    //metodo insert citadino
+    //metodo insert cittadino
     public static String insertCittadino(long idVaccinazione, String nome, String cognome, String codiceFiscale,String username,String password) {
         return"INSERT INTO Cittadini_Registrati VALUES ('"+idVaccinazione+"', '"+nome+"', '"+cognome+"', '"+codiceFiscale+"','"+username+"','"+password+"')";
 
@@ -96,18 +96,24 @@ public class SqlString {
     }
     //metodo select login
     public static String selectLogin(String user,String psw) {
-        return "SELECT * FROM Users WHERE Username='"+user+"' AND Password='"+psw+"';";
+        return "SELECT * FROM Users " +
+                "WHERE Username='"+user+"' AND Password='"+psw+"';";
 
     }
     //metodo select cerca centro per nome
     public static String selectCentroNome(String nome){
-        return "SELECT * FROM CentriVaccinali WHERE Nome_Centro like '%"+nome+"%';";
+        return "SELECT * FROM CentriVaccinali " +
+                "WHERE Nome_Centro like '%"+nome+"%';";
 
     }
     //metodo select cerca centro per comune e tipologia
     public static String selectCentroComuneTipolgia(String comune,String tipologia){
-        return "SELECT * FROM CentriVaccinali WHERE Comune like '%"+comune+"%' AND Tipologia='"+tipologia+"';";
+        return "SELECT * FROM CentriVaccinali " +
+                "WHERE Comune like '%"+comune+"%' AND Tipologia='"+tipologia+"';";
 
     }
-
+    public static String selectEventoAvverso(String centro, String comune, String evento){
+        return "SELECT COUNT(*) as occorrenze, AVG(severità) as media FROM eventi_avversi " +
+                "WHERE centro='"+centro+"' AND comune_centro='"+comune+"' AND tipologia='"+evento+"';";
+    }
 }

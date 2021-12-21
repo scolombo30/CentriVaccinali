@@ -245,6 +245,33 @@ public  class Registrazione {
     }
     }
     //metodo visualizza info
-    public static void visualizzaInfoCentroVaccinale(Connection conn){}
+    public static String [][] infoEventiAvversi(Connection conn,String centro, String comune){
+        try{
+            String[][] info = new String[][]{{"Mal di testa","0","0"},
+                                             {"Febbre","0","0"},
+                                             {"Dolori muscolari e articolari","0","0"},
+                                             {"Linfoadenopatia","0","0"},
+                                             {"Tachicardia","0","0"},
+                                             {"Crisi ipertensiva","0","0"}};
 
+        //creo lo statement
+        Statement st = conn.createStatement();
+        //creo query di select cittadino con queste credenziali
+            for (int i = 0; i <6;i++){
+                String query_info_eventi=SqlString.selectEventoAvverso(centro,comune,info[i][0]);
+                //update per la tabella
+                ResultSet rs = st.executeQuery(query_info_eventi);
+                while(rs.next()){
+                    //ottengo tutti i campi dal resulSet
+                    info[i][1]=rs.getString("occorrenze");
+                    //controllare se media ==null
+                    info[i][2]=rs.getString("media");
+                }
+            }
+        return info;
+    }catch(SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

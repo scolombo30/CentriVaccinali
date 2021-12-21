@@ -97,6 +97,13 @@ class ServerThread extends Thread {
                     LinkedList<CentroVaccinale> lista = Registrazione.cercaCentroVaccinaleCoTip(conn,comune,tipologia);
                     //scrivo sul socket la lista dei centri che ha trovato
                     out.writeObject(lista);
+                } else if (azione.equals("CERCA EVENTO")){
+                    //leggo il nome del centro di cui dovrò vedere gli eventi avversi
+                    CentroVaccinale centro=(CentroVaccinale)in.readObject();
+                    //cerco sul db i vari eventi avversi accaduti nel centro
+                    String [][] info=Registrazione.infoEventiAvversi(conn,centro.getNome(),centro.getIndirizzo().getComune());
+                    //scrivo sul socket le info dei vari eventi e gravità
+                    out.writeObject(info);
                 }
 
             }

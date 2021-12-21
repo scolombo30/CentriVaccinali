@@ -157,6 +157,11 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_evento_note = new javax.swing.JTextArea();
         registra_evento_btn = new javax.swing.JLabel();
         jLabel62 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        registra_evento_comune_centro = new javax.swing.JTextField();
+        registra_evento_nome_centro = new javax.swing.JTextField();
+
         login_operatore_pnl = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         campo_codice_operatore = new javax.swing.JPasswordField();
@@ -427,9 +432,9 @@ public class HomeV2 extends javax.swing.JFrame {
                                 .addComponent(jLabel63)
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel61)
-                                .addGap(48, 48, 48)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                                 .addComponent(disconnetti_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(55, Short.MAX_VALUE))
+                                .addGap(16, 16, 16))
         );
         user_logged_pnlLayout.setVerticalGroup(
                 user_logged_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1067,62 +1072,86 @@ public class HomeV2 extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Centro dove ti sei vaccinato (max.35)");
+
+        jLabel65.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel65.setText("Comune centro vaccinale (max.35)");
+
+        registra_evento_comune_centro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        registra_evento_nome_centro.setFont(new java.awt.Font("Segoe UI", 0, 18));
+
         javax.swing.GroupLayout cittadino_evento_avverso_pnlLayout = new javax.swing.GroupLayout(cittadino_evento_avverso_pnl);
         cittadino_evento_avverso_pnl.setLayout(cittadino_evento_avverso_pnlLayout);
         cittadino_evento_avverso_pnlLayout.setHorizontalGroup(
                 cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel55))
+                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
+                                .addGap(79, 79, 79)
                                 .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                                .addGap(70, 70, 70)
-                                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel55)
-                                                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                                                .addGap(9, 9, 9)
-                                                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel56)
-                                                                        .addComponent(jLabel58)
-                                                                        .addComponent(jLabel57))
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
-                                                                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jLabel57)
+                                                .addGap(220, 220, 220)
+                                                .addComponent(jLabel58))
                                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                                .addGap(89, 89, 89)
+                                                .addGap(1, 1, 1)
+                                                .addComponent(registra_evento_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(23, 23, 23)
+                                                .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(jLabel4)
+                                                .addGap(34, 34, 34)
+                                                .addComponent(jLabel65))
+                                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(registra_evento_nome_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(registra_evento_comune_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel56)
+                                        .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
                                                 .addComponent(registra_evento_btn)))
-                                .addGap(77, 77, 77))
-                        .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                        .addGap(80, 80, 80)
-                                        .addComponent(registra_evento_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(998, Short.MAX_VALUE)))
+                                .addGap(141, 141, 141)
+                                .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         cittadino_evento_avverso_pnlLayout.setVerticalGroup(
                 cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
                                 .addGap(66, 66, 66)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel55)
+                                .addGap(82, 82, 82)
+                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                                .addComponent(jLabel55)
-                                                .addGap(92, 92, 92)
-                                                .addComponent(jLabel57)
-                                                .addGap(80, 80, 80)
-                                                .addComponent(jLabel58)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(57, 57, 57)
+                                                .addGap(10, 10, 10)
+                                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel57)
+                                                        .addComponent(jLabel58))
+                                                .addGap(4, 4, 4)
+                                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(registra_evento_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(registra_evento_severita, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(49, 49, 49)
+                                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel4)
+                                                        .addComponent(jLabel65))
+                                                .addGap(5, 5, 5)
+                                                .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(registra_evento_nome_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(registra_evento_comune_centro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(54, 54, 54)
                                                 .addComponent(jLabel56)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(6, 6, 6)
                                                 .addComponent(contenitore_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(72, 72, 72)
-                                                .addComponent(registra_evento_btn)))
-                                .addContainerGap(112, Short.MAX_VALUE))
-                        .addGroup(cittadino_evento_avverso_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(cittadino_evento_avverso_pnlLayout.createSequentialGroup()
-                                        .addGap(251, 251, 251)
-                                        .addComponent(registra_evento_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(569, Short.MAX_VALUE)))
+                                                .addComponent(registra_evento_btn))
+                                        .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         contenitore_pnl.add(cittadino_evento_avverso_pnl, "card9");
@@ -1630,12 +1659,11 @@ public class HomeV2 extends javax.swing.JFrame {
                                                         .addComponent(registra_vaccinato_tipologia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(registra_vaccinato_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(80, 80, 80)
-                                                .addComponent(registra_vaccinato_registra_vaccinato_btn)
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(registra_vaccinato_registra_vaccinato_btn))
                                         .addGroup(registra_vaccinato_pnlLayout.createSequentialGroup()
                                                 .addGap(10, 10, 10)
-                                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addContainerGap(10, Short.MAX_VALUE))))
+                                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         contenitore_pnl.add(registra_vaccinato_pnl, "card6");
@@ -2055,6 +2083,8 @@ public class HomeV2 extends javax.swing.JFrame {
         String tipo=(String)registra_evento_tipologia.getSelectedItem();
         String severità= (String)registra_evento_severita.getSelectedItem();
         String note= controlla_apostrofo(registra_evento_note.getText());
+        String centro= controlla_apostrofo(registra_evento_nome_centro.getText()).replaceAll(" ","_");
+        String comune = controlla_apostrofo(registra_evento_comune_centro.getText()).replaceAll(" ","_");
 
         if(tipo.isBlank()||severità.isBlank()){
             //errore campi vuoti
@@ -2065,7 +2095,7 @@ public class HomeV2 extends javax.swing.JFrame {
                         if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
                         else {
                             try {
-                                EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente,"nome centro", "comune");
+                                EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente,centro,comune);
                                 //scrivo sul socket
                                 out.writeObject("REGISTRA EVENTO AVVERSO");
                                 out.writeObject(evento);
@@ -2083,10 +2113,10 @@ public class HomeV2 extends javax.swing.JFrame {
                             } catch (IOException | ClassNotFoundException e) {}
                         }
                     }else {
-                        Message.warningMessage(this, "Perfavore selezionare la severità", "Severità non corretta");
+                        Message.warningMessage(this, "Per favore selezionare la severità", "Severità non corretta");
                     }
             }else {
-                Message.warningMessage(this, "Perfavore selezionare una tipologia", "Tipologia non corretta");
+                Message.warningMessage(this, "Per favore selezionare una tipologia", "Tipologia non corretta");
             }
 
         }
@@ -2163,6 +2193,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         }
     }
+
     private void ricerca_per_nome_btnMouseClicked(java.awt.event.MouseEvent evt) {
         contenitore_ricerca_centro_pnl.removeAll();
         contenitore_ricerca_centro_pnl.add(cerca_centro_nome_pnl);
@@ -2181,14 +2212,23 @@ public class HomeV2 extends javax.swing.JFrame {
 
     private void tabella_risultatiMouseClicked(java.awt.event.MouseEvent evt) {
 
-        DefaultTableModel model = (DefaultTableModel) tabella_risultati.getModel();
-        int riga_selezionata= tabella_risultati.getSelectedRow();
+        int i=(tabella_risultati.getSelectedRow());
+        try{out.writeObject("CERCA EVENTO");
+            out.writeObject(listaCentri.get(i));
+            String [][] info=(String[][]) in.readObject();
 
-        area_visualizzazione_info.setText("centro.toString\n");
-        area_visualizzazione_info.setText("Eventi avversi registrati:\n");
-        area_visualizzazione_info.setText("primo evento, n segnalazioni, m severità media\n");
-        area_visualizzazione_info.setText("secondo evento, n segnalazioni, m severità media\n");
+        area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
+                                          "Eventi avversi registrati:\n" +
+                                          "-"+info[0][0]+", "+info[0][1]+" segnalazioni, "+info[0][2]+" severità media\n" +
+                                          "-Febbre, n segnalazioni, m severità media\n" +
+                                          "-Dolori muscolari e articolari, n segnalazioni, m severità media\n" +
+                                          "-Linfoadenopatia, n segnalazioni, m severità media\n" +
+                                          "-Tachicardia, n segnalazioni, m severità media\n" +
+                                          "-Crisi ipertensiva, n segnalazioni, m severità media\n"
+        );
+        }catch(Exception e){
 
+        }
     }
     //metodi utilizzati per cambiare il colore dei pulsanti sulla barra laterale
     private void setColor(JPanel panel){
@@ -2247,6 +2287,8 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_evento_tipologia.setSelectedIndex(0);
         registra_evento_severita.setSelectedIndex(0);
         registra_evento_note.setText("");
+        registra_evento_nome_centro.setText("");
+        registra_evento_comune_centro.setText("");
     }
     private void pulisci_campi(){
         pulisci_campi_registra_centro();
@@ -2435,6 +2477,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
@@ -2462,6 +2505,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2496,6 +2540,8 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JTextField registra_cittadino_password;
     private javax.swing.JLabel registra_evento_avverso_btn;
     private javax.swing.JLabel registra_evento_btn;
+    private javax.swing.JTextField registra_evento_comune_centro;
+    private javax.swing.JTextField registra_evento_nome_centro;
     private javax.swing.JTextArea registra_evento_note;
     private javax.swing.JComboBox<String> registra_evento_severita;
     private javax.swing.JComboBox<String> registra_evento_tipologia;
