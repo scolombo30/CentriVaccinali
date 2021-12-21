@@ -37,8 +37,6 @@ public  class Registrazione {
             st.executeUpdate(query_crea_centri);
             //creo query di inserimento dati in CentriVaccinali
             String query_inserisci_centro = SqlString.insertCentro(nome, tipologia, qualificatore, nomeVia, numeroCivico, comune, siglaProvincia, cap);
-                    /*"INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
-                    +numeroCivico+"','"+comune+"','"+siglaProvincia+"','"+cap+"')";*/
             st.executeUpdate(query_inserisci_centro);
             //se non ci sono stati errori ritorno vero
             return true;
@@ -51,7 +49,7 @@ public  class Registrazione {
     //metodo registra vaccianto su db
     public static int registraVaccinato(Connection conn, Vaccinato vaccinato) {
         //campi da inserire nella tabella
-            //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
+        //visto che il nome del centro diventa anche nome della tabella non può avere spazi, li sostituisco con "_"
         String centroVacci= (vaccinato.getCentroVaccinale().replaceAll("\\s","_")).replaceAll("''","_");
         String comune_centro=vaccinato.getComuneCentro();
         String nomecentro=vaccinato.getCentroVaccinale();
@@ -80,9 +78,13 @@ public  class Registrazione {
             return 0;
 
         } catch (SQLException e) {
+
             String errore=e.getMessage();
+            //se esiste già un id vax con lo stesso valore return 1
             if(errore.contains("Key (id_vax)")){return 1;}
+            //se esiste già un codice fiscale  con lo stesso valore return 2
             else if(errore.contains("Key (codice_fiscale)")){return 2;}
+            //per altri errori return 3
             else return 3;
         }
     }
@@ -93,7 +95,6 @@ public  class Registrazione {
          String cognome= cittadino.getCognome();
          String codiceFiscale=cittadino.getCodiceFiscale();
          long idVaccinazione=cittadino.getIdVaccinazione();
-         //String mail=user1.getMail();
          String username=cittadino.getUser().getUsername();
          String password=cittadino.getUser().getPassword();
          try{
@@ -118,8 +119,10 @@ public  class Registrazione {
              return 0;
          } catch (SQLException e) {
              String errore=e.getMessage();
+
              if(errore.contains("Key (username)")){return 1;}
              else if(errore.contains("Key (codice_fiscale)")){return 2;}
+             //se esiste già un id vax con lo stesso valore return 3
              else if(errore.contains("Key (id_vax)")){return 3;}
              else return 4;
          }
@@ -216,10 +219,13 @@ public  class Registrazione {
     }
     //metodo inserisci evento avverso
     public static boolean inserisciEventiAvversi(Connection conn, EventoAvverso evento){
-    String tipologia=evento.getTipologia();
-    String note=evento.getNote();
-    short gravità= evento.getGravità();
-    String username= evento.getUser().getUsername();
+        //tab variabili utili
+        String tipologia=evento.getTipologia();
+        String note=evento.getNote();
+        short gravità= evento.getGravità();
+        String username= evento.getUser().getUsername();
+        String comune=evento.getComune();
+        String nome_centro=evento.getCentro();
 
     try{
         //creo lo statement
@@ -229,7 +235,7 @@ public  class Registrazione {
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
-        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username,"nome centro","comune centro");
+        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username,comune,nome_centro);
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;

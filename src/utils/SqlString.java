@@ -99,10 +99,12 @@ public class SqlString {
         return "SELECT * FROM Users WHERE Username='"+user+"' AND Password='"+psw+"';";
 
     }
+    //metodo select cerca centro per nome
     public static String selectCentroNome(String nome){
         return "SELECT * FROM CentriVaccinali WHERE Nome_Centro like '%"+nome+"%';";
 
     }
+    //metodo select cerca centro per comune e tipologia
     public static String selectCentroComuneTipolgia(String comune,String tipologia){
         return "SELECT * FROM CentriVaccinali WHERE Comune like '%"+comune+"%' AND Tipologia='"+tipologia+"';";
 

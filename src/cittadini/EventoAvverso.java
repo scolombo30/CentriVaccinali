@@ -57,4 +57,19 @@ public class EventoAvverso implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
+
+    public String getComune() {
+        return  comune;
+    }
+    public String getCentro(){
+        return centro;
+    }
+
+    public void setCentro(String centro) {
+        this.centro = centro;
+    }
+
+    public void setComune(String comune) {
+        this.comune = comune;
+    }
 }
