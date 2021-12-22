@@ -5,9 +5,7 @@ import centrivaccinali.CentroVaccinale;
 import utils.Registrazione;
 import java.io.*;
 import java.net.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.LinkedList;
 
 class ServerThread extends Thread {
@@ -107,6 +105,17 @@ class ServerThread extends Thread {
                     String [][] info=Registrazione.infoEventiAvversi(conn,controlla_apostrofo(centro.getNome()),controlla_apostrofo(centro.getIndirizzo().getComune()));
                     //scrivo sul socket le info dei vari eventi e gravità
                     out.writeObject(info);
+                } else if (azione.equals("CODICE OPERATORE")){
+                    String codice =(String) in.readObject();
+                    Statement st=conn.createStatement();
+                    String query="SELECT codice FROM codice_operatore";
+                    ResultSet rs= st.executeQuery(query);
+                    String codice_in_db="";
+                    while(rs.next()){
+                    codice_in_db=rs.getString("codice");}
+                    if(codice_in_db.equals(codice)){
+                        out.writeObject(true);
+                    }else {out.writeObject(false);}
                 }
 
             }

@@ -2306,7 +2306,11 @@ public class HomeV2 extends javax.swing.JFrame {
     }
     //metodo che controlla se la password dell'operatore è giusta/sbagliata o il campo è vuoto
     private void login_operatore(String psw){
-        if(psw.equals("12345")){
+        try{
+        out.writeObject("CODICE OPERATORE");
+        out.writeObject(psw);
+
+        if((Boolean) in.readObject()){
             //se la password è giusta cambio layout
             contenitore_pnl.removeAll();
             contenitore_pnl.add(registra_centro_pnl);
@@ -2317,12 +2321,14 @@ public class HomeV2 extends javax.swing.JFrame {
         else if(psw.equals("")){
             //se il campo è vuoto mostro messaggio d'errore
             Message.errorMessage(this, "Inserire il codice. Il campo non può esere vuoto", "Campo vuoto");
-        }
+            }
         else{
             //se la password non è corretta mostro messaggio d'errore
             Message.errorMessage(this, "Il codice insertio è errato. Prego reinserisca", "Codice errato");
             pulisci_campi();
-        }}
+            }
+        }catch(Exception e){}
+    }
 
     private void login_cittadino(){
         try {

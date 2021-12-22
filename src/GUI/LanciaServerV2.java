@@ -19,6 +19,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     private String path_pg;
     private boolean primo_avvio=false;
     static final String DB_URL= "jdbc:postgresql://localhost/";
+    static final String DB_URL_CODICE="jdbc:postgresql://localhost/piattaformacv";
     /**
      * Creates new form LanciaServerV2
      */
@@ -361,6 +362,14 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                 Statement st= conn.createStatement();){
                 String sql= "CREATE DATABASE PiattaformaCV";
                 st.executeUpdate(sql);
+
+                Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
+                Statement s= con.createStatement();
+                String tabella= "CREATE TABLE IF NOT EXISTS Codice_operatore(" +
+                                "Codice VARCHAR(20))";
+                s.executeUpdate(tabella);
+                String insert_codice="INSERT INTO codice_operatore VALUES ('12345')";
+                s.executeUpdate(insert_codice);
 
             }catch (Exception e){
                 //avviso dell'errore in generale
