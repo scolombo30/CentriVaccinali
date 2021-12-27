@@ -280,4 +280,20 @@ public  class Registrazione {
             return null;
         }
     }
+    //metodo controllo codice operatore
+    public static Boolean controllaCodiceOperatore (Connection conn, String codice){
+       try {
+           String query = SqlString.selectCodiceOperatore();
+           Statement st = conn.createStatement();
+           ResultSet rs = st.executeQuery(query);
+           String codice_in_db="";
+           while(rs.next()){
+               codice_in_db=rs.getString("codice");}
+           if(codice_in_db.equals(codice)){
+               return true;
+           }else {return false;}
+       }catch(SQLException e) {
+           return false;
+       }
+    }
 }

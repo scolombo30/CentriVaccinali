@@ -108,16 +108,10 @@ class ServerThread extends Thread {
                     //scrivo sul socket le info dei vari eventi e gravità
                     out.writeObject(info);
                 } else if (azione.equals("CODICE OPERATORE")){
+                    boolean successo;
                     String codice =(String) in.readObject();
-                    Statement st=conn.createStatement();
-                    String query= SqlString.selectCodiceOperatore();
-                    ResultSet rs= st.executeQuery(query);
-                    String codice_in_db="";
-                    while(rs.next()){
-                    codice_in_db=rs.getString("codice");}
-                    if(codice_in_db.equals(codice)){
-                        out.writeObject(true);
-                    }else {out.writeObject(false);}
+                    successo=Registrazione.controllaCodiceOperatore(conn,codice);
+                    out.writeObject(successo);
                 }
 
             }

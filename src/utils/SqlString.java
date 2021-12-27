@@ -134,11 +134,11 @@ public class SqlString {
                 "WHERE centro='"+centro+"' AND comune_centro='"+comune+"' AND tipologia='"+evento+"';";
     }
     public static String selectCodiceOperatore() {
-        return  "Select codice from codice_operatore;";
+        return  "SELECT codice FROM codice_operatore;";
 
     }
    //metodo update codiceOperatore
-    public static String updateCodiceOperatore(String nuovo, String vecchio)    {
+    public static String updateCodiceOperatore(String vecchio, String nuovo)    {
         return "UPDATE codice_operatore SET codice='"+nuovo+"' WHERE codice='"+vecchio+"'";
     }
 
