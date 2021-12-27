@@ -1860,14 +1860,14 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_centro_registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome_centroo=controlla_apostrofo(registra_centro_nome.getText());
+        String nome_centroo=controlla_apostrofo(registra_centro_nome.getText()).strip();
         String tipo_centro=registra_centro_tipologia.getSelectedItem().toString();
         String qualificatore=registra_centro_qualificatore.getSelectedItem().toString();
-        String nome_via=controlla_apostrofo(registra_centro_nome_via.getText());
-        String comune=controlla_apostrofo(registra_centro_comune.getText());
-        String numeroCivico=registra_centro_numero_civico.getText();
-        String provincia=registra_centro_provincia.getText();
-        String cap=registra_centro_cap.getText();
+        String nome_via=controlla_apostrofo(registra_centro_nome_via.getText()).strip();
+        String comune=controlla_apostrofo(registra_centro_comune.getText()).strip();
+        String numeroCivico=(registra_centro_numero_civico.getText()).strip();
+        String provincia=(registra_centro_provincia.getText()).strip();
+        String cap=(registra_centro_cap.getText()).strip();
         //controllo che i vari campi non siano vuoti
         if(qualificatore.isBlank()||nome_via.isBlank()||numeroCivico.isBlank()||comune.isBlank()||
                 provincia.isBlank()||cap.isBlank()||nome_centroo.isBlank()||tipo_centro.isBlank())
@@ -1935,16 +1935,16 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_vaccinato_registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=controlla_apostrofo(registra_vaccinato_nome.getText());
-        String cognome=controlla_apostrofo(registra_vaccinato_cognome.getText());
-        String cod_fiscale=registra_vaccinato_codice_fiscale.getText().toUpperCase();
-        String comune_centro=controlla_apostrofo(registra_vaccinato_comune_centro.getText());
-        String nome_centro=controlla_apostrofo(registra_vaccinato_centro_vaccinale.getText());
+        String nome=controlla_apostrofo(registra_vaccinato_nome.getText()).strip();
+        String cognome=controlla_apostrofo(registra_vaccinato_cognome.getText()).strip();
+        String cod_fiscale=(registra_vaccinato_codice_fiscale.getText().toUpperCase()).strip();
+        String comune_centro=controlla_apostrofo(registra_vaccinato_comune_centro.getText()).strip();
+        String nome_centro=controlla_apostrofo(registra_vaccinato_centro_vaccinale.getText()).strip();
         String giorno=registra_vaccinato_giorno.getSelectedItem().toString();
         String mese=registra_vaccinato_mese.getSelectedItem().toString();
         String anno=registra_vaccinato_anno.getSelectedItem().toString();
         String tipo_vaccino=registra_vaccinato_tipologia.getSelectedItem().toString();
-        String id_vacc=registra_vaccinato_idvax.getText();
+        String id_vacc=(registra_vaccinato_idvax.getText()).strip();
 
         //controllo se i campi suono vuoti
         if(nome.isBlank()||cognome.isBlank()||cod_fiscale.isBlank()||nome_centro.isBlank()||
@@ -2017,13 +2017,13 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=controlla_apostrofo(registra_cittadino_nome.getText());
-        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText());
-        String codice_fiscale=registra_cittadino_codice_fiscale.getText().toUpperCase();
-        String mail=registra_cittadino_mail.getText();
+        String nome=controlla_apostrofo(registra_cittadino_nome.getText()).strip();
+        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText()).strip();
+        String codice_fiscale=(registra_cittadino_codice_fiscale.getText().toUpperCase()).strip();
+        String mail=(registra_cittadino_mail.getText()).strip();
         String psw=registra_cittadino_password.getText();
         String psw_conferma=registra_cittadino_conferma_password.getText();
-        String id_vaccinazione=registra_cittadino_idvax.getText();
+        String id_vaccinazione=(registra_cittadino_idvax.getText()).strip();
         //controllo se i campi sono vuoti
         if((nome.isBlank()||cognome.isBlank()||codice_fiscale.isBlank()||mail.isBlank()||
                 psw.isBlank()||psw_conferma.isBlank()||id_vaccinazione.isBlank()))
@@ -2086,11 +2086,11 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_evento_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String tipo=(String)registra_evento_tipologia.getSelectedItem();
-        String severità= (String)registra_evento_severita.getSelectedItem();
-        String note= controlla_apostrofo(registra_evento_note.getText());
-        String centro= controlla_apostrofo(registra_evento_nome_centro.getText()).replaceAll(" ","_");
-        String comune = controlla_apostrofo(registra_evento_comune_centro.getText()).replaceAll(" ","_");
+        String tipo =(String)registra_evento_tipologia.getSelectedItem();
+        String severità = (String)registra_evento_severita.getSelectedItem();
+        String note = controlla_apostrofo(registra_evento_note.getText()).strip();
+        String centro = (controlla_apostrofo(registra_evento_nome_centro.getText()).replaceAll(" ","_")).strip();
+        String comune = (controlla_apostrofo(registra_evento_comune_centro.getText()).replaceAll(" ","_")).strip();
 
         if(tipo.isBlank()||severità.isBlank()){
             //errore campi vuoti
@@ -2157,7 +2157,7 @@ public class HomeV2 extends javax.swing.JFrame {
             boolean ricerca_nome = ricerca_per_nome_btn.isSelected();
             if (ricerca_nome) {
                 //ricerchiamo il centro per il nome mandandolo sul socket
-                String nome_centro = controlla_apostrofo(barra_ricerca_nome.getText());
+                String nome_centro = controlla_apostrofo(barra_ricerca_nome.getText()).strip();
                 nome_centro=nome_centro.replaceAll(" ","_");
                 if(!(nome_centro.isBlank())){
                 out.writeObject("CERCA CENTRO PER NOME");
