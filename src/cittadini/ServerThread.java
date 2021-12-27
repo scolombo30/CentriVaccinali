@@ -3,6 +3,8 @@
 package cittadini;
 import centrivaccinali.CentroVaccinale;
 import utils.Registrazione;
+import utils.SqlString;
+
 import java.io.*;
 import java.net.*;
 import java.sql.*;
@@ -108,7 +110,7 @@ class ServerThread extends Thread {
                 } else if (azione.equals("CODICE OPERATORE")){
                     String codice =(String) in.readObject();
                     Statement st=conn.createStatement();
-                    String query="SELECT codice FROM codice_operatore";
+                    String query= SqlString.selectCodiceOperatore();
                     ResultSet rs= st.executeQuery(query);
                     String codice_in_db="";
                     while(rs.next()){

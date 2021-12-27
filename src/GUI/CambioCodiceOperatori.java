@@ -2,6 +2,7 @@ package GUI;
 
 
 import utils.Message;
+import utils.SqlString;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -55,7 +56,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
             }
         });
 
-        chiudi_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\close.png")); // NOI18N
+        chiudi_btn.setIcon(new javax.swing.ImageIcon("./res/close.png")); // NOI18N
         chiudi_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 chiudi_btnMouseClicked(evt);
@@ -99,7 +100,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
 
-        accedi_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\bottone_login_operatore.png")); // NOI18N
+        accedi_btn.setIcon(new javax.swing.ImageIcon("./res/bottone_login_operatore.png")); // NOI18N
         accedi_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 accedi_btnMouseClicked(evt);
@@ -156,7 +157,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nuovo codice");
 
-        cambia_codice_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\cambia codice btn.png")); // NOI18N
+        cambia_codice_btn.setIcon(new javax.swing.ImageIcon("./res/cambia codice btn.png")); // NOI18N
         cambia_codice_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cambia_codice_btnMouseClicked(evt);
@@ -249,7 +250,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
         String nuovo=nuovo_codice.getText();
         try(Connection conn = DriverManager.getConnection(DB_URL,user,pss);
             Statement st= conn.createStatement();){
-            String sql="UPDATE codice_operatore SET codice='"+nuovo+"' WHERE codice='"+vecchio+"'";
+            String sql=SqlString.updateCodiceOperatore(vecchio, nuovo);
             //execute update ritorna il numero di righe modificate se 0 non ha modificato
             if(st.executeUpdate(sql)==1){Message.informationMessage(this,"Il codice operatore è stato cambiato","Successo");}
             else {Message.errorMessage(this,"Vecchio codice errato, il codice non è stato cambiato","Errore");}

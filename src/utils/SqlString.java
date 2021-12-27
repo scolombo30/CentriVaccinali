@@ -4,8 +4,18 @@ package utils;
 
 public class SqlString {
 
+    //metodo creao Db
+    public static String creaDB(){
+    return "CREATE DATABASE PiattaformaCV";
+    }
+    //metodo creaTabellaCodiciOperatore
+    public static String creaTabellaCodiciOperatore() {
+        return "CREATE TABLE IF NOT EXISTS Codice_operatore(" +
+                "Codice VARCHAR(20))";
+    }
+
     //String query CreaTabellaCentro
-    static String creaTabellaCentro(){
+    public static String creaTabellaCentro(){
         return "CREATE TABLE IF NOT EXISTS CentriVaccinali ("+
                 "Nome_Centro VARCHAR(35),"+
                 "Tipologia VARCHAR(11)," +
@@ -68,6 +78,10 @@ public class SqlString {
                 "foreign key (Centro,Comune_centro) references CentriVaccinali (Nome_Centro,Comune))";
 
     }
+    //metodo insert cod. operatore
+    public static String insertCodiceOperatore() {
+        return "INSERT INTO codice_operatore VALUES ('12345')";
+    }
     //metodo insert centro
     public static String insertCentro(String nome,String tipologia,String qualificatore, String nomeVia, String numeroCivico, String comune, String siglaProvincia, String cap){
         return "INSERT INTO CentriVaccinali VALUES ('"+nome+"','"+tipologia+"','"+qualificatore+"','"+nomeVia+"','"
@@ -114,8 +128,20 @@ public class SqlString {
                 "WHERE Comune like '%"+comune+"%' AND Tipologia='"+tipologia+"';";
 
     }
+    //metodo select avvento avverso
     public static String selectEventoAvverso(String centro, String comune, String evento){
         return "SELECT COUNT(*) as occorrenze, AVG(severità) as media FROM eventi_avversi " +
                 "WHERE centro='"+centro+"' AND comune_centro='"+comune+"' AND tipologia='"+evento+"';";
     }
+    public static String selectCodiceOperatore() {
+        return  "Select codice from codice_operatore;";
+
+    }
+   //metodo update codiceOperatore
+    public static String updateCodiceOperatore(String nuovo, String vecchio)    {
+        return "UPDATE codice_operatore SET codice='"+nuovo+"' WHERE codice='"+vecchio+"'";
+    }
+
+
+
 }

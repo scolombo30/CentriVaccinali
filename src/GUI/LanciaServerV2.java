@@ -12,6 +12,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import cittadini.MultiServer;
 import utils.Message;
+import utils.SqlString;
 
 public class LanciaServerV2 extends javax.swing.JFrame {
 
@@ -360,15 +361,14 @@ public class LanciaServerV2 extends javax.swing.JFrame {
             //creo DB
             try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);
                 Statement st= conn.createStatement();){
-                String sql= "CREATE DATABASE PiattaformaCV";
+                String sql= SqlString.creaDB();
                 st.executeUpdate(sql);
 
                 Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
                 Statement s= con.createStatement();
-                String tabella= "CREATE TABLE IF NOT EXISTS Codice_operatore(" +
-                                "Codice VARCHAR(20))";
+                String tabella=SqlString.creaTabellaCodiciOperatore();
                 s.executeUpdate(tabella);
-                String insert_codice="INSERT INTO codice_operatore VALUES ('12345')";
+                String insert_codice=SqlString.insertCodiceOperatore();
                 s.executeUpdate(insert_codice);
 
             }catch (Exception e){
