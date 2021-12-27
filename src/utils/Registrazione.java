@@ -266,7 +266,8 @@ public  class Registrazione {
                     //ottengo tutti i campi dal resulSet
                     info[i][1]=rs.getString("occorrenze");
                     //controllo se media == null
-                    info[i][2]=rs.getString("media");
+                    double a=rs.getDouble("media");
+                    info[i][2]=(Math.round(a*100.0)/100.0)+"";
                     if(info[i][2]==null) {
                         info[i][2] = "0";
                     }

@@ -107,7 +107,7 @@ public class SqlString {
     }
     //metodo insert evento
     public static String insertEvento(String tipologia, short gravità, String note, String username, String centro, String comune_centro) {
-        return "INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+username+"','"+centro+"','"+comune_centro+"')";
+        return "INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+comune_centro+"','"+centro+"','"+username+"')";
 
     }
     //metodo select login

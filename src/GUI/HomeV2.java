@@ -2225,7 +2225,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
                                           "Eventi avversi registrati:\n" +
-                                    "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +info[0][2]+ "\n" +
+                                    "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +(info[0][2])+ "\n" +
                                     "-"+info[1][0]+", "+info[1][1]+" segnalazioni, severità media: " +info[1][2]+ "\n" +
                                     "-"+info[2][0]+", "+info[2][1]+" segnalazioni, severità media: " +info[2][2]+ "\n" +
                                     "-"+info[3][0]+", "+info[3][1]+" segnalazioni, severità media: " +info[3][2]+ "\n" +
