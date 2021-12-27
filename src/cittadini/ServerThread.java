@@ -1,10 +1,10 @@
 //Davide Franco "741453" CO
 // Sebastian Colombo "742779" CO
 package cittadini;
+
 import centrivaccinali.CentroVaccinale;
 import utils.Registrazione;
 import utils.SqlString;
-
 import java.io.*;
 import java.net.*;
 import java.sql.*;

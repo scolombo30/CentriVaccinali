@@ -3,9 +3,7 @@
 package centrivaccinali;
 
 import utils.Indirizzo;
-
 import java.io.Serializable;
-import java.util.Locale;
 
 public class CentroVaccinale implements Serializable{
 

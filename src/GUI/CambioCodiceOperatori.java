@@ -1,9 +1,9 @@
+//Davide Franco "741453" CO
+//Sebastian Colombo "742779" CO
 package GUI;
-
 
 import utils.Message;
 import utils.SqlString;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

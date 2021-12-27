@@ -2,6 +2,7 @@
 //Sebastian Colombo "742779" CO
 
 package utils;
+
 import java.io.Serializable;
 
 public class Indirizzo implements Serializable{

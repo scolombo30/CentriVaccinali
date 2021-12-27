@@ -1,6 +1,7 @@
 //Davide Franco "741453" CO
 // Sebastian Colombo "742779" CO
 package utils;
+
 import centrivaccinali.CentroVaccinale;
 import cittadini.Cittadino;
 import cittadini.EventoAvverso;

@@ -1,6 +1,7 @@
 //Davide Franco "741453" CO
 //Sebastian Colombo "742779" CO
 package cittadini;
+
 import utils.DataLab;
 import java.io.Serializable;
 
