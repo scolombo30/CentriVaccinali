@@ -271,8 +271,6 @@ public  class Registrazione {
                     if(info[i][2]==null) {
                         info[i][2] = "0";
                     }
-
-
                 }
             }
         return info;
