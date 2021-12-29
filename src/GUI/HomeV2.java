@@ -1888,13 +1888,14 @@ public class HomeV2 extends javax.swing.JFrame {
             //mostro JOptionPane con messaggio per avvisare che i campi non possono essere vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }
+        //controlli campi caratteri ammessi e lunghezza
         else {
             if(numeroCivico.matches("^[0-9]{1,4}([a-z]?)$") && numeroCivico.length()<=5) {
-                if (nome_centroo.matches("[a-zA-Z_ ]+") && nome_centroo.length() <= 35) {
+                if (nome_centroo.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && nome_centroo.length() <= 35) {
                     if (tipo_centro.matches("[a-zA-Z]+")) {
                         if (qualificatore.matches("[a-zA-Z]+")) {
-                            if (nome_via.matches("[a-zA-Z]+") && nome_via.length() <= 35) {
-                                if (comune.matches("[a-zA-Z_ ]+") && comune.length() <= 35) {
+                            if (nome_via.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && nome_via.length() <= 35) {
+                                if (comune.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && comune.length() <= 35) {
                                     if (provincia.matches("[a-zA-Z]+") && provincia.length() == 2) {
                                         if (cap.matches("[0-9]+") && cap.length() == 5) {
                                             Indirizzo indirizzo = new Indirizzo(qualificatore, nome_via, numeroCivico, comune, provincia, cap);
@@ -1970,17 +1971,13 @@ public class HomeV2 extends javax.swing.JFrame {
             //errore campi vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }else {
-            if(nome.matches("[a-zA-Z_ ]+") && nome.length()<=20) {
-                if(cognome.matches("[a-zA-Z_ ]+") && cognome.length()<=20){
-                    if(nome_centro.matches("[a-zA-Z_ ]+") && nome_centro.length()<=35) {
-                        if(tipo_vaccino.matches("[a-zA-Z_ ]+")) {
-                            //comtrollo codice fiscale
+            if(nome.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && nome.length()<=20) {
+                if(cognome.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && cognome.length()<=20){
+                    if(nome_centro.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && nome_centro.length()<=35) {
+                        if(!(tipo_vaccino.equals("---------"))) {
                             if (cod_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && cod_fiscale.length() == 16) {
-                                //controllo comune
-                                if (comune_centro.matches("[a-zA-Z_ ]+") && comune_centro.length() <= 35) {
-                                    //controllo se la data è valida
+                                if (comune_centro.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && comune_centro.length() <= 35) {
                                     if (isDateValid(new DataLab(giorno, mese, anno))) {
-                                        //controllo id vax
                                         if (id_vacc.matches("[0-9]+") && id_vacc.length() == 16) {
                                             //istanzio oggetto data
                                             DataLab data = new DataLab(giorno, mese, anno);
@@ -2004,7 +2001,7 @@ public class HomeV2 extends javax.swing.JFrame {
                                                     }
                                                     //errore se il codice fiscale è già presente
                                                     else if (risultato == 2) {
-                                                        Message.errorMessage(this, "Il codice fiscale è già presente nel sistema", "Errore");
+                                                        Message.errorMessage(this, "Il codice fiscale è già presente nel sistema" , "Errore");
                                                         registra_vaccinato_codice_fiscale.setText("");
                                                     }
                                                     //errore generico
@@ -2067,8 +2064,8 @@ public class HomeV2 extends javax.swing.JFrame {
                 psw.isBlank()||psw_conferma.isBlank()||id_vaccinazione.isBlank()))
         { Message.errorMessage(this, "Per procedere alla registrazione assicurarsi che tutti i campi siano compilati", "Campi vuoti");}
         else{
-            if(nome.matches("[a-zA-Z_ ]+") && nome.length()<=20) {
-                if (cognome.matches("[a-zA-Z_ ]+") && cognome.length() <= 20) {
+            if(nome.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && nome.length()<=20) {
+                if (cognome.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && cognome.length() <= 20) {
                     //controllo conformità codice fiscale
                     if (codice_fiscale.matches("^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$") && codice_fiscale.length() == 16) {
                         //controllo se il formato  dell'email è corretta
@@ -2148,33 +2145,47 @@ public class HomeV2 extends javax.swing.JFrame {
             //errore campi vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }else {
-            if(!(tipo.equals("------------------------------"))){
-                if(severità.matches("[1-5]+")){
-                    if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
-                    else {
-                        try {
-                            EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente,centro,comune);
-                            //scrivo sul socket
-                            out.writeObject("REGISTRA EVENTO AVVERSO");
-                            out.writeObject(evento);
-                            if((boolean)in.readObject()){
-                                Message.informationMessage(this,"Evento inserito con successo","Conferma");
-                                //cambio panel
-                                contenitore_pnl.removeAll();
-                                contenitore_pnl.add(cittadino_pnl);
-                                contenitore_pnl.repaint();
-                                contenitore_pnl.revalidate();
-                                //pulisco i campi
-                                pulisci_campi();
+            if (centro.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && centro.length() <= 35){
+                if (comune.matches("^[A-Za-zèùàòé_ ][a-zA-Z'èùàòé_ ]*$") && comune.length() <= 35) {
+                if (!(tipo.equals("------------------------------"))) {
+                    if (severità.matches("[1-5]+")) {
+                        if (note.length() > 256) {
+                            Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");
+                        } else {
+                            try {
+                                EventoAvverso evento = new EventoAvverso(tipo, (short) Integer.parseInt(severità), note, utente, centro, comune);
+                                //scrivo sul socket
+                                out.writeObject("REGISTRA EVENTO AVVERSO");
+                                out.writeObject(evento);
+                                if ((boolean) in.readObject()) {
+                                    Message.informationMessage(this, "Evento inserito con successo", "Conferma");
+                                    //cambio panel
+                                    contenitore_pnl.removeAll();
+                                    contenitore_pnl.add(cittadino_pnl);
+                                    contenitore_pnl.repaint();
+                                    contenitore_pnl.revalidate();
+                                    //pulisco i campi
+                                    pulisci_campi();
+                                } else {
+                                    Message.errorMessage(this, "C'è stato un errore", "Errore");
+                                }
+                            } catch (IOException | ClassNotFoundException e) {
                             }
-                            else {Message.errorMessage(this,"C'è stato un errore", "Errore");}
-                        } catch (IOException | ClassNotFoundException e) {}
+                        }
+                    } else {
+                        Message.warningMessage(this, "Per favore selezionare la severità", "Severità non corretta");
                     }
-                }else {
-                    Message.warningMessage(this, "Per favore selezionare la severità", "Severità non corretta");
+                } else {
+                    Message.warningMessage(this, "Per favore selezionare una tipologia", "Tipologia non corretta");
                 }
-            }else {
-                Message.warningMessage(this, "Per favore selezionare una tipologia", "Tipologia non corretta");
+                } else {
+                    //warning comune non valido
+                    Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
+                    registra_evento_comune_centro.setText("");
+                }
+                }else{
+                Message.warningMessage(this, "nome centro non conforme. Prego reinserisca.", " nome centro non corretto");
+                registra_evento_nome_centro.setText("");
             }
 
         }

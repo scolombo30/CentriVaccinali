@@ -81,12 +81,14 @@ public  class Registrazione {
         } catch (SQLException e) {
 
             String errore=e.getMessage();
+            System.out.println(errore);
             //se esiste già un id vax con lo stesso valore return 1
             if(errore.contains("Key (id_vax)")){return 1;}
             //se esiste già un codice fiscale  con lo stesso valore return 2
-            else if(errore.contains("Key (codice_fiscale)")){return 2;}
+            else if(errore.contains("Key (Codice_fiscale)")){return 2;}
             //per altri errori return 3
             else return 3;
+
         }
     }
     //metodo registra cittadino su db
