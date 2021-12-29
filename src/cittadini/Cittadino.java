@@ -16,8 +16,6 @@ public class Cittadino implements Serializable{
     private long idVaccinazione;
     private User user;
 
-
-    //costruttore
     /**
      * @param nome
      * @param cognome
@@ -34,14 +32,20 @@ public class Cittadino implements Serializable{
         this.user=user;
     }
 
+
+//metodi
+    /**
+     * @return the nome
+     */
     public User getUser() {
         return user;
     }
-
+    /**
+     * @param user the user to set
+     */
     public void setUser(User user) {
         this.user = user;
     }
-//metodi
     /**
      * @return the nome
      */
@@ -105,10 +109,10 @@ public class Cittadino implements Serializable{
         )return true;
         else return false;
     }
-
-    /**
-     * @return Una stringa con tutte le informazioni del cittadino
-     */
+    /*
+        /**
+         * @return Una stringa con tutte le informazioni del cittadino
+         */
    /* public String toString() {
         return this.nome+" "+this.cognome+", "+this.codiceFiscale+
                 "\nUsername: "+this.username+", Mail: "+this.mail+", Psw: "+this.password +

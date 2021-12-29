@@ -4,6 +4,7 @@ package cittadini;
 
 import java.io.Serializable;
 
+
 public class EventoAvverso implements Serializable {
 
     //serialVersionUID per implementare serializable
@@ -15,7 +16,14 @@ public class EventoAvverso implements Serializable {
     private User user;
     private String centro;
     private String comune;
-
+    /**
+     * @param tipologia
+     * @param gravità
+     * @param note
+     * @param user
+     * @param centro
+     * @param comune
+     */
     //costruttore
     public EventoAvverso (String tipologia, short gravità,String note, User user, String centro, String comune){
         this.tipologia = tipologia;
@@ -26,50 +34,78 @@ public class EventoAvverso implements Serializable {
         this.comune = comune;
     }
 
+    //metodi
+    /**
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-//metodi
-
+    /**
+     * @return the tipologia
+     */
     public String getTipologia() {
         return tipologia;
     }
-
-    public void setTipologia(String tipologia) {
-        this.tipologia = tipologia;
-    }
-
+    /**
+     * @return the gravità
+     */
     public short getGravità() {
         return gravità;
     }
-
-    public void setGravità(short gravità) {
-        this.gravità = gravità;
-    }
-
+    /**
+     * @return the note
+     */
     public String getNote() {
         return note;
     }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
+    /**
+     * @return the comune
+     */
     public String getComune() {
         return  comune;
     }
+    /**
+     * @return the centro
+     */
     public String getCentro(){
         return centro;
     }
 
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
+     * @param tipologia the tipologia to set
+     */
+    public void setTipologia(String tipologia) {
+        this.tipologia = tipologia;
+    }
+    /**
+     * @param gravità the griavità to set
+     */
+    public void setGravità(short gravità) {
+        this.gravità = gravità;
+    }
+    /**
+     * @param note the note to set
+     */
+    public void setNote(String note) {
+        this.note = note;
+    }
+    /**
+     * @param centro the centro to set
+     */
     public void setCentro(String centro) {
         this.centro = centro;
     }
-
+    /**
+     * @param  comune the comune to set
+     */
     public void setComune(String comune) {
         this.comune = comune;
     }
