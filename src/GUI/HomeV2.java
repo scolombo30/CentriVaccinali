@@ -2179,6 +2179,7 @@ public class HomeV2 extends javax.swing.JFrame {
         }
     }
 
+    //ERROR: relation "eventi_avversi" does not exist e relativo pop up
     private void cerca_btnMouseClicked(java.awt.event.MouseEvent evt) {
         try {
             //prendo il testo dell'area di text e controllo quale jradiobutton

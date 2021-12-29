@@ -88,8 +88,7 @@ public class SqlString {
                 "Centro VARCHAR(35),"+
                 "Comune_centro VARCHAR(35),"+
                 "Username VARCHAR(35)," +
-                "foreign key (Username) references Users (Username)," +
-                "foreign key (Centro,Comune_centro) references CentriVaccinali (Nome_Centro,Comune))";
+                "foreign key (Username) references Users (Username)";
     }
     /**
      * @return the string that is used to insert value in  codice_operatore

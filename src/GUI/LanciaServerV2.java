@@ -7,11 +7,13 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import cittadini.MultiServer;
+import org.postgresql.util.PSQLException;
 import utils.Message;
 import utils.SqlString;
 
@@ -20,6 +22,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     private int x,y;
     private String path_pg;
     private boolean primo_avvio=false;
+    private boolean errore=false;
     static final String DB_URL= "jdbc:postgresql://localhost/";
     static final String DB_URL_CODICE="jdbc:postgresql://localhost/piattaformacv";
     /**
@@ -333,7 +336,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
 
     private void aiutoPath(java.awt.event.MouseEvent evt) {
         Message.informationMessage(this, "pgAdmi4.exe di solito si trova sotto:"
-                + "\n C\\Programs_files\\PostgreSQL\\versione\\pgAdmin4\\bin\\pgAdmin4.exe", "Aiuto");
+                + "\nC\\Programs_files\\PostgreSQL\\versione\\pgAdmin4\\bin\\pgAdmin4.exe", "Aiuto");
     }
 
     private void avvia_pg_btnMouseClicked(java.awt.event.MouseEvent evt) {
@@ -364,26 +367,45 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                 Statement st= conn.createStatement();){
                 String sql= SqlString.creaDB();
                 st.executeUpdate(sql);
-
-                Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
-                Statement s= con.createStatement();
-                String tabella=SqlString.creaTabellaCodiciOperatore();
-                s.executeUpdate(tabella);
-                String insert_codice=SqlString.insertCodiceOperatore();
-                s.executeUpdate(insert_codice);
-
-            }catch (Exception e){
-                //avviso dell'errore in generale
-                System.out.println(e.getMessage());
+                primo_avvio=false;
+                errore=false;
+            }catch (SQLException e){
+                if(e.getMessage().contains("ERROR")){
+                    Message.errorMessage(this, "Il database esiste già","DB già esistente");
+                }else if(e.getMessage().contains("FATAL")){
+                    Message.errorMessage(this, "1-Credenziali errate, prego reinserire","Errore");
+                    errore=true;
+                }
+                else Message.errorMessage(this, "Errore generico","Errore");
             }
         }
-        Message.warningMessage(this,"Ricordati che una volta chiusa questa finestra il server girerà in background. " +
-                "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
-        this.dispose();
-        try {
-            //avvio multiserver e gli passo le credenziali come parametro del main
-            MultiServer.main(user_psw);
-        } catch (IOException ex) {}
+        //C:\Program Files\PostgreSQL\14\pgAdmin 4\bin\pgAdmin4.exe
+        try{
+            Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
+            Statement s= con.createStatement();
+            String tabella=SqlString.creaTabellaCodiciOperatore();
+            s.executeUpdate(tabella);
+        errore=false;}
+            catch (SQLException e){
+            if(!errore){Message.errorMessage(this, "2-Credenziali errate, prego reinserire","Errore");errore=true;}
+            }
+        if (primo_avvio){
+            try {
+                Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
+                Statement s = con.createStatement();
+                String insert_codice = SqlString.insertCodiceOperatore();
+                s.executeUpdate(insert_codice);
+            }catch (Exception e){}
+            }
+        if(!errore){
+            Message.warningMessage(this,"Ricordati che una volta chiusa questa finestra il server girerà in background. " +
+                    "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
+            this.dispose();
+            try {
+                //avvio multiserver e gli passo le credenziali come parametro del main
+                MultiServer.main(user_psw);
+            } catch (IOException ex) {}
+        }
     }
 
     private void aiuto_btnMouseClicked(java.awt.event.MouseEvent evt) {
