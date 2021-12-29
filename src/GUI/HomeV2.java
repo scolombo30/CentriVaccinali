@@ -649,7 +649,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         cerca_centro_nome_pnl.setBackground(new java.awt.Color(33, 32, 36));
 
-        barra_ricerca_nome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        barra_ricerca_nome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
 
         javax.swing.GroupLayout cerca_centro_nome_pnlLayout = new javax.swing.GroupLayout(cerca_centro_nome_pnl);
