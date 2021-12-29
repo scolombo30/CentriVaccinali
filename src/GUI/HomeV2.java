@@ -37,6 +37,8 @@ public class HomeV2 extends javax.swing.JFrame {
     private Socket socket=null;
     private ObjectOutputStream out=null;
     private ObjectInputStream in=null;
+    //varibile per mostra password in registra cittadino
+    private int mostra_psw=0;
 
     //costruttore
     public HomeV2() {
@@ -134,7 +136,7 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        registra_cittadino_conferma_password = new javax.swing.JTextField();
+        registra_cittadino_conferma_password = new javax.swing.JPasswordField();
         registra_cittadino_cognome = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -145,9 +147,11 @@ public class HomeV2 extends javax.swing.JFrame {
         registra_cittadino_codice_fiscale = new javax.swing.JTextField();
         registra_cittadino_mail = new javax.swing.JTextField();
         registra_cittadino_idvax = new javax.swing.JTextField();
-        registra_cittadino_password = new javax.swing.JTextField();
+        registra_cittadino_password = new javax.swing.JPasswordField();
         cittadino_registrati_registrati_btn = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        etichetta_immagine = new javax.swing.JLabel();
+        cittadino_registrati_registrati_btn = new javax.swing.JLabel();
+        registra_cittadino_mostra_psw = new javax.swing.JLabel();
         cittadino_evento_avverso_pnl = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
@@ -372,7 +376,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 barra_laterale_operatore_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(barra_laterale_operatore_btnLayout.createSequentialGroup()
                                 .addGroup(barra_laterale_operatore_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -907,8 +911,6 @@ public class HomeV2 extends javax.swing.JFrame {
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Cognome (max.20)");
 
-        registra_cittadino_conferma_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-
         registra_cittadino_cognome.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -939,7 +941,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         registra_cittadino_idvax.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
-        registra_cittadino_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+
 
         cittadino_registrati_registrati_btn.setIcon(new javax.swing.ImageIcon("./res/bottone_registra_utente.png")); // NOI18N
         cittadino_registrati_registrati_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -948,50 +950,58 @@ public class HomeV2 extends javax.swing.JFrame {
             }
         });
 
-        jLabel33.setIcon(new javax.swing.ImageIcon("./res/immagine_signup.png")); // NOI18N
+        registra_cittadino_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        registra_cittadino_conferma_password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        registra_cittadino_mostra_psw.setIcon(new javax.swing.ImageIcon("./res/non_mostrare_password.png")); // NOI18N
+        registra_cittadino_mostra_psw.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registra_cittadino_mostra_pswMouseClicked(evt);
+            }
+        });
+
+        etichetta_immagine.setIcon(new javax.swing.ImageIcon("./res/immagine_signup.png"));
+        // NOI18N
 
         javax.swing.GroupLayout cittadino_registra_pnlLayout = new javax.swing.GroupLayout(cittadino_registra_pnl);
         cittadino_registra_pnl.setLayout(cittadino_registra_pnlLayout);
         cittadino_registra_pnlLayout.setHorizontalGroup(
                 cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(indietro_btn)
+                                .addGap(65, 65, 65)
+                                .addComponent(jLabel25))
+                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel26)
+                                .addGap(219, 219, 219)
+                                .addComponent(jLabel27))
+                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                .addGap(60, 60, 60)
                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                .addGap(35, 35, 35)
-                                                .addComponent(indietro_btn)
-                                                .addGap(65, 65, 65)
-                                                .addComponent(jLabel25))
+                                                .addComponent(registra_cittadino_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(20, 20, 20)
+                                                .addComponent(registra_cittadino_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel24)
+                                        .addComponent(registra_cittadino_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel28)
+                                        .addComponent(registra_cittadino_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                .addGap(60, 60, 60)
-                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel24)
-                                                        .addComponent(registra_cittadino_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel28)
-                                                        .addComponent(registra_cittadino_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel31)
-                                                        .addComponent(registra_cittadino_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                                .addGap(150, 150, 150)
-                                                                .addComponent(cittadino_registrati_registrati_btn))
-                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(registra_cittadino_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel26))
-                                                                .addGap(20, 20, 20)
-                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jLabel27)
-                                                                        .addComponent(registra_cittadino_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
-                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(registra_cittadino_password, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel29))
-                                                                .addGap(20, 20, 20)
-                                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jLabel30)
-                                                                        .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGap(170, 170, 170)
-                                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(44, 44, 44))
+                                                .addComponent(jLabel29)
+                                                .addGap(190, 190, 190)
+                                                .addComponent(jLabel30))
+                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                                .addComponent(registra_cittadino_password, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(39, 39, 39)
+                                                .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(20, 20, 20)
+                                                .addComponent(registra_cittadino_mostra_psw))
+                                        .addComponent(jLabel31)
+                                        .addComponent(registra_cittadino_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cittadino_registrati_registrati_btn))
+                                .addGap(186, 186, 186)
+                                .addComponent(etichetta_immagine, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         cittadino_registra_pnlLayout.setVerticalGroup(
                 cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1003,10 +1013,10 @@ public class HomeV2 extends javax.swing.JFrame {
                                                 .addComponent(indietro_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jLabel25))
                                 .addGap(115, 115, 115)
-                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel26)
                                         .addComponent(jLabel27))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(6, 6, 6)
                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
                                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1014,29 +1024,32 @@ public class HomeV2 extends javax.swing.JFrame {
                                                         .addComponent(registra_cittadino_cognome, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(39, 39, 39)
                                                 .addComponent(jLabel24)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(6, 6, 6)
                                                 .addComponent(registra_cittadino_codice_fiscale, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(19, 19, 19)
                                                 .addComponent(jLabel28)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(6, 6, 6)
                                                 .addComponent(registra_cittadino_mail, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(29, 29, 29)
-                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addGap(20, 20, 20)
+                                                .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel29)
                                                         .addComponent(jLabel30))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(5, 5, 5)
                                                 .addGroup(cittadino_registra_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(registra_cittadino_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(39, 39, 39)
+                                                        .addComponent(registra_cittadino_conferma_password, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
+                                                                .addGap(14, 14, 14)
+                                                                .addComponent(registra_cittadino_mostra_psw, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(28, 28, 28)
                                                 .addComponent(jLabel31)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGap(6, 6, 6)
                                                 .addComponent(registra_cittadino_idvax, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(30, 30, 30)
+                                                .addGap(34, 34, 34)
                                                 .addComponent(cittadino_registrati_registrati_btn))
                                         .addGroup(cittadino_registra_pnlLayout.createSequentialGroup()
                                                 .addGap(20, 20, 20)
-                                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(etichetta_immagine, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         contenitore_pnl.add(cittadino_registra_pnl, "card8");
@@ -1860,14 +1873,14 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_centro_registra_centro_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome_centroo=controlla_apostrofo(registra_centro_nome.getText()).strip();
+        String nome_centroo=controlla_apostrofo(registra_centro_nome.getText());
         String tipo_centro=registra_centro_tipologia.getSelectedItem().toString();
         String qualificatore=registra_centro_qualificatore.getSelectedItem().toString();
-        String nome_via=controlla_apostrofo(registra_centro_nome_via.getText()).strip();
-        String comune=controlla_apostrofo(registra_centro_comune.getText()).strip();
-        String numeroCivico=(registra_centro_numero_civico.getText()).strip();
-        String provincia=(registra_centro_provincia.getText()).strip();
-        String cap=(registra_centro_cap.getText()).strip();
+        String nome_via=controlla_apostrofo(registra_centro_nome_via.getText());
+        String comune=controlla_apostrofo(registra_centro_comune.getText());
+        String numeroCivico=registra_centro_numero_civico.getText();
+        String provincia=registra_centro_provincia.getText();
+        String cap=registra_centro_cap.getText();
         //controllo che i vari campi non siano vuoti
         if(qualificatore.isBlank()||nome_via.isBlank()||numeroCivico.isBlank()||comune.isBlank()||
                 provincia.isBlank()||cap.isBlank()||nome_centroo.isBlank()||tipo_centro.isBlank())
@@ -1917,9 +1930,9 @@ public class HomeV2 extends javax.swing.JFrame {
                             Message.warningMessage(this, "Via troppo lunga. Prego reinserisca", "Via troppo lunga");
                             registra_centro_nome_via.setText("");
                         }
-                        } else {
-                            Message.warningMessage(this, "Perfavore selezionare un qualificatore valido.", "Qualificatore non corretto");
-                        }
+                    } else {
+                        Message.warningMessage(this, "Perfavore selezionare un qualificatore valido.", "Qualificatore non corretto");
+                    }
 
                 } else {
                     Message.warningMessage(this, "Perfavore selezionare una tipologia valida.", "Tipologia non corretto");
@@ -1935,16 +1948,16 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_vaccinato_registra_vaccinato_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=controlla_apostrofo(registra_vaccinato_nome.getText()).strip();
-        String cognome=controlla_apostrofo(registra_vaccinato_cognome.getText()).strip();
-        String cod_fiscale=(registra_vaccinato_codice_fiscale.getText().toUpperCase()).strip();
-        String comune_centro=controlla_apostrofo(registra_vaccinato_comune_centro.getText()).strip();
-        String nome_centro=controlla_apostrofo(registra_vaccinato_centro_vaccinale.getText()).strip();
+        String nome=controlla_apostrofo(registra_vaccinato_nome.getText());
+        String cognome=controlla_apostrofo(registra_vaccinato_cognome.getText());
+        String cod_fiscale=registra_vaccinato_codice_fiscale.getText().toUpperCase();
+        String comune_centro=controlla_apostrofo(registra_vaccinato_comune_centro.getText());
+        String nome_centro=controlla_apostrofo(registra_vaccinato_centro_vaccinale.getText());
         String giorno=registra_vaccinato_giorno.getSelectedItem().toString();
         String mese=registra_vaccinato_mese.getSelectedItem().toString();
         String anno=registra_vaccinato_anno.getSelectedItem().toString();
         String tipo_vaccino=registra_vaccinato_tipologia.getSelectedItem().toString();
-        String id_vacc=(registra_vaccinato_idvax.getText()).strip();
+        String id_vacc=registra_vaccinato_idvax.getText();
 
         //controllo se i campi suono vuoti
         if(nome.isBlank()||cognome.isBlank()||cod_fiscale.isBlank()||nome_centro.isBlank()||
@@ -1959,43 +1972,43 @@ public class HomeV2 extends javax.swing.JFrame {
                     //controllo se la data è valida
                     if (isDateValid(new DataLab(giorno,mese,anno))) {
                         //controllo id vax
-                            if (id_vacc.matches("[0-9]+") && id_vacc.length() == 16) {
-                                //istanzio oggetto data
-                                DataLab data = new DataLab(giorno, mese, anno);
-                                //istanzio oggetto vaccinato
-                                Vaccinato vaccinato_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
-                                try {
-                                    //scrivo sul socket
-                                    out.writeObject("REGISTRA VACCINATO");
-                                    out.writeObject(vaccinato_da_registrare);
-                                    int risultato = (int) in.readObject();
-                                    if (risultato == 0) {
-                                        //apro JOptionPane per avvisare del corretto inserimento
-                                        Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
-                                        //reset dei campi se sono corretti
-                                        pulisci_campi();
-                                    } else {
-                                        //errore se id vax è già presente
-                                        if (risultato == 1) {
-                                            Message.errorMessage(this, "l'id vax è già presente nel sistema", "Errore");
-                                            registra_vaccinato_idvax.setText("");
-                                        }
-                                        //errore se il codice fiscale è già presente
-                                        else if (risultato == 2) {
-                                            Message.errorMessage(this, "Il codice fiscale è già presente nel sistema", "Errore");
-                                            registra_vaccinato_codice_fiscale.setText("");
-                                        }
-                                        //errore generico
-                                        else
-                                            Message.errorMessage(this, "C'è stato un errore nell'inserimento", "Errore");
+                        if (id_vacc.matches("[0-9]+") && id_vacc.length() == 16) {
+                            //istanzio oggetto data
+                            DataLab data = new DataLab(giorno, mese, anno);
+                            //istanzio oggetto vaccinato
+                            Vaccinato vaccinato_da_registrare = new Vaccinato(nome, cognome, cod_fiscale, nome_centro, comune_centro, data, tipo_vaccino, Long.parseLong(id_vacc));
+                            try {
+                                //scrivo sul socket
+                                out.writeObject("REGISTRA VACCINATO");
+                                out.writeObject(vaccinato_da_registrare);
+                                int risultato = (int) in.readObject();
+                                if (risultato == 0) {
+                                    //apro JOptionPane per avvisare del corretto inserimento
+                                    Message.informationMessage(this, "Informazioni inserite con successo!", "Successo");
+                                    //reset dei campi se sono corretti
+                                    pulisci_campi();
+                                } else {
+                                    //errore se id vax è già presente
+                                    if (risultato == 1) {
+                                        Message.errorMessage(this, "l'id vax è già presente nel sistema", "Errore");
+                                        registra_vaccinato_idvax.setText("");
                                     }
-                                } catch (IOException | ClassNotFoundException e) {
+                                    //errore se il codice fiscale è già presente
+                                    else if (risultato == 2) {
+                                        Message.errorMessage(this, "Il codice fiscale è già presente nel sistema", "Errore");
+                                        registra_vaccinato_codice_fiscale.setText("");
+                                    }
+                                    //errore generico
+                                    else
+                                        Message.errorMessage(this, "C'è stato un errore nell'inserimento", "Errore");
                                 }
-                            } else {
-                                //warnig id non valido
-                                Message.warningMessage(this, "Per favore inserire un Id vaccinazione valido", "id non valido");
-                                registra_vaccinato_idvax.setText("");
+                            } catch (IOException | ClassNotFoundException e) {
                             }
+                        } else {
+                            //warnig id non valido
+                            Message.warningMessage(this, "Per favore inserire un Id vaccinazione valido", "id non valido");
+                            registra_vaccinato_idvax.setText("");
+                        }
                     } else {
                         //warning giorno non valido
                         Message.warningMessage(this, "Per favore inserire una data valida,controllare se il giorno è valido o se l'anno e bisestile oppure no ", "Data non valida");
@@ -2017,13 +2030,13 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void cittadino_registrati_registrati_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String nome=controlla_apostrofo(registra_cittadino_nome.getText()).strip();
-        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText()).strip();
-        String codice_fiscale=(registra_cittadino_codice_fiscale.getText().toUpperCase()).strip();
-        String mail=(registra_cittadino_mail.getText()).strip();
+        String nome=controlla_apostrofo(registra_cittadino_nome.getText());
+        String cognome=controlla_apostrofo(registra_cittadino_cognome.getText());
+        String codice_fiscale=registra_cittadino_codice_fiscale.getText().toUpperCase();
+        String mail=registra_cittadino_mail.getText();
         String psw=registra_cittadino_password.getText();
         String psw_conferma=registra_cittadino_conferma_password.getText();
-        String id_vaccinazione=(registra_cittadino_idvax.getText()).strip();
+        String id_vaccinazione=registra_cittadino_idvax.getText();
         //controllo se i campi sono vuoti
         if((nome.isBlank()||cognome.isBlank()||codice_fiscale.isBlank()||mail.isBlank()||
                 psw.isBlank()||psw_conferma.isBlank()||id_vaccinazione.isBlank()))
@@ -2086,41 +2099,41 @@ public class HomeV2 extends javax.swing.JFrame {
     }
 
     private void registra_evento_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String tipo =(String)registra_evento_tipologia.getSelectedItem();
-        String severità = (String)registra_evento_severita.getSelectedItem();
-        String note = controlla_apostrofo(registra_evento_note.getText()).strip();
-        String centro = (controlla_apostrofo(registra_evento_nome_centro.getText()).replaceAll(" ","_")).strip();
-        String comune = (controlla_apostrofo(registra_evento_comune_centro.getText()).replaceAll(" ","_")).strip();
+        String tipo=(String)registra_evento_tipologia.getSelectedItem();
+        String severità= (String)registra_evento_severita.getSelectedItem();
+        String note= controlla_apostrofo(registra_evento_note.getText());
+        String centro= controlla_apostrofo(registra_evento_nome_centro.getText()).replaceAll(" ","_");
+        String comune = controlla_apostrofo(registra_evento_comune_centro.getText()).replaceAll(" ","_");
 
         if(tipo.isBlank()||severità.isBlank()){
             //errore campi vuoti
             Message.warningMessage(this,"Compilare tutti i campi","Campi vuoti");
         }else {
             if(!(tipo.equals("------------------------------"))){
-                    if(severità.matches("[1-5]+")){
-                        if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
-                        else {
-                            try {
-                                EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente,centro,comune);
-                                //scrivo sul socket
-                                out.writeObject("REGISTRA EVENTO AVVERSO");
-                                out.writeObject(evento);
-                                if((boolean)in.readObject()){
-                                    Message.informationMessage(this,"Evento inserito con successo","Conferma");
-                                    //cambio panel
-                                    contenitore_pnl.removeAll();
-                                    contenitore_pnl.add(cittadino_pnl);
-                                    contenitore_pnl.repaint();
-                                    contenitore_pnl.revalidate();
-                                    //pulisco i campi
-                                    pulisci_campi();
-                                }
-                                else {Message.errorMessage(this,"C'è stato un errore", "Errore");}
-                            } catch (IOException | ClassNotFoundException e) {}
-                        }
-                    }else {
-                        Message.warningMessage(this, "Per favore selezionare la severità", "Severità non corretta");
+                if(severità.matches("[1-5]+")){
+                    if(note.length()>256){Message.errorMessage(this, "Attenzione hai inserito più di 256 caratteri", "Superata lunghezza massima");}
+                    else {
+                        try {
+                            EventoAvverso evento=new EventoAvverso(tipo, (short) Integer.parseInt(severità),note,utente,centro,comune);
+                            //scrivo sul socket
+                            out.writeObject("REGISTRA EVENTO AVVERSO");
+                            out.writeObject(evento);
+                            if((boolean)in.readObject()){
+                                Message.informationMessage(this,"Evento inserito con successo","Conferma");
+                                //cambio panel
+                                contenitore_pnl.removeAll();
+                                contenitore_pnl.add(cittadino_pnl);
+                                contenitore_pnl.repaint();
+                                contenitore_pnl.revalidate();
+                                //pulisco i campi
+                                pulisci_campi();
+                            }
+                            else {Message.errorMessage(this,"C'è stato un errore", "Errore");}
+                        } catch (IOException | ClassNotFoundException e) {}
                     }
+                }else {
+                    Message.warningMessage(this, "Per favore selezionare la severità", "Severità non corretta");
+                }
             }else {
                 Message.warningMessage(this, "Per favore selezionare una tipologia", "Tipologia non corretta");
             }
@@ -2151,18 +2164,33 @@ public class HomeV2 extends javax.swing.JFrame {
         }
     }
 
+    private void registra_cittadino_mostra_pswMouseClicked(java.awt.event.MouseEvent evt) {
+
+        if(mostra_psw==0){registra_cittadino_mostra_psw.setIcon(new ImageIcon("./res/mostrare_password.png"));
+            registra_cittadino_password.setEchoChar((char) 0);
+            registra_cittadino_conferma_password.setEchoChar((char) 0);
+            mostra_psw++;
+        }
+        else{
+            registra_cittadino_mostra_psw.setIcon(new ImageIcon("./res/non_mostrare_password.png"));
+            registra_cittadino_password.setEchoChar('*');
+            registra_cittadino_conferma_password.setEchoChar('*');
+            mostra_psw--;
+        }
+    }
+
     private void cerca_btnMouseClicked(java.awt.event.MouseEvent evt) {
         try {
             //prendo il testo dell'area di text e controllo quale jradiobutton
             boolean ricerca_nome = ricerca_per_nome_btn.isSelected();
             if (ricerca_nome) {
                 //ricerchiamo il centro per il nome mandandolo sul socket
-                String nome_centro = controlla_apostrofo(barra_ricerca_nome.getText()).strip();
+                String nome_centro = controlla_apostrofo(barra_ricerca_nome.getText());
                 nome_centro=nome_centro.replaceAll(" ","_");
                 if(!(nome_centro.isBlank())){
-                out.writeObject("CERCA CENTRO PER NOME");
-                out.writeObject(nome_centro);
-                //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(linkedList<CentroVaccinale>)
+                    out.writeObject("CERCA CENTRO PER NOME");
+                    out.writeObject(nome_centro);
+                    //leggiamo i risultati e updatiamo la tabella con metodo: updataTabella(linkedList<CentroVaccinale>)
                     listaCentri = (LinkedList<CentroVaccinale>) in.readObject();
                     updateTable(listaCentri);
 
@@ -2194,7 +2222,7 @@ public class HomeV2 extends javax.swing.JFrame {
             DefaultTableModel tab = (DefaultTableModel)tabella_risultati.getModel();
             tab.setRowCount(0);
             for (int i=0; i<lista.size();i++) {
-               tab.addRow(new String[]{(i+1)+"",lista.get(i).getNome(),lista.get(i).getIndirizzo().getComune()});
+                tab.addRow(new String[]{(i+1)+"",lista.get(i).getNome(),lista.get(i).getIndirizzo().getComune()});
             }
 
         }
@@ -2223,15 +2251,15 @@ public class HomeV2 extends javax.swing.JFrame {
             out.writeObject(listaCentri.get(i));
             String [][] info=(String[][]) in.readObject();
 
-        area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
-                                          "Eventi avversi registrati:\n" +
-                                    "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +(info[0][2])+ "\n" +
-                                    "-"+info[1][0]+", "+info[1][1]+" segnalazioni, severità media: " +info[1][2]+ "\n" +
-                                    "-"+info[2][0]+", "+info[2][1]+" segnalazioni, severità media: " +info[2][2]+ "\n" +
-                                    "-"+info[3][0]+", "+info[3][1]+" segnalazioni, severità media: " +info[3][2]+ "\n" +
-                                    "-"+info[4][0]+", "+info[4][1]+" segnalazioni, severità media: " +info[4][2]+ "\n" +
-                                    "-"+info[5][0]+", "+info[5][1]+" segnalazioni, severità media: " +info[5][2]+ "\n"
-        );
+            area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
+                    "Eventi avversi registrati:\n" +
+                    "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +info[0][2]+ "\n" +
+                    "-"+info[1][0]+", "+info[1][1]+" segnalazioni, severità media: " +info[1][2]+ "\n" +
+                    "-"+info[2][0]+", "+info[2][1]+" segnalazioni, severità media: " +info[2][2]+ "\n" +
+                    "-"+info[3][0]+", "+info[3][1]+" segnalazioni, severità media: " +info[3][2]+ "\n" +
+                    "-"+info[4][0]+", "+info[4][1]+" segnalazioni, severità media: " +info[4][2]+ "\n" +
+                    "-"+info[5][0]+", "+info[5][1]+" segnalazioni, severità media: " +info[5][2]+ "\n"
+            );
         }catch(Exception e){
 
         }
@@ -2308,25 +2336,25 @@ public class HomeV2 extends javax.swing.JFrame {
     //metodo che controlla se la password dell'operatore è giusta/sbagliata o il campo è vuoto
     private void login_operatore(String psw){
         try{
-        out.writeObject("CODICE OPERATORE");
-        out.writeObject(psw);
+            out.writeObject("CODICE OPERATORE");
+            out.writeObject(psw);
 
-        if((Boolean) in.readObject()){
-            //se la password è giusta cambio layout
-            contenitore_pnl.removeAll();
-            contenitore_pnl.add(registra_centro_pnl);
-            contenitore_pnl.repaint();
-            contenitore_pnl.revalidate();
-            pulisci_campi();
-        }
-        else if(psw.equals("")){
-            //se il campo è vuoto mostro messaggio d'errore
-            Message.errorMessage(this, "Inserire il codice. Il campo non può esere vuoto", "Campo vuoto");
+            if((Boolean) in.readObject()){
+                //se la password è giusta cambio layout
+                contenitore_pnl.removeAll();
+                contenitore_pnl.add(registra_centro_pnl);
+                contenitore_pnl.repaint();
+                contenitore_pnl.revalidate();
+                pulisci_campi();
             }
-        else{
-            //se la password non è corretta mostro messaggio d'errore
-            Message.errorMessage(this, "Il codice insertio è errato. Prego reinserisca", "Codice errato");
-            pulisci_campi();
+            else if(psw.equals("")){
+                //se il campo è vuoto mostro messaggio d'errore
+                Message.errorMessage(this, "Inserire il codice. Il campo non può esere vuoto", "Campo vuoto");
+            }
+            else{
+                //se la password non è corretta mostro messaggio d'errore
+                Message.errorMessage(this, "Il codice insertio è errato. Prego reinserisca", "Codice errato");
+                pulisci_campi();
             }
         }catch(Exception e){}
     }
@@ -2482,7 +2510,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel etichetta_immagine;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -2545,11 +2573,12 @@ public class HomeV2 extends javax.swing.JFrame {
     private javax.swing.JLabel registra_cittadino_btn;
     private javax.swing.JTextField registra_cittadino_codice_fiscale;
     private javax.swing.JTextField registra_cittadino_cognome;
-    private javax.swing.JTextField registra_cittadino_conferma_password;
+    private javax.swing.JPasswordField registra_cittadino_conferma_password;
     private javax.swing.JTextField registra_cittadino_idvax;
     private javax.swing.JTextField registra_cittadino_mail;
+    private javax.swing.JLabel registra_cittadino_mostra_psw;
     private javax.swing.JTextField registra_cittadino_nome;
-    private javax.swing.JTextField registra_cittadino_password;
+    private javax.swing.JPasswordField registra_cittadino_password;
     private javax.swing.JLabel registra_evento_avverso_btn;
     private javax.swing.JLabel registra_evento_btn;
     private javax.swing.JTextField registra_evento_comune_centro;
