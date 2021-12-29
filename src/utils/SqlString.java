@@ -88,7 +88,8 @@ public class SqlString {
                 "Centro VARCHAR(35),"+
                 "Comune_centro VARCHAR(35),"+
                 "Username VARCHAR(35)," +
-                "foreign key (Username) references Users (Username)";
+                "foreign key (Username) references Users (Username)," +
+                "foreign key (Centro,Comune_centro) references CentriVaccinali (Nome_Centro,Comune))";
     }
     /**
      * @return the string that is used to insert value in  codice_operatore
@@ -132,7 +133,7 @@ public class SqlString {
      */
     //metodo insert evento
     public static String insertEvento(String tipologia, short gravità, String note, String username, String centro, String comune_centro) {
-        return "INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+comune_centro+"','"+centro+"','"+username+"')";
+        return "INSERT INTO Eventi_avversi VALUES ('"+tipologia+"', '"+gravità+"', '"+note+"', '"+centro+"','"+comune_centro+"','"+username+"')";
     }
     /**
      * @return the string that is used to get values from Users

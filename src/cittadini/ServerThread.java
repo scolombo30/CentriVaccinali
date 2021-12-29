@@ -25,10 +25,10 @@ class ServerThread extends Thread {
         socket = s;
         out = new ObjectOutputStream(s.getOutputStream());
         in = new ObjectInputStream(s.getInputStream());
-        username=arg[0];
-        password=arg[1];
-        //username="postgres";
-        //password="qwerty";
+       // username=arg[0];
+        //password=arg[1];
+        username="postgres";
+        password="qwerty";
         start();
         System.out.println("ServerThread " + id + ": started");
 
