@@ -22,6 +22,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     private int x,y;
     private String path_pg;
     private boolean primo_avvio=false;
+    private boolean primo_avvio2=false;
     private boolean errore=false;
     static final String DB_URL= "jdbc:postgresql://localhost/";
     static final String DB_URL_CODICE="jdbc:postgresql://localhost/piattaformacv";
@@ -348,7 +349,10 @@ public class LanciaServerV2 extends javax.swing.JFrame {
 
     private void login_db_btnActionPerformed(java.awt.event.ActionEvent evt) {
         if(login_db_btn.isEnabled()){
-            if(check_primo_avvio.isSelected())primo_avvio=true;
+            if(check_primo_avvio.isSelected())
+            {primo_avvio=true;
+             primo_avvio2=true;
+            }
             //cambio layout
             contenitore.removeAll();
             contenitore.add(login_db_pnl);
@@ -389,17 +393,18 @@ public class LanciaServerV2 extends javax.swing.JFrame {
             catch (SQLException e){
             if(!errore){Message.errorMessage(this, "2-Credenziali errate, prego reinserire","Errore");errore=true;}
             }
-        if (primo_avvio){
+        if (primo_avvio2){
             try {
                 Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
                 Statement s = con.createStatement();
                 String insert_codice = SqlString.insertCodiceOperatore();
                 s.executeUpdate(insert_codice);
+                errore=false;
             }catch (Exception e){}
             }
         if(!errore){
             Message.warningMessage(this,"Ricordati che una volta chiusa questa finestra il server girerà in background. " +
-                    "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
+                                                "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
             this.dispose();
             try {
                 //avvio multiserver e gli passo le credenziali come parametro del main

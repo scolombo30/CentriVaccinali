@@ -2302,6 +2302,7 @@ public class HomeV2 extends javax.swing.JFrame {
             out.writeObject(listaCentri.get(i));
             String [][] info=(String[][]) in.readObject();
 
+            if(!(info==null)){
             area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
                     "Eventi avversi registrati:\n" +
                     "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +info[0][2]+ "\n" +
@@ -2310,7 +2311,12 @@ public class HomeV2 extends javax.swing.JFrame {
                     "-"+info[3][0]+", "+info[3][1]+" segnalazioni, severità media: " +info[3][2]+ "\n" +
                     "-"+info[4][0]+", "+info[4][1]+" segnalazioni, severità media: " +info[4][2]+ "\n" +
                     "-"+info[5][0]+", "+info[5][1]+" segnalazioni, severità media: " +info[5][2]+ "\n"
-            );
+            );}
+            else {
+                area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
+                                "Non sono stati segnalati eventi avversi in questo centro"
+                        );
+            }
         }catch(Exception e){
 
         }

@@ -121,8 +121,8 @@ public  class Registrazione {
              //se non ci sono stati errori ritorno vero
              return 0;
          } catch (SQLException e) {
+             e.printStackTrace();
              String errore=e.getMessage();
-
              if(errore.contains("Key (username)")){return 1;}
              else if(errore.contains("Key (codice_fiscale)")){return 2;}
              //se esiste già un id vax con lo stesso valore return 3
