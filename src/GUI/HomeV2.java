@@ -2006,7 +2006,7 @@ public class HomeV2 extends javax.swing.JFrame {
                                                     }
                                                     //errore generico
                                                     else
-                                                        Message.errorMessage(this, "C'è stato un errore nell'inserimento, comune/ centro sbagliati o inesistenti", "Errore");
+                                                        Message.errorMessage(this, "C'è stato un errore nell'inserimento, comune/centro sbagliati o inesistenti", "Errore");
                                                 }
                                             } catch (IOException | ClassNotFoundException e) {
                                             }
@@ -2097,8 +2097,10 @@ public class HomeV2 extends javax.swing.JFrame {
                                             } else if (risultato == 2) {
                                                 Message.errorMessage(this, "Il codice fiscale è già presente nel sistema", "Errore");
                                                 registra_cittadino_codice_fiscale.setText("");
-                                            } else
-                                                Message.errorMessage(this, "C'è stato un errore nell'inserimento", "Errore");
+                                            } else if (risultato == 3){
+                                                Message.errorMessage(this, "L'ID_Vax è già presente nel sistema", "Errore");
+                                                registra_cittadino_idvax.setText("");
+                                            }else Message.errorMessage(this, "C'è stato un errore nell'inserimento", "Errore");
                                         }
                                     } catch (IOException | ClassNotFoundException e) {
                                     }
@@ -2138,8 +2140,8 @@ public class HomeV2 extends javax.swing.JFrame {
         String tipo =(String)registra_evento_tipologia.getSelectedItem();
         String severità = (String)registra_evento_severita.getSelectedItem();
         String note = controlla_apostrofo(registra_evento_note.getText()).strip();
-        String centro = (controlla_apostrofo(registra_evento_nome_centro.getText()).replaceAll(" ","_")).strip();
-        String comune = (controlla_apostrofo(registra_evento_comune_centro.getText()).replaceAll(" ","_")).strip();
+        String centro = (controlla_apostrofo(registra_evento_nome_centro.getText())).strip();
+        String comune = (controlla_apostrofo(registra_evento_comune_centro.getText())).strip();
 
         if(tipo.isBlank()||severità.isBlank()){
             //errore campi vuoti
@@ -2167,7 +2169,7 @@ public class HomeV2 extends javax.swing.JFrame {
                                     //pulisco i campi
                                     pulisci_campi();
                                 } else {
-                                    Message.errorMessage(this, "C'è stato un errore", "Errore");
+                                    Message.errorMessage(this, "C'è stato un errore nell'inserimento, comune/centro sbagliati o inesistenti", "Errore");
                                 }
                             } catch (IOException | ClassNotFoundException e) {
                             }
@@ -2180,7 +2182,7 @@ public class HomeV2 extends javax.swing.JFrame {
                 }
                 } else {
                     //warning comune non valido
-                    Message.warningMessage(this, "Perfavore inserire un comune valido. Prego reinserisca", "Comune non corretto");
+                    Message.warningMessage(this, "Per favore inserire un comune valido. Prego reinserisca", "Comune non corretto");
                     registra_evento_comune_centro.setText("");
                 }
                 }else{
@@ -2275,7 +2277,6 @@ public class HomeV2 extends javax.swing.JFrame {
             for (int i=0; i<lista.size();i++) {
                 tab.addRow(new String[]{(i+1)+"",lista.get(i).getNome(),lista.get(i).getIndirizzo().getComune()});
             }
-
         }
     }
 
@@ -2303,6 +2304,10 @@ public class HomeV2 extends javax.swing.JFrame {
             String [][] info=(String[][]) in.readObject();
 
             if(!(info==null)){
+                if(Integer.parseInt(info[0][1])==0 && Integer.parseInt(info[1][1])==0 && Integer.parseInt(info[2][1])==0 && Integer.parseInt(info[3][1])==0 && Integer.parseInt(info[4][1])==0 && Integer.parseInt(info[5][1])==0){
+                    area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
+                            "Non ci sono segnalazioni di eventi avversi in questo centro");
+                }else{
             area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
                     "Eventi avversi registrati:\n" +
                     "-"+info[0][0]+", "+info[0][1]+" segnalazioni, severità media: " +info[0][2]+ "\n" +
@@ -2311,10 +2316,10 @@ public class HomeV2 extends javax.swing.JFrame {
                     "-"+info[3][0]+", "+info[3][1]+" segnalazioni, severità media: " +info[3][2]+ "\n" +
                     "-"+info[4][0]+", "+info[4][1]+" segnalazioni, severità media: " +info[4][2]+ "\n" +
                     "-"+info[5][0]+", "+info[5][1]+" segnalazioni, severità media: " +info[5][2]+ "\n"
-            );}
+            );}}
             else {
                 area_visualizzazione_info.setText(listaCentri.get(i).toString()+"\n" +
-                                "Non sono stati segnalati eventi avversi in questo centro"
+                                "Non sono ancora stati segnalati eventi avversi"
                         );
             }
         }catch(Exception e){

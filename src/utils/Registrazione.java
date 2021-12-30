@@ -7,6 +7,8 @@ import cittadini.Cittadino;
 import cittadini.EventoAvverso;
 import cittadini.User;
 import cittadini.Vaccinato;
+
+import java.nio.channels.ScatteringByteChannel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -102,6 +104,8 @@ public  class Registrazione {
          String password=cittadino.getUser().getPassword();
          try{
              //creo lo statement
+             //settiamo l'auto commit su false per creare una transaction
+             conn.setAutoCommit(false);
              Statement st= conn.createStatement();
              //creo query di creazione tabella users se non è già presente nel DB
              String query_crea_user=SqlString.creaTabellaUser();
@@ -116,11 +120,15 @@ public  class Registrazione {
              //creo query di inserimento dati in cittadino
              String query_inserisci_cittadino =SqlString.insertCittadino(idVaccinazione,nome,cognome,codiceFiscale,username,password);
              st.executeUpdate(query_inserisci_cittadino);
-
+             conn.commit();
 
              //se non ci sono stati errori ritorno vero
              return 0;
          } catch (SQLException e) {
+             try{
+                 //se viene sollevata qualche eccezione riguardo a un possibile valore duplicato eseguo rollback della transazione
+                 conn.rollback();
+             } catch (Exception ee){System.err.println("Eseguo rollback");}
              e.printStackTrace();
              String errore=e.getMessage();
              if(errore.contains("Key (username)")){return 1;}
@@ -238,7 +246,7 @@ public  class Registrazione {
         //update per tabella
         st.executeUpdate(query_crea_evento);
         //creo query di inserimento dati in eventi_avversi
-        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username,comune,nome_centro);
+        String query_inserisci_evento = SqlString.insertEvento(tipologia,gravità,note,username,nome_centro,comune);
         st.executeUpdate(query_inserisci_evento);
         //se non ci sono errori ritorno vero
         return true;
