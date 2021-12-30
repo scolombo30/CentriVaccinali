@@ -10,7 +10,7 @@ public class MultiServer {
     static final int PORT = 2812;
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(PORT);
-        System.out.println("EchoMultiServer: started");
+        System.out.println("Server: started");
         System.out.println("Server Socket: " + serverSocket);
         try {
             while(true) {
@@ -28,7 +28,7 @@ public class MultiServer {
             System.err.println("Accept failed");
             System.exit(1);
         }
-        System.out.println("EchoMultiServer: closing...");
+        System.out.println("Server: closing...");
         serverSocket.close();
     }
 } // EchoMultiServer
