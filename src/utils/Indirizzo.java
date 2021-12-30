@@ -146,20 +146,6 @@ public class Indirizzo implements Serializable{
                 this.comune+ " ("+this.siglaProvincia+"), "+
                 this.CAP;
     }
-    /*
-        /**
-         * @return Una stringa con la prima lettera in maiuscolo e le altre in minuscolo
-
-    private String primaLetteraMaiuscola(String str){
-        String risultato="";
-        //rendo la prima lettera maiuscola
-        String prima_lettera = str.substring(0, 1);
-        prima_lettera=prima_lettera.toUpperCase();
-        //prendo le altre lettere
-        String altre_lettere_nome = str.substring(1).toLowerCase();
-        //riunisco il tutto
-        risultato = prima_lettera + altre_lettere_nome;
-        return risultato;}*/
     }
 
 

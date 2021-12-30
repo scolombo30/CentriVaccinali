@@ -30,28 +30,24 @@ public class CentroVaccinale implements Serializable{
     }
 
     //metodi
-
     /**
      * @return the nome
      */
     public String getNome() {
         return nome;
     }
-
     /**
      * @return the indirizzo
      */
     public Indirizzo getIndirizzo() {
         return indirizzo;
     }
-
     /**
      * @return the tipologia
      */
     public String getTipologia() {
         return tipologia;
     }
-
     /**
      * @param nome the nome to set
      */
@@ -60,28 +56,24 @@ public class CentroVaccinale implements Serializable{
         //controllare che il nome sia senza spazi solo "_"
         this.nome = nome;
     }
-
     /**
      * @param indirizzo the indirizzo to set
      */
     public void setIndirizzo(Indirizzo indirizzo) {
         this.indirizzo = indirizzo;
     }
-
     /**
      * @param tipologia the tipologia to set
      */
     public void setTipologia(String tipologia) {
         this.tipologia = tipologia;
     }
-
     /**
      * @return Una stringa con tutte le informazioni del centro vaccinale
      */
     public String toString() {
         return "CentroVaccinale: " + nome + ", " + indirizzo + ", tipologia: " + tipologia;
     }
-
     /**
      * @param obj centro vaccinale da confrontare
      */
@@ -92,9 +84,4 @@ public class CentroVaccinale implements Serializable{
                 this.tipologia.equals(altro.tipologia)) return true;
         else return false;
     }
-
-
-
-
-
 }

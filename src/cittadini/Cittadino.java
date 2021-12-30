@@ -32,8 +32,7 @@ public class Cittadino implements Serializable{
         this.user=user;
     }
 
-
-//metodi
+    //metodi
     /**
      * @return the nome
      */
@@ -70,9 +69,8 @@ public class Cittadino implements Serializable{
     public long getIdVaccinazione() {
         return idVaccinazione;
     }
-
-     /**
-     * @param nome the nome to set
+    /**
+     * * @param nome the nome to set
      */
     public void setNome(String nome) {
         this.nome = nome;
@@ -95,7 +93,6 @@ public class Cittadino implements Serializable{
     public void setIdVaccinazione(long idVaccinazione) {
         this.idVaccinazione = idVaccinazione;
     }
-
     /**
      * @param obj cittadino da confrontare
      */
@@ -109,16 +106,4 @@ public class Cittadino implements Serializable{
         )return true;
         else return false;
     }
-    /*
-        /**
-         * @return Una stringa con tutte le informazioni del cittadino
-         */
-   /* public String toString() {
-        return this.nome+" "+this.cognome+", "+this.codiceFiscale+
-                "\nUsername: "+this.username+", Mail: "+this.mail+", Psw: "+this.password +
-                "\nID_Vaccinazione: "+this.idVaccinazione;
-    }
-
-    */
-
 }

@@ -8,7 +8,7 @@ import java.awt.*;
 public class Message {
     /**
      * @param c set the componet
-     * @param mess set the message
+     * @param mess set the warning message
      * @param titolo set the title of the message
      */
     //metodo per messaggi di warnig
@@ -19,7 +19,7 @@ public class Message {
                 JOptionPane.WARNING_MESSAGE);}
     /**
      * @param c set the componet
-     * @param mess set the message
+     * @param mess set the information message
      * @param titolo set the title of the message
      */
     //metodo per messaggi di information
@@ -30,7 +30,7 @@ public class Message {
                 JOptionPane.INFORMATION_MESSAGE);}
     /**
      * @param c set the componet
-     * @param mess set the message
+     * @param mess set the error message
      * @param titolo set the title of the message
      */
     //metodo per messaggi di errore
@@ -41,7 +41,7 @@ public class Message {
                 JOptionPane.ERROR_MESSAGE);}
     /**
      * @param c set the componet
-     * @param mess set the message
+     * @param mess set the confirm message
      * @param titolo set the title of the message
      */
     //metodi per conferma
