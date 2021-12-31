@@ -19,14 +19,16 @@ class ServerThread extends Thread {
     private ObjectInputStream in;
     private String username;
     private String password;
+    private String url_db;
 
     public ServerThread(Socket s, String arg [] ) throws IOException {
         //inizializzo varibili per la connessione
         socket = s;
         out = new ObjectOutputStream(s.getOutputStream());
         in = new ObjectInputStream(s.getInputStream());
-        username=arg[0];
-        password=arg[1];
+        url_db=arg[0];
+        username=arg[1];
+        password=arg[2];
         //username="postgres";
         //password="qwerty";
         start();
@@ -43,7 +45,7 @@ class ServerThread extends Thread {
             //carico il driver jdbc
             Class.forName("org.postgresql.Driver");
             //creo l'URL per la connessione
-            String url = "jdbc:postgresql://localhost/piattaformacv";
+            String url = "jdbc:postgresql://"+url_db+"/piattaformacv";
             String user = username ;
             String psw = password ;
             Connection conn = DriverManager.getConnection(url, user, psw);

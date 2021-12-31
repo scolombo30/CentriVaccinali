@@ -44,7 +44,7 @@ public class HomeV2 extends javax.swing.JFrame {
             // creazione socket
             socket = new Socket("localhost", HomeV2.PORTA);
             //stampe di controllo
-            System.out.println("EchoClient: started");
+            System.out.println("Client: started");
             System.out.println("Client Socket: "+ socket);
             // creazione stream di input da socket
             out = new ObjectOutputStream((socket.getOutputStream()));

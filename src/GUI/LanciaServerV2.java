@@ -13,7 +13,6 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import cittadini.MultiServer;
-import org.postgresql.util.PSQLException;
 import utils.Message;
 import utils.SqlString;
 
@@ -24,8 +23,10 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     private boolean primo_avvio=false;
     private boolean primo_avvio2=false;
     private boolean errore=false;
-    static final String DB_URL= "jdbc:postgresql://localhost/";
-    static final String DB_URL_CODICE="jdbc:postgresql://localhost/piattaformacv";
+    private String jdbc="jdbc:postgresql://";
+    private String URL="";
+    private String nomedb="/piattaformacv";
+    private String DB_URL="";
     /**
      * Creates new form LanciaServerV2
      */
@@ -45,6 +46,17 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         title_bar = new javax.swing.JPanel();
         chiudi_finestra_btn = new javax.swing.JLabel();
         contenitore = new javax.swing.JPanel();
+        scelta_locale_o_ip = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        localhost_btn = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        ip_pnl = new javax.swing.JPanel();
+        campo_ip = new javax.swing.JTextField();
+        conferma_ip_btn = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        primo_avvio_scelta_ip = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
+
         avvia_pgAdmin_pnl = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -106,6 +118,120 @@ public class LanciaServerV2 extends javax.swing.JFrame {
 
         contenitore.setBackground(new java.awt.Color(33, 32, 36));
         contenitore.setLayout(new java.awt.CardLayout());
+
+        scelta_locale_o_ip.setBackground(new java.awt.Color(33, 32, 36));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Dove si trova il Database?");
+
+        localhost_btn.setBackground(new java.awt.Color(104, 28, 121));
+        localhost_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                localhost_btnMouseClicked(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("LOCALHOST");
+
+        javax.swing.GroupLayout localhost_btnLayout = new javax.swing.GroupLayout(localhost_btn);
+        localhost_btn.setLayout(localhost_btnLayout);
+        localhost_btnLayout.setHorizontalGroup(
+                localhost_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(localhost_btnLayout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jLabel9)
+                                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        localhost_btnLayout.setVerticalGroup(
+                localhost_btnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(localhost_btnLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+
+        ip_pnl.setBackground(new java.awt.Color(33, 32, 36));
+
+        conferma_ip_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\conferma.png")); // NOI18N
+        conferma_ip_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                conferma_ip_btnMouseClicked(evt);
+            }
+        });
+
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Primo avvio?");
+
+        javax.swing.GroupLayout ip_pnlLayout = new javax.swing.GroupLayout(ip_pnl);
+        ip_pnl.setLayout(ip_pnlLayout);
+        ip_pnlLayout.setHorizontalGroup(
+                ip_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ip_pnlLayout.createSequentialGroup()
+                                .addComponent(campo_ip, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(conferma_ip_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                                .addGap(12, 12, 12))
+                        .addGroup(ip_pnlLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(primo_avvio_scelta_ip)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ip_pnlLayout.setVerticalGroup(
+                ip_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ip_pnlLayout.createSequentialGroup()
+                                .addGroup(ip_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(conferma_ip_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                                        .addComponent(campo_ip, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(ip_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel11)
+                                        .addComponent(primo_avvio_scelta_ip))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Inserire IP");
+
+        javax.swing.GroupLayout scelta_locale_o_ipLayout = new javax.swing.GroupLayout(scelta_locale_o_ip);
+        scelta_locale_o_ip.setLayout(scelta_locale_o_ipLayout);
+        scelta_locale_o_ipLayout.setHorizontalGroup(
+                scelta_locale_o_ipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(scelta_locale_o_ipLayout.createSequentialGroup()
+                                .addGroup(scelta_locale_o_ipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(scelta_locale_o_ipLayout.createSequentialGroup()
+                                                .addGap(226, 226, 226)
+                                                .addComponent(jLabel8))
+                                        .addGroup(scelta_locale_o_ipLayout.createSequentialGroup()
+                                                .addGap(54, 54, 54)
+                                                .addComponent(localhost_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(38, 38, 38)
+                                                .addGroup(scelta_locale_o_ipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel10)
+                                                        .addComponent(ip_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        scelta_locale_o_ipLayout.setVerticalGroup(
+                scelta_locale_o_ipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(scelta_locale_o_ipLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel8)
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(scelta_locale_o_ipLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(localhost_btn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ip_pnl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(124, Short.MAX_VALUE))
+        );
+
+        contenitore.add(scelta_locale_o_ip, "card4");
+
 
         avvia_pgAdmin_pnl.setBackground(new java.awt.Color(33, 32, 36));
 
@@ -176,9 +302,6 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                         .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
                                 .addGroup(avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
-                                                .addGap(284, 284, 284)
-                                                .addComponent(avvia_pg_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
                                                 .addGap(44, 44, 44)
                                                 .addGroup(avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
@@ -200,6 +323,10 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(aiuto_btn)))
                                 .addContainerGap(44, Short.MAX_VALUE))
+                        .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
+                                .addGap(284, 284, 284)
+                                .addComponent(avvia_pg_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         avvia_pgAdmin_pnlLayout.setVerticalGroup(
                 avvia_pgAdmin_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,15 +485,19 @@ public class LanciaServerV2 extends javax.swing.JFrame {
             contenitore.add(login_db_pnl);
             contenitore.repaint();
             contenitore.revalidate();
-        }
+        } contenitore.removeAll();
+        contenitore.add(login_db_pnl);
+        contenitore.repaint();
+        contenitore.revalidate();
     }
 
     private void buttonAvviaServer(java.awt.event.MouseEvent evt) {
         String USER=username.getText();
         String PASSWORD=new String(password.getPassword());
-        String [] user_psw=new String []{USER,PASSWORD};
+        String [] user_psw=new String []{URL,USER,PASSWORD};
         if(primo_avvio){
             //creo DB
+            DB_URL=jdbc+URL;
             try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASSWORD);
                 Statement st= conn.createStatement();){
                 String sql= SqlString.creaDB();
@@ -374,6 +505,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                 primo_avvio=false;
                 errore=false;
             }catch (SQLException e){
+                e.printStackTrace();
                 if(e.getMessage().contains("ERROR")){
                     Message.errorMessage(this, "Il database esiste già","DB già esistente");
                 }else if(e.getMessage().contains("FATAL")){
@@ -383,26 +515,40 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                 else Message.errorMessage(this, "Errore generico","Errore");
             }
         }
-        //C:\Program Files\PostgreSQL\14\pgAdmin 4\bin\pgAdmin4.exe
+
         try{
-            Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
+            DB_URL=jdbc+URL+nomedb;
+            Connection con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement s= con.createStatement();
             String tabella=SqlString.creaTabellaCodiciOperatore();
             s.executeUpdate(tabella);
-        errore=false;}
+            errore=false;}
             catch (SQLException e){
-            if(!errore){Message.errorMessage(this, "2-Credenziali errate, prego reinserire","Errore");errore=true;}
+            System.out.println(e.getMessage());
+            if(e.getMessage().contains("Il tentativo di connessione")){
+                Message.errorMessage(this, "L'indirizzo IP del DB è irraggiungibile", "DB irraggiungibile");
+                contenitore.removeAll();
+                contenitore.add(scelta_locale_o_ip);
+                contenitore.repaint();
+                contenitore.revalidate();
+                errore=true;
+            }
+            if(!errore && !(e.getMessage().contains("Il tentativo di connessione"))){Message.errorMessage(this, "2-Credenziali errate, prego reinserire","Errore");errore=true;}
             }
         if (primo_avvio2){
             try {
-                Connection con = DriverManager.getConnection(DB_URL_CODICE, USER, PASSWORD);
+                DB_URL=jdbc+URL+nomedb;
+                Connection con = DriverManager.getConnection(DB_URL, USER, PASSWORD);
                 Statement s = con.createStatement();
                 String insert_codice = SqlString.insertCodiceOperatore();
                 s.executeUpdate(insert_codice);
                 errore=false;
-            }catch (Exception e){}
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             }
         if(!errore){
+            System.out.println(DB_URL);
             Message.warningMessage(this,"Ricordati che una volta chiusa questa finestra il server girerà in background. " +
                                                 "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
             this.dispose();
@@ -414,9 +560,32 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     }
 
     private void aiuto_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        Message.informationMessage(this, "Spuntando questa casella verrà creato il \ndatabade. Se è già stato creato non spuntare la casella", "Avviso");
+        Message.informationMessage(this, "Spuntando questa casella verrà creato il \ndatabase. Se è già stato creato non spuntare la casella", "Avviso");
     }
 
+    private void localhost_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        URL="localhost";
+        System.out.println(URL+" "+DB_URL);
+        //cambio layout panel
+        contenitore.removeAll();
+        contenitore.add(avvia_pgAdmin_pnl);
+        contenitore.repaint();
+        contenitore.revalidate();
+    }
+
+    private void conferma_ip_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        URL=campo_ip.getText();
+        System.out.println(URL+" "+DB_URL);
+        if(primo_avvio_scelta_ip.isSelected()){
+            primo_avvio2=true;
+            primo_avvio=true;
+        }
+        //cambio layout panel
+        contenitore.removeAll();
+        contenitore.add(login_db_pnl);
+        contenitore.repaint();
+        contenitore.revalidate();
+    }
     /**
      * @param args the command line arguments
      */
@@ -456,22 +625,32 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     private javax.swing.JLabel aiuto_btn;
     private javax.swing.JPanel avvia_pgAdmin_pnl;
     private javax.swing.JButton avvia_pg_btn;
+    private javax.swing.JTextField campo_ip;
     private javax.swing.JCheckBox check_primo_avvio;
     private javax.swing.JLabel chiudi_finestra_btn;
+    private javax.swing.JLabel conferma_ip_btn;
     private javax.swing.JPanel contenitore;
+    private javax.swing.JPanel ip_pnl;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel localhost_btn;
     private javax.swing.JButton login_db_btn;
     private javax.swing.JPanel login_db_pnl;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField path;
+    private javax.swing.JCheckBox primo_avvio_scelta_ip;
+    private javax.swing.JPanel scelta_locale_o_ip;
     private javax.swing.JPanel title_bar;
     private javax.swing.JTextField username;
     // End of variables declaration
