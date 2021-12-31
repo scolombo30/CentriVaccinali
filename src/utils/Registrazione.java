@@ -255,7 +255,7 @@ public  class Registrazione {
         return false;
     }
     }
-    //metodo visualizza info
+    //metodo visualizza info visualizzaInfoCentroVaccinale()
     public static String [][] infoEventiAvversi(Connection conn,String centro, String comune){
         try{
             String[][] info = new String[][]{{"Mal di testa","0","0"},
