@@ -575,7 +575,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
 
     private void conferma_ip_btnMouseClicked(java.awt.event.MouseEvent evt) {
         URL=campo_ip.getText();
-        if(URL.matches("^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\\\.(?!$)|$)){4}$")) {
+        if(URL.matches("^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$")) {
             System.out.println(URL + " " + DB_URL);
             if (primo_avvio_scelta_ip.isSelected()) {
                 primo_avvio2 = true;
