@@ -16,7 +16,7 @@ import cittadini.MultiServer;
 import utils.Message;
 import utils.SqlString;
 
-public class LanciaServerV2 extends javax.swing.JFrame {
+public class ServerCV extends javax.swing.JFrame {
 
     private int x,y;
     private String path_pg;
@@ -30,7 +30,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
     /**
      * Creates new form LanciaServerV2
      */
-    public LanciaServerV2() {
+    public ServerCV() {
         initComponents();
     }
 
@@ -608,20 +608,20 @@ public class LanciaServerV2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LanciaServerV2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LanciaServerV2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LanciaServerV2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LanciaServerV2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ServerCV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LanciaServerV2().setVisible(true);
+                new ServerCV().setVisible(true);
             }
         });
     }

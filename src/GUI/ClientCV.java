@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import utils.*;
 
-public class HomeV2 extends javax.swing.JFrame {
+public class ClientCV extends javax.swing.JFrame {
     //variabili per trascinare la finestra
     private int MouseX,MouseY;
     //variabili per colore di sfondo
@@ -38,7 +38,7 @@ public class HomeV2 extends javax.swing.JFrame {
     private int mostra_psw=0;
 
     //costruttore
-    public HomeV2() {
+    public ClientCV() {
         //creo il socket e i canali I/O
         try {
             // creazione socket

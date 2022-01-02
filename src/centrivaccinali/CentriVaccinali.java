@@ -2,11 +2,11 @@
 // Sebastian Colombo "742779" CO
 package centrivaccinali;
 
-import GUI.HomeV2;
+import GUI.ClientCV;
 
 public class CentriVaccinali {
     public static void main(String[] args) {
-       HomeV2.main(null);
+       ClientCV.main(null);
     }
 }
 
