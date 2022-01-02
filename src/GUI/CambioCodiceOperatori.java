@@ -181,7 +181,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Nuovo codice");
+        jLabel5.setText("Nuovo codice (max.20)");
 
         cambia_codice_btn.setIcon(new javax.swing.ImageIcon("./res/cambia codice btn.png")); // NOI18N
         cambia_codice_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -285,15 +285,17 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
             Statement st= conn.createStatement();){
             String sql=SqlString.updateCodiceOperatore(vecchio, nuovo);
             //execute update ritorna il numero di righe modificate se 0 non ha modificato
-            if(st.executeUpdate(sql)==1){Message.informationMessage(this,"Il codice operatore è stato cambiato","Successo");}
-            else {Message.errorMessage(this,"Vecchio codice errato, il codice non è stato cambiato","Errore");}
+            if(st.executeUpdate(sql)==1){Message.informationMessage(this,"Il codice operatore è stato cambiato","Successo"); dispose();}
+            else {Message.errorMessage(this,"Vecchio codice errato, il codice non è stato cambiato","Errore");DB_URL="jdbc:postgresql://";}
         }catch(SQLException e){
+            e.printStackTrace();
             if(e.getMessage().contains("Il tentativo di connessione")){Message.errorMessage(this, "L'indirizzo IP del DB è irraggiungibile", "DB irraggiungibile");}
-            else {Message.warningMessage(this,"Le credenziali per accedere al DB sono errate", "Credenziali errate");
-                  contenitore.removeAll();
-                  contenitore.add(login);
-                  contenitore.repaint();
-                  contenitore.revalidate();}
+            else {Message.warningMessage(this,"Le credenziali per accedere al DB sono errate", "Credenziali errate");}
+            DB_URL="jdbc:postgresql://";
+            contenitore.removeAll();
+            contenitore.add(login);
+            contenitore.repaint();
+            contenitore.revalidate();
         }
         }
 
