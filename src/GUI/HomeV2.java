@@ -226,6 +226,7 @@ public class HomeV2 extends javax.swing.JFrame {
         setBackground(new java.awt.Color(33, 32, 36));
         setUndecorated(true);
         setResizable(false);
+        setIconImage(new ImageIcon("./res/icona.jpg").getImage());
         setSize(new java.awt.Dimension(1550, 910));
 
         title_bar.setBackground(new java.awt.Color(104, 28, 121));
