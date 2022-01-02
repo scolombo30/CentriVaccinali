@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JFileChooser;
+import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import cittadini.MultiServer;
@@ -79,6 +79,7 @@ public class LanciaServerV2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        setIconImage(new ImageIcon("./res/icona_server.jpg").getImage());
 
         title_bar.setBackground(new java.awt.Color(104, 28, 121));
         title_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {

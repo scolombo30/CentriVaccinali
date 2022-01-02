@@ -4,6 +4,8 @@ package GUI;
 
 import utils.Message;
 import utils.SqlString;
+
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -46,6 +48,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setIconImage(new ImageIcon("./res/icona_codice.jpg").getImage());
 
         title_bar.setBackground(new java.awt.Color(104, 28, 121));
         title_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
