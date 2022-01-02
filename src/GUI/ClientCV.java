@@ -419,7 +419,7 @@ public class ClientCV extends javax.swing.JFrame {
         jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Connesso");
 
-        disconnetti_btn.setIcon(new javax.swing.ImageIcon("./res/log_out (1).png")); // NOI18N
+        disconnetti_btn.setIcon(new javax.swing.ImageIcon("./res/log_out.png")); // NOI18N
         disconnetti_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 disconnetti_btnMouseClicked(evt);
@@ -492,7 +492,7 @@ public class ClientCV extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Stolzl Book", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon("./res/benvenuti (1).png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("./res/benvenuti.png")); // NOI18N
 
         jLabel12.setIcon(new javax.swing.ImageIcon("./res/immagine_homee.png")); // NOI18N
 
