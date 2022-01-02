@@ -278,14 +278,26 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
     }
 
     private void cambia_codice_btnMouseClicked(java.awt.event.MouseEvent evt) {
-        String vecchio=vecchio_codice.getText();
-        String nuovo=nuovo_codice.getText();
+        String vecchio=(vecchio_codice.getText()).strip();
+        String nuovo=(nuovo_codice.getText()).strip();
         DB_URL=DB_URL+ip+nome_db;
         try(Connection conn = DriverManager.getConnection(DB_URL,user,pss);
             Statement st= conn.createStatement();){
             String sql=SqlString.updateCodiceOperatore(vecchio, nuovo);
             //execute update ritorna il numero di righe modificate se 0 non ha modificato
-            if(st.executeUpdate(sql)==1){Message.informationMessage(this,"Il codice operatore è stato cambiato","Successo"); dispose();}
+            if(st.executeUpdate(sql)==1){
+                if(!(vecchio.isBlank() || nuovo.isBlank())) {
+                    if (nuovo.length() <= 20) {
+                        Message.informationMessage(this, "Il codice operatore è stato cambiato", "Successo");
+                        dispose();
+                    } else {
+                        Message.warningMessage(this," codice troppo lungo, prego rienserisca ","Errore");DB_URL="jdbc:postgresql://";
+
+                    }
+                }else{
+                    Message.warningMessage(this," codice vuoto,prego  rienserisca","Errore");DB_URL="jdbc:postgresql://";
+                }
+            }
             else {Message.errorMessage(this,"Vecchio codice errato, il codice non è stato cambiato","Errore");DB_URL="jdbc:postgresql://";}
         }catch(SQLException e){
             e.printStackTrace();

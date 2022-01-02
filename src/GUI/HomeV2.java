@@ -1176,7 +1176,7 @@ public class HomeV2 extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Login Operatore");
+        jLabel5.setText("Login Operatore (max.20)");
 
         campo_codice_operatore.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         campo_codice_operatore.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(33, 32, 36), 5, true));
@@ -2392,24 +2392,26 @@ public class HomeV2 extends javax.swing.JFrame {
         pulisci_campi_cittadino_evento_avverso();
     }
     //metodo che controlla se la password dell'operatore è giusta/sbagliata o il campo è vuoto
-    private void login_operatore(String psw){
-        try{
+    private void login_operatore(String psw) {
+        try {
             out.writeObject("CODICE OPERATORE");
             out.writeObject(psw);
 
-            if((Boolean) in.readObject()){
+            if ((Boolean) in.readObject()) {
                 //se la password è giusta cambio layout
                 contenitore_pnl.removeAll();
                 contenitore_pnl.add(registra_centro_pnl);
                 contenitore_pnl.repaint();
                 contenitore_pnl.revalidate();
                 pulisci_campi();
-            }
-            else if(psw.equals("")){
+            } else if (psw.equals("")) {
                 //se il campo è vuoto mostro messaggio d'errore
                 Message.errorMessage(this, "Inserire il codice. Il campo non può esere vuoto", "Campo vuoto");
-            }
-            else{
+            } else if (!(psw.length() <= 20)) {
+                //se il campo non eè conforme in lunghezza errore
+                Message.errorMessage(this, " Il codice. Il campo è troppo lungo", "Campo non conforme");
+
+            } else{
                 //se la password non è corretta mostro messaggio d'errore
                 Message.errorMessage(this, "Il codice insertio è errato. Prego reinserisca", "Codice errato");
                 pulisci_campi();
