@@ -75,6 +75,7 @@ public class ServerCV extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        indietro_btn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -189,9 +190,9 @@ public class ServerCV extends javax.swing.JFrame {
                                         .addComponent(conferma_ip_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                                         .addComponent(campo_ip, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(ip_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel11)
-                                        .addComponent(primo_avvio_scelta_ip))
+                                .addGroup(ip_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(primo_avvio_scelta_ip)
+                                        .addComponent(jLabel11))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -322,11 +323,10 @@ public class ServerCV extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(check_primo_avvio)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(aiuto_btn)))
-                                .addContainerGap(44, Short.MAX_VALUE))
-                        .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
-                                .addGap(284, 284, 284)
-                                .addComponent(avvia_pg_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(aiuto_btn))
+                                        .addGroup(avvia_pgAdmin_pnlLayout.createSequentialGroup()
+                                                .addGap(284, 284, 284)
+                                                .addComponent(avvia_pg_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         avvia_pgAdmin_pnlLayout.setVerticalGroup(
@@ -377,6 +377,13 @@ public class ServerCV extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Password");
 
+        indietro_btn.setIcon(new javax.swing.ImageIcon("C:\\Users\\moseb\\IdeaProjects\\PiattaformCV\\res\\indietro.png")); // NOI18N
+        indietro_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                indietro_btnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout login_db_pnlLayout = new javax.swing.GroupLayout(login_db_pnl);
         login_db_pnl.setLayout(login_db_pnlLayout);
         login_db_pnlLayout.setHorizontalGroup(
@@ -394,13 +401,18 @@ public class ServerCV extends javax.swing.JFrame {
                                                                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                 .addComponent(username)
                                                                 .addComponent(password))
-                                                        .addComponent(jLabel7))))
+                                                        .addComponent(jLabel7)))
+                                        .addGroup(login_db_pnlLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(indietro_btn)))
                                 .addContainerGap(257, Short.MAX_VALUE))
         );
         login_db_pnlLayout.setVerticalGroup(
                 login_db_pnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(login_db_pnlLayout.createSequentialGroup()
-                                .addGap(23, 23, 23)
+                                .addContainerGap()
+                                .addComponent(indietro_btn)
+                                .addGap(1, 1, 1)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel6)
@@ -412,7 +424,7 @@ public class ServerCV extends javax.swing.JFrame {
                                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(76, 76, 76)
                                 .addComponent(jButton2)
-                                .addContainerGap(103, Short.MAX_VALUE))
+                                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         contenitore.add(login_db_pnl, "card4");
@@ -591,6 +603,13 @@ public class ServerCV extends javax.swing.JFrame {
             Message.errorMessage(this, "Non è un ip , rienserisca", "IP non conforme");
         }
     }
+    private void indietro_btnMouseClicked(java.awt.event.MouseEvent evt) {
+        //cambio panel
+        contenitore.removeAll();
+        contenitore.add(scelta_locale_o_ip);
+        contenitore.repaint();
+        contenitore.revalidate();
+    }
     /**
      * @param args the command line arguments
      */
@@ -641,6 +660,7 @@ public class ServerCV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel indietro_btn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
