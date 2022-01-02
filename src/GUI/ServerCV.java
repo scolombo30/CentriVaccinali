@@ -272,11 +272,11 @@ public class ServerCV extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Attendi che pgAdmin si avvii. Una volta avviato acceda e connetta il server");
+        jLabel4.setText("                                                  Avviare server: ");
 
         login_db_btn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         login_db_btn.setText("Login DataBase");
-        login_db_btn.setEnabled(false);
+        login_db_btn.setEnabled(true);
         login_db_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 login_db_btnActionPerformed(evt);
@@ -525,7 +525,7 @@ public class ServerCV extends javax.swing.JFrame {
             s.executeUpdate(tabella);
             errore=false;}
             catch (SQLException e){
-            System.out.println(e.getMessage());
+
             if(e.getMessage().contains("Il tentativo di connessione")){
                 Message.errorMessage(this, "L'indirizzo IP del DB è irraggiungibile", "DB irraggiungibile");
                 contenitore.removeAll();
@@ -549,7 +549,7 @@ public class ServerCV extends javax.swing.JFrame {
             }
             }
         if(!errore){
-            System.out.println(DB_URL);
+
             Message.warningMessage(this,"Ricordati che una volta chiusa questa finestra il server girerà in background. " +
                                                 "\nPer chiuderlo andare nella gestione attività di windows","Attenzione, server in background");
             this.dispose();
@@ -566,7 +566,7 @@ public class ServerCV extends javax.swing.JFrame {
 
     private void localhost_btnMouseClicked(java.awt.event.MouseEvent evt) {
         URL="localhost";
-        System.out.println(URL+" "+DB_URL);
+
         //cambio layout panel
         contenitore.removeAll();
         contenitore.add(avvia_pgAdmin_pnl);
@@ -577,7 +577,7 @@ public class ServerCV extends javax.swing.JFrame {
     private void conferma_ip_btnMouseClicked(java.awt.event.MouseEvent evt) {
         URL=campo_ip.getText();
         if(URL.matches("^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$")) {
-            System.out.println(URL + " " + DB_URL);
+
             if (primo_avvio_scelta_ip.isSelected()) {
                 primo_avvio2 = true;
                 primo_avvio = true;
