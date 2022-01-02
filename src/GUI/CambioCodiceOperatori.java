@@ -48,7 +48,7 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setIconImage(new ImageIcon("./res/icona_codice.jpg").getImage());
+        setIconImage(new ImageIcon("./res/icona-codice.png").getImage());
 
         title_bar.setBackground(new java.awt.Color(104, 28, 121));
         title_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
