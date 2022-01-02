@@ -12,8 +12,9 @@ import java.sql.Statement;
 public class CambioCodiceOperatori extends javax.swing.JFrame {
 
     private int x,y;
-    private String user, pss;
-    static final String DB_URL="jdbc:postgresql://localhost/piattaformacv";
+    private String user, pss, ip;
+    private String DB_URL="jdbc:postgresql://";
+    private String nome_db="/piattaformacv";
 
     public CambioCodiceOperatori() {
         initComponents();
@@ -33,6 +34,9 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         password = new javax.swing.JTextField();
         accedi_btn = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        ip_db = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         cambio_codice = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         vecchio_codice = new javax.swing.JTextField();
@@ -107,40 +111,62 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("IP del database ");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Help");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
         loginLayout.setHorizontalGroup(
                 loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(loginLayout.createSequentialGroup()
+                                .addGap(181, 181, 181)
+                                .addComponent(accedi_btn)
+                                .addContainerGap(193, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
                                         .addGroup(loginLayout.createSequentialGroup()
-                                                .addGap(215, 215, 215)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(loginLayout.createSequentialGroup()
-                                                .addGap(215, 215, 215)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(loginLayout.createSequentialGroup()
-                                                .addGap(135, 135, 135)
-                                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                                                        .addComponent(password)))
-                                        .addGroup(loginLayout.createSequentialGroup()
-                                                .addGap(181, 181, 181)
-                                                .addComponent(accedi_btn)))
-                                .addGap(130, 130, 130))
+                                                .addComponent(ip_db, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel7)))
+                                .addGap(12, 12, 12))
         );
         loginLayout.setVerticalGroup(
                 loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(loginLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel2)
-                                .addGap(6, 6, 6)
-                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel3)
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(ip_db, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3))
                                 .addGap(7, 7, 7)
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(44, 44, 44)
                                 .addComponent(accedi_btn)
                                 .addGap(48, 48, 48))
         );
@@ -239,15 +265,22 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
     private void accedi_btnMouseClicked(java.awt.event.MouseEvent evt) {
         user=username.getText();
         pss=password.getText();
+        //controllo sull'ip
+        if(ip_db.getText().equals("localhost") || ip_db.getText().matches("^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.(?!$)|$)){4}$")){
+        ip=ip_db.getText();
         contenitore.removeAll();
         contenitore.add(cambio_codice);
         contenitore.repaint();
         contenitore.revalidate();
+        }else {
+            Message.errorMessage(this, "La stringa inserita non è un indirizzo ip", "IP errato");
+        }
     }
 
     private void cambia_codice_btnMouseClicked(java.awt.event.MouseEvent evt) {
         String vecchio=vecchio_codice.getText();
         String nuovo=nuovo_codice.getText();
+        DB_URL=DB_URL+ip+nome_db;
         try(Connection conn = DriverManager.getConnection(DB_URL,user,pss);
             Statement st= conn.createStatement();){
             String sql=SqlString.updateCodiceOperatore(vecchio, nuovo);
@@ -255,13 +288,19 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
             if(st.executeUpdate(sql)==1){Message.informationMessage(this,"Il codice operatore è stato cambiato","Successo");}
             else {Message.errorMessage(this,"Vecchio codice errato, il codice non è stato cambiato","Errore");}
         }catch(SQLException e){
-            Message.warningMessage(this,"Le credenziali per accedere al DB sono errate", "Credenziali errate");
-            contenitore.removeAll();
-            contenitore.add(login);
-            contenitore.repaint();
-            contenitore.revalidate();
+            if(e.getMessage().contains("Il tentativo di connessione")){Message.errorMessage(this, "L'indirizzo IP del DB è irraggiungibile", "DB irraggiungibile");}
+            else {Message.warningMessage(this,"Le credenziali per accedere al DB sono errate", "Credenziali errate");
+                  contenitore.removeAll();
+                  contenitore.add(login);
+                  contenitore.repaint();
+                  contenitore.revalidate();}
         }
         }
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {
+        //mostro messaggio di aiuto
+        Message.informationMessage(this, "Inserire l'ip del database o localhost se locale", "Aiuto");
+    }
 
 
     /**
@@ -305,16 +344,20 @@ public class CambioCodiceOperatori extends javax.swing.JFrame {
     private javax.swing.JPanel cambio_codice;
     private javax.swing.JLabel chiudi_btn;
     private javax.swing.JPanel contenitore;
+    private javax.swing.JTextField ip_db;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel login;
     private javax.swing.JTextField nuovo_codice;
     private javax.swing.JTextField password;
     private javax.swing.JPanel title_bar;
     private javax.swing.JTextField username;
     private javax.swing.JTextField vecchio_codice;
+
     // End of variables declaration
 }
