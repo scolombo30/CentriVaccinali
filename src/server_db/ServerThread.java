@@ -1,8 +1,12 @@
 //Davide Franco "741453" CO
 // Sebastian Colombo "742779" CO
-package cittadini;
+package server_db;
 
 import centrivaccinali.CentroVaccinale;
+import cittadini.Cittadino;
+import cittadini.EventoAvverso;
+import cittadini.User;
+import cittadini.Vaccinato;
 import utils.Registrazione;
 import utils.SqlString;
 import java.io.*;

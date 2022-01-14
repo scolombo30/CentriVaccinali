@@ -12,7 +12,7 @@ import java.sql.Statement;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import cittadini.MultiServer;
+import server_db.MultiServer;
 import utils.Message;
 import utils.SqlString;
 

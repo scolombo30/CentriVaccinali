@@ -302,6 +302,7 @@ public  class Registrazione {
                return true;
            }else {return false;}
        }catch(SQLException e) {
+           e.printStackTrace();
            return false;
        }
     }
